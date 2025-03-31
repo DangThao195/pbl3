@@ -1,0 +1,12 @@
+D:\.Net\PBL3_DLT\ImplementationService\bin\Debug\net8.0\ImplementationService.deps.json
+D:\.Net\PBL3_DLT\ImplementationService\bin\Debug\net8.0\ImplementationService.dll
+D:\.Net\PBL3_DLT\ImplementationService\bin\Debug\net8.0\ImplementationService.pdb
+D:\.Net\PBL3_DLT\ImplementationService\obj\Debug\net8.0\ImplementationService.GeneratedMSBuildEditorConfig.editorconfig
+D:\.Net\PBL3_DLT\ImplementationService\obj\Debug\net8.0\ImplementationService.AssemblyInfoInputs.cache
+D:\.Net\PBL3_DLT\ImplementationService\obj\Debug\net8.0\ImplementationService.AssemblyInfo.cs
+D:\.Net\PBL3_DLT\ImplementationService\obj\Debug\net8.0\ImplementationService.csproj.CoreCompileInputs.cache
+D:\.Net\PBL3_DLT\ImplementationService\obj\Debug\net8.0\ImplementationService.sourcelink.json
+D:\.Net\PBL3_DLT\ImplementationService\obj\Debug\net8.0\ImplementationService.dll
+D:\.Net\PBL3_DLT\ImplementationService\obj\Debug\net8.0\refint\ImplementationService.dll
+D:\.Net\PBL3_DLT\ImplementationService\obj\Debug\net8.0\ImplementationService.pdb
+D:\.Net\PBL3_DLT\ImplementationService\obj\Debug\net8.0\ref\ImplementationService.dll

@@ -1,0 +1,261 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "H:\\PBL3_new\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{61E1BD19-F6F5-4088-BAA6-BC0E91A2B635}|..\\Entities\\Entities.csproj|h:\\entities\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61E1BD19-F6F5-4088-BAA6-BC0E91A2B635}|..\\Entities\\Entities.csproj|h:\\entities\\billdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61E1BD19-F6F5-4088-BAA6-BC0E91A2B635}|..\\Entities\\Entities.csproj|h:\\entities\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFF5B190-D80B-49DF-B877-63AB673E7901}|PBL3_new.csproj|h:\\pbl3_new\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AFF5B190-D80B-49DF-B877-63AB673E7901}|PBL3_new.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61E1BD19-F6F5-4088-BAA6-BC0E91A2B635}|..\\Entities\\Entities.csproj|h:\\entities\\catalog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61E1BD19-F6F5-4088-BAA6-BC0E91A2B635}|..\\Entities\\Entities.csproj|h:\\entities\\discount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61E1BD19-F6F5-4088-BAA6-BC0E91A2B635}|..\\Entities\\Entities.csproj|h:\\entities\\bill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61E1BD19-F6F5-4088-BAA6-BC0E91A2B635}|..\\Entities\\Entities.csproj|h:\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61E1BD19-F6F5-4088-BAA6-BC0E91A2B635}|..\\Entities\\Entities.csproj|h:\\entities\\shoppingcart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61E1BD19-F6F5-4088-BAA6-BC0E91A2B635}|..\\Entities\\Entities.csproj|h:\\entities\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61E1BD19-F6F5-4088-BAA6-BC0E91A2B635}|..\\Entities\\Entities.csproj|h:\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61E1BD19-F6F5-4088-BAA6-BC0E91A2B635}|..\\Entities\\Entities.csproj|h:\\entities\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61E1BD19-F6F5-4088-BAA6-BC0E91A2B635}|..\\Entities\\Entities.csproj|h:\\entities\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62CA7F19-756D-4A24-8571-EC00FE425D9D}|..\\Services\\Services.csproj|h:\\services\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CBBC6161-7782-4AE8-A987-E486A26DF04A}|..\\InterfaceService\\InterfaceService.csproj|h:\\interfaceservice\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "H:\\Entities\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "..\\Entities\\ApplicationDbContext.cs",
+              "ToolTip": "H:\\Entities\\ApplicationDbContext.cs",
+              "RelativeToolTip": "..\\Entities\\ApplicationDbContext.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAwwDEAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T06:32:47.347Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "H:\\PBL3_new\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "H:\\PBL3_new\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T04:52:12.89Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ShoppingCart.cs",
+              "DocumentMoniker": "H:\\Entities\\ShoppingCart.cs",
+              "RelativeDocumentMoniker": "..\\Entities\\ShoppingCart.cs",
+              "ToolTip": "H:\\Entities\\ShoppingCart.cs",
+              "RelativeToolTip": "..\\Entities\\ShoppingCart.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAYwBQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T04:57:29.228Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Catalog.cs",
+              "DocumentMoniker": "H:\\Entities\\Catalog.cs",
+              "RelativeDocumentMoniker": "..\\Entities\\Catalog.cs",
+              "ToolTip": "H:\\Entities\\Catalog.cs",
+              "RelativeToolTip": "..\\Entities\\Catalog.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T04:56:34.255Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Customer.cs",
+              "DocumentMoniker": "H:\\Entities\\Customer.cs",
+              "RelativeDocumentMoniker": "..\\Entities\\Customer.cs",
+              "ToolTip": "H:\\Entities\\Customer.cs",
+              "RelativeToolTip": "..\\Entities\\Customer.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T04:47:53.48Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BillDetail.cs",
+              "DocumentMoniker": "H:\\Entities\\BillDetail.cs",
+              "RelativeDocumentMoniker": "..\\Entities\\BillDetail.cs",
+              "ToolTip": "H:\\Entities\\BillDetail.cs",
+              "RelativeToolTip": "..\\Entities\\BillDetail.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAA+wB0AAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T04:57:13.693Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Review.cs",
+              "DocumentMoniker": "H:\\Entities\\Review.cs",
+              "RelativeDocumentMoniker": "..\\Entities\\Review.cs",
+              "ToolTip": "H:\\Entities\\Review.cs",
+              "RelativeToolTip": "..\\Entities\\Review.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAuwCAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T04:56:21.175Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Product.cs",
+              "DocumentMoniker": "H:\\Entities\\Product.cs",
+              "RelativeDocumentMoniker": "..\\Entities\\Product.cs",
+              "ToolTip": "H:\\Entities\\Product.cs",
+              "RelativeToolTip": "..\\Entities\\Product.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAcwBMAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T04:55:56.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Discount.cs",
+              "DocumentMoniker": "H:\\Entities\\Discount.cs",
+              "RelativeDocumentMoniker": "..\\Entities\\Discount.cs",
+              "ToolTip": "H:\\Entities\\Discount.cs",
+              "RelativeToolTip": "..\\Entities\\Discount.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAuwBcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T04:55:34.441Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Bill.cs",
+              "DocumentMoniker": "H:\\Entities\\Bill.cs",
+              "RelativeDocumentMoniker": "..\\Entities\\Bill.cs",
+              "ToolTip": "H:\\Entities\\Bill.cs",
+              "RelativeToolTip": "..\\Entities\\Bill.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T04:55:12.052Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "CartItem.cs",
+              "DocumentMoniker": "H:\\Entities\\CartItem.cs",
+              "RelativeDocumentMoniker": "..\\Entities\\CartItem.cs",
+              "ToolTip": "H:\\Entities\\CartItem.cs",
+              "RelativeToolTip": "..\\Entities\\CartItem.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAA+wB4AAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T04:56:48.741Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "User.cs",
+              "DocumentMoniker": "H:\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "..\\Entities\\User.cs",
+              "ToolTip": "H:\\Entities\\User.cs",
+              "RelativeToolTip": "..\\Entities\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T04:54:27.103Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Admin.cs",
+              "DocumentMoniker": "H:\\Entities\\Admin.cs",
+              "RelativeDocumentMoniker": "..\\Entities\\Admin.cs",
+              "ToolTip": "H:\\Entities\\Admin.cs",
+              "RelativeToolTip": "..\\Entities\\Admin.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T04:54:02.913Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "H:\\Services\\Class1.cs",
+              "RelativeDocumentMoniker": "..\\Services\\Class1.cs",
+              "ToolTip": "H:\\Services\\Class1.cs",
+              "RelativeToolTip": "..\\Services\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T04:50:02.898Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "H:\\InterfaceService\\Class1.cs",
+              "RelativeDocumentMoniker": "..\\InterfaceService\\Class1.cs",
+              "ToolTip": "H:\\InterfaceService\\Class1.cs",
+              "RelativeToolTip": "..\\InterfaceService\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T04:48:30.228Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+.vs/
+bin/
+obj/
+*.log
+bin/
+
+wwwroot/
+
+*.dll
+*.exe
+*.pdb
+*.json

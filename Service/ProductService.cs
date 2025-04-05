@@ -30,7 +30,7 @@ namespace PBL3_HK4.Service
             return listProduct;
         }
 
-        public async Task<Product> GetProductByIdAsync(string productId)
+        public async Task<Product> GetProductByIdAsync(Guid productId)
         {
             var product = await _context.Products.Where(p => p.ProductID == productId).FirstOrDefaultAsync();
             if (product == null)
@@ -50,7 +50,7 @@ namespace PBL3_HK4.Service
             return listProduct;
         }
 
-        public async Task<IEnumerable<Product>> GetProductsByCatalogIdAsync(string catalogId)
+        public async Task<IEnumerable<Product>> GetProductsByCatalogIdAsync(Guid catalogId)
         {
             var listProduct = await _context.Products.Where(p => p.CatalogID == catalogId).ToListAsync();
             if (listProduct == null || listProduct.Count == 0)
@@ -82,7 +82,7 @@ namespace PBL3_HK4.Service
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteProductAsync(string productId)
+        public async Task DeleteProductAsync(Guid productId)
         {
             var product = await _context.Products.Where(p => p.ProductID == productId).FirstOrDefaultAsync();
             if (product == null)

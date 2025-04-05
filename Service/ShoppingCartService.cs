@@ -42,7 +42,7 @@ namespace PBL3_HK4.Service
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteShoppingCartAsync(string shoppingcartId)
+        public async Task DeleteShoppingCartAsync(Guid shoppingcartId)
         {
             var shoppingcart = await _context.ShoppingCarts.FirstOrDefaultAsync(s => s.ShoppingCartID == shoppingcartId);
             if (shoppingcart == null)
@@ -53,7 +53,7 @@ namespace PBL3_HK4.Service
             await _context.SaveChangesAsync();
         }
 
-        public async Task<ShoppingCart> GetShoppingCartByIdAsync(string shoppingcartId)
+        public async Task<ShoppingCart> GetShoppingCartByIdAsync(Guid shoppingcartId)
         {
             var shoppingcart = await _context.ShoppingCarts.Where(s => s.ShoppingCartID == shoppingcartId).FirstOrDefaultAsync();
             if (shoppingcart) == null)
@@ -63,7 +63,7 @@ namespace PBL3_HK4.Service
             return shoppingcart;
         }
 
-        public async Task<ShoppingCart> GetShoppingCartByCustomerIdAsync(string customerId)
+        public async Task<ShoppingCart> GetShoppingCartByCustomerIdAsync(Guid customerId)
         {
             var shoppingcart = await _context.ShoppingCarts.Where(s => s.UserID == customerId).FirstOrDefaultAsync();
             if (shoppingcart == null)

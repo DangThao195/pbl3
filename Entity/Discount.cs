@@ -11,7 +11,7 @@ namespace PBL3_HK4.Entity
     public class Discount
     {
         [Key]
-        public string? DiscountID { get; set; }
+        public Guid DiscountID { get; set; }
 
         [Required]
         [StringLength(100)]

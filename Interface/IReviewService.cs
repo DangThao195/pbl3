@@ -12,8 +12,8 @@ namespace PBL3_HK4.Interface
     {
         public Task AddReviewAsync(Review review) ;
         public Task UpdateReviewAsync(Review review);
-        public Task<Review> GetReviewByIdAsync(string reviewId);
-        public Task<IEnumerable<Review>> GetReviewsByProductIdAsync(string productId);
+        public Task<Review> GetReviewByIdAsync(Guid reviewId);
+        public Task<IEnumerable<Review>> GetReviewsByProductIdAsync(Guid productId);
         public Task<IEnumerable<Review>> GetAllReviewsAsync();
     }
 }

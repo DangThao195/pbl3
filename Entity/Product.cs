@@ -13,7 +13,7 @@ namespace PBL3_HK4.Entity
     {
         [Key]
         [Required]
-        public string? ProductID { get; set; }
+        public Guid ProductID { get; set; }
 
         [Required]
         public string? CatalogID { get; set; }

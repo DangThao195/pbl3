@@ -10,7 +10,7 @@ namespace PBL3_HK4.Entity
     {
         [Key]
         [Required]
-        public string? UserID { get; set; }
+        public Guid UserID { get; set; }
 
         [Required]
         [StringLength(40)]

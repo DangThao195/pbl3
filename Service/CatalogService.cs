@@ -41,7 +41,7 @@ namespace PBL3_HK4.Service
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteCatalogAsync(string catalogId)
+        public async Task DeleteCatalogAsync(Guid catalogId)
         {
             var catalog = await _context.Catalogs.FirstOrDefaultAsync(c => c.CatalogID == catalogId);
             if (catalog == null)
@@ -52,7 +52,7 @@ namespace PBL3_HK4.Service
             await _context.SaveChangesAsync();
         }
 
-        public async Task<Catalog> GetCatalogByIdAsync(string catalogId)
+        public async Task<Catalog> GetCatalogByIdAsync(Guid catalogId)
         {
             var catalog = await _context.Catalogs.Where(c => c.CatalogID == catalogId).FirstOrDefaultAsync();
             if (catalog == null)

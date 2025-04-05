@@ -30,7 +30,7 @@ namespace PBL3_HK4.Service
             return listDiscount;
         }
 
-        public async Task<Discount> GetDiscountByIdAsync(string discountId)
+        public async Task<Discount> GetDiscountByIdAsync(Guid discountId)
         {
             var discount = await _context.Discounts.Where(d => d.DiscountID == discountId).FirstOrDefaultAsync();
             if (discount == null)
@@ -72,7 +72,7 @@ namespace PBL3_HK4.Service
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteDiscountAsync(string discountId)
+        public async Task DeleteDiscountAsync(Guid discountId)
         {
             var discount = await _context.Discounts.FirstOrDefaultAsync(d => d.DiscountID == discountId);
             if (discount == null)

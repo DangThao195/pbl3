@@ -30,7 +30,7 @@ namespace PBL3_HK4.Service
             return listBillDetail;
         }
 
-        public async Task<BillDetail> GetBillDetailByIdAsync(string billdetailId)
+        public async Task<BillDetail> GetBillDetailByIdAsync(Guid billdetailId)
         {
             var billDetail = await _context.BillDetails.FirstOrDefaultAsync(b => b.BillDetailID == billdetailId);
             if (billDetail == null)
@@ -40,7 +40,7 @@ namespace PBL3_HK4.Service
             return billDetail;
         }
 
-        public async Task<IEnumerable<BillDetail>> GetBillDetailsByBillIdAsync(string billid)
+        public async Task<IEnumerable<BillDetail>> GetBillDetailsByBillIdAsync(Guid billid)
         {
             var billDetails = await _context.BillDetails.Where(b => b.BillID == billid).ToListAsync();
             if (billDetails == null || billDetails.Count == 0)
@@ -72,7 +72,7 @@ namespace PBL3_HK4.Service
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteBillDetailAsync(string billId)
+        public async Task DeleteBillDetailAsync(Guid billId)
         {
             var billDetail = await _context.BillDetails.FirstOrDefaultAsync(b => b.BillDetailID == billId);
             if (billDetail == null)

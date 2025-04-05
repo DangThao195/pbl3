@@ -12,8 +12,8 @@ namespace PBL3_HK4.Interface
     {
         public Task AddCatalogAsync(Catalog catalog);
         public Task UpdateCatalogAsync(Catalog catalog) ;
-        public Task DeleteCatalogAsync(string catalogId);
-        public Task<Catalog> GetCatalogByIdAsync(string catalogId);
+        public Task DeleteCatalogAsync(Guid catalogId);
+        public Task<Catalog> GetCatalogByIdAsync(Guid catalogId);
         public Task<Catalog> GetCatalogByNameAsync(string catalogName);
         public Task<IEnumerable<Catalog>> GetAllCatalogsAsync();
     }

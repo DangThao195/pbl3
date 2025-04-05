@@ -12,10 +12,10 @@ namespace PBL3_HK4.Interface
     public interface IBillDetailService
     {
         public Task<IEnumerable<BillDetail>> GetAllBillDetailsAsync();
-        public Task<BillDetail> GetBillDetailByIdAsync(string id);
+        public Task<BillDetail> GetBillDetailByIdAsync(Guid id);
         public Task AddBillDetailAsync(BillDetail billDetail);
         public Task UpdateBillDetailAsync(BillDetail billDetail);
-        public Task DeleteBillDetailAsync(string id);
-        public Task<IEnumerable<BillDetail>> GetBillDetailsByBillIdAsync(string billId);
+        public Task DeleteBillDetailAsync(Guid id);
+        public Task<IEnumerable<BillDetail>> GetBillDetailsByBillIdAsync(Guid billId);
     }
 }

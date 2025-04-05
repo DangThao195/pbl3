@@ -12,9 +12,9 @@ namespace PBL3_HK4.Interface
     {
         public Task AddShoppingCartAsync(ShoppingCart shoppingcart) ;
         public Task UpdateShoppingCartAsync(ShoppingCart shoppingcartc);
-        public Task DeleteShoppingCartAsync(string shoppingcartId);
-        public Task<ShoppingCart> GetShoppingCartByIdAsync(string shoppingcartId);
-        public Task<ShoppingCart> GetShoppingCartByCustomerIdAsync(string customerId);
+        public Task DeleteShoppingCartAsync(Guid shoppingcartId);
+        public Task<ShoppingCart> GetShoppingCartByIdAsync(Guid shoppingcartId);
+        public Task<ShoppingCart> GetShoppingCartByCustomerIdAsync(Guid customerId);
         public Task<IEnumerable<ShoppingCart>> GetAllShoppingCartsAsync();
     }
 }

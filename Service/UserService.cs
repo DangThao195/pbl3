@@ -42,7 +42,7 @@ namespace PBL3_HK4.Service
             await _context.SaveChangesAsync();
         }
 
-        public async Task<User> GetUserByIdAsync(string userId)
+        public async Task<User> GetUserByIdAsync(Guid userId)
         {
             var user = await _context.Users.Where(u => u.UserID == userId).FirstOrDefaultAsync();
             if (user == null)

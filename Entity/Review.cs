@@ -11,7 +11,7 @@ namespace PBL3_HK4.Entity
     public class Review
     {
         [Key]
-        public string? ReviewID { get; set; }
+        public Guid ReviewID { get; set; }
 
         [ForeignKey("Product")]
         public string? ProductID { get; set; }

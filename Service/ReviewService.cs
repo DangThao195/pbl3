@@ -42,7 +42,7 @@ namespace PBL3_HK4.Service
             await _context.SaveChangesAsync();
         }
 
-        public async Task<Review> GetReviewByIdAsync(string reviewId)
+        public async Task<Review> GetReviewByIdAsync(Guid reviewId)
         {
             var review = await _context.Reviews.Where(r => r.ReviewID == reviewId).FirstOrDefaultAsync();
             if (review == null)
@@ -52,7 +52,7 @@ namespace PBL3_HK4.Service
             return review;
         }
 
-        public async Task<IEnumerable<Review>> GetReviewsByProductIdAsync(string productId)
+        public async Task<IEnumerable<Review>> GetReviewsByProductIdAsync(Guid productId)
         {
             var listReview = await _context.Reviews.Where(r => r.ProductID == productId).ToListAsync();
             if (listReview == null || listReview.Count == 0)

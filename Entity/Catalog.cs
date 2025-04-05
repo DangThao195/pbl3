@@ -12,7 +12,7 @@ namespace PBL3_HK4.Entity
     {
         [Key]
         [Required]
-        public string? CatalogID { get; set; }
+        public Guid CatalogID { get; set; }
         [Required]
         [StringLength(40)]
         public string? CatalogName { get; set; }

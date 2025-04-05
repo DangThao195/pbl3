@@ -11,7 +11,7 @@ namespace PBL3_HK4.Entity
     public class Bill
     {
         [Key]
-        public string? BillID { get; set; }
+        public Guid BillID { get; set; }
 
         [ForeignKey("Customer")]
         public string? CustomerID { get; set; }

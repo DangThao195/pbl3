@@ -11,10 +11,10 @@ namespace PBL3_HK4.Interface
     public interface IDiscountService
     {
         public Task<IEnumerable<Discount>> GetAllDiscountsAsync();
-        public Task<Discount> GetDiscountByIdAsync(string discountId);
+        public Task<Discount> GetDiscountByIdAsync(Guid discountId);
         public Task<IEnumerable<Discount>> GetDiscountsByNameAsync(string discountName);
         public Task AddDiscountAsync(Discount discount);
         public Task UpdateDiscountAsync(Discount discount);
-        public Task DeleteDiscountAsync(string discountId);
+        public Task DeleteDiscountAsync(Guid discountId);
     }
 }

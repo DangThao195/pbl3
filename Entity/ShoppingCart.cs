@@ -11,7 +11,7 @@ namespace PBL3_HK4.Entity
     public class ShoppingCart
     {
         [Key]
-        public string? CartID { get; set; }
+        public Guid CartID { get; set; }
 
         [Required]
         [ForeignKey("Customer")]

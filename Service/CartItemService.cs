@@ -42,7 +42,7 @@ namespace PBL3_HK4.Service
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteCartItemAsync(string cartitemId)
+        public async Task DeleteCartItemAsync(Guid cartitemId)
         {
             var cartitem = await _context.CartItems.FirstOrDefaultAsync(c => c.ItemID == cartitemId);
             if (cartitem == null)
@@ -53,7 +53,7 @@ namespace PBL3_HK4.Service
             await _context.SaveChangesAsync();
         }
 
-        public async Task<CartItem> GetCartItemByIdAsync(string cartitemId)
+        public async Task<CartItem> GetCartItemByIdAsync(Guid cartitemId)
         {
             var cartitem = await _context.CartItems.Where(c => c.ItemID == cartitemId).FirstOrDefaultAsync();
             if (cartitem == null)
@@ -63,7 +63,7 @@ namespace PBL3_HK4.Service
             return cartitem;
         }
 
-        public async Task<IEnumerable<CartItem>> GetCartItemsByShoppingCartIdAsync(string shoppingcartId)
+        public async Task<IEnumerable<CartItem>> GetCartItemsByShoppingCartIdAsync(Guid shoppingcartId)
         {
             var listCartItem = await _context.CartItems.Where(c => c.CartID == shoppingcartId).ToListAsync();
             if (listCartItem == null || listCartItem.Count == 0)

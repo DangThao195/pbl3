@@ -12,12 +12,12 @@ namespace PBL3_HK4.Interface
     public interface IProductService
     {
         public Task<IEnumerable<Product>> GetAllProductsAsync();
-        public Task<Product> GetProductByIdAsync(string productId);
+        public Task<Product> GetProductByIdAsync(Guid productId);
         public Task<IEnumerable<Product>> GetProductsByNameAsync(string productName);
-        public Task<IEnumerable<Product>> GetProductsByCatalogIdAsync(string catalogId);
+        public Task<IEnumerable<Product>> GetProductsByCatalogIdAsync(Guid catalogId);
         public Task AddProductAsync(Product product);
         public Task UpdateProductAsync(Product product);
-        public Task DeleteProductAsync(string productId);
+        public Task DeleteProductAsync(Guid productId);
         
     }
 }

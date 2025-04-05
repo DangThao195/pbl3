@@ -92,9 +92,5 @@ namespace PBL3_HK4.Controllers
         {
 
         }
-        public async IActionResult CalculateRevenueByProductAsync()
-        {
-
-        }
     }
 }

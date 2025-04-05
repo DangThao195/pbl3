@@ -50,16 +50,6 @@ namespace PBL3_HK4.Service
             return billDetails;
         }
 
-        public async Task<IEnumerable<BillDetail>> GetBillDetailsByProductIdAsync(string productId)
-        {
-            var billDetails = await _context.BillDetails.Where(b => b.ProductID == productId).ToListAsync();
-            if (billDetails == null || billDetails.Count == 0)
-            {
-                throw new KeyNotFoundException($"No bill details found for product ID {productId}.");
-            }
-            return billDetails;
-        }
-
         public async Task AddBillDetailAsync(BillDetail billDetail)
         {
             var existingBillDetail = await _context.BillDetails.FirstOrDefaultAsync(b => b.BillDetailID == billDetail.BillDetailID);

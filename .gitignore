@@ -4,7 +4,6 @@ obj/
 *.log
 bin/
 
-wwwroot/
 
 *.dll
 *.exe

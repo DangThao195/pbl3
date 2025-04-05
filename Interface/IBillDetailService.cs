@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PBL3_HK4.Entity;
+
 namespace PBL3_HK4.Interface
 {
     public interface IBillDetailService
@@ -15,6 +16,7 @@ namespace PBL3_HK4.Interface
         public Task AddBillDetailAsync(BillDetail billDetail);
         public Task UpdateBillDetailAsync(BillDetail billDetail);
         public Task DeleteBillDetailAsync(string id);
+        public Task<IEnumerable<BillDetail>> GetBillDetailsByProductIdAsync(string productId);
         public Task<IEnumerable<BillDetail>> GetBillDetailsByBillIdAsync(string billId);
     }
 }

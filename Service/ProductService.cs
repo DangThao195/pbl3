@@ -8,15 +8,18 @@ using System.Threading.Tasks;
 using PBL3_HK4.Interface;
 using PBL3_HK4.Entity;
 using Microsoft.EntityFrameworkCore;
+
 namespace PBL3_HK4.Service
 {
     public class ProductService : IProductService
     {
         private readonly ApplicationDbContext _context;
+
         public ProductService(ApplicationDbContext context)
         {
             _context = context;
         }
+
         public  async Task<IEnumerable<Product>> GetAllProductsAsync()
         {
             var listProduct = await _context.Products.ToListAsync();
@@ -26,6 +29,7 @@ namespace PBL3_HK4.Service
             }
             return listProduct;
         }
+
         public async Task<Product> GetProductByIdAsync(string productId)
         {
             var product = await _context.Products.Where(p => p.ProductID == productId).FirstOrDefaultAsync();
@@ -35,15 +39,17 @@ namespace PBL3_HK4.Service
             }
             return product;
         }
+
         public async Task<IEnumerable<Product>> GetProductsByNameAsync(string productName)
         {
             var listProduct = await _context.Products.Where(p => p.ProductName == productName).ToListAsync();
             if (listProduct.Count == 0)
             {
-                throw new KeyNotFoundException($"Products with name{productName}");
+                throw new KeyNotFoundException($"Products with name {productName}");
             }
             return listProduct;
         }
+
         public async Task<IEnumerable<Product>> GetProductsByCatalogIdAsync(string catalogId)
         {
             var listProduct = await _context.Products.Where(p => p.CatalogID == catalogId).ToListAsync();
@@ -53,6 +59,7 @@ namespace PBL3_HK4.Service
             }
             return listProduct;
         }
+
         public async Task AddProductAsync(Product product)
         {
             var existingProduct = await _context.Products.FirstOrDefaultAsync(p => p.ProductID == product.ProductID);
@@ -63,6 +70,7 @@ namespace PBL3_HK4.Service
             await _context.Products.AddAsync(product);
             await _context.SaveChangesAsync();
         }
+
         public async Task UpdateProductAsync(Product product)
         {
             var existingProduct = await _context.Products.FirstOrDefaultAsync(p => p.ProductID == product.ProductID);
@@ -73,6 +81,7 @@ namespace PBL3_HK4.Service
             _context.Products.Update(product);
             await _context.SaveChangesAsync();
         }
+
         public async Task DeleteProductAsync(string productId)
         {
             var product = await _context.Products.Where(p => p.ProductID == productId).FirstOrDefaultAsync();

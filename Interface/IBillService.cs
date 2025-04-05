@@ -18,6 +18,5 @@ namespace PBL3_HK4.Interface
         public Task AddBillAsync(Bill bill);
         public Task UpdateBillAsync(Bill bill);
         public Task DeleteBillAsync(string billId);
-        public Task<Dictionary<string, double>> FinancialStatisticAsync(DateTime startDate, DateTime endDate);
     }
 }

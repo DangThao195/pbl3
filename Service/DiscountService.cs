@@ -8,15 +8,18 @@ using System.Threading.Tasks;
 using PBL3_HK4.Interface;
 using PBL3_HK4.Entity;
 using Microsoft.EntityFrameworkCore;
+
 namespace PBL3_HK4.Service
 {
     public class DiscountService: IDiscountService
     {
         private readonly ApplicationDbContext _context;
+
         public DiscountService(ApplicationDbContext context)
         {
             _context = context;
         }
+
         public async Task<IEnumerable<Discount>> GetAllDiscountsAsync()
         {
             var listDiscount = await _context.Discounts.ToListAsync();
@@ -26,6 +29,7 @@ namespace PBL3_HK4.Service
             }
             return listDiscount;
         }
+
         public async Task<Discount> GetDiscountByIdAsync(string discountId)
         {
             var discount = await _context.Discounts.Where(d => d.DiscountID == discountId).FirstOrDefaultAsync();
@@ -35,6 +39,7 @@ namespace PBL3_HK4.Service
             }
             return discount;
         }
+
         public async Task<IEnumerable<Discount>> GetDiscountsByNameAsync(string discountName)
         {
             List<Discount> listDiscount = await _context.Discounts.Where(d => d.Name == discountName).ToListAsync();
@@ -44,6 +49,7 @@ namespace PBL3_HK4.Service
             }
             return listDiscount;
         }
+
         public async Task AddDiscountAsync(Discount discount)
         {
             var existingDiscount = await _context.Discounts.FirstOrDefaultAsync(d => d.DiscountID == discount.DiscountID);
@@ -54,6 +60,7 @@ namespace PBL3_HK4.Service
             await _context.Discounts.AddAsync(discount);
             await _context.SaveChangesAsync();
         }
+
         public async Task UpdateDiscountAsync(Discount discount)
         {
            var existingDiscount = await _context.Discounts.FirstOrDefaultAsync(d => d.DiscountID == discount.DiscountID);
@@ -64,6 +71,7 @@ namespace PBL3_HK4.Service
             _context.Discounts.Update(discount);
             await _context.SaveChangesAsync();
         }
+
         public async Task DeleteDiscountAsync(string discountId)
         {
             var discount = await _context.Discounts.FirstOrDefaultAsync(d => d.DiscountID == discountId);

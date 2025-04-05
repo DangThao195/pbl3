@@ -8,15 +8,18 @@ using System.Threading.Tasks;
 using PBL3_HK4.Interface;
 using PBL3_HK4.Entity;
 using Microsoft.EntityFrameworkCore;
+
 namespace PBL3_HK4.Service
 {
     public class BillDetailService : IBillDetailService
     {
         private readonly ApplicationDbContext _context;
+
         public BillDetailService(ApplicationDbContext context)
         {
             _context = context;
         }
+
         public async Task<IEnumerable<BillDetail>> GetAllBillDetailsAsync()
         {
             var listBillDetail = await _context.BillDetails.ToListAsync();
@@ -26,15 +29,17 @@ namespace PBL3_HK4.Service
             }
             return listBillDetail;
         }
-        public async Task<BillDetail> GetBillDetailByIdAsync(string billId)
+
+        public async Task<BillDetail> GetBillDetailByIdAsync(string billdetailId)
         {
-            var billDetail = await _context.BillDetails.FirstOrDefaultAsync(b => b.BillID == billId);
+            var billDetail = await _context.BillDetails.FirstOrDefaultAsync(b => b.BillDetailID == billdetailId);
             if (billDetail == null)
             {
-                throw new KeyNotFoundException($"Bill detail with ID {billId} not found.");
+                throw new KeyNotFoundException($"Bill detail with ID {billdetailId} not found.");
             }
             return billDetail;
         }
+
         public async Task<IEnumerable<BillDetail>> GetBillDetailsByBillIdAsync(string billid)
         {
             var billDetails = await _context.BillDetails.Where(b => b.BillID == billid).ToListAsync();
@@ -44,29 +49,42 @@ namespace PBL3_HK4.Service
             }
             return billDetails;
         }
+
+        public async Task<IEnumerable<BillDetail>> GetBillDetailsByProductIdAsync(string productId)
+        {
+            var billDetails = await _context.BillDetails.Where(b => b.ProductID == productId).ToListAsync();
+            if (billDetails == null || billDetails.Count == 0)
+            {
+                throw new KeyNotFoundException($"No bill details found for product ID {productId}.");
+            }
+            return billDetails;
+        }
+
         public async Task AddBillDetailAsync(BillDetail billDetail)
         {
-            var existingBillDetail = await _context.BillDetails.FirstOrDefaultAsync(b => b.BillID == billDetail.BillID);
+            var existingBillDetail = await _context.BillDetails.FirstOrDefaultAsync(b => b.BillDetailID == billDetail.BillDetailID);
             if (existingBillDetail != null)
             {
-                throw new InvalidOperationException($"Bill detail with ID {billDetail.BillID} already exists.");
+                throw new InvalidOperationException($"Bill detail with ID {billDetail.BillDetailID} already exists.");
             }
             await _context.BillDetails.AddAsync(billDetail);
             await _context.SaveChangesAsync();
         }
+
         public async Task UpdateBillDetailAsync(BillDetail billDetail)
         {
-            var existingBillDetail = await _context.BillDetails.FirstOrDefaultAsync(b => b.BillID == billDetail.BillID);
+            var existingBillDetail = await _context.BillDetails.FirstOrDefaultAsync(b => b.BillDetailID == billDetail.BillDetailID);
             if (existingBillDetail == null)
             {
-                throw new KeyNotFoundException($"Bill detail with ID {billDetail.BillID} not found.");
+                throw new KeyNotFoundException($"Bill detail with ID {billDetail.BillDetailID} not found.");
             }
             _context.BillDetails.Update(billDetail);
             await _context.SaveChangesAsync();
         }
+
         public async Task DeleteBillDetailAsync(string billId)
         {
-            var billDetail = await _context.BillDetails.FirstOrDefaultAsync(b => b.BillID == billId);
+            var billDetail = await _context.BillDetails.FirstOrDefaultAsync(b => b.BillDetailID == billId);
             if (billDetail == null)
             {
                 throw new KeyNotFoundException($"Bill detail with ID {billId} not found.");

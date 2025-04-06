@@ -15,12 +15,12 @@ namespace PBL3_HK4.Entity
 
         [Required]
         [ForeignKey("Product")]
-        public string? ProductID { get; set; }
+        public Guid? ProductID { get; set; }
         public virtual Product? Product { get; set; }
 
         [Required]
         [ForeignKey("ShoppingCart")]
-        public string? CartID { get; set; }
+        public Guid? CartID { get; set; }
         public virtual ShoppingCart? ShoppingCart { get; set; }
 
         [Required]

@@ -14,7 +14,7 @@ namespace PBL3_HK4.Entity
         public Guid BillID { get; set; }
 
         [ForeignKey("Customer")]
-        public string? CustomerID { get; set; }
+        public Guid? CustomerID { get; set; }
         public virtual Customer? Customer { get; set; }
 
         [Required]

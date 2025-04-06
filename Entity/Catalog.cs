@@ -16,5 +16,7 @@ namespace PBL3_HK4.Entity
         [Required]
         [StringLength(40)]
         public string? CatalogName { get; set; }
+
+        public ICollection<Product> Products { get; set; }
     }
 }

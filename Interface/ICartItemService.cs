@@ -14,7 +14,7 @@ namespace PBL3_HK4.Interface
         public Task UpdateCartItemAsync(CartItem cartitem);
         public Task DeleteCartItemAsync(Guid cartitemid);
         public Task<CartItem> GetCartItemByIdAsync(Guid cartitemid);
-        public Task<IEnumerable<CartItem> GetCartItemsByShoppingCartIdAsync(Guid shoppingcartid);
+        public Task<IEnumerable<CartItem>> GetCartItemsByShoppingCartIdAsync(Guid shoppingcartid);
         public Task<IEnumerable<CartItem>> GetAllCartItemsAsync();
     }
 }

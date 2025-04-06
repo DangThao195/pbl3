@@ -14,15 +14,15 @@ namespace PBL3_HK4.Entity
         public Guid BillDetailID { get; set; }
 
         [ForeignKey("Product")]
-        public string? ProductID { get; set; }
+        public Guid? ProductID { get; set; }
         public virtual Product? Product { get; set; }
 
         [ForeignKey("Bill")]
-        public string? BillID { get; set; }
+        public Guid? BillID { get; set; }
         public virtual Bill? Bill { get; set; }
 
         [ForeignKey("Discount")]
-        public string? DiscountID { get; set; }
+        public Guid? DiscountID { get; set; }
         public virtual Discount? Discount { get; set; }
         public int? Quantity { get; set; }
         public double? Price { get; set; }

@@ -14,11 +14,11 @@ namespace PBL3_HK4.Entity
         public Guid ReviewID { get; set; }
 
         [ForeignKey("Product")]
-        public string? ProductID { get; set; }
+        public Guid? ProductID { get; set; }
         public virtual Product? Product { get; set; }
 
         [ForeignKey("Customer")]
-        public string? CustomerID { get; set; }
+        public Guid? CustomerID { get; set; }
         public virtual Customer? Customer { get; set; }
 
         [Range(1, 5)]

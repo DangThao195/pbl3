@@ -22,10 +22,10 @@ namespace PBL3_HK4.Service
 
         public async Task AddShoppingCartAsync(ShoppingCart shoppingcart) 
         {
-            var currentShoppingCart = await _context.ShoppingCarts.FirstOrDefaultAsync(s => s.ShoppingCartID == shoppingcart.ShoppingCartID);
+            var currentShoppingCart = await _context.ShoppingCarts.FirstOrDefaultAsync(s => s.CartID == shoppingcart.CartID);
             if (currentShoppingCart != null)
             {
-                throw new InvalidOperationException($"Shopping carts with ID {shoppingcart.ShoppingCartID} already exists.");
+                throw new InvalidOperationException($"Shopping carts with ID {shoppingcart.CartID} already exists.");
             }
             await _context.ShoppingCarts.AddAsync(shoppingcart);
             await _context.SaveChangesAsync();
@@ -33,10 +33,10 @@ namespace PBL3_HK4.Service
 
         public async Task UpdateShoppingCartAsync(ShoppingCart shoppingcart)
         {
-            var currentShoppingCart = await _context.ShoppingCarts.FirstOrDefaultAsync(s => s.ShoppingCartID == shoppingcart.ShoppingCartID);
+            var currentShoppingCart = await _context.ShoppingCarts.FirstOrDefaultAsync(s => s.CartID == shoppingcart.CartID);
             if (currentShoppingCart == null)
             {
-                throw new KeyNotFoundException($"Shopping cart with ID {shoppingcart.ShoppingCartID} not found.");
+                throw new KeyNotFoundException($"Shopping cart with ID {shoppingcart.CartID} not found.");
             }
             _context.ShoppingCarts.Update(shoppingcart);
             await _context.SaveChangesAsync();
@@ -44,7 +44,7 @@ namespace PBL3_HK4.Service
 
         public async Task DeleteShoppingCartAsync(Guid shoppingcartId)
         {
-            var shoppingcart = await _context.ShoppingCarts.FirstOrDefaultAsync(s => s.ShoppingCartID == shoppingcartId);
+            var shoppingcart = await _context.ShoppingCarts.FirstOrDefaultAsync(s => s.CartID == shoppingcartId);
             if (shoppingcart == null)
             {
                 throw new KeyNotFoundException($"Shopping cart with ID {shoppingcartId} not found.");
@@ -55,8 +55,8 @@ namespace PBL3_HK4.Service
 
         public async Task<ShoppingCart> GetShoppingCartByIdAsync(Guid shoppingcartId)
         {
-            var shoppingcart = await _context.ShoppingCarts.Where(s => s.ShoppingCartID == shoppingcartId).FirstOrDefaultAsync();
-            if (shoppingcart) == null)
+            var shoppingcart = await _context.ShoppingCarts.Where(s => s.CartID == shoppingcartId).FirstOrDefaultAsync();
+            if (shoppingcart == null)
             { 
                 throw new KeyNotFoundException($"Shopping cart with ID:{shoppingcartId} not found");
             }
@@ -65,7 +65,7 @@ namespace PBL3_HK4.Service
 
         public async Task<ShoppingCart> GetShoppingCartByCustomerIdAsync(Guid customerId)
         {
-            var shoppingcart = await _context.ShoppingCarts.Where(s => s.UserID == customerId).FirstOrDefaultAsync();
+            var shoppingcart = await _context.ShoppingCarts.Where(s => s.CustomerID == customerId).FirstOrDefaultAsync();
             if (shoppingcart == null)
             {
                 throw new KeyNotFoundException($"No shopping cart found for customer ID {customerId}");
@@ -73,7 +73,7 @@ namespace PBL3_HK4.Service
             return shoppingcart;
         }
 
-        publuc async async Task<IEnumerable<ShoppingCart>> GetAllShoppingCartsAsync()
+        public async Task<IEnumerable<ShoppingCart>> GetAllShoppingCartsAsync()
         {
             var listShoppingCart = await _context.ShoppingCarts.ToListAsync();
             if (listShoppingCart == null || listShoppingCart.Count == 0)
@@ -81,6 +81,11 @@ namespace PBL3_HK4.Service
                 throw new KeyNotFoundException("No shopping cart found");
             }
             return listShoppingCart;
+        }
+
+        Task<IEnumerable<ShoppingCart>> IShoppingCartService.GetAllShoppingCartsAsync()
+        {
+            throw new NotImplementedException();
         }
     }
 }

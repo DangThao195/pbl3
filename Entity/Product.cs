@@ -16,7 +16,9 @@ namespace PBL3_HK4.Entity
         public Guid ProductID { get; set; }
 
         [Required]
-        public string? CatalogID { get; set; }
+        public Guid CatalogID { get; set; }
+        public Catalog Catalog { get; set; }
+
 
         [Required]
         [StringLength(100)]

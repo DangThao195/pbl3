@@ -52,7 +52,7 @@ namespace PBL3_HK4.Service
             return user;
         }
 
-        public async Task<IEnumerable<User> GetAllUsers()
+        public async Task<IEnumerable<User>> GetAllUsers()
         {
             var listUser = await _context.Users.ToListAsync();
             if (listUser == null || listUser.Count == 0)
@@ -70,6 +70,11 @@ namespace PBL3_HK4.Service
                 throw new InvalidOperationException("Invalid username or password.");
             }
             return user.Role;
+        }
+
+        public Task<IEnumerable<User>> GetAllUsersAsync()
+        {
+            throw new NotImplementedException();
         }
     }
 }

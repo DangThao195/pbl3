@@ -16,11 +16,11 @@ namespace PBL3_HK4.Service
     public class AccountService : IAccountService
     {
         private readonly ApplicationDbContext _context;
-        private readonly ICustomerService _customerService;
+        private readonly IUserService _customerService;
         private readonly IPasswordHasher _passwordHasher;
         private readonly IShoppingCartService _shoppingCartService;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        public AccountService(ApplicationDbContext context, ICustomerService customerService, IPasswordHasher passwordHasher, IShoppingCartService shoppingCartService, IHttpContextAccessor httpContextAccessor)
+        public AccountService(ApplicationDbContext context, IUserService customerService, IPasswordHasher passwordHasher, IShoppingCartService shoppingCartService, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
             _customerService = customerService;

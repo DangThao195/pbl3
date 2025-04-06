@@ -13,7 +13,7 @@ namespace PBL3_HK4.Interface
         public Task AddUserAsync(User user);
         public Task UpdateUserAsync(User user);
         public Task<User> GetUserByIdAsync(Guid userId);
-        public Task<IEnumerable<User> GetAllUsersAsync();
+        public Task<IEnumerable<User>> GetAllUsersAsync();
         public Task<string> GetRoleAsync(string username, string password);
     }
 }

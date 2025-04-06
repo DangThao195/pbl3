@@ -73,7 +73,7 @@ namespace PBL3_HK4.Service
             return listCartItem;
         }
 
-        public async Task<INumerable<CartItem>> GetAllCartItemsAsync()
+        public async Task<IEnumerable<CartItem>> GetAllCartItemsAsync()
         {
             var listCartItem = await _context.CartItems.ToListAsync();
             if (listCartItem == null || listCartItem.Count == 0)
@@ -81,6 +81,11 @@ namespace PBL3_HK4.Service
                 throw new KeyNotFoundException("No cart item found");
             }
             return listCartItem;
+        }
+
+        Task<IEnumerable<CartItem>> ICartItemService.GetAllCartItemsAsync()
+        {
+            throw new NotImplementedException();
         }
     }
 }

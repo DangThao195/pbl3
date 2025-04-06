@@ -72,7 +72,7 @@ namespace PBL3_HK4.Service
             return catalog;
         }
 
-        public async async Task<INumerable<Catalog>> GetAllCatalogsAsync()
+        public async Task<IEnumerable<Catalog>> GetAllCatalogsAsync()
         {
             var listCatalog = await _context.Catalogs.ToListAsync();
             if (listCatalog == null || listCatalog.Count == 0)
@@ -80,6 +80,11 @@ namespace PBL3_HK4.Service
                 throw new KeyNotFoundException("No catalog found");
             }
             return listCatalog;
+        }
+
+        Task<IEnumerable<Catalog>> ICatalogService.GetAllCatalogsAsync()
+        {
+            throw new NotImplementedException();
         }
     }
 }

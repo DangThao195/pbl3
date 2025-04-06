@@ -11,12 +11,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Đăng ký các service với interface tương ứng
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IBillService, BillService>();
 builder.Services.AddScoped<IBillDetailService, BillDetailService>();
 builder.Services.AddScoped<ICartItemService, CartItemService>();
 builder.Services.AddScoped<ICatalogService, CatalogService>();
-builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IDiscountService, DiscountService>();
 builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 builder.Services.AddScoped<IProductService, ProductService>();

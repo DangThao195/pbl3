@@ -36,7 +36,7 @@ namespace PBL3_HK4.Service
             var currentReview = await _context.Reviews.FirstOrDefaultAsync(r => r.ReviewID == review.ReviewID);
             if (currentReview == null)
             {
-                throw new KeyNotFoundException($"Review with ID {review.ReviewiD} not found.");
+                throw new KeyNotFoundException($"Review with ID {review.ReviewID} not found.");
             }
             _context.Reviews.Update(review);
             await _context.SaveChangesAsync();
@@ -62,7 +62,7 @@ namespace PBL3_HK4.Service
             return listReview;
         }
 
-        publuc async async Task<IEnumerable<Review>> GetAllReviewsAsync()
+        public async Task<IEnumerable<Review>> GetAllReviewsAsync()
         {
             var listReview = await _context.Reviews.ToListAsync();
             if (listReview == null || listReview.Count == 0)
@@ -70,6 +70,11 @@ namespace PBL3_HK4.Service
                 throw new KeyNotFoundException("No review found");
             }
             return listReview;
+        }
+
+        Task<IEnumerable<Review>> IReviewService.GetAllReviewsAsync()
+        {
+            throw new NotImplementedException();
         }
     }
 }

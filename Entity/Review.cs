@@ -18,7 +18,7 @@ namespace PBL3_HK4.Entity
         public virtual Product? Product { get; set; }
 
         [ForeignKey("Customer")]
-        public Guid? CustomerID { get; set; }
+        public Guid? UserID { get; set; }
         public virtual Customer? Customer { get; set; }
 
         [Range(1, 5)]

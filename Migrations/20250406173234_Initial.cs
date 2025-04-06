@@ -106,8 +106,7 @@ namespace PBL3_HK4.Migrations
                 {
                     UserID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    EarnedPoint = table.Column<int>(type: "int", nullable: false),
-                    CartID = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    EarnedPoint = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -125,7 +124,7 @@ namespace PBL3_HK4.Migrations
                 columns: table => new
                 {
                     BillID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CustomerID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    UserID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     TotalPrice = table.Column<double>(type: "float", nullable: false)
@@ -134,8 +133,8 @@ namespace PBL3_HK4.Migrations
                 {
                     table.PrimaryKey("PK_Bills", x => x.BillID);
                     table.ForeignKey(
-                        name: "FK_Bills_Customers_CustomerID",
-                        column: x => x.CustomerID,
+                        name: "FK_Bills_Customers_UserID",
+                        column: x => x.UserID,
                         principalTable: "Customers",
                         principalColumn: "UserID");
                 });
@@ -146,7 +145,7 @@ namespace PBL3_HK4.Migrations
                 {
                     ReviewID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ProductID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    CustomerID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    UserID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Rating = table.Column<int>(type: "int", nullable: true),
                     Text = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -155,8 +154,8 @@ namespace PBL3_HK4.Migrations
                 {
                     table.PrimaryKey("PK_Reviews", x => x.ReviewID);
                     table.ForeignKey(
-                        name: "FK_Reviews_Customers_CustomerID",
-                        column: x => x.CustomerID,
+                        name: "FK_Reviews_Customers_UserID",
+                        column: x => x.UserID,
                         principalTable: "Customers",
                         principalColumn: "UserID");
                     table.ForeignKey(
@@ -171,14 +170,14 @@ namespace PBL3_HK4.Migrations
                 columns: table => new
                 {
                     CartID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CustomerID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    UserID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ShoppingCarts", x => x.CartID);
                     table.ForeignKey(
-                        name: "FK_ShoppingCarts_Customers_CustomerID",
-                        column: x => x.CustomerID,
+                        name: "FK_ShoppingCarts_Customers_UserID",
+                        column: x => x.UserID,
                         principalTable: "Customers",
                         principalColumn: "UserID",
                         onDelete: ReferentialAction.Cascade);
@@ -258,9 +257,9 @@ namespace PBL3_HK4.Migrations
                 column: "ProductID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Bills_CustomerID",
+                name: "IX_Bills_UserID",
                 table: "Bills",
-                column: "CustomerID");
+                column: "UserID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CartItems_CartID",
@@ -278,19 +277,19 @@ namespace PBL3_HK4.Migrations
                 column: "CatalogID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reviews_CustomerID",
-                table: "Reviews",
-                column: "CustomerID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Reviews_ProductID",
                 table: "Reviews",
                 column: "ProductID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ShoppingCarts_CustomerID",
+                name: "IX_Reviews_UserID",
+                table: "Reviews",
+                column: "UserID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ShoppingCarts_UserID",
                 table: "ShoppingCarts",
-                column: "CustomerID",
+                column: "UserID",
                 unique: true);
         }
 

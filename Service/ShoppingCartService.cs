@@ -65,7 +65,7 @@ namespace PBL3_HK4.Service
 
         public async Task<ShoppingCart> GetShoppingCartByCustomerIdAsync(Guid customerId)
         {
-            var shoppingcart = await _context.ShoppingCarts.Where(s => s.CustomerID == customerId).FirstOrDefaultAsync();
+            var shoppingcart = await _context.ShoppingCarts.Where(s => s.UserID == customerId).FirstOrDefaultAsync();
             if (shoppingcart == null)
             {
                 throw new KeyNotFoundException($"No shopping cart found for customer ID {customerId}");

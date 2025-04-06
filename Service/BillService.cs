@@ -42,7 +42,7 @@ namespace PBL3_HK4.Service
 
         public async Task<IEnumerable<Bill>> GetBillsByCustomerIdAsync(Guid customerId)
         {
-            var bills = await _context.Bills.Where(b => b.CustomerID == customerId).ToListAsync();
+            var bills = await _context.Bills.Where(b => b.UserID == customerId).ToListAsync();
             if (bills == null || bills.Count == 0)
             {
                 throw new KeyNotFoundException($"No bills found for customer ID {customerId}.");

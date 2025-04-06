@@ -15,8 +15,6 @@ namespace PBL3_HK4.Entity
 
         [Required]
         public int? EarnedPoint { get; set; }
-        [ForeignKey("ShoppingCart")]
-        public Guid? CartID { get; set; }
         public virtual ShoppingCart? ShoppingCart { get; set; }
         public virtual ICollection<Bill> Bills { get; set; } = new List<Bill>();
     }

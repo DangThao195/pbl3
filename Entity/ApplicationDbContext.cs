@@ -40,7 +40,7 @@ namespace PBL3_HK4.Entity
             modelBuilder.Entity<Customer>()
                 .HasOne(c => c.ShoppingCart)
                 .WithOne(sc => sc.Customer)
-                .HasForeignKey<ShoppingCart>(sc => sc.CustomerID);
+                .HasForeignKey<ShoppingCart>(sc => sc.UserID);
 
             modelBuilder.Entity<BillDetail>()
                 .HasOne(bd => bd.Product)
@@ -70,7 +70,7 @@ namespace PBL3_HK4.Entity
             modelBuilder.Entity<Review>()
                 .HasOne(r => r.Customer)
                 .WithMany()
-                .HasForeignKey(r => r.CustomerID);
+                .HasForeignKey(r => r.UserID);
             modelBuilder.Entity<Product>()
                 .HasOne(p => p.Catalog)
                 .WithMany(c => c.Products)

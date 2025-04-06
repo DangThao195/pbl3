@@ -12,7 +12,7 @@ using PBL3_HK4.Entity;
 namespace PBL3_HK4.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250406164357_Initial")]
+    [Migration("20250406173234_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -36,18 +36,18 @@ namespace PBL3_HK4.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<Guid?>("CustomerID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
                     b.Property<double>("TotalPrice")
                         .HasColumnType("float");
 
+                    b.Property<Guid?>("UserID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("BillID");
 
-                    b.HasIndex("CustomerID");
+                    b.HasIndex("UserID");
 
                     b.ToTable("Bills", (string)null);
                 });
@@ -210,9 +210,6 @@ namespace PBL3_HK4.Migrations
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("CustomerID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid?>("ProductID")
                         .HasColumnType("uniqueidentifier");
 
@@ -223,11 +220,14 @@ namespace PBL3_HK4.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<Guid?>("UserID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("ReviewID");
 
-                    b.HasIndex("CustomerID");
-
                     b.HasIndex("ProductID");
+
+                    b.HasIndex("UserID");
 
                     b.ToTable("Reviews", (string)null);
                 });
@@ -238,12 +238,12 @@ namespace PBL3_HK4.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CustomerID")
+                    b.Property<Guid>("UserID")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("CartID");
 
-                    b.HasIndex("CustomerID")
+                    b.HasIndex("UserID")
                         .IsUnique();
 
                     b.ToTable("ShoppingCarts", (string)null);
@@ -311,9 +311,6 @@ namespace PBL3_HK4.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<Guid?>("CartID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int>("EarnedPoint")
                         .HasColumnType("int");
 
@@ -324,7 +321,7 @@ namespace PBL3_HK4.Migrations
                 {
                     b.HasOne("PBL3_HK4.Entity.Customer", "Customer")
                         .WithMany("Bills")
-                        .HasForeignKey("CustomerID");
+                        .HasForeignKey("UserID");
 
                     b.Navigation("Customer");
                 });
@@ -382,13 +379,13 @@ namespace PBL3_HK4.Migrations
 
             modelBuilder.Entity("PBL3_HK4.Entity.Review", b =>
                 {
-                    b.HasOne("PBL3_HK4.Entity.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerID");
-
                     b.HasOne("PBL3_HK4.Entity.Product", "Product")
                         .WithMany("Reviews")
                         .HasForeignKey("ProductID");
+
+                    b.HasOne("PBL3_HK4.Entity.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("UserID");
 
                     b.Navigation("Customer");
 
@@ -399,7 +396,7 @@ namespace PBL3_HK4.Migrations
                 {
                     b.HasOne("PBL3_HK4.Entity.Customer", "Customer")
                         .WithOne("ShoppingCart")
-                        .HasForeignKey("PBL3_HK4.Entity.ShoppingCart", "CustomerID")
+                        .HasForeignKey("PBL3_HK4.Entity.ShoppingCart", "UserID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -97,13 +97,12 @@ namespace PBL3_HK4.Service
                 UserName = username,
                 PassWord = _passwordHasher.HashPassword(password),
                 EarnedPoint = 0,
-                Role = "Customer",
-                CartID = cartid
+                Role = "Customer"
             };
             ShoppingCart shoppingCart = new ShoppingCart
             {
                 CartID = cartid,
-                CustomerID = newcustomer.UserID
+                UserID = newcustomer.UserID
             };
             newcustomer.ShoppingCart = shoppingCart;
             await _customerService.AddUserAsync(newcustomer);

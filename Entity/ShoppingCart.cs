@@ -15,7 +15,7 @@ namespace PBL3_HK4.Entity
 
         [Required]
         [ForeignKey("Customer")]
-        public Guid? CustomerID { get; set; }
+        public Guid? UserID { get; set; }
         public virtual Customer? Customer { get; set; }
 
         public virtual ICollection<CartItem> Items { get; set; } = new List<CartItem>();

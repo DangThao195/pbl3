@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "ContainingType": "PBL3_HK4.Controllers.CustomerController",
+    "Method": "Register",
+    "RelativePath": "api/Customer/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "customer",
+        "Type": "PBL3_HK4.Entity.Customer",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

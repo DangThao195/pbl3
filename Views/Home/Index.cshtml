@@ -1,8 +1,178 @@
-﻿@{
+﻿﻿@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- Section: Banner giới thiệu sản phẩm tươi sống với nút kêu gọi hành động (CTA) -->
+<div class="row p-lg-3">
+    <div class="col-6 " style="padding-left: 30px;">
+        <p style="font-size: 42px; font-weight: bold;">Make healthy life with <span style="color: var(--green-color);">fresh</span> grocery</p>
+
+        <p class="pb-2" style="max-width: 90%; line-height: 2;">
+            Get the best quality and freshest grocery food, sourced directly from local farms.
+            From organic vegetables to premium meat, we have everything you need for a healthy lifestyle.
+            Order now and enjoy doorstep delivery with just a few clicks!
+            Our commitment is to bring you farm-fresh ingredients that retain their natural taste and nutrients.
+            We ensure strict quality control, so you receive only the best products every time.
+            Join thousands of happy customers who trust us for their daily grocery needs.
+        </p>
+
+        <div class="d-flex gap-3">
+            <button class="btn rounded-pill flex-grow-1 py-2" style="background-color: var(--green-color); color: white; max-width: 33.33%;">
+                Order Now
+            </button>
+            <button class="btn rounded-pill flex-grow-1 py-2" style="border: 1px solid; max-width: 33.33%;">
+                Explore More <i class="bi bi-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+    <div class="col-6 d-flex justify-content-center align-items-center" style="height: 100%;">
+        <img src="~/img/hand&tomato.jpg" class="img-fluid" />
+    </div>
 </div>
+
+<!-- Service Highlights: Free Shipping, Returns, Secure Payment, Offers -->
+<div class="row py-3 d-flex align-items-center justify-content-center" style="background-color: var(--brown-weak-color);">
+    <div class="col-3 d-flex align-items-center py-1 justify-content-center">
+        <img src="~/img/free-shipping.png" style="width: 50px; height: 50px; margin-right: 10px;" />
+        <div class="d-flex flex-column">
+            <p class="mb-0 fw-bold" style="font-size: 20px;">Free shipping</p>
+            <p class="mb-0 text-muted" style="font-size: 10px;">On all orders over $49.00</p>
+        </div>
+    </div>
+
+    <div class="col-3 d-flex align-items-center py-1 justify-content-center">
+        <img src="~/img/money.png" style="width: 50px; height: 50px; margin-right: 10px;" />
+        <div class="d-flex flex-column">
+            <p class="mb-0 fw-bold" style="font-size: 20px;">15 days returns</p>
+            <p class="mb-0 text-muted" style="font-size: 10px;">Moneyback guarantee</p>
+        </div>
+    </div>
+
+    <div class="col-3 d-flex align-items-center py-1 justify-content-center">
+        <img src="~/img/paypalcard.png" style="width: 50px; height: 50px; margin-right: 10px;" />
+        <div class="d-flex flex-column">
+            <p class="mb-0 fw-bold" style="font-size: 20px;">Secure checkout</p>
+            <p class="mb-0 text-muted" style="font-size: 10px;">Protected by Paypal</p>
+        </div>
+    </div>
+
+    <div class="col-3 d-flex align-items-center py-1 justify-content-center">
+        <img src="~/img/sale.png" style="width: 50px; height: 50px; margin-right: 10px;" />
+        <div class="d-flex flex-column">
+            <p class="mb-0 fw-bold" style="font-size: 20px;">Offer & gift here</p>
+            <p class="mb-0 text-muted" style="font-size: 10px;">On all orders over</p>
+        </div>
+    </div>
+</div>
+
+<!--Image-->
+<div class="d-flex justify-content-evenly" style="margin-top: 20px; margin-bottom: 40px;">
+    <!--Image Decoration-->
+    <div class="d-flex flex-column align-items-center mt-3">
+        <p style="font-weight: bold;" class="p-0 m-0">Fresh Fruit</p>
+        <div style="border-radius: 50%; background-color: #FFB703; width: 140px; height: 140px; overflow: hidden; display: flex; justify-content: center; align-items: center; border: 10px solid #E63946;">
+            <img src="../img/fruits.png" width="70%" height="70%" />
+        </div>
+    </div>
+
+    <div class="d-flex flex-column align-items-center mt-3">
+        <p style="font-weight: bold;" class="p-0 m-0">Organic Vegetables</p>
+        <div style="border-radius: 50%; background-color: #A7C957; width: 140px; height: 140px; overflow: hidden; display: flex; justify-content: center; align-items: center; border: 10px solid #6A994E; ">
+            <img src="../img/vegetable.png" width="70%" height="70%" />
+        </div>
+    </div>
+
+    <div class="d-flex flex-column align-items-center mt-3">
+        <p style="font-weight: bold;" class="p-0 m-0">Premium Meat</p>
+        <div style="border-radius: 50%; background-color: #D62828; width: 140px; height: 140px; overflow: hidden; display: flex; justify-content: center; align-items: center; border: 10px solid #023047; ">
+            <img src="../img/meat.png" width="70%" height="70%" />
+        </div>
+    </div>
+
+    <div class="d-flex flex-column align-items-center mt-3">
+        <p style="font-weight: bold;" class="p-0 m-0">Bakery & Pastries</p>
+        <div style="border-radius: 50%; background-color: #F6D6AD; width: 140px; height: 140px; overflow: hidden; display: flex; justify-content: center; align-items: center; border: 10px solid #D4A373; ">
+            <img src="../img/bread.png" width="70%" height="70%" />
+        </div>
+    </div>
+
+    <div class="d-flex flex-column align-items-center mt-3">
+        <p style="font-weight: bold;" class="p-0 m-0">Snacks & Sweets</p>
+        <div style="border-radius: 50%; background-color: #FFBA08; width: 140px; height: 140px; overflow: hidden; display: flex; justify-content: center; align-items: center; border: 10px solid #9B2226; ">
+            <img src="../img/candies.png" width="70%" height="70%" />
+        </div>
+    </div>
+
+    <div class="d-flex flex-column align-items-center mt-3">
+        <p style="font-weight: bold;" class="p-0 m-0">Dairy & Beverages</p>
+        <div style="border-radius: 50%; background-color: #F5F3F4; width: 140px; height: 140px; overflow: hidden; display: flex; justify-content: center; align-items: center; border: 10px solid #4895EF; ">
+            <img src="../img/milk.png" width="70%" height="70%" />
+        </div>
+    </div>
+</div>
+
+<!-- Categories and Product -->
+<div class="row">
+    <!-- Categories -->
+    <div class="col-3" style="padding-left: 30px; padding-right: 0;">
+        <ul class="list-group" id="category-list">
+            <li class="list-group-item category-header" style="background-color: #E6DACE; font-weight: bold; font-size: 18px;">
+                <i class="bi bi-list"></i> CATEGORIES
+            </li>
+            @foreach (var category in new[] { "Vegetables", "Fresh Meat", "Fish and Seafood", "Butter and Cream", "Oil and Vinegar", "Breads", "Apple Juice", "Dry Nuts", "Frozen Foods", "Canned Foods", "Spices and Herbs", "Snacks and Chips", "Baby Food", "Coffee", "Tea", "Fruits" })
+            {
+                <li class="list-group-item d-flex align-items-center">
+                    <img src="@Url.Content("~/img/" + category + ".png")" class="category-icon" />
+                    <p class="m-0">@category</p>
+                </li>
+            }
+        </ul>
+    </div>
+
+    <!-- List Product -->
+    <div id="product-container" class="d-flex flex-wrap justify-content-start col-9">
+        <!-- Các sản phẩm sẽ được thêm vào đây qua JavaScript -->
+    </div>
+
+</div>
+
+@section Scripts {
+    <script>
+        const numProducts = 20;  // Tổng số sản phẩm
+        const cardsPerRow = 4;  // Số thẻ card trên 1 hàng
+
+        // Lấy phần tử div chứa sản phẩm
+        const productContainer = document.getElementById("product-container");
+
+        // Lấy chiều rộng của div chứa sản phẩm
+        const containerWidth = productContainer.offsetWidth; // Lấy chiều rộng của thẻ div
+
+        const cardWidth = 200; // Chiều rộng mỗi thẻ (đã định nghĩa trong inline style)
+        const totalCardWidth = cardWidth * cardsPerRow; // Tổng chiều rộng của 4 thẻ
+        const marginLeft = (containerWidth - totalCardWidth) / (cardsPerRow+1); // Tính toán margin
+        const marginBottom = marginLeft / 2;
+
+        for (let i = 0; i < numProducts; i++) {
+            const productHTML = `
+                <div class="card text-center" style="border-radius: 20px; max-width: 250px; height: 305px; margin-left: ${marginLeft}px; margin-bottom: ${marginBottom}px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <img src="../img/—Pngtree—red fresh tomato with green_8933861.png"
+                            style="background-color: #EDEDED; border-top-left-radius: 20px; border-top-right-radius: 20px;
+                            height: 200px; width: 100%; object-fit: cover;"
+                            class="card-img-top" alt="Sản phẩm">
+                    <div class="card-body p-0" style="display: flex; flex-direction: column; height: 100%;">
+                        <span class="text-warning" style="font-size: 16px; letter-spacing: 5px;">★★★★★</span>
+                        <h6 class="card-title" style="font-weight: bold; font-size: 14px;">Fresh Ruby Tomatoes</h6>
+                        <p class="d-flex justify-content-evenly" style="font-size: 14px;">
+                            <span class="fw-bold" style="color: #80B500;">150.000đ</span>
+                            <span class="old-price" style="color: #94A84E; text-decoration: line-through;">200.000đ</span>
+                        </p>
+                        <a href="/Product/Details" class="fw-bold" style="display: block; background-color: #E86D1F; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; color: white; font-size: 14px; margin-top: auto; text-align: center; padding: 5px 10px;">
+                            Details
+                        </a>
+                    </div>
+                </div>
+            `;
+            productContainer.innerHTML += productHTML;
+        }
+    </script>
+}

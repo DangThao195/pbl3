@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace PBL3_HK4.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class InitialPBL : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

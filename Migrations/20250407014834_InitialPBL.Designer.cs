@@ -12,8 +12,8 @@ using PBL3_HK4.Entity;
 namespace PBL3_HK4.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250406173234_Initial")]
-    partial class Initial
+    [Migration("20250407014834_InitialPBL")]
+    partial class InitialPBL
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -76,7 +76,7 @@ namespace PBL3_HK4.Service
         }
         
 
-        public async Task<bool> RegisterAsync(string name, string email, string sex, DateTime dateofbirth, string username,
+        public async Task RegisterAsync(string name, string email, string sex, DateTime dateofbirth, string username,
             string password, string address)
         {
             var existingUser = await _context.Customers.FirstOrDefaultAsync(u => u.UserName == username);
@@ -107,7 +107,6 @@ namespace PBL3_HK4.Service
             newcustomer.ShoppingCart = shoppingCart;
             await _customerService.AddUserAsync(newcustomer);
             await _shoppingCartService.AddShoppingCartAsync(shoppingCart);
-            return true;
         }
     }
 }

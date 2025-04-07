@@ -14,16 +14,16 @@ namespace PBL3_HK4.Entity
 
         [Required]
         [StringLength(40)]
-        public string? Name { get; set; }
+        public string Name { get; set; }
 
         [Required]
         [StringLength(40)]
         [EmailAddress]
-        public string? Email { get; set; }
+        public string Email { get; set; }
 
         [Required]
         [StringLength(10)]
-        public string? Sex { get; set; }
+        public string Sex { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
@@ -31,14 +31,14 @@ namespace PBL3_HK4.Entity
 
         [Required]
         [StringLength(40)]
-        public string? UserName { get; set; }
+        public string UserName { get; set; }
 
         [Required]
         [StringLength(40)]
-        public string? PassWord { get; set; }
+        public string PassWord { get; set; }
 
         [Required]
         [StringLength(40)]
-        public string? Role { get; set; }
+        public string Role { get; set; }
     }
 }

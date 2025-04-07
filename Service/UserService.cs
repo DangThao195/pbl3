@@ -20,9 +20,9 @@ namespace PBL3_HK4.Service
             _context = context;
         }
 
-        public async Task AddUserAsync(User user)
+        public async Task AddUserAsync(Customer user)
         {
-            var currentUser = await _context.Users.FirstOrDefaultAsync(u => u.UserID == user.UserID);
+            var currentUser = await _context.Customers.FirstOrDefaultAsync(u => u.UserID == user.UserID);
             if (currentUser != null)
             {
                 throw new InvalidOperationException($"User with ID {user.UserID} already exists.");
@@ -31,9 +31,9 @@ namespace PBL3_HK4.Service
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateUserAsync(User user) 
+        public async Task UpdateUserAsync(Customer user) 
         {
-            var currentUser = await _context.Users.FirstOrDefaultAsync(u => u.UserID == user.UserID);
+            var currentUser = await _context.Customers.FirstOrDefaultAsync(u => u.UserID == user.UserID);
             if (currentUser == null)
             {
                 throw new KeyNotFoundException($"User with ID {user.UserID} not found.");
@@ -42,9 +42,9 @@ namespace PBL3_HK4.Service
             await _context.SaveChangesAsync();
         }
 
-        public async Task<User> GetUserByIdAsync(Guid userId)
+        public async Task<Customer> GetUserByIdAsync(Guid userId)
         {
-            var user = await _context.Users.Where(u => u.UserID == userId).FirstOrDefaultAsync();
+            var user = await _context.Customers.Where(u => u.UserID == userId).FirstOrDefaultAsync();
             if (user == null)
             {
                 throw new KeyNotFoundException($"User with ID:{userId} not found");
@@ -52,9 +52,9 @@ namespace PBL3_HK4.Service
             return user;
         }
 
-        public async Task<IEnumerable<User>> GetAllUsers()
+        public async Task<IEnumerable<Customer>> GetAllUsers()
         {
-            var listUser = await _context.Users.ToListAsync();
+            var listUser = await _context.Customers.ToListAsync();
             if (listUser == null || listUser.Count == 0)
             {
                 throw new KeyNotFoundException("User not found");
@@ -64,7 +64,7 @@ namespace PBL3_HK4.Service
 
         public async Task<string> GetRoleAsync(string username, string password)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(c => c.UserName == username && c.PassWord == password);
+            var user = await _context.Customers.FirstOrDefaultAsync(c => c.UserName == username && c.PassWord == password);
             if (user == null)
             {
                 throw new InvalidOperationException("Invalid username or password.");

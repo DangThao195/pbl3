@@ -36,9 +36,6 @@ namespace PBL3_HK4.Entity
         [Required]
         [StringLength(40)]
         public string PassWord { get; set; }
-
-        [Required]
-        [StringLength(40)]
         public string Role { get; set; }
     }
 }

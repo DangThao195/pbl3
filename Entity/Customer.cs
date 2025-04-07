@@ -12,8 +12,7 @@ namespace PBL3_HK4.Entity
         [Required]
         [StringLength(200)]
         public string Address { get; set; }
-
-        [Required]
+       
         public int? EarnedPoint { get; set; }
         public virtual ShoppingCart? ShoppingCart { get; set; }
         public virtual ICollection<Bill> Bills { get; set; } = new List<Bill>();

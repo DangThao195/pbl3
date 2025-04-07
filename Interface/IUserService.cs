@@ -10,10 +10,9 @@ namespace PBL3_HK4.Interface
 {
     public interface IUserService
     {
-        public Task AddUserAsync(User user);
-        public Task UpdateUserAsync(User user);
-        public Task<User> GetUserByIdAsync(Guid userId);
-        public Task<IEnumerable<User>> GetAllUsersAsync();
+        public Task AddUserAsync(Customer user);
+        public Task UpdateUserAsync(Customer user);
+        public Task<Customer> GetUserByIdAsync(Guid userId);
         public Task<string> GetRoleAsync(string username, string password);
     }
 }

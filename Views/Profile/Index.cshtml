@@ -1,10 +1,11 @@
-﻿﻿@{
+﻿@{
     ViewData["Title"] = "View Profile";
 }
 
 <div class="row my-3">
     @* Empty *@
     <div class="col-1">
+
     </div>
 
     @* Your Information *@
@@ -107,6 +108,7 @@
 
     @* Empty *@
     <div class="col-3">
+
     </div>
 
     <div class="col-3">
@@ -137,84 +139,84 @@
 </div>
 
 <script>
-        document.addEventListener('DOMContentLoaded', function() {
-        const editButtonContainer = document.getElementById('editButtonContainer');
-        const formFields = document.querySelectorAll('.form-field');
-        let originalValues = {};
+    document.addEventListener('DOMContentLoaded', function() {
+    const editButtonContainer = document.getElementById('editButtonContainer');
+    const formFields = document.querySelectorAll('.form-field');
+    let originalValues = {};
 
-        // Khởi tạo nút EDIT ban đầu
-        setupEditButton();
+    // Khởi tạo nút EDIT ban đầu
+    setupEditButton();
 
-        function setupEditButton() {
-            const editButton = document.getElementById('editButton');
-            editButton.addEventListener('click', handleEditClick);
-        }
+    function setupEditButton() {
+        const editButton = document.getElementById('editButton');
+        editButton.addEventListener('click', handleEditClick);
+    }
 
-        function handleEditClick() {
-            // Lưu giá trị ban đầu
-            formFields.forEach(field => {
-                originalValues[field.name || field.id] = field.value;
-            });
+    function handleEditClick() {
+        // Lưu giá trị ban đầu
+        formFields.forEach(field => {
+            originalValues[field.name || field.id] = field.value;
+        });
 
-            // Cho phép chỉnh sửa các trường
-            formFields.forEach(field => {
-                field.readOnly = false;
-                if (field.tagName === 'SELECT') {
-                    field.disabled = false;
-                }
-                field.style.backgroundColor = 'white';
-            });
+        // Cho phép chỉnh sửa các trường
+        formFields.forEach(field => {
+            field.readOnly = false;
+            if (field.tagName === 'SELECT') {
+                field.disabled = false;
+            }
+            field.style.backgroundColor = 'white';
+        });
 
-            // Thay thế nút EDIT bằng OK và CANCEL
-            editButtonContainer.innerHTML = `
-                <div class="d-flex" style="gap: 10px;">
-                    <button id="okButton" class="btn flex-grow-1 fw-bold" style="background-color: #80B500; color: white; border-radius: 20px; padding: 8px 0;">
-                        OK
-                    </button>
-                    <button id="cancelButton" class="btn flex-grow-1 fw-bold" style="background-color: #dc3545; color: white; border-radius: 20px; padding: 8px 0;">
-                        CANCEL
-                    </button>
-                </div>
-            `;
-
-            // Xử lý nút OK
-            document.getElementById('okButton').addEventListener('click', function() {
-                disableEditing();
-                showEditButton();
-            });
-
-            // Xử lý nút CANCEL
-            document.getElementById('cancelButton').addEventListener('click', function() {
-                formFields.forEach(field => {
-                    const fieldId = field.name || field.id;
-                    if (originalValues[fieldId] !== undefined) {
-                        field.value = originalValues[fieldId];
-                    }
-                });
-                disableEditing();
-                showEditButton();
-            });
-        }
-
-        function disableEditing() {
-            formFields.forEach(field => {
-                field.readOnly = true;
-                if (field.tagName === 'SELECT') {
-                    field.disabled = true;
-                }
-                field.style.backgroundColor = '#f5f5f5';
-            });
-        }
-
-        function showEditButton() {
-            editButtonContainer.innerHTML = `
-                        <button id="editButton" class="btn w-100 fw-bold" style="background-color: #FFCC99; color: white; border-radius: 20px; padding: 8px 0; letter-spacing: 2px;">
-                        <i class="bi bi-pencil-square"></i> EDIT YOUR INFORMATION
+        // Thay thế nút EDIT bằng OK và CANCEL
+        editButtonContainer.innerHTML = `
+            <div class="d-flex" style="gap: 10px;">
+                <button id="okButton" class="btn flex-grow-1 fw-bold" style="background-color: #80B500; color: white; border-radius: 20px; padding: 8px 0;">
+                    OK
                 </button>
-            `;
+                <button id="cancelButton" class="btn flex-grow-1 fw-bold" style="background-color: #dc3545; color: white; border-radius: 20px; padding: 8px 0;">
+                    CANCEL
+                </button>
+            </div>
+        `;
 
-            // Gắn lại sự kiện cho nút EDIT mới
-            setupEditButton();
-        }
-    });
+        // Xử lý nút OK
+        document.getElementById('okButton').addEventListener('click', function() {
+            disableEditing();
+            showEditButton();
+        });
+
+        // Xử lý nút CANCEL
+        document.getElementById('cancelButton').addEventListener('click', function() {
+            formFields.forEach(field => {
+                const fieldId = field.name || field.id;
+                if (originalValues[fieldId] !== undefined) {
+                    field.value = originalValues[fieldId];
+                }
+            });
+            disableEditing();
+            showEditButton();
+        });
+    }
+
+    function disableEditing() {
+        formFields.forEach(field => {
+            field.readOnly = true;
+            if (field.tagName === 'SELECT') {
+                field.disabled = true;
+            }
+            field.style.backgroundColor = '#f5f5f5';
+        });
+    }
+
+    function showEditButton() {
+        editButtonContainer.innerHTML = `
+                    <button id="editButton" class="btn w-100 fw-bold" style="background-color: #FFCC99; color: white; border-radius: 20px; padding: 8px 0; letter-spacing: 2px;">
+                    <i class="bi bi-pencil-square"></i> EDIT YOUR INFORMATION
+            </button>
+        `;
+
+        // Gắn lại sự kiện cho nút EDIT mới
+        setupEditButton();
+    }
+});
 </script>

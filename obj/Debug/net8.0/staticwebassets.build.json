@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "kSjkGJJNFhU7REaUnVRTTQMrLHxawIsbxjnzpfJm7kA=",
+  "Hash": "aIbUEfN+au5/fmj2+o7b6lqxrtu274WMq2cSb87rQm8=",
   "Source": "PBL3_HK4",
   "BasePath": "_content/PBL3_HK4",
   "Mode": "Default",
@@ -73,8 +73,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "c2tiyv64ts",
-      "Integrity": "pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=",
+      "Fingerprint": "o6mhhxugsj",
+      "Integrity": "cMBQVyyRzy6r4dpsrwIoinT4DXKzSMwYB3mWRLxa8hM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -99,6 +99,783 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\Apple Juice.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/Apple Juice#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "djn2er53bx",
+      "Integrity": "V/JS2JvRLNnmnfJu1EVWaKfabhiPKtX5PE4B7XaDAWc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Apple Juice.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\Baby Food.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/Baby Food#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "g9ku68yv9g",
+      "Integrity": "FIgXv92eJNJKz/4/EkXqAiYx6IKB2lkFNSzHTKi1ivQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Baby Food.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\bread.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/bread#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "i2qlprf3fu",
+      "Integrity": "OixTcPqWmFEwxbEBTWC5Ew3+oYtt3qWIFOiVtOtfqVA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\bread.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\Breads.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/Breads#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "id84rr6phu",
+      "Integrity": "ZuqtQImp8s50rjCDcrJ4EgFF2HRor4utWlCPm1re2Io=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Breads.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\Butter and Cream.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/Butter and Cream#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "tml9m8s50j",
+      "Integrity": "OzRHHj3lP02zgPA5NiztsnCV75GWzQh8hUVocamOO9U=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Butter and Cream.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\candies.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/candies#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "lcf4s75j2z",
+      "Integrity": "tU6jIgvkU6xw1MBrA/K58jBTqt4gNlN3ydTgnqXkP1Y=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\candies.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\Canned Foods.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/Canned Foods#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "o89l3bck8o",
+      "Integrity": "CNEacTX/9IM7wLLfcb80E12QUaQspszZQY2i01rl2Mw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Canned Foods.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\Coffee.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/Coffee#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "2a038jjrry",
+      "Integrity": "1rdUqTZwC0Gp/EHvJ9k8Bjqbec7896bFlyzAGxs+DiY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Coffee.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\DangHuuLong.jpg",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/DangHuuLong#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "eamjotcvro",
+      "Integrity": "atyM/3nWfN+Wf4Zd13VLzCU+Fvdms09h3raOAU7d4jI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\DangHuuLong.jpg"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\Dry Nuts.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/Dry Nuts#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "zso4dezw0a",
+      "Integrity": "bVSbIS5BW9KCag5yqmxROZTOl3ZusJl5e846si5h8B4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Dry Nuts.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\facebook.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/facebook#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "p6kq90v8nq",
+      "Integrity": "T34ygalNHbTTlwQPzyCiHmrgwxGa5Im1HE3nlJhVd78=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\facebook.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\Fish and Seafood.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/Fish and Seafood#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "j0jw7ig7ac",
+      "Integrity": "vSinyM9NMh2IL2SUO5ihu+kG7t7cbK+51QLdBWtPM6o=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Fish and Seafood.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\free-shipping.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/free-shipping#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "xv8feemt7j",
+      "Integrity": "Q7/dS95ixny5wZS5Iff9DtlaGQ0hf9W9suBsv7pXu9o=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\free-shipping.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\Fresh Meat.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/Fresh Meat#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "8senyhtxf5",
+      "Integrity": "mAAbEeVyT/09hLY0OINbu2yDAawum+c/y+xhjF8NamA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Fresh Meat.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\Frozen Foods.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/Frozen Foods#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "zhmr1e8jpp",
+      "Integrity": "WXwJI2GkWKyg9zUyQywwib1OSjP8Fhx6JO/ZdQgsULY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Frozen Foods.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\Fruits.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/Fruits#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "l9l6z9px27",
+      "Integrity": "17etKqj2B5HBX3BicoAkDN1V8KLUTZlCZv9pSEnIrGo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Fruits.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\google.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/google#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "qnk9pts2jq",
+      "Integrity": "1l2Jwr4szzt28KG8MCwqV4gFs5Qk+YH6VIMHZgMv7bA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\google.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\hand&tomato.jpg",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/hand&tomato#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "sph4mzu6rm",
+      "Integrity": "sNRneSgR5jUqAYDA0KZBcZb9HjS8PUsLgIS2pWH5fUY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\hand&tomato.jpg"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\instagram.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/instagram#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "g18ole7fld",
+      "Integrity": "tJvovGvoZKBd8T6u79c5gQ38IAbkmelugBMXl7cBuuw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\instagram.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\LogoShop.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/LogoShop#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "qk8fb1vztu",
+      "Integrity": "1ucFSzExUhvRGYXRT/x1DO8AaZ5Glo7pI81JNoPJIK0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\LogoShop.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\meat.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/meat#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "z1ro6qr5nq",
+      "Integrity": "CQOTVQWzYE/CeBgNPEZFH+lTvG8poiHR60cDOjUxh1g=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\meat.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\milk.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/milk#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "omulr6z840",
+      "Integrity": "UJF4cKkAdYAdtnsmJYLbqf41Tgyaa3O75aMPf1wWBzk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\milk.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\money.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/money#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "nqqo2gvzzl",
+      "Integrity": "oTD0r2w24viakQG7l1dmHI1ilsGFBGlCWSjuaBl9QUQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\money.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\Oil and Vinegar.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/Oil and Vinegar#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vdkztksaiv",
+      "Integrity": "856nNdXfkit+fS+UitQQqOtMEhh63oG+Lk7ApracNp8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Oil and Vinegar.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\ordernow.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/ordernow#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "aytnwb60uz",
+      "Integrity": "nnzh1Yqt8EarMvlhzlZ6fZvrC7LZigPd6dIU3g6JvCg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\ordernow.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\Organic Grocery Offer.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/Organic Grocery Offer#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "bbbhfulldp",
+      "Integrity": "h4qUEsJJr5EgBdYVN1j1OuitWA9JEKB0qyWG/wGCelw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Organic Grocery Offer.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\Organic Grocery.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/Organic Grocery#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "sbrswa5rzv",
+      "Integrity": "WBEuFZ/H8idRcSFT+EdxOyHrmkZWxqMxZ9Ar2SunuvU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Organic Grocery.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\paypalcard.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/paypalcard#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "hcyidvgc1p",
+      "Integrity": "n3j6R3Gn1QayupD2IbD+2E/fH3hZ0hwCx4/9bhFCOgw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\paypalcard.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\—Pngtree—red fresh tomato with green_8933861.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/—Pngtree—red fresh tomato with green_8933861#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "0l4u0nn17e",
+      "Integrity": "TCFeqL/bF/OgPlCF0LS2iw2Z+GmlQdCFPU2ujXQsmeY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\—Pngtree—red fresh tomato with green_8933861.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\sale.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/sale#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "xgdnncjvsz",
+      "Integrity": "D0XSE/fsXnWMCbtl9wTlNm/Z3caYnBJw8QiUb2eD4Sw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\sale.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\Snacks and Chips.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/Snacks and Chips#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ttd6pmpma4",
+      "Integrity": "gWxLUNLKtrQJtF1lXX7Uo06VRRQAZnrHD/rFbxnLoOg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Snacks and Chips.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\Spices and Herbs.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/Spices and Herbs#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "qltxzzpd6z",
+      "Integrity": "4qy+K048IpCQSiA1P8QYQr9erSzWaDqPmXdq0pESuO4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Spices and Herbs.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\Tea.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/Tea#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "n0yrayg7y2",
+      "Integrity": "97as4K0wHWBzFIFQ8tJEO64ZnV9RwroZEPm16IlPzcw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Tea.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\twitter.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/twitter#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "bzpadde6fw",
+      "Integrity": "+XxpwhITSkSxcgnO4aXvSI5U8hT94Gg0911xmc4wxPk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\twitter.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\vegetable.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/vegetable#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "kxdpj9p9ri",
+      "Integrity": "yJmkSSvNWmpys6L2erUGeC0h0lHUEGtRwmJHlerjpdk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\vegetable.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\Vegetables.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/Vegetables#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "1uxys91t9r",
+      "Integrity": "yY+X/cEt6ewo0X2dZHcjvsHONfQcZ+tMF3sGRnlqFTM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\Vegetables.png"
+    },
+    {
+      "Identity": "H:\\pbl3\\wwwroot\\img\\youtube.png",
+      "SourceId": "PBL3_HK4",
+      "SourceType": "Discovered",
+      "ContentRoot": "H:\\pbl3\\wwwroot\\",
+      "BasePath": "_content/PBL3_HK4",
+      "RelativePath": "img/youtube#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "rfc915qde5",
+      "Integrity": "N1zYPl+36ls6J4uuj/G0LHSLU9qapeYzjO97tVCH4DQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\youtube.png"
     },
     {
       "Identity": "H:\\pbl3\\wwwroot\\js\\site.js",
@@ -1321,51 +2098,6 @@
   ],
   "Endpoints": [
     {
-      "Route": "css/site.c2tiyv64ts.css",
-      "AssetFile": "H:\\pbl3\\wwwroot\\css\\site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "362"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 02:43:44 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "c2tiyv64ts"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
-        }
-      ]
-    },
-    {
       "Route": "css/site.css",
       "AssetFile": "H:\\pbl3\\wwwroot\\css\\site.css",
       "Selectors": [],
@@ -1376,7 +2108,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "362"
+          "Value": "8539"
         },
         {
           "Name": "Content-Type",
@@ -1384,11 +2116,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=\""
+          "Value": "\"cMBQVyyRzy6r4dpsrwIoinT4DXKzSMwYB3mWRLxa8hM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 07 Apr 2025 02:43:44 GMT"
+          "Value": "Mon, 07 Apr 2025 03:17:42 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1398,7 +2130,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
+          "Value": "sha256-cMBQVyyRzy6r4dpsrwIoinT4DXKzSMwYB3mWRLxa8hM="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.o6mhhxugsj.css",
+      "AssetFile": "H:\\pbl3\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8539"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"cMBQVyyRzy6r4dpsrwIoinT4DXKzSMwYB3mWRLxa8hM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:17:42 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "o6mhhxugsj"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-cMBQVyyRzy6r4dpsrwIoinT4DXKzSMwYB3mWRLxa8hM="
         }
       ]
     },
@@ -1481,6 +2258,3040 @@
         {
           "Name": "integrity",
           "Value": "sha256-Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="
+        }
+      ]
+    },
+    {
+      "Route": "img/Apple Juice.djn2er53bx.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Apple Juice.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "34640"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"V/JS2JvRLNnmnfJu1EVWaKfabhiPKtX5PE4B7XaDAWc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:08:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "djn2er53bx"
+        },
+        {
+          "Name": "label",
+          "Value": "img/Apple Juice.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-V/JS2JvRLNnmnfJu1EVWaKfabhiPKtX5PE4B7XaDAWc="
+        }
+      ]
+    },
+    {
+      "Route": "img/Apple Juice.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Apple Juice.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "34640"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"V/JS2JvRLNnmnfJu1EVWaKfabhiPKtX5PE4B7XaDAWc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:08:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-V/JS2JvRLNnmnfJu1EVWaKfabhiPKtX5PE4B7XaDAWc="
+        }
+      ]
+    },
+    {
+      "Route": "img/Baby Food.g9ku68yv9g.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Baby Food.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "23369"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"FIgXv92eJNJKz/4/EkXqAiYx6IKB2lkFNSzHTKi1ivQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:08:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "g9ku68yv9g"
+        },
+        {
+          "Name": "label",
+          "Value": "img/Baby Food.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-FIgXv92eJNJKz/4/EkXqAiYx6IKB2lkFNSzHTKi1ivQ="
+        }
+      ]
+    },
+    {
+      "Route": "img/Baby Food.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Baby Food.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "23369"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"FIgXv92eJNJKz/4/EkXqAiYx6IKB2lkFNSzHTKi1ivQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:08:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-FIgXv92eJNJKz/4/EkXqAiYx6IKB2lkFNSzHTKi1ivQ="
+        }
+      ]
+    },
+    {
+      "Route": "img/bread.i2qlprf3fu.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\bread.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "36153"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"OixTcPqWmFEwxbEBTWC5Ew3+oYtt3qWIFOiVtOtfqVA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:10:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "i2qlprf3fu"
+        },
+        {
+          "Name": "label",
+          "Value": "img/bread.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-OixTcPqWmFEwxbEBTWC5Ew3+oYtt3qWIFOiVtOtfqVA="
+        }
+      ]
+    },
+    {
+      "Route": "img/bread.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\bread.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "36153"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"OixTcPqWmFEwxbEBTWC5Ew3+oYtt3qWIFOiVtOtfqVA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:10:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-OixTcPqWmFEwxbEBTWC5Ew3+oYtt3qWIFOiVtOtfqVA="
+        }
+      ]
+    },
+    {
+      "Route": "img/Breads.id84rr6phu.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Breads.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "28288"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ZuqtQImp8s50rjCDcrJ4EgFF2HRor4utWlCPm1re2Io=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:08:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "id84rr6phu"
+        },
+        {
+          "Name": "label",
+          "Value": "img/Breads.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ZuqtQImp8s50rjCDcrJ4EgFF2HRor4utWlCPm1re2Io="
+        }
+      ]
+    },
+    {
+      "Route": "img/Breads.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Breads.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "28288"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ZuqtQImp8s50rjCDcrJ4EgFF2HRor4utWlCPm1re2Io=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:08:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ZuqtQImp8s50rjCDcrJ4EgFF2HRor4utWlCPm1re2Io="
+        }
+      ]
+    },
+    {
+      "Route": "img/Butter and Cream.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Butter and Cream.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "17047"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"OzRHHj3lP02zgPA5NiztsnCV75GWzQh8hUVocamOO9U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:08:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-OzRHHj3lP02zgPA5NiztsnCV75GWzQh8hUVocamOO9U="
+        }
+      ]
+    },
+    {
+      "Route": "img/Butter and Cream.tml9m8s50j.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Butter and Cream.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "17047"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"OzRHHj3lP02zgPA5NiztsnCV75GWzQh8hUVocamOO9U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:08:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "tml9m8s50j"
+        },
+        {
+          "Name": "label",
+          "Value": "img/Butter and Cream.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-OzRHHj3lP02zgPA5NiztsnCV75GWzQh8hUVocamOO9U="
+        }
+      ]
+    },
+    {
+      "Route": "img/candies.lcf4s75j2z.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\candies.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "32709"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tU6jIgvkU6xw1MBrA/K58jBTqt4gNlN3ydTgnqXkP1Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:10:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "lcf4s75j2z"
+        },
+        {
+          "Name": "label",
+          "Value": "img/candies.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-tU6jIgvkU6xw1MBrA/K58jBTqt4gNlN3ydTgnqXkP1Y="
+        }
+      ]
+    },
+    {
+      "Route": "img/candies.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\candies.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "32709"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tU6jIgvkU6xw1MBrA/K58jBTqt4gNlN3ydTgnqXkP1Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:10:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-tU6jIgvkU6xw1MBrA/K58jBTqt4gNlN3ydTgnqXkP1Y="
+        }
+      ]
+    },
+    {
+      "Route": "img/Canned Foods.o89l3bck8o.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Canned Foods.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "34133"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"CNEacTX/9IM7wLLfcb80E12QUaQspszZQY2i01rl2Mw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:08:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "o89l3bck8o"
+        },
+        {
+          "Name": "label",
+          "Value": "img/Canned Foods.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-CNEacTX/9IM7wLLfcb80E12QUaQspszZQY2i01rl2Mw="
+        }
+      ]
+    },
+    {
+      "Route": "img/Canned Foods.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Canned Foods.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "34133"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"CNEacTX/9IM7wLLfcb80E12QUaQspszZQY2i01rl2Mw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:08:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-CNEacTX/9IM7wLLfcb80E12QUaQspszZQY2i01rl2Mw="
+        }
+      ]
+    },
+    {
+      "Route": "img/Coffee.2a038jjrry.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Coffee.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "25597"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1rdUqTZwC0Gp/EHvJ9k8Bjqbec7896bFlyzAGxs+DiY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:08:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "2a038jjrry"
+        },
+        {
+          "Name": "label",
+          "Value": "img/Coffee.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-1rdUqTZwC0Gp/EHvJ9k8Bjqbec7896bFlyzAGxs+DiY="
+        }
+      ]
+    },
+    {
+      "Route": "img/Coffee.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Coffee.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "25597"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1rdUqTZwC0Gp/EHvJ9k8Bjqbec7896bFlyzAGxs+DiY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:08:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-1rdUqTZwC0Gp/EHvJ9k8Bjqbec7896bFlyzAGxs+DiY="
+        }
+      ]
+    },
+    {
+      "Route": "img/DangHuuLong.eamjotcvro.jpg",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\DangHuuLong.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "11623"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"atyM/3nWfN+Wf4Zd13VLzCU+Fvdms09h3raOAU7d4jI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:09:00 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "eamjotcvro"
+        },
+        {
+          "Name": "label",
+          "Value": "img/DangHuuLong.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-atyM/3nWfN+Wf4Zd13VLzCU+Fvdms09h3raOAU7d4jI="
+        }
+      ]
+    },
+    {
+      "Route": "img/DangHuuLong.jpg",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\DangHuuLong.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "11623"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"atyM/3nWfN+Wf4Zd13VLzCU+Fvdms09h3raOAU7d4jI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:09:00 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-atyM/3nWfN+Wf4Zd13VLzCU+Fvdms09h3raOAU7d4jI="
+        }
+      ]
+    },
+    {
+      "Route": "img/Dry Nuts.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Dry Nuts.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "42128"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"bVSbIS5BW9KCag5yqmxROZTOl3ZusJl5e846si5h8B4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:09:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-bVSbIS5BW9KCag5yqmxROZTOl3ZusJl5e846si5h8B4="
+        }
+      ]
+    },
+    {
+      "Route": "img/Dry Nuts.zso4dezw0a.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Dry Nuts.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "42128"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"bVSbIS5BW9KCag5yqmxROZTOl3ZusJl5e846si5h8B4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:09:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "zso4dezw0a"
+        },
+        {
+          "Name": "label",
+          "Value": "img/Dry Nuts.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-bVSbIS5BW9KCag5yqmxROZTOl3ZusJl5e846si5h8B4="
+        }
+      ]
+    },
+    {
+      "Route": "img/facebook.p6kq90v8nq.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\facebook.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "16039"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"T34ygalNHbTTlwQPzyCiHmrgwxGa5Im1HE3nlJhVd78=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:11:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "p6kq90v8nq"
+        },
+        {
+          "Name": "label",
+          "Value": "img/facebook.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-T34ygalNHbTTlwQPzyCiHmrgwxGa5Im1HE3nlJhVd78="
+        }
+      ]
+    },
+    {
+      "Route": "img/facebook.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\facebook.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "16039"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"T34ygalNHbTTlwQPzyCiHmrgwxGa5Im1HE3nlJhVd78=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:11:36 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-T34ygalNHbTTlwQPzyCiHmrgwxGa5Im1HE3nlJhVd78="
+        }
+      ]
+    },
+    {
+      "Route": "img/Fish and Seafood.j0jw7ig7ac.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Fish and Seafood.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "47460"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"vSinyM9NMh2IL2SUO5ihu+kG7t7cbK+51QLdBWtPM6o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:09:16 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "j0jw7ig7ac"
+        },
+        {
+          "Name": "label",
+          "Value": "img/Fish and Seafood.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-vSinyM9NMh2IL2SUO5ihu+kG7t7cbK+51QLdBWtPM6o="
+        }
+      ]
+    },
+    {
+      "Route": "img/Fish and Seafood.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Fish and Seafood.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "47460"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"vSinyM9NMh2IL2SUO5ihu+kG7t7cbK+51QLdBWtPM6o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:09:16 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-vSinyM9NMh2IL2SUO5ihu+kG7t7cbK+51QLdBWtPM6o="
+        }
+      ]
+    },
+    {
+      "Route": "img/free-shipping.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\free-shipping.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "13341"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Q7/dS95ixny5wZS5Iff9DtlaGQ0hf9W9suBsv7pXu9o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:11:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Q7/dS95ixny5wZS5Iff9DtlaGQ0hf9W9suBsv7pXu9o="
+        }
+      ]
+    },
+    {
+      "Route": "img/free-shipping.xv8feemt7j.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\free-shipping.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "13341"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Q7/dS95ixny5wZS5Iff9DtlaGQ0hf9W9suBsv7pXu9o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:11:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "xv8feemt7j"
+        },
+        {
+          "Name": "label",
+          "Value": "img/free-shipping.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Q7/dS95ixny5wZS5Iff9DtlaGQ0hf9W9suBsv7pXu9o="
+        }
+      ]
+    },
+    {
+      "Route": "img/Fresh Meat.8senyhtxf5.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Fresh Meat.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "36579"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mAAbEeVyT/09hLY0OINbu2yDAawum+c/y+xhjF8NamA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:09:24 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "8senyhtxf5"
+        },
+        {
+          "Name": "label",
+          "Value": "img/Fresh Meat.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-mAAbEeVyT/09hLY0OINbu2yDAawum+c/y+xhjF8NamA="
+        }
+      ]
+    },
+    {
+      "Route": "img/Fresh Meat.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Fresh Meat.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "36579"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mAAbEeVyT/09hLY0OINbu2yDAawum+c/y+xhjF8NamA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:09:24 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-mAAbEeVyT/09hLY0OINbu2yDAawum+c/y+xhjF8NamA="
+        }
+      ]
+    },
+    {
+      "Route": "img/Frozen Foods.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Frozen Foods.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "40129"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WXwJI2GkWKyg9zUyQywwib1OSjP8Fhx6JO/ZdQgsULY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:09:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-WXwJI2GkWKyg9zUyQywwib1OSjP8Fhx6JO/ZdQgsULY="
+        }
+      ]
+    },
+    {
+      "Route": "img/Frozen Foods.zhmr1e8jpp.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Frozen Foods.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "40129"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WXwJI2GkWKyg9zUyQywwib1OSjP8Fhx6JO/ZdQgsULY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:09:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "zhmr1e8jpp"
+        },
+        {
+          "Name": "label",
+          "Value": "img/Frozen Foods.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-WXwJI2GkWKyg9zUyQywwib1OSjP8Fhx6JO/ZdQgsULY="
+        }
+      ]
+    },
+    {
+      "Route": "img/Fruits.l9l6z9px27.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Fruits.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "53148"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"17etKqj2B5HBX3BicoAkDN1V8KLUTZlCZv9pSEnIrGo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:09:42 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "l9l6z9px27"
+        },
+        {
+          "Name": "label",
+          "Value": "img/Fruits.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-17etKqj2B5HBX3BicoAkDN1V8KLUTZlCZv9pSEnIrGo="
+        }
+      ]
+    },
+    {
+      "Route": "img/Fruits.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Fruits.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "53148"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"17etKqj2B5HBX3BicoAkDN1V8KLUTZlCZv9pSEnIrGo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:09:42 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-17etKqj2B5HBX3BicoAkDN1V8KLUTZlCZv9pSEnIrGo="
+        }
+      ]
+    },
+    {
+      "Route": "img/google.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\google.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "20865"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1l2Jwr4szzt28KG8MCwqV4gFs5Qk+YH6VIMHZgMv7bA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:11:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-1l2Jwr4szzt28KG8MCwqV4gFs5Qk+YH6VIMHZgMv7bA="
+        }
+      ]
+    },
+    {
+      "Route": "img/google.qnk9pts2jq.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\google.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "20865"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1l2Jwr4szzt28KG8MCwqV4gFs5Qk+YH6VIMHZgMv7bA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:11:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qnk9pts2jq"
+        },
+        {
+          "Name": "label",
+          "Value": "img/google.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-1l2Jwr4szzt28KG8MCwqV4gFs5Qk+YH6VIMHZgMv7bA="
+        }
+      ]
+    },
+    {
+      "Route": "img/hand&tomato.jpg",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\hand&tomato.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3287456"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sNRneSgR5jUqAYDA0KZBcZb9HjS8PUsLgIS2pWH5fUY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:11:48 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-sNRneSgR5jUqAYDA0KZBcZb9HjS8PUsLgIS2pWH5fUY="
+        }
+      ]
+    },
+    {
+      "Route": "img/hand&tomato.sph4mzu6rm.jpg",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\hand&tomato.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3287456"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sNRneSgR5jUqAYDA0KZBcZb9HjS8PUsLgIS2pWH5fUY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:11:48 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "sph4mzu6rm"
+        },
+        {
+          "Name": "label",
+          "Value": "img/hand&tomato.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-sNRneSgR5jUqAYDA0KZBcZb9HjS8PUsLgIS2pWH5fUY="
+        }
+      ]
+    },
+    {
+      "Route": "img/instagram.g18ole7fld.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\instagram.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "50896"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tJvovGvoZKBd8T6u79c5gQ38IAbkmelugBMXl7cBuuw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:11:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "g18ole7fld"
+        },
+        {
+          "Name": "label",
+          "Value": "img/instagram.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-tJvovGvoZKBd8T6u79c5gQ38IAbkmelugBMXl7cBuuw="
+        }
+      ]
+    },
+    {
+      "Route": "img/instagram.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\instagram.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "50896"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tJvovGvoZKBd8T6u79c5gQ38IAbkmelugBMXl7cBuuw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:11:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-tJvovGvoZKBd8T6u79c5gQ38IAbkmelugBMXl7cBuuw="
+        }
+      ]
+    },
+    {
+      "Route": "img/LogoShop.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\LogoShop.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "56116"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1ucFSzExUhvRGYXRT/x1DO8AaZ5Glo7pI81JNoPJIK0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:09:48 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-1ucFSzExUhvRGYXRT/x1DO8AaZ5Glo7pI81JNoPJIK0="
+        }
+      ]
+    },
+    {
+      "Route": "img/LogoShop.qk8fb1vztu.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\LogoShop.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "56116"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"1ucFSzExUhvRGYXRT/x1DO8AaZ5Glo7pI81JNoPJIK0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:09:48 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qk8fb1vztu"
+        },
+        {
+          "Name": "label",
+          "Value": "img/LogoShop.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-1ucFSzExUhvRGYXRT/x1DO8AaZ5Glo7pI81JNoPJIK0="
+        }
+      ]
+    },
+    {
+      "Route": "img/meat.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\meat.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "48558"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"CQOTVQWzYE/CeBgNPEZFH+lTvG8poiHR60cDOjUxh1g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:11:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-CQOTVQWzYE/CeBgNPEZFH+lTvG8poiHR60cDOjUxh1g="
+        }
+      ]
+    },
+    {
+      "Route": "img/meat.z1ro6qr5nq.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\meat.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "48558"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"CQOTVQWzYE/CeBgNPEZFH+lTvG8poiHR60cDOjUxh1g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:11:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "z1ro6qr5nq"
+        },
+        {
+          "Name": "label",
+          "Value": "img/meat.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-CQOTVQWzYE/CeBgNPEZFH+lTvG8poiHR60cDOjUxh1g="
+        }
+      ]
+    },
+    {
+      "Route": "img/milk.omulr6z840.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\milk.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "21758"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UJF4cKkAdYAdtnsmJYLbqf41Tgyaa3O75aMPf1wWBzk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:12:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "omulr6z840"
+        },
+        {
+          "Name": "label",
+          "Value": "img/milk.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-UJF4cKkAdYAdtnsmJYLbqf41Tgyaa3O75aMPf1wWBzk="
+        }
+      ]
+    },
+    {
+      "Route": "img/milk.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\milk.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "21758"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UJF4cKkAdYAdtnsmJYLbqf41Tgyaa3O75aMPf1wWBzk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:12:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-UJF4cKkAdYAdtnsmJYLbqf41Tgyaa3O75aMPf1wWBzk="
+        }
+      ]
+    },
+    {
+      "Route": "img/money.nqqo2gvzzl.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\money.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "18305"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"oTD0r2w24viakQG7l1dmHI1ilsGFBGlCWSjuaBl9QUQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:12:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "nqqo2gvzzl"
+        },
+        {
+          "Name": "label",
+          "Value": "img/money.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-oTD0r2w24viakQG7l1dmHI1ilsGFBGlCWSjuaBl9QUQ="
+        }
+      ]
+    },
+    {
+      "Route": "img/money.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\money.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "18305"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"oTD0r2w24viakQG7l1dmHI1ilsGFBGlCWSjuaBl9QUQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:12:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-oTD0r2w24viakQG7l1dmHI1ilsGFBGlCWSjuaBl9QUQ="
+        }
+      ]
+    },
+    {
+      "Route": "img/Oil and Vinegar.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Oil and Vinegar.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "25871"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"856nNdXfkit+fS+UitQQqOtMEhh63oG+Lk7ApracNp8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:09:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-856nNdXfkit+fS+UitQQqOtMEhh63oG+Lk7ApracNp8="
+        }
+      ]
+    },
+    {
+      "Route": "img/Oil and Vinegar.vdkztksaiv.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Oil and Vinegar.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "25871"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"856nNdXfkit+fS+UitQQqOtMEhh63oG+Lk7ApracNp8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:09:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vdkztksaiv"
+        },
+        {
+          "Name": "label",
+          "Value": "img/Oil and Vinegar.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-856nNdXfkit+fS+UitQQqOtMEhh63oG+Lk7ApracNp8="
+        }
+      ]
+    },
+    {
+      "Route": "img/ordernow.aytnwb60uz.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\ordernow.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10942"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nnzh1Yqt8EarMvlhzlZ6fZvrC7LZigPd6dIU3g6JvCg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:12:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "aytnwb60uz"
+        },
+        {
+          "Name": "label",
+          "Value": "img/ordernow.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-nnzh1Yqt8EarMvlhzlZ6fZvrC7LZigPd6dIU3g6JvCg="
+        }
+      ]
+    },
+    {
+      "Route": "img/ordernow.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\ordernow.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10942"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nnzh1Yqt8EarMvlhzlZ6fZvrC7LZigPd6dIU3g6JvCg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:12:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-nnzh1Yqt8EarMvlhzlZ6fZvrC7LZigPd6dIU3g6JvCg="
+        }
+      ]
+    },
+    {
+      "Route": "img/Organic Grocery Offer.bbbhfulldp.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Organic Grocery Offer.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "64677"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"h4qUEsJJr5EgBdYVN1j1OuitWA9JEKB0qyWG/wGCelw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:10:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "bbbhfulldp"
+        },
+        {
+          "Name": "label",
+          "Value": "img/Organic Grocery Offer.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-h4qUEsJJr5EgBdYVN1j1OuitWA9JEKB0qyWG/wGCelw="
+        }
+      ]
+    },
+    {
+      "Route": "img/Organic Grocery Offer.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Organic Grocery Offer.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "64677"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"h4qUEsJJr5EgBdYVN1j1OuitWA9JEKB0qyWG/wGCelw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:10:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-h4qUEsJJr5EgBdYVN1j1OuitWA9JEKB0qyWG/wGCelw="
+        }
+      ]
+    },
+    {
+      "Route": "img/Organic Grocery.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Organic Grocery.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "105281"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WBEuFZ/H8idRcSFT+EdxOyHrmkZWxqMxZ9Ar2SunuvU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:10:14 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-WBEuFZ/H8idRcSFT+EdxOyHrmkZWxqMxZ9Ar2SunuvU="
+        }
+      ]
+    },
+    {
+      "Route": "img/Organic Grocery.sbrswa5rzv.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Organic Grocery.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "105281"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WBEuFZ/H8idRcSFT+EdxOyHrmkZWxqMxZ9Ar2SunuvU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:10:14 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "sbrswa5rzv"
+        },
+        {
+          "Name": "label",
+          "Value": "img/Organic Grocery.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-WBEuFZ/H8idRcSFT+EdxOyHrmkZWxqMxZ9Ar2SunuvU="
+        }
+      ]
+    },
+    {
+      "Route": "img/paypalcard.hcyidvgc1p.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\paypalcard.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9645"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"n3j6R3Gn1QayupD2IbD+2E/fH3hZ0hwCx4/9bhFCOgw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:12:15 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "hcyidvgc1p"
+        },
+        {
+          "Name": "label",
+          "Value": "img/paypalcard.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-n3j6R3Gn1QayupD2IbD+2E/fH3hZ0hwCx4/9bhFCOgw="
+        }
+      ]
+    },
+    {
+      "Route": "img/paypalcard.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\paypalcard.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9645"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"n3j6R3Gn1QayupD2IbD+2E/fH3hZ0hwCx4/9bhFCOgw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:12:15 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-n3j6R3Gn1QayupD2IbD+2E/fH3hZ0hwCx4/9bhFCOgw="
+        }
+      ]
+    },
+    {
+      "Route": "img/—Pngtree—red fresh tomato with green_8933861.0l4u0nn17e.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\—Pngtree—red fresh tomato with green_8933861.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3145047"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TCFeqL/bF/OgPlCF0LS2iw2Z+GmlQdCFPU2ujXQsmeY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:12:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "0l4u0nn17e"
+        },
+        {
+          "Name": "label",
+          "Value": "img/—Pngtree—red fresh tomato with green_8933861.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-TCFeqL/bF/OgPlCF0LS2iw2Z+GmlQdCFPU2ujXQsmeY="
+        }
+      ]
+    },
+    {
+      "Route": "img/—Pngtree—red fresh tomato with green_8933861.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\—Pngtree—red fresh tomato with green_8933861.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3145047"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"TCFeqL/bF/OgPlCF0LS2iw2Z+GmlQdCFPU2ujXQsmeY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:12:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-TCFeqL/bF/OgPlCF0LS2iw2Z+GmlQdCFPU2ujXQsmeY="
+        }
+      ]
+    },
+    {
+      "Route": "img/sale.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\sale.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "15945"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"D0XSE/fsXnWMCbtl9wTlNm/Z3caYnBJw8QiUb2eD4Sw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:12:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-D0XSE/fsXnWMCbtl9wTlNm/Z3caYnBJw8QiUb2eD4Sw="
+        }
+      ]
+    },
+    {
+      "Route": "img/sale.xgdnncjvsz.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\sale.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "15945"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"D0XSE/fsXnWMCbtl9wTlNm/Z3caYnBJw8QiUb2eD4Sw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:12:19 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "xgdnncjvsz"
+        },
+        {
+          "Name": "label",
+          "Value": "img/sale.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-D0XSE/fsXnWMCbtl9wTlNm/Z3caYnBJw8QiUb2eD4Sw="
+        }
+      ]
+    },
+    {
+      "Route": "img/Snacks and Chips.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Snacks and Chips.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "47922"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gWxLUNLKtrQJtF1lXX7Uo06VRRQAZnrHD/rFbxnLoOg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:10:23 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-gWxLUNLKtrQJtF1lXX7Uo06VRRQAZnrHD/rFbxnLoOg="
+        }
+      ]
+    },
+    {
+      "Route": "img/Snacks and Chips.ttd6pmpma4.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Snacks and Chips.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "47922"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gWxLUNLKtrQJtF1lXX7Uo06VRRQAZnrHD/rFbxnLoOg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:10:23 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ttd6pmpma4"
+        },
+        {
+          "Name": "label",
+          "Value": "img/Snacks and Chips.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-gWxLUNLKtrQJtF1lXX7Uo06VRRQAZnrHD/rFbxnLoOg="
+        }
+      ]
+    },
+    {
+      "Route": "img/Spices and Herbs.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Spices and Herbs.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "31622"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4qy+K048IpCQSiA1P8QYQr9erSzWaDqPmXdq0pESuO4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:10:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-4qy+K048IpCQSiA1P8QYQr9erSzWaDqPmXdq0pESuO4="
+        }
+      ]
+    },
+    {
+      "Route": "img/Spices and Herbs.qltxzzpd6z.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Spices and Herbs.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "31622"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4qy+K048IpCQSiA1P8QYQr9erSzWaDqPmXdq0pESuO4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:10:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qltxzzpd6z"
+        },
+        {
+          "Name": "label",
+          "Value": "img/Spices and Herbs.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-4qy+K048IpCQSiA1P8QYQr9erSzWaDqPmXdq0pESuO4="
+        }
+      ]
+    },
+    {
+      "Route": "img/Tea.n0yrayg7y2.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Tea.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "33069"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"97as4K0wHWBzFIFQ8tJEO64ZnV9RwroZEPm16IlPzcw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:10:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "n0yrayg7y2"
+        },
+        {
+          "Name": "label",
+          "Value": "img/Tea.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-97as4K0wHWBzFIFQ8tJEO64ZnV9RwroZEPm16IlPzcw="
+        }
+      ]
+    },
+    {
+      "Route": "img/Tea.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Tea.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "33069"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"97as4K0wHWBzFIFQ8tJEO64ZnV9RwroZEPm16IlPzcw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:10:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-97as4K0wHWBzFIFQ8tJEO64ZnV9RwroZEPm16IlPzcw="
+        }
+      ]
+    },
+    {
+      "Route": "img/twitter.bzpadde6fw.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\twitter.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "21821"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+XxpwhITSkSxcgnO4aXvSI5U8hT94Gg0911xmc4wxPk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:12:23 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "bzpadde6fw"
+        },
+        {
+          "Name": "label",
+          "Value": "img/twitter.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-+XxpwhITSkSxcgnO4aXvSI5U8hT94Gg0911xmc4wxPk="
+        }
+      ]
+    },
+    {
+      "Route": "img/twitter.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\twitter.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "21821"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+XxpwhITSkSxcgnO4aXvSI5U8hT94Gg0911xmc4wxPk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:12:23 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-+XxpwhITSkSxcgnO4aXvSI5U8hT94Gg0911xmc4wxPk="
+        }
+      ]
+    },
+    {
+      "Route": "img/vegetable.kxdpj9p9ri.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\vegetable.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "67617"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"yJmkSSvNWmpys6L2erUGeC0h0lHUEGtRwmJHlerjpdk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:12:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kxdpj9p9ri"
+        },
+        {
+          "Name": "label",
+          "Value": "img/vegetable.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-yJmkSSvNWmpys6L2erUGeC0h0lHUEGtRwmJHlerjpdk="
+        }
+      ]
+    },
+    {
+      "Route": "img/vegetable.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\vegetable.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "67617"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"yJmkSSvNWmpys6L2erUGeC0h0lHUEGtRwmJHlerjpdk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:12:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-yJmkSSvNWmpys6L2erUGeC0h0lHUEGtRwmJHlerjpdk="
+        }
+      ]
+    },
+    {
+      "Route": "img/Vegetables.1uxys91t9r.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Vegetables.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "46629"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"yY+X/cEt6ewo0X2dZHcjvsHONfQcZ+tMF3sGRnlqFTM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:10:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "1uxys91t9r"
+        },
+        {
+          "Name": "label",
+          "Value": "img/Vegetables.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-yY+X/cEt6ewo0X2dZHcjvsHONfQcZ+tMF3sGRnlqFTM="
+        }
+      ]
+    },
+    {
+      "Route": "img/Vegetables.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\Vegetables.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "46629"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"yY+X/cEt6ewo0X2dZHcjvsHONfQcZ+tMF3sGRnlqFTM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:10:44 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-yY+X/cEt6ewo0X2dZHcjvsHONfQcZ+tMF3sGRnlqFTM="
+        }
+      ]
+    },
+    {
+      "Route": "img/youtube.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\youtube.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "13626"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"N1zYPl+36ls6J4uuj/G0LHSLU9qapeYzjO97tVCH4DQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:12:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-N1zYPl+36ls6J4uuj/G0LHSLU9qapeYzjO97tVCH4DQ="
+        }
+      ]
+    },
+    {
+      "Route": "img/youtube.rfc915qde5.png",
+      "AssetFile": "H:\\pbl3\\wwwroot\\img\\youtube.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "13626"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"N1zYPl+36ls6J4uuj/G0LHSLU9qapeYzjO97tVCH4DQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 07 Apr 2025 03:12:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "rfc915qde5"
+        },
+        {
+          "Name": "label",
+          "Value": "img/youtube.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-N1zYPl+36ls6J4uuj/G0LHSLU9qapeYzjO97tVCH4DQ="
         }
       ]
     },

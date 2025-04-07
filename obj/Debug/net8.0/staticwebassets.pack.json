@@ -13,6 +13,154 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "H:\\pbl3\\wwwroot\\img\\Apple Juice.png",
+      "PackagePath": "staticwebassets\\img\\Apple Juice.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\Baby Food.png",
+      "PackagePath": "staticwebassets\\img\\Baby Food.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\Breads.png",
+      "PackagePath": "staticwebassets\\img\\Breads.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\Butter and Cream.png",
+      "PackagePath": "staticwebassets\\img\\Butter and Cream.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\Canned Foods.png",
+      "PackagePath": "staticwebassets\\img\\Canned Foods.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\Coffee.png",
+      "PackagePath": "staticwebassets\\img\\Coffee.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\DangHuuLong.jpg",
+      "PackagePath": "staticwebassets\\img\\DangHuuLong.jpg"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\Dry Nuts.png",
+      "PackagePath": "staticwebassets\\img\\Dry Nuts.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\Fish and Seafood.png",
+      "PackagePath": "staticwebassets\\img\\Fish and Seafood.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\Fresh Meat.png",
+      "PackagePath": "staticwebassets\\img\\Fresh Meat.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\Frozen Foods.png",
+      "PackagePath": "staticwebassets\\img\\Frozen Foods.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\Fruits.png",
+      "PackagePath": "staticwebassets\\img\\Fruits.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\LogoShop.png",
+      "PackagePath": "staticwebassets\\img\\LogoShop.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\Oil and Vinegar.png",
+      "PackagePath": "staticwebassets\\img\\Oil and Vinegar.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\Organic Grocery Offer.png",
+      "PackagePath": "staticwebassets\\img\\Organic Grocery Offer.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\Organic Grocery.png",
+      "PackagePath": "staticwebassets\\img\\Organic Grocery.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\Snacks and Chips.png",
+      "PackagePath": "staticwebassets\\img\\Snacks and Chips.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\Spices and Herbs.png",
+      "PackagePath": "staticwebassets\\img\\Spices and Herbs.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\Tea.png",
+      "PackagePath": "staticwebassets\\img\\Tea.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\Vegetables.png",
+      "PackagePath": "staticwebassets\\img\\Vegetables.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\bread.png",
+      "PackagePath": "staticwebassets\\img\\bread.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\candies.png",
+      "PackagePath": "staticwebassets\\img\\candies.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\facebook.png",
+      "PackagePath": "staticwebassets\\img\\facebook.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\free-shipping.png",
+      "PackagePath": "staticwebassets\\img\\free-shipping.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\google.png",
+      "PackagePath": "staticwebassets\\img\\google.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\hand&tomato.jpg",
+      "PackagePath": "staticwebassets\\img\\hand&tomato.jpg"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\instagram.png",
+      "PackagePath": "staticwebassets\\img\\instagram.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\meat.png",
+      "PackagePath": "staticwebassets\\img\\meat.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\milk.png",
+      "PackagePath": "staticwebassets\\img\\milk.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\money.png",
+      "PackagePath": "staticwebassets\\img\\money.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\ordernow.png",
+      "PackagePath": "staticwebassets\\img\\ordernow.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\paypalcard.png",
+      "PackagePath": "staticwebassets\\img\\paypalcard.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\sale.png",
+      "PackagePath": "staticwebassets\\img\\sale.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\twitter.png",
+      "PackagePath": "staticwebassets\\img\\twitter.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\vegetable.png",
+      "PackagePath": "staticwebassets\\img\\vegetable.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\youtube.png",
+      "PackagePath": "staticwebassets\\img\\youtube.png"
+    },
+    {
+      "Id": "H:\\pbl3\\wwwroot\\img\\—Pngtree—red fresh tomato with green_8933861.png",
+      "PackagePath": "staticwebassets\\img\\—Pngtree—red fresh tomato with green_8933861.png"
+    },
+    {
       "Id": "H:\\pbl3\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

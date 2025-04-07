@@ -1,5 +1,42 @@
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\img\Apple Juice.png
+wwwroot\img\Baby Food.png
+wwwroot\img\bread.png
+wwwroot\img\Breads.png
+wwwroot\img\Butter and Cream.png
+wwwroot\img\candies.png
+wwwroot\img\Canned Foods.png
+wwwroot\img\Coffee.png
+wwwroot\img\DangHuuLong.jpg
+wwwroot\img\Dry Nuts.png
+wwwroot\img\facebook.png
+wwwroot\img\Fish and Seafood.png
+wwwroot\img\free-shipping.png
+wwwroot\img\Fresh Meat.png
+wwwroot\img\Frozen Foods.png
+wwwroot\img\Fruits.png
+wwwroot\img\google.png
+wwwroot\img\hand&tomato.jpg
+wwwroot\img\instagram.png
+wwwroot\img\LogoShop.png
+wwwroot\img\meat.png
+wwwroot\img\milk.png
+wwwroot\img\money.png
+wwwroot\img\Oil and Vinegar.png
+wwwroot\img\ordernow.png
+wwwroot\img\Organic Grocery Offer.png
+wwwroot\img\Organic Grocery.png
+wwwroot\img\paypalcard.png
+wwwroot\img\—Pngtree—red fresh tomato with green_8933861.png
+wwwroot\img\sale.png
+wwwroot\img\Snacks and Chips.png
+wwwroot\img\Spices and Herbs.png
+wwwroot\img\Tea.png
+wwwroot\img\twitter.png
+wwwroot\img\vegetable.png
+wwwroot\img\Vegetables.png
+wwwroot\img\youtube.png
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map

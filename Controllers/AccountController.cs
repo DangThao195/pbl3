@@ -7,16 +7,14 @@ namespace PBL3_HK4.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly IUserService _userService;
-        private readonly IAccountService _accountService;
+        private readonly ICustomerService _customerService;
+        private readonly IAccountCustomerService _accountCustomerService;
 
-        public AccountController(IUserService userService, IAccountService accountService)
+        public AccountController(ICustomerService customerService, IAccountCustomerService accountCustomerService)
         {
-            _userService = userService;
-            _accountService = accountService; ;
+            _customerService = customerService;
+            _accountCustomerService = accountCustomerService;
         }
-
-
 
         public IActionResult SignUp()
         {
@@ -29,7 +27,7 @@ namespace PBL3_HK4.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            await _accountService.RegisterAsync(customer.Name, customer.Email, customer.Sex, customer.DateOfBirth, customer.UserName,
+            await _accountCustomerService.RegisterAsync(customer.Name, customer.Email, customer.Sex, customer.DateOfBirth, customer.UserName, customer.Phone,
                 customer.PassWord, customer.Address);
 
             return RedirectToAction("Index", "Home");

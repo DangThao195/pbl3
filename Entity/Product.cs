@@ -15,31 +15,25 @@ namespace PBL3_HK4.Entity
         [Required]
         public Guid ProductID { get; set; }
 
-        [Required]
+        [ForeignKey("Catalog")]
         public Guid CatalogID { get; set; }
         public Catalog Catalog { get; set; }
 
-
-        [Required]
         [StringLength(100)]
         public string? ProductName { get; set; }
 
         [StringLength(500)]
         public string? ProductDescription { get; set; }
 
-        [Required]
         [Range(0.01, double.MaxValue)]
         public double Price { get; set; }
 
-        [Required]
         [Range(0, int.MaxValue)]
         public int StockQuantity { get; set; }
 
-        [Required]
         [DataType(DataType.Date)]
         public DateTime MFGDate { get; set; }
 
-        [Required]
         [DataType(DataType.Date)]
         public DateTime EXPDate { get; set; }
 

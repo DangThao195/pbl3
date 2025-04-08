@@ -12,30 +12,31 @@ namespace PBL3_HK4.Entity
         [Required]
         public Guid UserID { get; set; }
 
-        [Required]
         [StringLength(40)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
-        [Required]
         [StringLength(40)]
         [EmailAddress]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
-        [Required]
         [StringLength(10)]
-        public string Sex { get; set; }
+        public string? Sex { get; set; }
 
-        [Required]
         [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
 
-        [Required]
+        [StringLength(20)]
+        public string? Phone {  get; set; }
+
         [StringLength(40)]
+        [Required]
         public string UserName { get; set; }
 
+        [StringLength(200)]
         [Required]
-        [StringLength(40)]
         public string PassWord { get; set; }
-        public string Role { get; set; }
+
+        [StringLength(50)]
+        public string? Role { get; set; }
     }
 }

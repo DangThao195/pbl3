@@ -11,6 +11,7 @@ namespace PBL3_HK4.Entity
     public class Review
     {
         [Key]
+        [Required]
         public Guid ReviewID { get; set; }
 
         [ForeignKey("Product")]
@@ -27,7 +28,6 @@ namespace PBL3_HK4.Entity
         [StringLength(100)]
         public string? Text { get; set; }
 
-        [Required]
         public DateTime CreateAt { get; set; } = DateTime.UtcNow;
     }
 }

@@ -9,9 +9,8 @@ namespace PBL3_HK4.Entity
 {
     public class Customer: User
     {
-        [Required]
         [StringLength(200)]
-        public string Address { get; set; }
+        public string? Address { get; set; }
        
         public int? EarnedPoint { get; set; }
         public virtual ShoppingCart? ShoppingCart { get; set; }

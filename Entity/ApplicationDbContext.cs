@@ -12,8 +12,6 @@ namespace PBL3_HK4.Entity
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<Admin> Admins { get; set; }
         public DbSet<Bill> Bills { get; set; }
         public DbSet<BillDetail> BillDetails { get; set; }
         public DbSet<Catalog> Catalogs { get; set; }
@@ -26,8 +24,6 @@ namespace PBL3_HK4.Entity
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<User>().ToTable("Users");
-            modelBuilder.Entity<Customer>().ToTable("Customers");
-            modelBuilder.Entity<Admin>().ToTable("Admins");
             modelBuilder.Entity<Bill>().ToTable("Bills");
             modelBuilder.Entity<BillDetail>().ToTable("BillDetails");
             modelBuilder.Entity<Catalog>().ToTable("Catalogs");
@@ -36,45 +32,6 @@ namespace PBL3_HK4.Entity
             modelBuilder.Entity<Discount>().ToTable("Discounts");
             modelBuilder.Entity<Review>().ToTable("Reviews");
             modelBuilder.Entity<ShoppingCart>().ToTable("ShoppingCarts");
-
-            modelBuilder.Entity<Customer>()
-                .HasOne(c => c.ShoppingCart)
-                .WithOne(sc => sc.Customer)
-                .HasForeignKey<ShoppingCart>(sc => sc.UserID);
-
-            modelBuilder.Entity<BillDetail>()
-                .HasOne(bd => bd.Product)
-                .WithMany()
-                .HasForeignKey(bd => bd.ProductID);
-
-            modelBuilder.Entity<BillDetail>()
-                .HasOne(bd => bd.Bill)
-                .WithMany(b => b.BillDetails)
-                .HasForeignKey(bd => bd.BillID);
-
-            modelBuilder.Entity<CartItem>()
-                .HasOne(ci => ci.Product)
-                .WithMany()
-                .HasForeignKey(ci => ci.ProductID);
-
-            modelBuilder.Entity<CartItem>()
-                .HasOne(ci => ci.ShoppingCart)
-                .WithMany(sc => sc.Items)
-                .HasForeignKey(ci => ci.CartID);
-
-            modelBuilder.Entity<Review>()
-                .HasOne(r => r.Product)
-                .WithMany(p => p.Reviews)
-                .HasForeignKey(r => r.ProductID);
-
-            modelBuilder.Entity<Review>()
-                .HasOne(r => r.Customer)
-                .WithMany()
-                .HasForeignKey(r => r.UserID);
-            modelBuilder.Entity<Product>()
-                .HasOne(p => p.Catalog)
-                .WithMany(c => c.Products)
-                .HasForeignKey(p => p.CatalogID);
         }
     }
 }

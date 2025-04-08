@@ -1,34 +1,181 @@
 ﻿@{
     ViewData["Title"] = "Product View";
 }
-<div class="row">
-
-    @* Empty *@
-    <div class="col-1"></div>
-
-    <div class="col-10">
-        <div class="row">
-            <div class="col-3">
-                <a style="background-color: #9370DB; color: white; letter-spacing: 2px;">
-                    <i class="bi bi-plus-circle"></i>CREATE NEW DISCOUNT
-                    </a>
+<div class="row my-4">
+    @* Empty column for spacing *@
+    <div class="col-md-1"></div>
+    <div class="col-md-10 p-4" style="background-color: #E8E8E8; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border: 1px solid #C0C0C0;">
+        <p id="pageTitle" class="text-center fw-bold mb-4" style="color: #314401; font-size: 40px;">View Product</p>
+        <div class="mb-4">
+            <div class="row mb-3">
+                <div class="col-md-8">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingName" placeholder="Name" name="ProductName" disabled>
+                        <label for="floatingName">Name</label>
+                    </div>
+                    <div class="form-floating" style="height: calc(100% - 70px);">
+                        <textarea type="text" style="resize: none; outline: none; box-shadow: none; height: 100%;" class="form-control" id="floatingDescription" placeholder="Description" name="ProductDescription" disabled></textarea>
+                        <label for="floatingDescription">Description</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center mb-3">
+                        <div id="imagePreview" class="mb-2" style="height: 200px; border: 1px dashed #ccc; border-radius: 5px; display: flex; align-items: center; justify-content: center; background-color: #f8f9fa;">
+                            <span id="noImageText">Hình ảnh sẽ hiển thị tại đây</span>
+                            <img id="previewImage" src="" alt="Preview" style="max-height: 100%; max-width: 100%; display: none; object-fit: contain;">
+                        </div>
+                        <div class="form-floating">
+                            <input type="file" class="form-control" id="floatingImageUrl" placeholder="Image Url" name="ImageUrl" accept="image/*" disabled onchange="previewFile()">
+                            <label for="floatingImageUrl">Image Url</label>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            @* Empty *@
-            <div class="col-1"></div>
-
-            <div class="col-3">
-
+            <div id="priceRow" class="row mb-3">
+                <div id="priceContainer" class="col-md-6 mb-3 mb-md-0">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="floatingPrice" placeholder="Price" name="Price" disabled>
+                        <label for="floatingPrice">Price</label>
+                    </div>
+                </div>
+                <div class="col-md-6" id="averageRatingContainer">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="floatingAverageRating" placeholder="Average Rating" name="AverageRating" disabled>
+                        <label for="floatingAverageRating">Average Rating</label>
+                    </div>
+                </div>
             </div>
-
-            @* Empty *@
-            <div class="col-1"></div>
-
-            <div class="col-3">
+            <div class="row mb-3">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="floatingStock" placeholder="Stock" name="StockQuantity" disabled>
+                        <label for="floatingStock">Stock</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <select class="form-select" id="floatingCatalog" name="Catalog" disabled>
+                            <option value="" selected disabled>Select a category</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Clothing">Clothing</option>
+                            <option value="Home & Kitchen">Home & Kitchen</option>
+                            <option value="Books">Books</option>
+                            <option value="Toys & Games">Toys & Games</option>
+                            <option value="Beauty & Personal Care">Beauty & Personal Care</option>
+                            <option value="Sports & Outdoors">Sports & Outdoors</option>
+                            <option value="Food & Beverages">Food & Beverages</option>
+                        </select>
+                        <label for="floatingCatalog">Category</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <div class="form-floating">
+                        <input type="date" class="form-control" id="floatingMFGDate" placeholder="Start Date" name="MFGDate" disabled>
+                        <label for="floatingMFGDate">Start Date</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="date" class="form-control" id="floatingEXPDate" placeholder="End Date" name="EXPDate" disabled>
+                        <label for="floatingEXPDate">End Date</label>
+                    </div>
+                </div>
             </div>
         </div>
+        <div class="d-flex gap-3 mt-4 mb-2 justify-content-center">
+            <button id="editButton" class="btn px-4 py-2 w-25" style="color: white; background-color: #17A2B8; border-radius: 5px; min-width: 150px;">
+                <i class="bi bi-pencil-square"></i> EDIT
+            </button>
+            <a asp-controller="Product" asp-action="Index" class="btn px-4 py-2 w-25" style="color: white; background-color: #D9534F; border-radius: 5px; min-width: 150px;">
+                <i class="bi bi-arrow-return-left"></i> BACK TO LIST
+            </a>
+        </div>
     </div>
-
-    @* Empty *@
-    <div class="col-1"></div>
+    @* Empty column for spacing *@
+    <div class="col-md-1"></div>
 </div>
+
+<script>
+    // Chức năng xem trước hình ảnh
+    function previewFile() {
+        const preview = document.getElementById('previewImage');
+        const noImageText = document.getElementById('noImageText');
+        const file = document.querySelector('input[type=file]').files[0];
+        const reader = new FileReader();
+
+        reader.onloadend = function () {
+            preview.src = reader.result;
+            preview.style.display = 'block';
+            noImageText.style.display = 'none';
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = "";
+            preview.style.display = 'none';
+            noImageText.style.display = 'block';
+        }
+    }
+
+    // Xử lý chức năng Edit/Update
+    document.addEventListener('DOMContentLoaded', function() {
+        const editButton = document.getElementById('editButton');
+        const inputs = document.querySelectorAll('input, textarea, select');
+        const averageRatingContainer = document.getElementById('averageRatingContainer');
+        const priceContainer = document.getElementById('priceContainer');
+        const pageTitle = document.getElementById('pageTitle');
+
+        let isEditMode = false;
+
+        editButton.addEventListener('click', function() {
+            if (!isEditMode) {
+                // Chuyển sang chế độ chỉnh sửa
+                inputs.forEach(input => {
+                    // Chỉ cho phép chỉnh sửa nếu không phải là ô Average Rating
+                    if (input.id !== 'floatingAverageRating') {
+                        input.disabled = false;
+                    }
+                });
+
+                // Ẩn ô Average Rating
+                averageRatingContainer.style.display = 'none';
+
+                // Mở rộng ô Price để chiếm hết không gian
+                priceContainer.className = 'col-md-12';
+
+                // Thay đổi nút Edit thành Update
+                editButton.innerHTML = '<i class="bi bi-check2-square"></i> UPDATE';
+                editButton.style.backgroundColor = '#F4A261';
+
+                // Đổi tiêu đề từ View Product sang Edit Product
+                pageTitle.textContent = 'Edit Product';
+
+                isEditMode = true;
+            } else {
+                // Chuyển về chế độ xem
+                inputs.forEach(input => {
+                    input.disabled = true;
+                });
+
+                // Hiện lại ô Average Rating
+                averageRatingContainer.style.display = 'block';
+
+                // Trả lại kích thước ban đầu cho ô Price
+                priceContainer.className = 'col-md-6 mb-3 mb-md-0';
+
+                // Thay đổi nút Update thành Edit
+                editButton.innerHTML = '<i class="bi bi-pencil-square"></i> EDIT';
+                editButton.style.backgroundColor = '#17A2B8';
+
+                // Đổi tiêu đề từ Edit Product sang View Product
+                pageTitle.textContent = 'View Product';
+
+                isEditMode = false;
+            }
+        });
+    });
+</script>

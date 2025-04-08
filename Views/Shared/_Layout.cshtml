@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link href="../css/site.css" rel="stylesheet" />
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <!-- Header -->
     <header>
         <div class="row">
@@ -37,15 +37,15 @@
                             <span class="dropdown-arrow">▲</span>
                         </button>
                         <div class="dropdown-content">
-                            <a href="#" style="--i: 1">Order</a>
+                            <a asp-controller="Order" asp-action="Index" style="--i: 1">Order</a>
                             <a asp-controller="Product" asp-action="Index" style="--i: 2">Product</a>
-                            <a href="#" style="--i: 3">Category</a>
-                            <a href="#" style="--i: 4">Discount</a>
-                            <a href="#" style="--i: 5">Customer</a>
+                            <a asp-controller="Category" asp-action="Index" style="--i: 3">Category</a>
+                            <a asp-controller="Discount" asp-action="Index" style="--i: 4">Discount</a>
+                            <a asp-controller="Customer" asp-action="Index" style="--i: 5">Customer</a>
                             <a href="#" style="--i: 6">Revenue</a>
                         </div>
                     </div>
-                    <a href="#" id="cart-icon" style="position: relative;">
+                    <a asp-controller="Home" asp-action="ShoppingCart" id="cart-icon" style="position: relative;">
                         <i class="bi bi-cart"></i> Cart
                         <span id="cart-count" class="badge rounded-pill bg-danger" style="position: absolute; top: -5px; right: -5px; font-size: 10px;">0</span>
                     </a>
@@ -92,7 +92,7 @@
     </header>
 
 
-    <div class="mb-lg-5">
+    <div class="mb-lg-5 flex-grow-1">
         <main role="main">
             @RenderBody()
         </main>

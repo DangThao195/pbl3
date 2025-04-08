@@ -1,0 +1,246 @@
+﻿@{
+    ViewData["Title"] = "Order Summary";
+}
+<div class="row my-4">
+    <div class="col-1"></div>
+    <div class="col-10 border p-0" style="border-radius: 20px; overflow: hidden;">
+        <div class=" border-bottom py-3 px-4 d-flex justify-content-between align-items-center" style="background-color: #E6DACE;">
+            <h3 class="fw-bold mb-0 text-white">Order Summary</h3>
+            <a asp-controller="Home" asp-action="ShoppingCart" class="btn btn-outline-danger px-4">
+                <i class="bi bi-arrow-left me-1"></i> BACK TO CART
+            </a>
+        </div>
+        <div class="row mx-0 py-4 border-bottom">
+            <div class="col-md-6 px-4">
+                <h4 class="fw-bold mb-4">Shipping Details</h4>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control required-field" id="floatingOrderSummaryName" placeholder="Name" name="" pattern="[A-Za-z\s]+" title="Please enter only letters and spaces">
+                    <label for="floatingOrderSummaryName">Name</label>
+                    <div class="invalid-feedback">Please enter a valid name (letters only)</div>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control required-field" id="floatingOrderSummaryPhone" placeholder="Phone" name="" pattern="[0-9]{10}" title="Please enter exactly 10 digits">
+                    <label for="floatingOrderSummaryPhone">Phone</label>
+                    <div class="invalid-feedback">Please enter a valid phone number (10 digits)</div>
+                </div>
+                <div class="form-floating mb-1">
+                    <textarea class="form-control required-field" id="floatingOrderSummaryAddress" placeholder="Address" name="" style="resize: none; outline: none; box-shadow: none;height: 120px"></textarea>
+                    <label for="floatingOrderSummaryAddress">Address</label>
+                    <div class="invalid-feedback">Please enter a valid address (no special characters)</div>
+                </div>
+            </div>
+            <div class="col-md-6 px-4">
+                <h4 class="fw-bold mb-4">Order Summary</h4>
+                <ul class="list-group list-group-flush" style="border-radius: 10px; overflow: hidden;">
+                    @for (int i = 0; i < 5; i++)
+                    {
+                        <li class="list-group-item py-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="fw-medium mb-1">Fresh Ruby Tomatoes</p>
+                                    <p class="text-muted mb-0">Quantity: 1</p>
+                                </div>
+                                <p class="text-success fw-bold fs-5 mb-0">2.00$</p>
+                            </div>
+                        </li>
+                    }
+                    <li class="list-group-item p-0">
+                        <button class="btn w-100 py-2 fw-medium rounded-0" style="background-color: #FF9500; color: white;">
+                            <i class="bi bi-ticket-perforated-fill me-2"></i> Use Discount
+                        </button>
+                    </li>
+                    <li class="list-group-item p-0">
+                        <div class="d-flex justify-content-between align-items-center px-3 py-1" style="background-color: #80B500; font-size: 24px">
+                            <span class="text-white fw-bold">Total:</span>
+                            <span class="text-white fw-bold">10.00$</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="px-4 py-3 d-flex justify-content-between align-items-center">
+            <p class="mb-0">
+                <i class="bi bi-calendar-event me-2"></i>
+                Estimate Arrival Date: 12/3/2025 - 31/3/2025
+            </p>
+            <a href="#" id="placeOrderBtn" class="btn fw-bold px-4 py-2 disabled" style="background-color: #E86D1F; color: white; opacity: 0.6;">
+                PLACE ORDER <i class="bi bi-arrow-right ms-2"></i>
+            </a>
+        </div>
+    </div>
+    <div class="col-1"></div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get all required fields and the place order button
+        const nameField = document.getElementById('floatingOrderSummaryName');
+        const phoneField = document.getElementById('floatingOrderSummaryPhone');
+        const addressField = document.getElementById('floatingOrderSummaryAddress');
+        const placeOrderBtn = document.getElementById('placeOrderBtn');
+
+        // Track if fields have been touched (interacted with)
+        let nameFieldTouched = false;
+        let phoneFieldTouched = false;
+        let addressFieldTouched = false;
+
+        // Function to validate the fields
+        function validateFields() {
+            // Only validate fields that have been touched
+            if (nameFieldTouched) {
+                validateName();
+            }
+
+            if (phoneFieldTouched) {
+                validatePhone();
+            }
+
+            if (addressFieldTouched) {
+                validateAddress();
+            }
+
+            // Check if all fields are valid to enable the button
+            updateButtonState();
+        }
+
+        // Validate name - letters and spaces only
+        function validateName() {
+            const namePattern = /^[A-Za-z\s]+$/;
+            const nameValue = nameField.value.trim();
+
+            if (nameValue === '') {
+                nameField.classList.add('is-invalid');
+                nameField.nextElementSibling.nextElementSibling.textContent = 'Name is required';
+                return false;
+            } else if (!namePattern.test(nameValue)) {
+                nameField.classList.add('is-invalid');
+                nameField.nextElementSibling.nextElementSibling.textContent = 'Please enter only letters and spaces';
+                return false;
+            } else {
+                nameField.classList.remove('is-invalid');
+                return true;
+            }
+        }
+
+        // Validate phone - exactly 10 digits
+        function validatePhone() {
+            const phonePattern = /^[0-9]{10}$/;
+            const phoneValue = phoneField.value.trim();
+
+            if (phoneValue === '') {
+                phoneField.classList.add('is-invalid');
+                phoneField.nextElementSibling.nextElementSibling.textContent = 'Phone number is required';
+                return false;
+            } else if (!phonePattern.test(phoneValue)) {
+                phoneField.classList.add('is-invalid');
+                phoneField.nextElementSibling.nextElementSibling.textContent = 'Please enter exactly 10 digits';
+                return false;
+            } else {
+                phoneField.classList.remove('is-invalid');
+                return true;
+            }
+        }
+
+        // Validate address - no special characters
+        function validateAddress() {
+            const addressPattern = /^[A-Za-z0-9\s,./-]+$/;
+            const addressValue = addressField.value.trim();
+
+            if (addressValue === '') {
+                addressField.classList.add('is-invalid');
+                addressField.nextElementSibling.nextElementSibling.textContent = 'Address is required';
+                return false;
+            } else if (!addressPattern.test(addressValue)) {
+                addressField.classList.add('is-invalid');
+                addressField.nextElementSibling.nextElementSibling.textContent = 'Please avoid special characters';
+                return false;
+            } else {
+                addressField.classList.remove('is-invalid');
+                return true;
+            }
+        }
+
+        // Update button state based on validation
+        function updateButtonState() {
+            // Only enable if all fields have been touched and are valid
+            if (nameFieldTouched && phoneFieldTouched && addressFieldTouched) {
+                const nameValid = validateName();
+                const phoneValid = validatePhone();
+                const addressValid = validateAddress();
+
+                if (nameValid && phoneValid && addressValid) {
+                    placeOrderBtn.classList.remove('disabled');
+                    placeOrderBtn.style.opacity = '1';
+                } else {
+                    placeOrderBtn.classList.add('disabled');
+                    placeOrderBtn.style.opacity = '0.6';
+                }
+            }
+        }
+
+        // Add blur (focus out) event listeners to mark fields as touched
+        nameField.addEventListener('blur', function() {
+            nameFieldTouched = true;
+            validateName();
+            updateButtonState();
+        });
+
+        phoneField.addEventListener('blur', function() {
+            phoneFieldTouched = true;
+            validatePhone();
+            updateButtonState();
+        });
+
+        addressField.addEventListener('blur', function() {
+            addressFieldTouched = true;
+            validateAddress();
+            updateButtonState();
+        });
+
+        // Add input event listeners for real-time validation after touch
+        nameField.addEventListener('input', function() {
+            if (nameFieldTouched) {
+                validateName();
+                updateButtonState();
+            }
+        });
+
+        phoneField.addEventListener('input', function() {
+            if (phoneFieldTouched) {
+                validatePhone();
+                updateButtonState();
+            }
+        });
+
+        addressField.addEventListener('input', function() {
+            if (addressFieldTouched) {
+                validateAddress();
+                updateButtonState();
+            }
+        });
+
+        // Add click event for the place order button
+        placeOrderBtn.addEventListener('click', function(event) {
+            // Force validation of all fields when clicking the button
+            nameFieldTouched = true;
+            phoneFieldTouched = true;
+            addressFieldTouched = true;
+
+            validateName();
+            validatePhone();
+            validateAddress();
+            updateButtonState();
+
+            // If the button is disabled, prevent default action
+            if (placeOrderBtn.classList.contains('disabled')) {
+                event.preventDefault();
+                alert("Please fill in all required shipping information correctly before placing your order.");
+            } else {
+                // Process the order
+                console.log("Order placed successfully!");
+                // You can add your order submission logic here
+                alert("Your order has been placed successfully!");
+            }
+        });
+    });
+</script>

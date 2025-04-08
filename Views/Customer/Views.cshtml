@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "Customer View";
+}
+<div class="row my-4">
+    @* Empty column for spacing *@
+    <div class="col-md-1"></div>
+    <div class="col-md-10 p-4" style="background-color: #E8E8E8; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border: 1px solid #C0C0C0;">
+        <p id="pageTitle" class="text-center fw-bold mb-4" style="color: #314401; font-size: 40px;">View Customer</p>
+        <div class="mb-4">
+            <div class="row mb-3">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="floatingName" placeholder="Name" name="CustomerName" disabled>
+                        <label for="floatingName">Name</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <select class="form-select" id="floatingGender" name="Gender" disabled>
+                            <option value="" selected disabled>Select gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <label for="floatingGender">Gender</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <div class="form-floating">
+                        <input type="tel" class="form-control" id="floatingPhone" placeholder="Phone" name="Phone" disabled>
+                        <label for="floatingPhone">Phone</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="date" class="form-control" id="floatingDate" placeholder="Date" name="Date" disabled>
+                        <label for="floatingDate">Date</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <div class="form-floating">
+                        <input type="email" class="form-control" id="floatingEmail" placeholder="Email" name="Email" disabled>
+                        <label for="floatingEmail">Email</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="floatingPoint" placeholder="Point" name="Point" disabled>
+                        <label for="floatingPoint">Point</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <div class="form-floating">
+                        <textarea style="resize: none; outline: none; box-shadow: none; height: 100px;" class="form-control" id="floatingAddress" placeholder="Address" name="Address" disabled></textarea>
+                        <label for="floatingAddress">Address</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex gap-3 mt-4 mb-2 justify-content-center">
+            <a asp-controller="Customer" asp-action="Index" class="btn px-4 py-2 w-25" style="color: white; background-color: #D9534F; border-radius: 5px; min-width: 150px;">
+                <i class="bi bi-arrow-return-left"></i> BACK TO LIST
+            </a>
+        </div>
+    </div>
+    @* Empty column for spacing *@
+    <div class="col-md-1"></div>
+</div>

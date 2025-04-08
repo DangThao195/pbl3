@@ -1,0 +1,275 @@
+﻿@{
+    ViewData["Title"] = "Shopping Cart";
+}
+
+<style>
+    .cart-container {
+        margin: 30px 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .cart-header {
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 25px;
+    }
+
+    .item-count {
+        color: #80B500;
+        font-weight: bold;
+    }
+
+    .cart-item {
+        background-color: #f9f9f9;
+        border-radius: 15px;
+        padding: 15px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+    }
+
+    .cart-item:hover {
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .item-image {
+        max-width: 80px;
+        margin-right: 15px;
+        border-radius: 10px;
+    }
+
+    .item-name {
+        font-weight: 500;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    .item-price {
+        color: #94A84E;
+        font-weight: 500;
+        margin-top: 20px;
+    }
+
+    .quantity-controls {
+        display: flex;
+        align-items: center;
+    }
+
+    .btn-quantity {
+        background-color: white;
+        border: 1px solid #ddd;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .btn-quantity:hover {
+        background-color: #f5f5f5;
+    }
+
+    .btn-quantity.minus {
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+    }
+
+    .btn-quantity.plus {
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    .quantity-value {
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        width: 40px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 500;
+    }
+
+    .btn-remove {
+        color: #dc3545;
+        cursor: pointer;
+        font-size: 20px;
+        transition: all 0.2s;
+    }
+
+    .btn-remove:hover {
+        color: #c82333;
+    }
+
+    .total-section {
+        padding: 10px 0;
+        margin-top: 10px;
+    }
+
+    .total-text {
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .total-amount {
+        font-size: 28px;
+        font-weight: bold;
+        color: #80B500;
+    }
+
+    .btn-action {
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-weight: 500;
+        text-align: center;
+        margin: 10px 5px;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        display: block;
+    }
+
+    .btn-checkout {
+        background-color: #80B500;
+        color: white;
+    }
+
+    .btn-checkout:hover {
+        background-color: #729f00;
+        color: white;
+    }
+
+    .btn-continue {
+        background-color: #E86D1F;
+        color: white;
+    }
+
+    .btn-continue:hover {
+        background-color: #d15e15;
+        color: white;
+    }
+</style>
+
+<div class="row mt-5">
+    <div class="col-3">
+        <!-- Left sidebar space -->
+    </div>
+    <div class="col-6">
+        <div class="cart-header">
+            You have <span class="item-count">5</span> items in your cart
+        </div>
+
+        @for (int i = 0; i < 5; i++)
+        {
+            <div class="cart-item">
+                <div class="row align-items-center">
+                    <div class="col-md-6 d-flex">
+                        <img src="~/img/—Pngtree—red fresh tomato with green_8933861.png" class="item-image" alt="Tomato" />
+                        <div class="item-name">Fresh Ruby Tomatoes</div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="item-price"><span class="CostItem" style="font-size: 20px;">2.00</span>$ / 1 Kg</div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="quantity-controls">
+                            <div class="btn-quantity minus" onclick="decreaseQuantity(this)">
+                                <i class="bi bi-dash"></i>
+                            </div>
+                            <div class="quantity-value Count">1</div>
+                            <div class="btn-quantity plus" onclick="increaseQuantity(this)">
+                                <i class="bi bi-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1 text-end">
+                        <div class="btn-remove" onclick="removeItem(this)">
+                            <i class="bi bi-trash"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <hr class="mt-4 mb-4" style="border-top: 1px solid #ddd; opacity: 0.7;" />
+
+        <div class="total-section">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <div class="d-flex justify-content-between mb-4">
+                        <span class="total-text">Total</span>
+                        <span class="total-amount"><span id="TotalCost">10.00</span>$</span>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <a asp-controller="Home" asp-action="OrderSummary" class="btn-action btn-checkout">Summary</a>
+                        </div>
+                        <div class="col-6">
+                            <a asp-controller="Home" asp-action="Index" class="btn-action btn-continue">Continue Shopping</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+        <!-- Right sidebar space -->
+    </div>
+</div>
+
+<script>
+    // Calculate total cost when the page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        calculateTotal();
+    });
+
+    // Increase quantity
+    function increaseQuantity(button) {
+        const quantityDiv = button.previousElementSibling;
+        let quantity = parseInt(quantityDiv.textContent);
+        quantityDiv.textContent = quantity + 1;
+        calculateTotal();
+    }
+
+    // Decrease quantity
+    function decreaseQuantity(button) {
+        const quantityDiv = button.nextElementSibling;
+        let quantity = parseInt(quantityDiv.textContent);
+        if (quantity > 1) {
+            quantityDiv.textContent = quantity - 1;
+            calculateTotal();
+        }
+    }
+
+    // Remove item from cart
+    function removeItem(button) {
+        const cartItem = button.closest('.cart-item');
+        cartItem.style.opacity = '0';
+        setTimeout(() => {
+            cartItem.remove();
+            updateItemCount();
+            calculateTotal();
+        }, 300);
+    }
+
+    // Update item count in header
+    function updateItemCount() {
+        const itemCount = document.querySelectorAll('.cart-item').length;
+        document.querySelector('.item-count').textContent = itemCount;
+    }
+
+    // Calculate total cost
+    function calculateTotal() {
+        let total = 0;
+        const cartItems = document.querySelectorAll('.cart-item');
+
+        cartItems.forEach(item => {
+            const price = parseFloat(item.querySelector('.CostItem').textContent);
+            const quantity = parseInt(item.querySelector('.Count').textContent);
+            total += price * quantity;
+        });
+
+        document.getElementById('TotalCost').textContent = total.toFixed(2);
+    }
+</script>

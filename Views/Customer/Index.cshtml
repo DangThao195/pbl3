@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Product Manage";
+    ViewData["Title"] = "User Manage";
 }
 <div class="row my-5">
 
@@ -8,19 +8,14 @@
 
     <div class="col-10">
         <div class="row d-flex align-items-center">
-            <div class="col-3">
-                <div style="background-color: #9370DB; color: white; border-radius: 20px; padding: 10px 20px; font-weight: bold; display: inline-block; font-size: 14px">
-                    <a asp-controller="Product" asp-action="Create" style="color: inherit; text-decoration: none;">
-                        <i class="bi bi-plus-circle"></i> CREATE NEW PRODUCT
-                    </a>
-                </div>
-            </div>
+            @* Empty *@
+            <div class="col-3"> </div>
 
             @* Empty *@
             <div class="col-1"></div>
 
             <div class="col-4 text-center" style="color: #314401; font-weight: bold; font-size: 34px; letter-spacing: 1px;">
-                Product List
+                Customer List
             </div>
 
             @* Empty *@
@@ -43,38 +38,27 @@
             <table style="width: 100%; border-collapse: collapse;">
                 <thead>
                     <tr style="background-color: #B08968; color: #F8E1C4;">
-                        <th style="padding: 12px; text-align: left; border: 1px solid #C1A78E;">ID</th>
-                        <th style="padding: 12px; text-align: left; border: 1px solid #C1A78E;">Name</th>
-                        <th style="padding: 12px; text-align: center; border: 1px solid #C1A78E;">Stock</th>
-                        <th style="padding: 12px; text-align: center; border: 1px solid #C1A78E;">Price</th>
-                        <th style="padding: 12px; text-align: center; border: 1px solid #C1A78E;">Average Star</th>
-                        <th style="padding: 12px; text-align: left; border: 1px solid #C1A78E;">Category</th>
-                        <th style="padding: 12px; text-align: center; border: 1px solid #C1A78E;">Actions</th>
+                        <th style="padding: 12px; text-align: left; border: 1px solid #C1A78E; width: 8%;">ID</th>
+                        <th style="padding: 12px; text-align: left; border: 1px solid #C1A78E; width: 20%;">Name</th>
+                        <th style="padding: 12px; text-align: center; border: 1px solid #C1A78E; width: 12%;">Gender</th>
+                        <th style="padding: 12px; text-align: center; border: 1px solid #C1A78E; width: 20%;">Phone Number</th>
+                        <th style="padding: 12px; text-align: left; border: 1px solid #C1A78E; width: 25%;">Email</th>
+                        <th style="padding: 12px; text-align: center; border: 1px solid #C1A78E; width: 15%;">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @for(int i=0; i<10;i++){
+                    @for (int i = 0; i < 10; i++)
+                    {
                         <tr style="background-color: #EDE0D4; border: 1px solid #C1A78E;">
-                            <td style="padding: 12px; border: 1px solid #C1A78E;">001</td>
-                            <td style="padding: 12px; border: 1px solid #C1A78E;">Premium Coffee</td>
-                            <td style="padding: 12px; text-align: center; border: 1px solid #C1A78E;">120</td>
-                            <td style="padding: 12px; text-align: center; border: 1px solid #C1A78E;">$12.99</td>
-                            <td style="padding: 12px; text-align: center; border: 1px solid #C1A78E;">
-                                <i class="bi bi-star-fill" style="color: gold;"></i>
-                                <i class="bi bi-star-fill" style="color: gold;"></i>
-                                <i class="bi bi-star-fill" style="color: gold;"></i>
-                                <i class="bi bi-star-fill" style="color: gold;"></i>
-                                <i class="bi bi-star-fill" style="color: gold;"></i>
-                            </td>
-                            <td style="padding: 12px; border: 1px solid #C1A78E;">Beverages</td>
-                            <td style="padding: 12px; border: 1px solid #C1A78E;" class="d-flex justify-content-between gap-2">
-                                <a asp-controller="Product" asp-action="Views"
-                                   style="background-color: #5A7D5A; color: white; border-radius: 10px; flex: 1; display: flex; align-items: center; justify-content: center; padding: 8px 0; text-decoration: none;">
+                            <td style="padding: 12px; border: 1px solid #C1A78E;">USR-@(100 + i)</td>
+                            <td style="padding: 12px; border: 1px solid #C1A78E;">John Smith</td>
+                            <td style="padding: 12px; text-align: center; border: 1px solid #C1A78E;">Male</td>
+                            <td style="padding: 12px; text-align: center; border: 1px solid #C1A78E;">(123) 456-7890</td>
+                            <td style="padding: 12px; border: 1px solid #C1A78E;">johnsmith@example.com</td>
+                            <td style="padding: 12px; border: 1px solid #C1A78E; text-align: center;">
+                                <a asp-controller="Customer" asp-action="Views"
+                                   style="background-color: #5A7D5A; color: white; border-radius: 10px; display: inline-block; width: 100px; padding: 8px 0; text-decoration: none; text-align: center;">
                                     <i class="bi bi-eye-fill"></i> View
-                                </a>
-                                <a href="#"
-                                   style="background-color: #C05621; color: white; border-radius: 10px; flex: 1; display: flex; align-items: center; justify-content: center; padding: 8px 0; text-decoration: none;">
-                                    <i class="bi bi-trash-fill"></i> Remove
                                 </a>
                             </td>
                         </tr>

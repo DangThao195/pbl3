@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Create Category";
+}
+<div class="row my-4">
+    @* Empty column for spacing *@
+    <div class="col-md-1"></div>
+    <div class="col-md-10 p-4" style="background-color: #E8E8E8; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border: 1px solid #C0C0C0;">
+        <p class="text-center fw-bold mb-4" style="color: #314401; font-size: 40px;">Create Category</p>
+        <div class="mb-4">
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingName" placeholder="Name" name="CategoryName" required>
+                        <label for="floatingName">Category Name</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex gap-3 mt-4 mb-2 justify-content-center">
+            <button id="createButton" class="btn px-4 py-2 w-25" style="color: white; background-color: #4F6F3E; border-radius: 5px; min-width: 150px;">
+                <i class="bi bi-plus-circle"></i> CREATE
+            </button>
+            <a asp-controller="Category" asp-action="Index" class="btn px-4 py-2 w-25" style="color: white; background-color: #D9534F; border-radius: 5px; min-width: 150px;">
+                <i class="bi bi-arrow-return-left"></i> BACK TO LIST
+            </a>
+        </div>
+    </div>
+    @* Empty column for spacing *@
+    <div class="col-md-1"></div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const createButton = document.getElementById('createButton');
+
+        createButton.addEventListener('click', function() {
+            const categoryName = document.getElementById('floatingName').value;
+
+            if (categoryName.trim() === '') {
+                alert('Please enter a category name');
+                return;
+            }
+
+            // Ở đây sẽ là code để submit form
+            // Form có thể được submit thông qua JavaScript hoặc HTML form action
+            // Ví dụ: document.getElementById('categoryForm').submit();
+        });
+    });
+</script>

@@ -4,8 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace PBL3_HK4.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
+
+    //[ApiController]
+    //[Route("api/[controller]")]
     public class CustomerController : Controller
     {
         private readonly IUserService _userService;
@@ -27,6 +28,16 @@ namespace PBL3_HK4.Controllers
                 customer.PassWord, customer.Address);
 
             return Ok(new { message = "Đăng ký thành công!"});
+        }
+
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult Views()
+        {
+            return View();
         }
     }
 

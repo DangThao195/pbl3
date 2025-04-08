@@ -36,7 +36,7 @@ namespace PBL3_HK4.Entity
             modelBuilder.Entity<Discount>().ToTable("Discounts");
             modelBuilder.Entity<Review>().ToTable("Reviews");
             modelBuilder.Entity<ShoppingCart>().ToTable("ShoppingCarts");
-
+           
             modelBuilder.Entity<Customer>()
                 .HasOne(c => c.ShoppingCart)
                 .WithOne(sc => sc.Customer)
@@ -75,6 +75,7 @@ namespace PBL3_HK4.Entity
                 .HasOne(p => p.Catalog)
                 .WithMany(c => c.Products)
                 .HasForeignKey(p => p.CatalogID);
+            
         }
     }
 }

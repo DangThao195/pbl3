@@ -267,13 +267,11 @@ namespace PBL3_HK4.Migrations
 
                     b.Property<string>("PassWord")
                         .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Role")
                         .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Sex")
                         .IsRequired()
@@ -308,7 +306,7 @@ namespace PBL3_HK4.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<int>("EarnedPoint")
+                    b.Property<int?>("EarnedPoint")
                         .HasColumnType("int");
 
                     b.ToTable("Customers", (string)null);

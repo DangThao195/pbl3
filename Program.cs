@@ -75,7 +75,7 @@ app.MapControllers();
 //// Cấu hình endpoint routing
 app.MapControllerRoute(
    name: "default",
-   pattern: "{controller=Home}/{action=Index}/{id?}");
+   pattern: "{controller=Account}/{action=SignIn}/{id?}");
 
 //// Thêm các route khác nếu cần
 //app.MapControllerRoute(

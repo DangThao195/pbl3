@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace PBL3_HK4.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialPBL : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -51,8 +51,8 @@ namespace PBL3_HK4.Migrations
                     Sex = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
-                    PassWord = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
-                    Role = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false)
+                    PassWord = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Role = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -106,7 +106,7 @@ namespace PBL3_HK4.Migrations
                 {
                     UserID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    EarnedPoint = table.Column<int>(type: "int", nullable: false)
+                    EarnedPoint = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {

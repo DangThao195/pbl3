@@ -34,8 +34,7 @@ namespace PBL3_HK4.Entity
         public string UserName { get; set; }
 
         [Required]
-        [StringLength(40)]
         public string PassWord { get; set; }
-        public string Role { get; set; }
+        public string Role { get; set; } = "Customer";
     }
 }

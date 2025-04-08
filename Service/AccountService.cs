@@ -74,39 +74,59 @@ namespace PBL3_HK4.Service
                 _httpContextAccessor.HttpContext.Session.Clear();
             }
         }
-        
+
 
         public async Task RegisterAsync(string name, string email, string sex, DateTime dateofbirth, string username,
-            string password, string address)
+string password, string address)
         {
-            var existingUser = await _context.Customers.FirstOrDefaultAsync(u => u.UserName == username);
+            // Kiểm tra username tồn tại
+            var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.UserName == username);
             if (existingUser != null)
             {
                 throw new InvalidOperationException($"User with username {username} already exists.");
             }
-            var userid = Guid.NewGuid();
-            var cartid = Guid.NewGuid();
-            Customer newcustomer = new Customer
+
+            using var transaction = await _context.Database.BeginTransactionAsync();
+
+            try
             {
-                UserID = userid,
-                Name = name,
-                Email = email,
-                Sex = sex,
-                DateOfBirth = dateofbirth,
-                Address = address,
-                UserName = username,
-                PassWord = _passwordHasher.HashPassword(password),
-                EarnedPoint = 0,
-                Role = "Customer"
-            };
-            ShoppingCart shoppingCart = new ShoppingCart
+                var userId = Guid.NewGuid();
+
+                // Nếu bạn đang sử dụng TPT, chỉ cần thêm Customer (lớp con)
+                // EF sẽ tự động xử lý phần User (lớp cha)
+                var customer = new Customer
+                {
+                    UserID = userId,
+                    Name = name,
+                    Email = email,
+                    Sex = sex,
+                    DateOfBirth = dateofbirth,
+                    UserName = username,
+                    PassWord = _passwordHasher.HashPassword(password),
+                    Address = address,
+                    EarnedPoint = 0,
+                    Role = "Customer"
+                };
+
+                // Thêm CUSTOMER vào context, KHÔNG thêm User riêng
+                await _customerService.AddUserAsync(customer);
+
+                // Tạo ShoppingCart
+                var shoppingCart = new ShoppingCart
+                {
+                    CartID = Guid.NewGuid(),
+                    UserID = userId
+                };
+
+                await _shoppingCartService.AddShoppingCartAsync(shoppingCart);
+
+                await transaction.CommitAsync();
+            }
+            catch (Exception ex)
             {
-                CartID = cartid,
-                UserID = newcustomer.UserID
-            };
-            newcustomer.ShoppingCart = shoppingCart;
-            await _customerService.AddUserAsync(newcustomer);
-            await _shoppingCartService.AddShoppingCartAsync(shoppingCart);
+                await transaction.RollbackAsync();
+                throw new Exception("Registration failed. Please try again.", ex);
+            }
         }
     }
 }

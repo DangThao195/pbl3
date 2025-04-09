@@ -61,5 +61,59 @@ namespace PBL3_HK4.Service
             }
             return admin;
         }
+
+        public async Task<(double TotalRevenue, int TotalBill)> RevenueByDateAsync(DateTime date)
+        {
+            var listBill = await _context.Bills.Where(b => b.Date == date).ToListAsync();
+            if (listBill == null || listBill.Count == 0)
+            {
+                throw new KeyNotFoundException($"Bill with date {date} not found.");
+            }
+           
+            double TotalRevenue = 0;
+            int TotalBill = 0;
+            foreach ( var bill in listBill)
+            {
+                TotalRevenue+= bill.TotalPrice;
+                TotalBill++;
+            }    
+            return (TotalRevenue, TotalBill);         
+        }
+        public async Task<(double TotalRevenue, int TotalBill)> RevenueByMonthAsync(int month, int year)
+        {
+            var listBill = await _context.Bills.Where(b => b.Date.Month == month && b.Date.Year == year).ToListAsync();
+            if (listBill == null || listBill.Count == 0)
+            {
+                throw new KeyNotFoundException($"Bill with month {month} and year {year} not found.");
+            }
+
+            double TotalRevenue = 0;
+            int TotalBill = 0;
+            foreach (var bill in listBill)
+            {
+                TotalRevenue += bill.TotalPrice;
+                TotalBill++;
+            }
+            return(TotalRevenue, TotalBill);        
+        }
+
+        public async Task<(double TotalRevenue, int TotalBill)> RevenueByYearAsync(int year)
+        {
+            var listBill = await _context.Bills.Where(b => b.Date.Year == year).ToListAsync();
+            if (listBill == null || listBill.Count == 0)
+            {
+                throw new KeyNotFoundException($"Bill with year {year} not found.");
+            }
+
+            double TotalRevenue = 0;
+            int TotalBill = 0;
+            foreach (var bill in listBill)
+            {
+                TotalRevenue += bill.TotalPrice;
+                TotalBill++;
+            }
+            return (TotalRevenue, TotalBill);
+        }
+
     }
 }

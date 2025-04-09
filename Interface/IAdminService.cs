@@ -14,5 +14,10 @@ namespace PBL3_HK4.Interface
         public Task UpdateAdminAsync(Admin admin);
         public Task<Admin> GetAdminByIdAsync(Guid adminId);
         public Task<Admin> GetAdminByUserNameAsync(string name);
+
+        public Task<(double TotalRevenue, int TotalBill)> RevenueByDateAsync(DateTime date);
+        public Task<(double TotalRevenue, int TotalBill)> RevenueByMonthAsync(int month, int year);
+
+        public Task<(double TotalRevenue, int TotalBill)> RevenueByYearAsync(int year);
     }
 }

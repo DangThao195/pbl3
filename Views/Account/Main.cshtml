@@ -1,0 +1,218 @@
+﻿@{
+    ViewData["Title"] = "Main";
+    Layout = null;
+
+    // Định nghĩa CSS keyframes trong một biến
+    var cssKeyframes = @"
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(20deg); }
+            75% { transform: rotate(-10deg); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+    ";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome - Organic Grocery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .welcome-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .tomato-character {
+            width: 300px;
+            height: 450px;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .speech-bubble {
+            position: relative;
+            background: #3cb371;
+            border-radius: 20px;
+            padding: 20px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            max-width: 400px;
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+
+            .speech-bubble:after {
+                content: '';
+                position: absolute;
+                bottom: -15px;
+                left: 50%;
+                width: 0;
+                height: 0;
+                border: 15px solid transparent;
+                border-top-color: #3cb371;
+                border-bottom: 0;
+                margin-left: -15px;
+            }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .btn-custom {
+            padding: 12px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn-signin {
+            background-color: #e67e22;
+            border-color: #e67e22;
+            color: white;
+        }
+
+        .btn-signup {
+            background-color: #27ae60;
+            border-color: #27ae60;
+            color: white;
+        }
+
+        .btn-signin:hover, .btn-signin:focus {
+            background-color: #d35400;
+            border-color: #d35400;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+
+        .btn-signup:hover, .btn-signup:focus {
+            background-color: #219653;
+            border-color: #219653;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+
+        .waving {
+            animation: wave 2s ease-in-out infinite;
+            transform-origin: bottom center;
+        }
+
+        .bounce {
+            animation: bounce 3s ease-in-out infinite;
+        }
+
+        /* Nhúng keyframes thông qua Html.Raw */
+        @Html.Raw(cssKeyframes)
+    </style>
+</head>
+
+<body>
+    <div class="welcome-container">
+        <!-- Speech bubble -->
+        <div class="speech-bubble">
+            Welcome To Organic Grocery Shop!
+        </div>
+
+        <!-- Tomato Character -->
+        <div class="tomato-character bounce">
+            <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+                <!-- Legs -->
+                <path d="M120 310 L110 380 L130 380 L140 310" fill="#3a5c38" />
+                <path d="M180 310 L170 380 L190 380 L200 310" fill="#3a5c38" />
+
+                <!-- Shoes -->
+                <ellipse cx="120" cy="385" rx="15" ry="8" fill="#654321" />
+                <ellipse cx="180" cy="385" rx="15" ry="8" fill="#654321" />
+
+                <!-- Tomato Body -->
+                <ellipse cx="150" cy="220" rx="90" ry="100" fill="#e74c3c" />
+
+                <!-- Highlights on Tomato -->
+                <ellipse cx="180" cy="180" rx="25" ry="20" fill="#f39c12" fill-opacity="0.5" />
+
+                <!-- Green Top -->
+                <path d="M150 120 L120 140 L110 120 L100 130 L110 150 L130 140 L150 150 L170 140 L190 150 L200 130 L190 120 L180 140 Z" fill="#27ae60" />
+
+                <!-- Face -->
+                <!-- Eyes -->
+                <circle cx="120" cy="200" r="10" fill="white" />
+                <circle cx="180" cy="200" r="10" fill="white" />
+                <circle cx="120" cy="200" r="5" fill="#2c3e50" />
+                <circle cx="180" cy="200" r="5" fill="#2c3e50" />
+                <ellipse cx="122" cy="197" rx="2" ry="2" fill="white" />
+                <ellipse cx="182" cy="197" rx="2" ry="2" fill="white" />
+
+                <!-- Smile -->
+                <path d="M120 240 Q150 270 180 240" fill="none" stroke="#2c3e50" stroke-width="3" stroke-linecap="round" />
+
+                <!-- Cheeks -->
+                <circle cx="105" cy="230" r="10" fill="#e74c3c" fill-opacity="0.3" />
+                <circle cx="195" cy="230" r="10" fill="#e74c3c" fill-opacity="0.3" />
+
+                <!-- Arms -->
+                <!-- Left arm with waving animation -->
+                <g class="waving">
+                    <path d="M80 200 Q50 220 40 180" fill="none" stroke="#3a5c38" stroke-width="8" stroke-linecap="round" />
+                    <circle cx="40" cy="180" r="10" fill="#3a5c38" />
+                    <!-- Fingers -->
+                    <path d="M35 175 L25 170" stroke="#3a5c38" stroke-width="3" stroke-linecap="round" />
+                    <path d="M38 172 L30 160" stroke="#3a5c38" stroke-width="3" stroke-linecap="round" />
+                    <path d="M42 170 L40 155" stroke="#3a5c38" stroke-width="3" stroke-linecap="round" />
+                    <path d="M45 175 L50 165" stroke="#3a5c38" stroke-width="3" stroke-linecap="round" />
+                </g>
+
+                <!-- Right arm -->
+                <path d="M220 200 Q250 230 260 210" fill="none" stroke="#3a5c38" stroke-width="8" stroke-linecap="round" />
+                <circle cx="260" cy="210" r="10" fill="#3a5c38" />
+                <!-- Fingers -->
+                <path d="M265 215 L275 220" stroke="#3a5c38" stroke-width="3" stroke-linecap="round" />
+                <path d="M262 218 L270 230" stroke="#3a5c38" stroke-width="3" stroke-linecap="round" />
+                <path d="M258 220 L260 235" stroke="#3a5c38" stroke-width="3" stroke-linecap="round" />
+                <path d="M255 215 L250 225" stroke="#3a5c38" stroke-width="3" stroke-linecap="round" />
+            </svg>
+        </div>
+
+        <!-- Login/Register buttons -->
+        <div class="buttons">
+            <a asp-controller="Account" asp-action="SignIn" class="btn btn-custom btn-signin">
+                <i class="bi bi-box-arrow-in-right me-2"></i>Sign In
+            </a>
+            <a asp-controller="Account" asp-action="SignUp" class="btn btn-custom btn-signup">
+                <i class="bi bi-person-plus me-2"></i>Sign Up
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

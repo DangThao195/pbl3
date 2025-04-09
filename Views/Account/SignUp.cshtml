@@ -26,6 +26,29 @@
         .form-check-input {
             margin-top: 0;
         }
+
+        .btn-signup {
+            background-color: #212529;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+            .btn-signup:hover {
+                background-color: #343a40;
+                color: white;
+            }
+
+            .btn-signup:disabled {
+                background-color: #6c757d;
+                cursor: not-allowed;
+                opacity: 0.65;
+            }
+
+        /* Hiệu ứng focus cho ô input hiện tại */
+        .form-control:focus, .form-check-input:focus {
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+            border-color: #86b7fe;
+        }
     </style>
 </head>
 
@@ -41,7 +64,7 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingName" placeholder="Full Name"
+                                <input type="text" class="form-control form-field" id="floatingName" placeholder="Full Name" tabindex="1"
                                        name="Name" pattern="^[a-zA-ZÀ-ỹ][a-zA-ZÀ-ỹ0-9\s]*$" required>
                                 <label for="floatingName"><i class="bi bi-person-badge-fill"></i> Full Name</label>
                                 <div class="invalid-feedback">Vui lòng nhập tên hợp lệ (không chứa số hoặc ký tự đặc biệt)</div>
@@ -49,8 +72,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="email" class="form-control" id="floatingEmail" placeholder="Email"
-                                       name="Email" 
+                                <input type="email" class="form-control form-field" id="floatingEmail" placeholder="Email" tabindex="2"
+                                       name="Email"
                                        pattern="[a-zA-Z0-9._%+-]+\@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                                        required>
                                 <label for="floatingEmail"><i class="bi bi-envelope-fill"></i> Email</label>
@@ -63,7 +86,7 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="tel" class="form-control" id="floatingPhone" placeholder="Phone Number"
+                                <input type="tel" class="form-control form-field" id="floatingPhone" placeholder="Phone Number" tabindex="3"
                                        name="Phone" pattern="[0-9]{10}" required>
                                 <label for="floatingPhone"><i class="bi bi-telephone-fill"></i> Phone Number</label>
                                 <div class="invalid-feedback">Số điện thoại phải có đúng 10 chữ số</div>
@@ -71,7 +94,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="date" class="form-control" id="floatingDate" placeholder="Date of Birth" name="DateOfBirth" required>
+                                <input type="date" class="form-control form-field" id="floatingDate" placeholder="Date of Birth" name="DateOfBirth" tabindex="4" required>
                                 <label for="floatingDate"><i class="bi bi-calendar-fill"></i> Date of Birth</label>
                                 <div class="invalid-feedback">Vui lòng chọn ngày sinh</div>
                             </div>
@@ -83,15 +106,15 @@
                         <label class="form-label"><i class="bi bi-gender-ambiguous"></i> Gender</label>
                         <div class="gender-options">
                             <div class="form-check gender-option">
-                                <input class="form-check-input" type="radio" name="Sex" id="male" value="Male" checked required>
+                                <input class="form-check-input form-field" type="radio" name="Sex" id="male" value="Male" tabindex="5" checked required>
                                 <label class="form-check-label" for="male">Male</label>
                             </div>
                             <div class="form-check gender-option">
-                                <input class="form-check-input" type="radio" name="Sex" id="female" value="Female" required>
+                                <input class="form-check-input form-field" type="radio" name="Sex" id="female" value="Female" tabindex="6" required>
                                 <label class="form-check-label" for="female">Female</label>
                             </div>
                             <div class="form-check gender-option">
-                                <input class="form-check-input" type="radio" name="Sex" id="other" value="Other" required>
+                                <input class="form-check-input form-field" type="radio" name="Sex" id="other" value="Other" tabindex="7" required>
                                 <label class="form-check-label" for="other">Other</label>
                             </div>
                         </div>
@@ -99,7 +122,7 @@
 
                     <!-- Address -->
                     <div class="form-floating mb-3">
-                        <textarea class="form-control" id="floatingAddress" placeholder="Address" style="height: 100px" name="Address" required></textarea>
+                        <textarea class="form-control form-field" id="floatingAddress" placeholder="Address" style="height: 100px" name="Address" tabindex="8" required></textarea>
                         <label for="floatingAddress"><i class="bi bi-house-fill"></i> Address</label>
                         <div class="invalid-feedback">Vui lòng nhập địa chỉ</div>
                     </div>
@@ -108,7 +131,7 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingUsername" placeholder="User Name"
+                                <input type="text" class="form-control form-field" id="floatingUsername" placeholder="User Name" tabindex="9"
                                        name="UserName" pattern="^[a-zA-ZÀ-ỹ][a-zA-ZÀ-ỹ0-9\s]*$" required>
                                 <label for="floatingUsername"><i class="bi bi-person-fill"></i> User Name</label>
                                 <div class="invalid-feedback">Tên đăng nhập phải bắt đầu bằng chữ cái và chỉ chứa chữ cái và số</div>
@@ -116,9 +139,10 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating position-relative">
-                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
+                                <input type="password" class="form-control form-field" id="floatingPassword" placeholder="Password" tabindex="10"
                                        name="PassWord" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$" required>
                                 <label for="floatingPassword"><i class="bi bi-lock-fill"></i> Password</label>
+                                <i class="bi bi-eye-fill position-absolute end-0 top-50 translate-middle-y me-3" id="togglePassword" style="cursor: pointer;"></i>
                                 <div class="invalid-feedback">
                                     Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường, số và ký tự đặc biệt
                                 </div>
@@ -128,21 +152,22 @@
 
                     <!-- Confirm Password -->
                     <div class="form-floating mb-3 position-relative">
-                        <input type="password" class="form-control" id="floatingConfirmPassword"
+                        <input type="password" class="form-control form-field" id="floatingConfirmPassword" tabindex="11"
                                placeholder="Confirm Password" name="ConfirmPassword" required>
                         <label for="floatingConfirmPassword"><i class="bi bi-lock-fill"></i> Confirm Password</label>
+                        <i class="bi bi-eye-fill position-absolute end-0 top-50 translate-middle-y me-3" id="toggleConfirmPassword" style="cursor: pointer;"></i>
                         <div class="invalid-feedback">Mật khẩu xác nhận không khớp</div>
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="agreeTerms" name="AgreeToTerms" required>
+                            <input class="form-check-input form-field" type="checkbox" id="agreeTerms" name="AgreeToTerms" tabindex="12" required>
                             <label class="form-check-label" for="agreeTerms">I agree to the <a href="#" class="text-primary">Terms & Conditions</a></label>
                             <div class="invalid-feedback">You must agree to the terms</div>
                         </div>
                     </div>
 
-                    <button id="signUpBtn" type="submit" class="btn btn-dark w-100 mb-3 py-2" disabled>SIGN UP</button>
+                    <button id="signUpBtn" type="submit" class="btn btn-signup w-100 mb-3 py-2" tabindex="13" disabled>SIGN UP</button>
                 </form>
 
                 <div class="d-flex align-items-center my-3">
@@ -183,9 +208,79 @@
             const password = document.getElementById('floatingPassword');
             const confirmPassword = document.getElementById('floatingConfirmPassword');
             const agreeTerms = document.getElementById('agreeTerms');
+            const togglePassword = document.getElementById('togglePassword');
+            const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+
+            // Lấy tất cả các trường input theo thứ tự tab
+            const formFields = Array.from(form.querySelectorAll('.form-field')).sort((a, b) => {
+                return parseInt(a.getAttribute('tabindex') || '0') - parseInt(b.getAttribute('tabindex') || '0');
+            });
+
+            // Đặt focus vào trường đầu tiên khi trang tải
+            formFields[0].focus();
+
+            // Thiết lập toggle hiện/ẩn mật khẩu
+            togglePassword.addEventListener('click', function() {
+                togglePasswordVisibility(password, this);
+            });
+
+            toggleConfirmPassword.addEventListener('click', function() {
+                togglePasswordVisibility(confirmPassword, this);
+            });
+
+            function togglePasswordVisibility(inputField, icon) {
+                if (inputField.type === 'password') {
+                    inputField.type = 'text';
+                    icon.classList.replace('bi-eye-fill', 'bi-eye-slash-fill');
+                } else {
+                    inputField.type = 'password';
+                    icon.classList.replace('bi-eye-slash-fill', 'bi-eye-fill');
+                }
+            }
 
             // Lấy tất cả các trường required (bao gồm cả textarea)
             const requiredFields = form.querySelectorAll('[required]');
+
+            // Thêm xử lý Enter key cho tất cả trường input
+            formFields.forEach((field, index) => {
+                field.addEventListener('keydown', function(event) {
+                    if (event.key === 'Enter') {
+                        event.preventDefault();
+
+                        // Nếu là checkbox và đang nhấn Enter
+                        if (field.type === 'checkbox') {
+                            // Nếu checkbox chưa được chọn, hãy chọn nó
+                            if (!field.checked) {
+                                field.checked = true;
+                                validateField(field);
+                                validateForm();
+                                return;
+                            }
+                            // Nếu checkbox đã được chọn và form hợp lệ, submit form
+                            else if (!signUpBtn.disabled) {
+                                form.submit();
+                                return;
+                            }
+                            // Nếu checkbox đã được chọn nhưng form không hợp lệ, chuyển đến nút submit
+                            else {
+                                signUpBtn.focus();
+                                return;
+                            }
+                        }
+
+                        // Nếu là trường cuối cùng và form hợp lệ, thì submit form
+                        if (index === formFields.length - 1) {
+                            if (!signUpBtn.disabled) {
+                                form.submit();
+                            }
+                            return;
+                        }
+
+                        // Di chuyển đến trường tiếp theo
+                        formFields[index + 1].focus();
+                    }
+                });
+            });
 
             // Kiểm tra real-time
             requiredFields.forEach(field => {
@@ -289,7 +384,13 @@
                 }
 
                 // Bật/tắt nút Sign Up
-                signUpBtn.disabled = !allValid;
+                if (allValid) {
+                    signUpBtn.disabled = false;
+                    signUpBtn.classList.remove('disabled');
+                } else {
+                    signUpBtn.disabled = true;
+                    signUpBtn.classList.add('disabled');
+                }
             }
 
             // Khởi tạo validation ban đầu

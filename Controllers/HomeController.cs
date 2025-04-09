@@ -19,6 +19,14 @@ namespace PBL3_HK4.Controllers
             return View();
         }
 
-        
+        public IActionResult AboutUs()
+        {
+            return View();
+        }
+
+        public IActionResult Support()
+        {
+            return View();
+        }
     }
 }

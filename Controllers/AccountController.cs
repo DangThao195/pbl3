@@ -23,7 +23,10 @@ namespace PBL3_HK4.Controllers
             _adminService = adminService;
         }
 
-
+        public IActionResult Main()
+        {
+            return View();
+        }
 
         public IActionResult SignUp()
         {
@@ -136,5 +139,6 @@ namespace PBL3_HK4.Controllers
             }
         }
 
+        
     }
 }

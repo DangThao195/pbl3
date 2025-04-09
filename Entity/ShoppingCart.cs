@@ -13,7 +13,6 @@ namespace PBL3_HK4.Entity
         [Key]
         public Guid CartID { get; set; }
 
-        [Required]
         [ForeignKey("Customer")]
         public Guid? UserID { get; set; }
         public virtual Customer? Customer { get; set; }

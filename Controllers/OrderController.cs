@@ -8,5 +8,10 @@ namespace PBL3_HK4.Controllers
         {
             return View();
         }
+
+        public IActionResult Details()
+        {
+            return View();
+        }
     }
 }

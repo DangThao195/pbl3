@@ -29,7 +29,6 @@ namespace PBL3_HK4.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
@@ -87,13 +86,13 @@ namespace PBL3_HK4.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CartID")
+                    b.Property<Guid?>("CartID")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<Guid>("ProductID")
+                    b.Property<Guid?>("ProductID")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Quantity")
@@ -115,7 +114,6 @@ namespace PBL3_HK4.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CatalogName")
-                        .IsRequired()
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
@@ -131,21 +129,19 @@ namespace PBL3_HK4.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ApplicableProduct")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Describe")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<double>("DiscountRate")
+                    b.Property<double?>("DiscountRate")
                         .HasColumnType("float");
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -184,7 +180,6 @@ namespace PBL3_HK4.Migrations
                         .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("ProductName")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -235,13 +230,14 @@ namespace PBL3_HK4.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("UserID")
+                    b.Property<Guid?>("UserID")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("CartID");
 
                     b.HasIndex("UserID")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[UserID] IS NOT NULL");
 
                     b.ToTable("ShoppingCarts", (string)null);
                 });
@@ -255,31 +251,34 @@ namespace PBL3_HK4.Migrations
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Email")
+                    b.Property<string>("Discriminator")
                         .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)");
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("PassWord")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Phone")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Role")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Sex")
-                        .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("UserName")
-                        .IsRequired()
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
@@ -287,14 +286,9 @@ namespace PBL3_HK4.Migrations
 
                     b.ToTable("Users", (string)null);
 
-                    b.UseTptMappingStrategy();
-                });
+                    b.HasDiscriminator().HasValue("User");
 
-            modelBuilder.Entity("PBL3_HK4.Entity.Admin", b =>
-                {
-                    b.HasBaseType("PBL3_HK4.Entity.User");
-
-                    b.ToTable("Admins", (string)null);
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("PBL3_HK4.Entity.Customer", b =>
@@ -302,14 +296,13 @@ namespace PBL3_HK4.Migrations
                     b.HasBaseType("PBL3_HK4.Entity.User");
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<int?>("EarnedPoint")
                         .HasColumnType("int");
 
-                    b.ToTable("Customers", (string)null);
+                    b.HasDiscriminator().HasValue("Customer");
                 });
 
             modelBuilder.Entity("PBL3_HK4.Entity.Bill", b =>
@@ -346,15 +339,11 @@ namespace PBL3_HK4.Migrations
                 {
                     b.HasOne("PBL3_HK4.Entity.ShoppingCart", "ShoppingCart")
                         .WithMany("Items")
-                        .HasForeignKey("CartID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CartID");
 
                     b.HasOne("PBL3_HK4.Entity.Product", "Product")
                         .WithMany()
-                        .HasForeignKey("ProductID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProductID");
 
                     b.Navigation("Product");
 
@@ -391,29 +380,9 @@ namespace PBL3_HK4.Migrations
                 {
                     b.HasOne("PBL3_HK4.Entity.Customer", "Customer")
                         .WithOne("ShoppingCart")
-                        .HasForeignKey("PBL3_HK4.Entity.ShoppingCart", "UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PBL3_HK4.Entity.ShoppingCart", "UserID");
 
                     b.Navigation("Customer");
-                });
-
-            modelBuilder.Entity("PBL3_HK4.Entity.Admin", b =>
-                {
-                    b.HasOne("PBL3_HK4.Entity.User", null)
-                        .WithOne()
-                        .HasForeignKey("PBL3_HK4.Entity.Admin", "UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("PBL3_HK4.Entity.Customer", b =>
-                {
-                    b.HasOne("PBL3_HK4.Entity.User", null)
-                        .WithOne()
-                        .HasForeignKey("PBL3_HK4.Entity.Customer", "UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("PBL3_HK4.Entity.Bill", b =>

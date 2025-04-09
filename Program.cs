@@ -11,7 +11,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Đăng ký các service với interface tương ứng
-builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IAdminService, AdminService>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IBillService, BillService>();
 builder.Services.AddScoped<IBillDetailService, BillDetailService>();
@@ -35,13 +36,14 @@ builder.Services.AddHttpContextAccessor();
 //    options.Cookie.IsEssential = true;
 //});
 
-//// Thêm xác thực nếu cần
-//builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-//    .AddCookie(options =>
-//    {
-//        options.LoginPath = "/Account/Login";
-//        options.AccessDeniedPath = "/Account/AccessDenied";
-//    });
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Account/SignIn";
+        options.AccessDeniedPath = "/Account/SignIn";
+        options.ExpireTimeSpan = TimeSpan.FromHours(24);
+    });
 
 // Thêm MVC
 builder.Services.AddControllersWithViews();
@@ -71,11 +73,12 @@ app.MapControllers();
 //// Thêm middleware xác thực và phân quyền
 //app.UseAuthentication();
 //app.UseAuthorization();
-
+app.UseAuthentication();
+app.UseAuthorization();
 //// Cấu hình endpoint routing
 app.MapControllerRoute(
    name: "default",
-   pattern: "{controller=Home}/{action=Index}/{id?}");
+   pattern: "{controller=Account}/{action=SignIn}/{id?}");
 
 //// Thêm các route khác nếu cần
 //app.MapControllerRoute(

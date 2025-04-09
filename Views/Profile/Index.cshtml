@@ -1,4 +1,7 @@
-﻿@{
+﻿@using PBL3_HK4.Entity
+@model Customer
+
+@{
 ViewData["Title"] = "View Profile";
 }
 
@@ -33,7 +36,7 @@ ViewData["Title"] = "View Profile";
                 <label>User Name:</label>
             </div>
             <div>
-                <input type="text" class="w-100 form-field" style="padding: 6px; border-radius: 4px; border: 1px solid #ccc; font-size: 14px;" readonly>
+                <input value="@Model.UserName" id="username" name="username" type="text" class="w-100 form-field" style="padding: 6px; border-radius: 4px; border: 1px solid #ccc; font-size: 14px;" readonly>
             </div>
 
             <!-- Password -->
@@ -41,7 +44,7 @@ ViewData["Title"] = "View Profile";
                 <label>Password:</label>
             </div>
             <div>
-                <input type="password" class="w-100 form-field" style="padding: 6px; border-radius: 4px; border: 1px solid #ccc; font-size: 14px;" readonly>
+                <input value="@Model.PassWord" id="password" name="password" type="password" class="w-100 form-field" style="padding: 6px; border-radius: 4px; border: 1px solid #ccc; font-size: 14px;" readonly>
             </div>
 
             <!-- Confirm Password (hidden initially) -->
@@ -49,7 +52,7 @@ ViewData["Title"] = "View Profile";
                 <label>Confirm Password:</label>
             </div>
             <div id="confirmPasswordField" style="display: none;">
-                <input type="password" class="w-100 form-field" id="confirmPassword" style="padding: 6px; border-radius: 4px; border: 1px solid #ccc; font-size: 14px;">
+                <input type="password" class="w-100 form-field" id="confirmPassword" name="confirmPassword" style="padding: 6px; border-radius: 4px; border: 1px solid #ccc; font-size: 14px;">
             </div>
 
             <!-- Name -->
@@ -57,7 +60,7 @@ ViewData["Title"] = "View Profile";
                 <label>Name:</label>
             </div>
             <div>
-                <input type="text" class="w-100 form-field" style="padding: 6px; border-radius: 4px; border: 1px solid #ccc; font-size: 14px;" readonly>
+                <input value="@Model.Name" id="name" name="name" type="text" class="w-100 form-field" style="padding: 6px; border-radius: 4px; border: 1px solid #ccc; font-size: 14px;" readonly>
             </div>
 
             <!-- Email -->
@@ -65,7 +68,7 @@ ViewData["Title"] = "View Profile";
                 <label>Email:</label>
             </div>
             <div>
-                <input type="email" class="w-100 form-field" style="padding: 6px; border-radius: 4px; border: 1px solid #ccc; font-size: 14px;" readonly>
+                <input value="@Model.Email" id="email" name="email" type="email" class="w-100 form-field" style="padding: 6px; border-radius: 4px; border: 1px solid #ccc; font-size: 14px;" readonly>
             </div>
 
             <!-- Gender -->
@@ -73,11 +76,34 @@ ViewData["Title"] = "View Profile";
                 <label>Gender:</label>
             </div>
             <div>
-                <select class="w-100 form-field" style="padding: 6px; border-radius: 4px; border: 1px solid #ccc; font-size: 14px; background-color: #f5f5f5;" disabled>
-                    <option>Male</option>
-                    <option>Female</option>
-                    <option>Other</option>
-                </select>
+                    <select id="sex" name="sex" class="w-100 form-field" style="padding: 6px; border-radius: 4px; border: 1px solid #ccc; font-size: 14px; background-color: #f5f5f5;" disabled>
+                        @if (Model.Sex == "Male")
+                        {
+                            <option value="Male" selected>Male</option>
+                        }
+                        else
+                        {
+                            <option value="Male">Male</option>
+                        }
+
+                        @if (Model.Sex == "Female")
+                        {
+                            <option value="Female" selected>Female</option>
+                        }
+                        else
+                        {
+                            <option value="Female">Female</option>
+                        }
+
+                        @if (Model.Sex == "Other")
+                        {
+                            <option value="Other" selected>Other</option>
+                        }
+                        else
+                        {
+                            <option value="Other">Other</option>
+                        }
+                    </select>
             </div>
 
             <!-- Phone -->
@@ -85,15 +111,15 @@ ViewData["Title"] = "View Profile";
                 <label>Phone:</label>
             </div>
             <div>
-                <input type="tel" class="w-100 form-field" style="padding: 6px; border-radius: 4px; border: 1px solid #ccc; font-size: 14px;" readonly>
+                <input value="@Model.Phone" id="phone" name="Phone" type="tel" class="w-100 form-field" style="padding: 6px; border-radius: 4px; border: 1px solid #ccc; font-size: 14px;" readonly>
             </div>
 
             <!-- Date -->
             <div>
-                <label>Date:</label>
+                <label>Date of Birth:</label>
             </div>
             <div>
-                <input type="date" class="w-100 form-field" style="padding: 6px; border-radius: 4px; border: 1px solid #ccc; font-size: 14px; background-color: #f5f5f5;" readonly>
+                <input value="@Model.DateOfBirth.ToString("yyyy-MM-dd")" id="dateOfBirth" name="dateOfBirth" type="date" class="w-100 form-field" style="padding: 6px; border-radius: 4px; border: 1px solid #ccc; font-size: 14px; background-color: #f5f5f5;" readonly>
             </div>
 
             <!-- Address -->
@@ -101,7 +127,7 @@ ViewData["Title"] = "View Profile";
                 <label>Address:</label>
             </div>
             <div>
-                <textarea class="w-100 form-field" style="padding: 6px; border-radius: 4px; border: 1px solid #ccc; min-height: 60px; font-size: 14px; background-color: #f5f5f5;" readonly></textarea>
+                <textarea id="address" name="address" class="w-100 form-field" style="padding: 6px; border-radius: 4px; border: 1px solid #ccc; min-height: 60px; font-size: 14px; background-color: #f5f5f5;" readonly>@Model.Address</textarea>
             </div>
         </div>
 
@@ -170,6 +196,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Cho phép chỉnh sửa các trường
         formFields.forEach(field => {
+            // Giữ username là readonly
+            if (field.id === 'username') {
+                return;
+            }
+            
             field.readOnly = false;
             if (field.tagName === 'SELECT') {
                 field.disabled = false;

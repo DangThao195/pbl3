@@ -11,9 +11,9 @@ namespace PBL3_HK4.Interface
 {
     public interface IAccountService
     {
-        public Task RegisterAsync(string name, string email, string sex, DateTime dateofbirth, string username,
+        public Task RegisterAsync(string name, string email, string sex, DateTime dateofbirth, string username, string phone,
             string password, string address);
-        public Task<bool> LoginAsync(string username, string password);
+        public Task<User> LoginAsync(string username, string password);
         public Task<bool> ChangePasswordAsync(string username, string oldPassword, string newPassword);
         public Task Logout();
     }

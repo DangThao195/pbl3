@@ -4,37 +4,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 namespace PBL3_HK4.Entity
 {
     public class User
     {
         [Key]
-        [Required]
         public Guid UserID { get; set; }
 
-        [Required]
         [StringLength(40)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
-        [Required]
-        [StringLength(40)]
         [EmailAddress]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
-        [Required]
         [StringLength(10)]
-        public string Sex { get; set; }
+        public string? Sex { get; set; }
 
-        [Required]
+        [StringLength(20)]
+        public string? Phone { get; set; }
+
         [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
 
-        [Required]
         [StringLength(40)]
-        public string UserName { get; set; }
+        public string? UserName { get; set; }
 
-        [Required]
-        public string PassWord { get; set; }
-        public string Role { get; set; } = "Customer";
+        [StringLength(500)]
+        public string? PassWord { get; set; }
+        public string? Role { get; set; }
+
+        [NotMapped]
+        public string? NewPassWord { get; set; }
     }
 }

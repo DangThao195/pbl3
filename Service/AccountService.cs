@@ -16,14 +16,16 @@ namespace PBL3_HK4.Service
     public class AccountService : IAccountService
     {
         private readonly ApplicationDbContext _context;
-        private readonly IUserService _customerService;
+        private readonly ICustomerService _customerService;
+        private readonly IAdminService _adminService;
         private readonly IPasswordHasher _passwordHasher;
         private readonly IShoppingCartService _shoppingCartService;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        public AccountService(ApplicationDbContext context, IUserService customerService, IPasswordHasher passwordHasher, IShoppingCartService shoppingCartService, IHttpContextAccessor httpContextAccessor)
+        public AccountService(ApplicationDbContext context, ICustomerService customerService, IAdminService adminService, IPasswordHasher passwordHasher, IShoppingCartService shoppingCartService, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
             _customerService = customerService;
+            _adminService = adminService;
             _passwordHasher = passwordHasher;
             _shoppingCartService = shoppingCartService;
             _httpContextAccessor = httpContextAccessor;
@@ -31,7 +33,7 @@ namespace PBL3_HK4.Service
         }
         public async Task<bool> ChangePasswordAsync(string username, string oldPassword, string newPassword)
         {
-            var user = await _context.Customers.FirstOrDefaultAsync(u => u.UserName == username);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == username);
             if (user == null)
             {
                 throw new InvalidOperationException($"User with username {username} not found.");
@@ -43,14 +45,21 @@ namespace PBL3_HK4.Service
                 throw new InvalidOperationException("Current password is incorrect.");
             }
             user.PassWord = _passwordHasher.HashPassword(newPassword);
-
-            await _customerService.UpdateUserAsync(user);
-            return true;
+            if(user is Customer) {
+                await _customerService.UpdateCustomerAsync((Customer)user);
+                return true;
+            }
+            else
+            {
+                await _adminService.UpdateAdminAsync((Admin)user);
+                return true;
+            }
+            
         }
 
-        public async Task<bool> LoginAsync(string username, string password)
+        public async Task<User> LoginAsync(string username, string password)
         {
-            var existingUser = await _context.Customers.FirstOrDefaultAsync(u => u.UserName == username);
+            var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.UserName == username);
             if (existingUser == null)
             {
                 throw new InvalidOperationException($"Invalid username or password.");
@@ -61,14 +70,21 @@ namespace PBL3_HK4.Service
             {
                 throw new InvalidOperationException($"Invalid username or password.");
             }
-            return true;
+            if(existingUser is Customer)
+            {
+                return await _customerService.GetCustomerByUserNameAsync(username);
+            }
+            else
+            {
+                return await _adminService.GetAdminByUserNameAsync(username);
+            }
         }
 
         public async Task Logout()
         {
             if (_httpContextAccessor?.HttpContext != null)
-            { 
-            
+            {
+
                 await _httpContextAccessor.HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
                 _httpContextAccessor.HttpContext.Session.Clear();
@@ -76,8 +92,8 @@ namespace PBL3_HK4.Service
         }
 
 
-        public async Task RegisterAsync(string name, string email, string sex, DateTime dateofbirth, string username,
-string password, string address)
+        public async Task RegisterAsync(string name, string email, string sex, DateTime dateofbirth, string username,string phone,
+     string password, string address)
         {
             // Kiểm tra username tồn tại
             var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.UserName == username);
@@ -91,9 +107,6 @@ string password, string address)
             try
             {
                 var userId = Guid.NewGuid();
-
-                // Nếu bạn đang sử dụng TPT, chỉ cần thêm Customer (lớp con)
-                // EF sẽ tự động xử lý phần User (lớp cha)
                 var customer = new Customer
                 {
                     UserID = userId,
@@ -105,13 +118,11 @@ string password, string address)
                     PassWord = _passwordHasher.HashPassword(password),
                     Address = address,
                     EarnedPoint = 0,
-                    Role = "Customer"
+                    Role = "Customer",
+                    Phone = phone
                 };
+               await _customerService.AddCustomerAsync(customer);
 
-                // Thêm CUSTOMER vào context, KHÔNG thêm User riêng
-                await _customerService.AddUserAsync(customer);
-
-                // Tạo ShoppingCart
                 var shoppingCart = new ShoppingCart
                 {
                     CartID = Guid.NewGuid(),

@@ -1,0 +1,197 @@
+﻿@{
+    ViewData["Title"] = "Order Manage";
+}
+<div class="row my-5">
+
+    @* Empty *@
+    <div class="col-1"></div>
+
+    <div class="col-10">
+        <div class="row d-flex align-items-center">
+            @* Empty *@
+            <div class="col-3"></div>
+
+            @* Empty *@
+            <div class="col-1"></div>
+
+            <div class="col-4 text-center" style="color: #314401; font-weight: bold; font-size: 34px; letter-spacing: 1px;">
+                Order List
+            </div>
+
+            @* Empty *@
+            <div class="col-1"></div>
+
+            <div class="col-3">
+                <div class="d-flex justify-content-end gap-2">
+                    <div class="search-container" style="position: relative; width: 200px;">
+                        <input type="text" placeholder="Search..."
+                               style="width: 100%; padding: 10px 20px 10px 45px; border: 1px solid #ccc; border-radius: 30px; outline: none; font-size: 14px;">
+                        <button type="submit"
+                                style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); background: transparent; border: none; color: #888; cursor: pointer;">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 30px; padding: 10px 20px;">
+                            <i class="bi bi-funnel"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="filterDropdown">
+                            <li><h6 class="dropdown-header">Status</h6></li>
+                            <li><a class="dropdown-item" href="#">Processing</a></li>
+                            <li><a class="dropdown-item" href="#">Confirmed</a></li>
+                            <li><a class="dropdown-item" href="#">Canceled</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><h6 class="dropdown-header">Total</h6></li>
+                            <li><a class="dropdown-item" href="#">Under $100</a></li>
+                            <li><a class="dropdown-item" href="#">$100 - $200</a></li>
+                            <li><a class="dropdown-item" href="#">Over $200</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @* Table *@
+        <div class="mt-4" style="border-radius: 15px; overflow: hidden; border: 2px solid #C1A78E;">
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="background-color: #B08968; color: #F8E1C4;">
+                        <th style="padding: 12px; text-align: left; border: 1px solid #C1A78E; width: 10%;">ID</th>
+                        <th style="padding: 12px; text-align: left; border: 1px solid #C1A78E; width: 15%;">Name</th>
+                        <th style="padding: 12px; text-align: left; border: 1px solid #C1A78E; width: 15%;">Phone Number</th>
+                        <th style="padding: 12px; text-align: left; border: 1px solid #C1A78E; width: 20%;">Email</th>
+                        <th style="padding: 12px; text-align: center; border: 1px solid #C1A78E; width: 15%;">Status</th>
+                        <th style="padding: 12px; text-align: right; border: 1px solid #C1A78E; width: 15%;">Total</th>
+                        <th style="padding: 12px; text-align: center; border: 1px solid #C1A78E; width: 10%;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @* Order 1 *@
+                    <tr style="background-color: #EDE0D4; border: 1px solid #C1A78E;">
+                        <td style="padding: 12px; border: 1px solid #C1A78E;">ORD001</td>
+                        <td style="padding: 12px; border: 1px solid #C1A78E;">John Smith</td>
+                        <td style="padding: 12px; border: 1px solid #C1A78E;">1234567890</td>
+                        <td style="padding: 12px; border: 1px solid #C1A78E;">john.smith@email.com</td>
+                        <td style="padding: 12px; text-align: center; border: 1px solid #C1A78E; font-weight: bold; color: #FF8C00;">
+                            Processing
+                        </td>
+                        <td style="padding: 12px; text-align: right; border: 1px solid #C1A78E;">120.50$</td>
+                        <td style="padding: 12px; border: 1px solid #C1A78E; text-align: center;">
+                            <a asp-controller="Order" asp-action="Details"
+                               style="background-color: #5A7D5A; color: white; border-radius: 10px; display: inline-block; width: 100px; padding: 6px 0; text-decoration: none; text-align: center; font-size: 14px;">
+                                <i class="bi bi-eye-fill"></i> View
+                            </a>
+                        </td>
+                    </tr>
+
+                    @* Order 2 *@
+                    <tr style="background-color: #EDE0D4; border: 1px solid #C1A78E;">
+                        <td style="padding: 12px; border: 1px solid #C1A78E;">ORD002</td>
+                        <td style="padding: 12px; border: 1px solid #C1A78E;">Emily Johnson</td>
+                        <td style="padding: 12px; border: 1px solid #C1A78E;">9876543210</td>
+                        <td style="padding: 12px; border: 1px solid #C1A78E;">emily.j@email.com</td>
+                        <td style="padding: 12px; text-align: center; border: 1px solid #C1A78E; font-weight: bold; color: #008000;">
+                            Confirmed
+                        </td>
+                        <td style="padding: 12px; text-align: right; border: 1px solid #C1A78E;">89.99$</td>
+                        <td style="padding: 12px; border: 1px solid #C1A78E; text-align: center;">
+                            <a asp-controller="Order" asp-action="Details"
+                               style="background-color: #5A7D5A; color: white; border-radius: 10px; display: inline-block; width: 100px; padding: 6px 0; text-decoration: none; text-align: center; font-size: 14px;">
+                                <i class="bi bi-eye-fill"></i> View
+                            </a>
+                        </td>
+                    </tr>
+
+                    @* Order 3 *@
+                    <tr style="background-color: #EDE0D4; border: 1px solid #C1A78E;">
+                        <td style="padding: 12px; border: 1px solid #C1A78E;">ORD003</td>
+                        <td style="padding: 12px; border: 1px solid #C1A78E;">Michael Brown</td>
+                        <td style="padding: 12px; border: 1px solid #C1A78E;">5551234567</td>
+                        <td style="padding: 12px; border: 1px solid #C1A78E;">michael.b@email.com</td>
+                        <td style="padding: 12px; text-align: center; border: 1px solid #C1A78E; font-weight: bold; color: #DC3545;">
+                            Canceled
+                        </td>
+                        <td style="padding: 12px; text-align: right; border: 1px solid #C1A78E;">45.00$</td>
+                        <td style="padding: 12px; border: 1px solid #C1A78E; text-align: center;">
+                            <a asp-controller="Order" asp-action="Details"
+                               style="background-color: #5A7D5A; color: white; border-radius: 10px; display: inline-block; width: 100px; padding: 6px 0; text-decoration: none; text-align: center; font-size: 14px;">
+                                <i class="bi bi-eye-fill"></i> View
+                            </a>
+                        </td>
+                    </tr>
+
+                    @* Order 4 *@
+                    <tr style="background-color: #EDE0D4; border: 1px solid #C1A78E;">
+                        <td style="padding: 12px; border: 1px solid #C1A78E;">ORD004</td>
+                        <td style="padding: 12px; border: 1px solid #C1A78E;">Sarah Williams</td>
+                        <td style="padding: 12px; border: 1px solid #C1A78E;">1112223333</td>
+                        <td style="padding: 12px; border: 1px solid #C1A78E;">sarah.w@email.com</td>
+                        <td style="padding: 12px; text-align: center; border: 1px solid #C1A78E; font-weight: bold; color: #FF8C00;">
+                            Processing
+                        </td>
+                        <td style="padding: 12px; text-align: right; border: 1px solid #C1A78E;">200.75$</td>
+                        <td style="padding: 12px; border: 1px solid #C1A78E; text-align: center;">
+                            <a asp-controller="Order" asp-action="Details"
+                               style="background-color: #5A7D5A; color: white; border-radius: 10px; display: inline-block; width: 100px; padding: 6px 0; text-decoration: none; text-align: center; font-size: 14px;">
+                                <i class="bi bi-eye-fill"></i> View
+                            </a>
+                        </td>
+                    </tr>
+
+                    @* Order 5 *@
+                    <tr style="background-color: #EDE0D4; border: 1px solid #C1A78E;">
+                        <td style="padding: 12px; border: 1px solid #C1A78E;">ORD005</td>
+                        <td style="padding: 12px; border: 1px solid #C1A78E;">David Miller</td>
+                        <td style="padding: 12px; border: 1px solid #C1A78E;">4445556666</td>
+                        <td style="padding: 12px; border: 1px solid #C1A78E;">david.m@email.com</td>
+                        <td style="padding: 12px; text-align: center; border: 1px solid #C1A78E; font-weight: bold; color: #008000;">
+                            Confirmed
+                        </td>
+                        <td style="padding: 12px; text-align: right; border: 1px solid #C1A78E;">150.30$</td>
+                        <td style="padding: 12px; border: 1px solid #C1A78E; text-align: center;">
+                            <a asp-controller="Order" asp-action="Details"
+                               style="background-color: #5A7D5A; color: white; border-radius: 10px; display: inline-block; width: 100px; padding: 6px 0; text-decoration: none; text-align: center; font-size: 14px;">
+                                <i class="bi bi-eye-fill"></i> View
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    @* Phân trang *@
+    <div class="d-flex justify-content-center mt-3">
+        <nav aria-label="Page navigation">
+            <ul class="pagination" style="gap: 5px;">
+                @* Nút Previous *@
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous"
+                       style="border-radius: 10px; background-color: #F5F0EA; border: 1px solid #D7C7B5; color: #6D4C41;">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+                @* Các số trang *@
+                @for (int i = 1; i <= 3; i++)
+                {
+                    <li class="page-item @(i == 1 ? "active" : "")">
+                        <a class="page-link" href="#"
+                           style="border-radius: 10px; @(i == 1 ? "background-color: #B08968; border: 1px solid #B08968; color: #F8E1C4;" : "background-color: #F5F0EA; border: 1px solid #D7C7B5; color: #6D4C41;")">@i</a>
+                    </li>
+                }
+
+                @* Nút Next *@
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next"
+                       style="border-radius: 10px; background-color: #F5F0EA; border: 1px solid #D7C7B5; color: #6D4C41;">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    @* Empty *@
+    <div class="col-1"></div>
+</div>

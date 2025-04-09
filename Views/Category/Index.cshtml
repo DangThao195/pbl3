@@ -1,0 +1,108 @@
+﻿@{
+    ViewData["Title"] = "Category Manage";
+}
+<div class="row my-5">
+
+    @* Empty *@
+    <div class="col-1"></div>
+
+    <div class="col-10">
+        <div class="row d-flex align-items-center">
+            <div class="col-3">
+                <div style="background-color: #9370DB; color: white; border-radius: 20px; padding: 10px 20px; font-weight: bold; display: inline-block; font-size: 14px">
+                    <a asp-controller="Category" asp-action="Create" style="color: inherit; text-decoration: none;">
+                        <i class="bi bi-plus-circle"></i> CREATE NEW CATEGORY
+                    </a>
+                </div>
+            </div>
+
+            @* Empty *@
+            <div class="col-1"></div>
+
+            <div class="col-4 text-center" style="color: #314401; font-weight: bold; font-size: 34px; letter-spacing: 1px;">
+                Category List
+            </div>
+
+            @* Empty *@
+            <div class="col-1"></div>
+
+            <div class="col-3">
+                <div class="search-container" style="position: relative; max-width: 400px; margin: 0 auto;">
+                    <input type="text" placeholder="Search..."
+                           style="width: 100%; padding: 12px 20px 12px 45px; border: 2px solid #f0f0f0; border-radius: 30px; outline: none; font-size: 14px; transition: all 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                    <button type="submit"
+                            style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); background: transparent; border: none; color: #888; cursor: pointer;">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        @* Table *@
+        <div class="mt-4" style="border-radius: 15px; overflow: hidden; border: 2px solid #C1A78E;">
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="background-color: #B08968; color: #F8E1C4;">
+                        <th style="padding: 12px; text-align: left; border: 1px solid #C1A78E; width: 20%;">ID</th>
+                        <th style="padding: 12px; text-align: left; border: 1px solid #C1A78E; width: 50%;">Name</th>
+                        <th style="padding: 12px; text-align: center; border: 1px solid #C1A78E; width: 30%;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < 10; i++)
+                    {
+                        <tr style="background-color: #EDE0D4; border: 1px solid #C1A78E;">
+                            <td style="padding: 12px; border: 1px solid #C1A78E;">@(i + 1).CAT</td>
+                            <td style="padding: 12px; border: 1px solid #C1A78E;">Beverages</td>
+                            <td style="padding: 12px; border: 1px solid #C1A78E;" class="d-flex justify-content-between gap-2">
+                                <a asp-controller="Category" asp-action="Views"
+                                   style="background-color: #5A7D5A; color: white; border-radius: 10px; flex: 1; display: flex; align-items: center; justify-content: center; padding: 8px 0; text-decoration: none;">
+                                    <i class="bi bi-eye-fill"></i> View
+                                </a>
+                                <a href="#"
+                                   style="background-color: #C05621; color: white; border-radius: 10px; flex: 1; display: flex; align-items: center; justify-content: center; padding: 8px 0; text-decoration: none;">
+                                    <i class="bi bi-trash-fill"></i> Remove
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    @* Phân trang *@
+    <div class="d-flex justify-content-center mt-3">
+        <nav aria-label="Page navigation">
+            <ul class="pagination" style="gap: 5px;">
+                @* Nút Previous *@
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous"
+                       style="border-radius: 10px; background-color: #F5F0EA; border: 1px solid #D7C7B5; color: #6D4C41;">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+
+                @* Các số trang *@
+                @for (int i = 1; i <= 3; i++)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="#"
+                           style="border-radius: 10px; background-color: #F5F0EA; border: 1px solid #D7C7B5; color: #6D4C41;">@i</a>
+                    </li>
+                }
+
+                @* Nút Next *@
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next"
+                       style="border-radius: 10px; background-color: #F5F0EA; border: 1px solid #D7C7B5; color: #6D4C41;">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    @* Empty *@
+    <div class="col-1"></div>
+</div>

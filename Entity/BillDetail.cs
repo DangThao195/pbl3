@@ -11,6 +11,7 @@ namespace PBL3_HK4.Entity
     public class BillDetail
     {
         [Key]
+        [Required]
         public Guid BillDetailID { get; set; }
 
         [ForeignKey("Product")]

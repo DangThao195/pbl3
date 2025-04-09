@@ -13,8 +13,10 @@ namespace PBL3_HK4.Entity
         [Key]
         [Required]
         public Guid CatalogID { get; set; }
+
         [StringLength(40)]
         public string? CatalogName { get; set; }
+
         public ICollection<Product> Products { get; set; }
     }
 }

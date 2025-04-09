@@ -13,7 +13,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // Đăng ký các service với interface tương ứng
 builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
-builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<IAccountCustomerService, AccountCustomerService>();
+builder.Services.AddScoped<IAccountAdminService, AccountAdminService>();
 builder.Services.AddScoped<IBillService, BillService>();
 builder.Services.AddScoped<IBillDetailService, BillDetailService>();
 builder.Services.AddScoped<ICartItemService, CartItemService>();
@@ -36,14 +37,13 @@ builder.Services.AddHttpContextAccessor();
 //    options.Cookie.IsEssential = true;
 //});
 
-
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(options =>
-    {
-        options.LoginPath = "/Account/SignIn";
-        options.AccessDeniedPath = "/Account/SignIn";
-        options.ExpireTimeSpan = TimeSpan.FromHours(24);
-    });
+//// Thêm xác thực nếu cần
+//builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+//    .AddCookie(options =>
+//    {
+//        options.LoginPath = "/Account/Login";
+//        options.AccessDeniedPath = "/Account/AccessDenied";
+//    });
 
 // Thêm MVC
 builder.Services.AddControllersWithViews();
@@ -73,12 +73,11 @@ app.MapControllers();
 //// Thêm middleware xác thực và phân quyền
 //app.UseAuthentication();
 //app.UseAuthorization();
-app.UseAuthentication();
-app.UseAuthorization();
+
 //// Cấu hình endpoint routing
 app.MapControllerRoute(
    name: "default",
-   pattern: "{controller=Account}/{action=SignIn}/{id?}");
+   pattern: "{controller=Home}/{action=Index}/{id?}");
 
 //// Thêm các route khác nếu cần
 //app.MapControllerRoute(

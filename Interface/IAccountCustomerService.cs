@@ -9,12 +9,12 @@ using PBL3_HK4.Entity;
 using Microsoft.EntityFrameworkCore;
 namespace PBL3_HK4.Interface
 {
-    public interface IAccountService
+    public interface IAccountCustomerService
     {
         public Task RegisterAsync(string name, string email, string sex, DateTime dateofbirth, string username, string phone,
             string password, string address);
-        public Task<User> LoginAsync(string username, string password);
-        public Task<bool> ChangePasswordAsync(string username, string oldPassword, string newPassword);
+        public Task LoginAsync(string username, string password);
+        public Task ChangePasswordAsync(string username, string oldPassword, string newPassword);
         public Task Logout();
     }
 }

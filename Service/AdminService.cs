@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System;
 using System.Collections.Generic;
@@ -31,7 +31,7 @@ namespace PBL3_HK4.Service
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateAdminAsync(Admin admin)
+        public async Task UpdateAdminAsync(Admin admin) 
         {
             var currentUser = await _context.Users.OfType<Admin>().FirstOrDefaultAsync(u => u.UserID == admin.UserID);
             if (currentUser == null)
@@ -52,7 +52,7 @@ namespace PBL3_HK4.Service
             return admin;
         }
 
-        public async Task<Admin> GetAdminByUserNameAsync(string name)
+        public async Task<Admin> GetAdminByNameAsync(string name)
         {
             var admin = await _context.Users.OfType<Admin>().Where(u => u.UserName == name).FirstOrDefaultAsync();
             if (admin == null)

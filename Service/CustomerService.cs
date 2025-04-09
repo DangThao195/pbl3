@@ -52,7 +52,7 @@ namespace PBL3_HK4.Service
             return customer;
         }
 
-        public async Task<Customer> GetCustomerByUserNameAsync(string name)
+        public async Task<Customer> GetCustomerByNameAsync(string name)
         {
             var customer = await _context.Users.OfType<Customer>().Where(u => u.UserName == name).FirstOrDefaultAsync();
             if (customer == null)

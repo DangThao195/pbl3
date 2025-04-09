@@ -11,6 +11,7 @@ namespace PBL3_HK4.Entity
     public class Bill
     {
         [Key]
+        [Required]
         public Guid BillID { get; set; }
 
         [ForeignKey("Customer")]
@@ -20,7 +21,6 @@ namespace PBL3_HK4.Entity
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
 
-     
         [StringLength(200)]
         public string? Address { get; set; }
 

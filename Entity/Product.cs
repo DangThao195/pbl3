@@ -15,16 +15,19 @@ namespace PBL3_HK4.Entity
         [Required]
         public Guid ProductID { get; set; }
 
-        [Required]
+        [ForeignKey("Catalog")]
         public Guid CatalogID { get; set; }
         public Catalog Catalog { get; set; }
+
         [StringLength(100)]
         public string? ProductName { get; set; }
 
         [StringLength(500)]
         public string? ProductDescription { get; set; }
+
         [Range(0.01, double.MaxValue)]
         public double Price { get; set; }
+
         [Range(0, int.MaxValue)]
         public int StockQuantity { get; set; }
 

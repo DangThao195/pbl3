@@ -1,5 +1,6 @@
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\img\1-removebg-preview.png
 wwwroot\img\Apple Juice.png
 wwwroot\img\Baby Food.png
 wwwroot\img\bread.png
@@ -7,11 +8,24 @@ wwwroot\img\Breads.png
 wwwroot\img\Butter and Cream.png
 wwwroot\img\candies.png
 wwwroot\img\Canned Foods.png
+wwwroot\img\coconut.png
 wwwroot\img\Coffee.png
+wwwroot\img\column1.jpg
+wwwroot\img\column10.jpg
+wwwroot\img\column2.jpg
+wwwroot\img\column3.jpg
+wwwroot\img\column4.jpg
+wwwroot\img\column5.jpg
+wwwroot\img\column6.jpg
+wwwroot\img\column7.jpg
+wwwroot\img\column8.jpg
+wwwroot\img\column9.jpg
 wwwroot\img\DangHuuLong.jpg
 wwwroot\img\Dry Nuts.png
 wwwroot\img\facebook.png
+wwwroot\img\Farm_MainPage.jpg
 wwwroot\img\Fish and Seafood.png
+wwwroot\img\Fish_MainPage.jpg
 wwwroot\img\free-shipping.png
 wwwroot\img\Fresh Meat.png
 wwwroot\img\Frozen Foods.png

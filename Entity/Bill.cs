@@ -32,5 +32,7 @@ namespace PBL3_HK4.Entity
             get => BillDetails?.Sum(b => b.Total) ?? 0;
             set { }
         }
+
+        public bool Confirm { get; set; } = false;
     }
 }

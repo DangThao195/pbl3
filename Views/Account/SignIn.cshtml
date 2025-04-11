@@ -40,7 +40,9 @@
         <div class="col-1"></div>
         <div class="col-4 d-flex flex-column justify-content-center align-items-center min-vh-100 py-5">
             <div class="w-100">
-                <p class="text-center mb-4" style="font-size: 64px; font-weight: bold; letter-spacing: 10px;">SIGN IN</p>
+                <p class="text-center mb-4" style="font-size: 64px; font-weight: bold; letter-spacing: 10px;">
+                    SIGN IN
+                </p>
 
                 <form asp-action="SignIn" method="post" id="loginForm">
                     <div class="form-floating mb-3">
@@ -91,7 +93,9 @@
                 </div>
 
                 <div class="text-center">
-                    Don't have an account? <a asp-controller="Account" asp-action="SignUp" class="text-primary text-decoration-underline">Sign up now</a>
+                    <a asp-controller="Account" asp-action="Main"><i class="bi bi-arrow-bar-left"></i></a>
+                    Don't have an account? 
+                    <a asp-controller="Account" asp-action="SignUp" class="text-primary text-decoration-underline">Sign up now</a>
                 </div>
             </div>
         </div>

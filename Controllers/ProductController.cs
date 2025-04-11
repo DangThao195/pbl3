@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PBL3_HK4.Entity;
 
 namespace PBL3_HK4.Controllers
 {
@@ -18,6 +19,12 @@ namespace PBL3_HK4.Controllers
         {
             return View();
         }
+
+        //[HttpPost]
+        //public Product Create(Product product)
+        //{
+        //    return product;
+        //}
 
         public IActionResult Views()
         {

@@ -70,14 +70,7 @@ namespace PBL3_HK4.Service
             {
                 throw new InvalidOperationException($"Invalid username or password.");
             }
-            if(existingUser is Customer)
-            {
-                return await _customerService.GetCustomerByUserNameAsync(username);
-            }
-            else
-            {
-                return await _adminService.GetAdminByUserNameAsync(username);
-            }
+            return existingUser;
         }
 
         public async Task Logout()

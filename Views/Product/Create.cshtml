@@ -6,87 +6,89 @@
     <div class="col-md-1"></div>
     <div class="col-md-10 p-4" style="background-color: #E8E8E8; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border: 1px solid #C0C0C0;">
         <p class="text-center fw-bold mb-4" style="color: #314401; font-size: 40px;">Create Product</p>
-        <div class="mb-4">
-            <div class="row mb-3">
-                <div class="col-md-8">
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingName" placeholder="Name" name="ProductName" required>
-                        <label for="floatingName">Name</label>
-                    </div>
-                    <div class="form-floating" style="height: calc(100% - 70px);">
-                        <textarea type="text" style="resize: none; outline: none; box-shadow: none; height: 100%;" class="form-control" id="floatingDescription" placeholder="Description" name="ProductDescription" required></textarea>
-                        <label for="floatingDescription">Description</label>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="text-center mb-3">
-                        <div id="imagePreview" class="mb-2" style="height: 200px; border: 1px dashed #ccc; border-radius: 5px; display: flex; align-items: center; justify-content: center; background-color: #f8f9fa;">
-                            <span id="noImageText">Hình ảnh sẽ hiển thị tại đây</span>
-                            <img id="previewImage" src="" alt="Preview" style="max-height: 100%; max-width: 100%; display: none; object-fit: contain;">
+        <form asp-action="Create" method="post">
+            <div class="mb-4"> 
+                <div class="row mb-3">
+                    <div class="col-md-8">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingName" placeholder="Name" name="ProductName" required>
+                            <label for="floatingName">Name</label>
                         </div>
-                        <div class="form-floating">
-                            <input type="file" class="form-control" id="floatingImageUrl" placeholder="Image Url" name="ImageUrl" accept="image/*" required onchange="previewFile()">
-                            <label for="floatingImageUrl">Image Url</label>
+                        <div class="form-floating" style="height: calc(100% - 70px);">
+                            <textarea type="text" style="resize: none; outline: none; box-shadow: none; height: 100%;" class="form-control" id="floatingDescription" placeholder="Description" name="ProductDescription" required></textarea>
+                            <label for="floatingDescription">Description</label>
                         </div>
                     </div>
+                    <div class="col-md-4">
+                        <div class="text-center mb-3">
+                            <div id="imagePreview" class="mb-2" style="height: 200px; border: 1px dashed #ccc; border-radius: 5px; display: flex; align-items: center; justify-content: center; background-color: #f8f9fa;">
+                                <span id="noImageText">Hình ảnh sẽ hiển thị tại đây</span>
+                                <img id="previewImage" src="" alt="Preview" style="max-height: 100%; max-width: 100%; display: none; object-fit: contain;">
+                            </div>
+                            <div class="form-floating">
+                                <input type="file" class="form-control" id="floatingImageUrl" placeholder="Image Url" accept="image/*" required onchange="previewFile()">
+                                <label for="floatingImageUrl">Image Url</label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="row mb-3">
-                <div class="col-md-12 mb-3">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" id="floatingPrice" placeholder="Price" name="Price" required>
-                        <label for="floatingPrice">Price</label>
+                <div class="row mb-3">
+                    <div class="col-md-12 mb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingPrice" placeholder="Price" name="Price" required>
+                            <label for="floatingPrice">Price</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingStock" placeholder="Stock" name="StockQuantity" required>
+                            <label for="floatingStock">Stock</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <select class="form-select" id="floatingCatalog" name="Catalog" required>
+                                <option value="" selected disabled>Select a category</option>
+                                <option value="Electronics">Electronics</option>
+                                <option value="Clothing">Clothing</option>
+                                <option value="Home & Kitchen">Home & Kitchen</option>
+                                <option value="Books">Books</option>
+                                <option value="Toys & Games">Toys & Games</option>
+                                <option value="Beauty & Personal Care">Beauty & Personal Care</option>
+                                <option value="Sports & Outdoors">Sports & Outdoors</option>
+                                <option value="Food & Beverages">Food & Beverages</option>
+                            </select>
+                            <label for="floatingCatalog">Category</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <div class="form-floating">
+                            <input type="date" class="form-control" id="floatingMFGDate" placeholder="Start Date" name="MFGDate" required>
+                            <label for="floatingMFGDate">Start Date</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="date" class="form-control" id="floatingEXPDate" placeholder="End Date" name="EXPDate" required>
+                            <label for="floatingEXPDate">End Date</label>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row mb-3">
-                <div class="col-md-6 mb-3 mb-md-0">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" id="floatingStock" placeholder="Stock" name="StockQuantity" required>
-                        <label for="floatingStock">Stock</label>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-floating">
-                        <select class="form-select" id="floatingCatalog" name="Catalog" required>
-                            <option value="" selected disabled>Select a category</option>
-                            <option value="Electronics">Electronics</option>
-                            <option value="Clothing">Clothing</option>
-                            <option value="Home & Kitchen">Home & Kitchen</option>
-                            <option value="Books">Books</option>
-                            <option value="Toys & Games">Toys & Games</option>
-                            <option value="Beauty & Personal Care">Beauty & Personal Care</option>
-                            <option value="Sports & Outdoors">Sports & Outdoors</option>
-                            <option value="Food & Beverages">Food & Beverages</option>
-                        </select>
-                        <label for="floatingCatalog">Category</label>
-                    </div>
-                </div>
+            <div class="d-flex gap-3 mt-4 mb-2 justify-content-center">
+                <button id="createButton" class="btn px-4 py-2 w-25" style="color: white; background-color: #4F6F3E; border-radius: 5px; min-width: 150px;">
+                    <i class="bi bi-plus-circle"></i> CREATE
+                </button>
+                <a asp-controller="Product" asp-action="Index" class="btn px-4 py-2 w-25" style="color: white; background-color: #D9534F; border-radius: 5px; min-width: 150px;">
+                    <i class="bi bi-arrow-return-left"></i> BACK TO LIST
+                </a>
             </div>
-            <div class="row mb-3">
-                <div class="col-md-6 mb-3 mb-md-0">
-                    <div class="form-floating">
-                        <input type="date" class="form-control" id="floatingMFGDate" placeholder="Start Date" name="MFGDate" required>
-                        <label for="floatingMFGDate">Start Date</label>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-floating">
-                        <input type="date" class="form-control" id="floatingEXPDate" placeholder="End Date" name="EXPDate" required>
-                        <label for="floatingEXPDate">End Date</label>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="d-flex gap-3 mt-4 mb-2 justify-content-center">
-            <button id="createButton" class="btn px-4 py-2 w-25" style="color: white; background-color: #4F6F3E; border-radius: 5px; min-width: 150px;">
-                <i class="bi bi-plus-circle"></i> CREATE
-            </button>
-            <a asp-controller="Product" asp-action="Index" class="btn px-4 py-2 w-25" style="color: white; background-color: #D9534F; border-radius: 5px; min-width: 150px;">
-                <i class="bi bi-arrow-return-left"></i> BACK TO LIST
-            </a>
-        </div>
+        </form>
     </div>
     @* Empty column for spacing *@
     <div class="col-md-1"></div>

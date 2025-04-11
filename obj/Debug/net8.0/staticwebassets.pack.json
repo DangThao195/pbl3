@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\1-removebg-preview.png",
+      "PackagePath": "staticwebassets\\img\\1-removebg-preview.png"
+    },
+    {
       "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\Apple Juice.png",
       "PackagePath": "staticwebassets\\img\\Apple Juice.png"
     },
@@ -45,8 +49,16 @@
       "PackagePath": "staticwebassets\\img\\Dry Nuts.png"
     },
     {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\Farm_MainPage.jpg",
+      "PackagePath": "staticwebassets\\img\\Farm_MainPage.jpg"
+    },
+    {
       "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\Fish and Seafood.png",
       "PackagePath": "staticwebassets\\img\\Fish and Seafood.png"
+    },
+    {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\Fish_MainPage.jpg",
+      "PackagePath": "staticwebassets\\img\\Fish_MainPage.jpg"
     },
     {
       "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\Fresh Meat.png",
@@ -99,6 +111,50 @@
     {
       "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\candies.png",
       "PackagePath": "staticwebassets\\img\\candies.png"
+    },
+    {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\coconut.png",
+      "PackagePath": "staticwebassets\\img\\coconut.png"
+    },
+    {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\column1.jpg",
+      "PackagePath": "staticwebassets\\img\\column1.jpg"
+    },
+    {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\column10.jpg",
+      "PackagePath": "staticwebassets\\img\\column10.jpg"
+    },
+    {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\column2.jpg",
+      "PackagePath": "staticwebassets\\img\\column2.jpg"
+    },
+    {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\column3.jpg",
+      "PackagePath": "staticwebassets\\img\\column3.jpg"
+    },
+    {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\column4.jpg",
+      "PackagePath": "staticwebassets\\img\\column4.jpg"
+    },
+    {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\column5.jpg",
+      "PackagePath": "staticwebassets\\img\\column5.jpg"
+    },
+    {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\column6.jpg",
+      "PackagePath": "staticwebassets\\img\\column6.jpg"
+    },
+    {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\column7.jpg",
+      "PackagePath": "staticwebassets\\img\\column7.jpg"
+    },
+    {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\column8.jpg",
+      "PackagePath": "staticwebassets\\img\\column8.jpg"
+    },
+    {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\column9.jpg",
+      "PackagePath": "staticwebassets\\img\\column9.jpg"
     },
     {
       "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\facebook.png",

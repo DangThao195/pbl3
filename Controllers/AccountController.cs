@@ -72,9 +72,9 @@ namespace PBL3_HK4.Controllers
             {
                 new Claim(ClaimTypes.Name, userLogin.UserName),
                 new Claim(ClaimTypes.NameIdentifier, userLogin.UserID.ToString()),
-                new Claim(ClaimTypes.Role, userLogin is Customer ? "Customer" : "Admin")
+                new Claim(ClaimTypes.Role, userLogin.Role)
             };
-
+                var role = User.FindFirstValue(ClaimTypes.Role);
                 var claimsIdentity = new ClaimsIdentity(
                     claims,
                     CookieAuthenticationDefaults.AuthenticationScheme
@@ -82,7 +82,7 @@ namespace PBL3_HK4.Controllers
                 var authProperties = new AuthenticationProperties
                 {
                     IsPersistent = true,
-                    ExpiresUtc = DateTimeOffset.UtcNow.AddHours(24)
+                    ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(30)
                 };
 
                 await HttpContext.SignInAsync(
@@ -90,6 +90,7 @@ namespace PBL3_HK4.Controllers
                     new ClaimsPrincipal(claimsIdentity),
                     authProperties
                 );
+
                 // Điều hướng dựa trên loại user
                 if (userLogin is Customer)
                 {

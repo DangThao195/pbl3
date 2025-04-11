@@ -13,7 +13,7 @@ namespace PBL3_HK4.Entity
         [Key]
         public Guid ItemID { get; set; }
         [ForeignKey("Product")]
-        public Guid? ProductID { get; set; }
+        public Guid ProductID { get; set; }
         public virtual Product? Product { get; set; }
         [ForeignKey("ShoppingCart")]
         public Guid? CartID { get; set; }

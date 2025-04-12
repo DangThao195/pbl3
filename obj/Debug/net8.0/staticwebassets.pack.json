@@ -25,12 +25,24 @@
       "PackagePath": "staticwebassets\\img\\Baby Food.png"
     },
     {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\BreadAd.jpg",
+      "PackagePath": "staticwebassets\\img\\BreadAd.jpg"
+    },
+    {
       "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\Breads.png",
       "PackagePath": "staticwebassets\\img\\Breads.png"
     },
     {
       "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\Butter and Cream.png",
       "PackagePath": "staticwebassets\\img\\Butter and Cream.png"
+    },
+    {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\CakeAd.jpg",
+      "PackagePath": "staticwebassets\\img\\CakeAd.jpg"
+    },
+    {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\CandyAd.jpg",
+      "PackagePath": "staticwebassets\\img\\CandyAd.jpg"
     },
     {
       "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\Canned Foods.png",
@@ -41,12 +53,24 @@
       "PackagePath": "staticwebassets\\img\\Coffee.png"
     },
     {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\CoffeeAd.jpg",
+      "PackagePath": "staticwebassets\\img\\CoffeeAd.jpg"
+    },
+    {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\CommunityImpact.jpg",
+      "PackagePath": "staticwebassets\\img\\CommunityImpact.jpg"
+    },
+    {
       "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\DangHuuLong.jpg",
       "PackagePath": "staticwebassets\\img\\DangHuuLong.jpg"
     },
     {
       "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\Dry Nuts.png",
       "PackagePath": "staticwebassets\\img\\Dry Nuts.png"
+    },
+    {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\EggAd.jpg",
+      "PackagePath": "staticwebassets\\img\\EggAd.jpg"
     },
     {
       "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\Farm_MainPage.jpg",
@@ -65,6 +89,10 @@
       "PackagePath": "staticwebassets\\img\\Fresh Meat.png"
     },
     {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\FreshFood.jpg",
+      "PackagePath": "staticwebassets\\img\\FreshFood.jpg"
+    },
+    {
       "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\Frozen Foods.png",
       "PackagePath": "staticwebassets\\img\\Frozen Foods.png"
     },
@@ -73,8 +101,20 @@
       "PackagePath": "staticwebassets\\img\\Fruits.png"
     },
     {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\IcecreamAd.jpg",
+      "PackagePath": "staticwebassets\\img\\IcecreamAd.jpg"
+    },
+    {
       "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\LogoShop.png",
       "PackagePath": "staticwebassets\\img\\LogoShop.png"
+    },
+    {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\MeatAd.jpg",
+      "PackagePath": "staticwebassets\\img\\MeatAd.jpg"
+    },
+    {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\MilkAd.jpg",
+      "PackagePath": "staticwebassets\\img\\MilkAd.jpg"
     },
     {
       "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\Oil and Vinegar.png",
@@ -89,16 +129,52 @@
       "PackagePath": "staticwebassets\\img\\Organic Grocery.png"
     },
     {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\OrganicFarm.jpg",
+      "PackagePath": "staticwebassets\\img\\OrganicFarm.jpg"
+    },
+    {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\OurValues.jpg",
+      "PackagePath": "staticwebassets\\img\\OurValues.jpg"
+    },
+    {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\QualityAssurance.jpg",
+      "PackagePath": "staticwebassets\\img\\QualityAssurance.jpg"
+    },
+    {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\RiceAd.jpg",
+      "PackagePath": "staticwebassets\\img\\RiceAd.jpg"
+    },
+    {
       "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\Snacks and Chips.png",
       "PackagePath": "staticwebassets\\img\\Snacks and Chips.png"
+    },
+    {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\SpiceAd.jpg",
+      "PackagePath": "staticwebassets\\img\\SpiceAd.jpg"
     },
     {
       "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\Spices and Herbs.png",
       "PackagePath": "staticwebassets\\img\\Spices and Herbs.png"
     },
     {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\SugarAd.jpg",
+      "PackagePath": "staticwebassets\\img\\SugarAd.jpg"
+    },
+    {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\SustainabilityEfforts.jpg",
+      "PackagePath": "staticwebassets\\img\\SustainabilityEfforts.jpg"
+    },
+    {
       "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\Tea.png",
       "PackagePath": "staticwebassets\\img\\Tea.png"
+    },
+    {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\TeaAd.jpg",
+      "PackagePath": "staticwebassets\\img\\TeaAd.jpg"
+    },
+    {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\Team.jpg",
+      "PackagePath": "staticwebassets\\img\\Team.jpg"
     },
     {
       "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\Vegetables.png",
@@ -159,6 +235,10 @@
     {
       "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\facebook.png",
       "PackagePath": "staticwebassets\\img\\facebook.png"
+    },
+    {
+      "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\family eating healthy.jpg",
+      "PackagePath": "staticwebassets\\img\\family eating healthy.jpg"
     },
     {
       "Id": "D:\\PBL3\\pbl3\\wwwroot\\img\\free-shipping.png",

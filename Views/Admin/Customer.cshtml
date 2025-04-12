@@ -1,0 +1,315 @@
+﻿@{
+    ViewData["Title"] = "Customer Management";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div id="customer-content" class="content-section active">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>Customer Management</h1>
+        <!-- Không có nút Add New Customer -->
+    </div>
+
+    <!-- Bảng dữ liệu -->
+    <div class="table-responsive">
+        <table class="table table-striped table-hover" id="customer-table">
+            <thead class="table-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th width="10%">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dữ liệu sẽ được thêm bằng JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination -->
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            <!-- Phân trang sẽ được thêm bằng JavaScript -->
+        </ul>
+    </nav>
+</div>
+
+<style>
+    .pagination {
+        margin-top: 20px;
+    }
+
+    .page-item.active .page-link {
+        background-color: #6A5ACD;
+        border-color: #6A5ACD;
+    }
+
+    .page-link {
+        color: #6A5ACD;
+    }
+
+        .page-link:hover {
+            color: #5a4abd;
+        }
+
+    .form-label {
+        font-weight: 500;
+        color: #6A5ACD;
+    }
+
+    .modal-overlay {
+        animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @@keyframes fadeIn {
+        from
+
+    {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+    }
+
+    .modal-content {
+        animation: slideDown 0.3s ease-in-out;
+    }
+
+    @@keyframes slideDown {
+        from
+
+    {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    }
+
+    .modal-footer .btn {
+        padding: 6px 12px;
+        border-radius: 4px;
+        transition: all 0.3s;
+    }
+
+        .modal-footer .btn:hover {
+            opacity: 0.9;
+        }
+
+    .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-bottom: 15px;
+    }
+
+    .form-group {
+        flex: 1;
+        min-width: 250px;
+    }
+
+        .form-group label {
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+        }
+</style>
+
+<script>
+    // Dữ liệu customer mẫu (30 khách hàng)
+    const sampleCustomers = [
+        { id: 1, name: "John Doe", gender: "Male", phoneNumber: "123-456-7890", email: "john.doe@example.com", date: "1990-05-15", address: "123 Main St, City A", point: 100 },
+        { id: 2, name: "Jane Smith", gender: "Female", phoneNumber: "234-567-8901", email: "jane.smith@example.com", date: "1985-08-22", address: "456 Oak Ave, City B", point: 150 },
+        { id: 3, name: "Michael Brown", gender: "Male", phoneNumber: "345-678-9012", email: "michael.brown@example.com", date: "1992-03-10", address: "789 Pine Rd, City C", point: 80 },
+        { id: 4, name: "Emily Davis", gender: "Female", phoneNumber: "456-789-0123", email: "emily.davis@example.com", date: "1995-11-30", address: "101 Maple Dr, City D", point: 200 },
+        { id: 5, name: "William Wilson", gender: "Male", phoneNumber: "567-890-1234", email: "william.wilson@example.com", date: "1988-07-05", address: "202 Cedar Ln, City E", point: 120 },
+        { id: 6, name: "Sarah Johnson", gender: "Female", phoneNumber: "678-901-2345", email: "sarah.johnson@example.com", date: "1993-09-12", address: "303 Birch St, City F", point: 90 },
+        { id: 7, name: "David Lee", gender: "Male", phoneNumber: "789-012-3456", email: "david.lee@example.com", date: "1990-12-25", address: "404 Elm Ave, City G", point: 110 },
+        { id: 8, name: "Laura Martinez", gender: "Female", phoneNumber: "890-123-4567", email: "laura.martinez@example.com", date: "1987-04-18", address: "505 Spruce Rd, City H", point: 130 },
+        { id: 9, name: "James Taylor", gender: "Male", phoneNumber: "901-234-5678", email: "james.taylor@example.com", date: "1994-06-20", address: "606 Walnut Dr, City I", point: 140 },
+        { id: 10, name: "Olivia Anderson", gender: "Female", phoneNumber: "012-345-6789", email: "olivia.anderson@example.com", date: "1991-02-14", address: "707 Chestnut Ln, City J", point: 160 },
+        { id: 11, name: "Robert Thomas", gender: "Male", phoneNumber: "123-456-7891", email: "robert.thomas@example.com", date: "1989-10-08", address: "808 Oak St, City K", point: 170 },
+        { id: 12, name: "Sophia Moore", gender: "Female", phoneNumber: "234-567-8902", email: "sophia.moore@example.com", date: "1996-01-27", address: "909 Pine Ave, City L", point: 180 },
+        { id: 13, name: "Daniel Jackson", gender: "Male", phoneNumber: "345-678-9013", email: "daniel.jackson@example.com", date: "1986-05-03", address: "1010 Maple Rd, City M", point: 190 },
+        { id: 14, name: "Ava White", gender: "Female", phoneNumber: "456-789-0124", email: "ava.white@example.com", date: "1993-07-19", address: "1111 Cedar Dr, City N", point: 200 },
+        { id: 15, name: "Paul Harris", gender: "Male", phoneNumber: "567-890-1235", email: "paul.harris@example.com", date: "1990-09-01", address: "1212 Birch Ln, City O", point: 210 },
+        { id: 16, name: "Emma Clark", gender: "Female", phoneNumber: "678-901-2346", email: "emma.clark@example.com", date: "1988-11-11", address: "1313 Elm St, City P", point: 220 },
+        { id: 17, name: "Mark Lewis", gender: "Male", phoneNumber: "789-012-3457", email: "mark.lewis@example.com", date: "1995-03-22", address: "1414 Spruce Ave, City Q", point: 230 },
+        { id: 18, name: "Chloe Walker", gender: "Female", phoneNumber: "890-123-4568", email: "chloe.walker@example.com", date: "1992-08-15", address: "1515 Walnut Rd, City R", point: 240 },
+        { id: 19, name: "Steven Young", gender: "Male", phoneNumber: "901-234-5679", email: "steven.young@example.com", date: "1987-06-30", address: "1616 Chestnut Dr, City S", point: 250 },
+        { id: 20, name: "Mia King", gender: "Female", phoneNumber: "012-345-6790", email: "mia.king@example.com", date: "1994-04-05", address: "1717 Oak Ln, City T", point: 260 },
+        { id: 21, name: "Thomas Scott", gender: "Male", phoneNumber: "123-456-7892", email: "thomas.scott@example.com", date: "1991-12-12", address: "1818 Pine St, City U", point: 270 },
+        { id: 22, name: "Lily Green", gender: "Female", phoneNumber: "234-567-8903", email: "lily.green@example.com", date: "1989-02-28", address: "1919 Maple Ave, City V", point: 280 },
+        { id: 23, name: "Charles Adams", gender: "Male", phoneNumber: "345-678-9014", email: "charles.adams@example.com", date: "1996-10-17", address: "2020 Cedar Rd, City W", point: 290 },
+        { id: 24, name: "Grace Baker", gender: "Female", phoneNumber: "456-789-0125", email: "grace.baker@example.com", date: "1993-05-09", address: "2121 Birch Dr, City X", point: 300 },
+        { id: 25, name: "Henry Nelson", gender: "Male", phoneNumber: "567-890-1236", email: "henry.nelson@example.com", date: "1988-01-23", address: "2222 Elm Ln, City Y", point: 310 },
+        { id: 26, name: "Isabella Carter", gender: "Female", phoneNumber: "678-901-2347", email: "isabella.carter@example.com", date: "1995-07-07", address: "2323 Spruce St, City Z", point: 320 },
+        { id: 27, name: "George Mitchell", gender: "Male", phoneNumber: "789-012-3458", email: "george.mitchell@example.com", date: "1990-03-14", address: "2424 Walnut Ave, City AA", point: 330 },
+        { id: 28, name: "Amelia Perez", gender: "Female", phoneNumber: "890-123-4569", email: "amelia.perez@example.com", date: "1987-09-26", address: "2525 Chestnut Rd, City BB", point: 340 },
+        { id: 29, name: "Edward Roberts", gender: "Male", phoneNumber: "901-234-5680", email: "edward.roberts@example.com", date: "1994-11-03", address: "2626 Oak Dr, City CC", point: 350 },
+        { id: 30, name: "Charlotte Turner", gender: "Female", phoneNumber: "012-345-6791", email: "charlotte.turner@example.com", date: "1991-06-28", address: "2727 Pine Ln, City DD", point: 360 }
+    ];
+
+    // Pagination variables
+    let currentPage = 1;
+    const itemsPerPage = 10;
+
+    // Render table data
+    function renderCustomerTable(data, page = 1) {
+        const tbody = document.querySelector('#customer-table tbody');
+        const pagination = document.querySelector('.pagination');
+        tbody.innerHTML = '';
+
+        const totalPages = Math.ceil(data.length / itemsPerPage);
+        const startIndex = (page - 1) * itemsPerPage;
+        const endIndex = Math.min(startIndex + itemsPerPage, data.length);
+        const paginatedData = data.slice(startIndex, endIndex);
+
+        paginatedData.forEach(customer => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${customer.id}</td>
+                <td>${customer.name}</td>
+                <td>${customer.gender}</td>
+                <td>${customer.phoneNumber}</td>
+                <td>${customer.email}</td>
+                <td>
+                    <button class="btn btn-sm btn-link text-dark me-2" onclick="viewCustomer(${customer.id})">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </td>
+            `;
+            tbody.appendChild(row);
+        });
+
+        if (data.length > itemsPerPage) {
+            renderPagination(totalPages, page);
+            pagination.style.display = 'flex';
+        } else {
+            pagination.style.display = 'none';
+        }
+    }
+
+    // Render pagination
+    function renderPagination(totalPages, currentPage) {
+        const pagination = document.querySelector('.pagination');
+        pagination.innerHTML = '';
+
+        const prevLi = document.createElement('li');
+        prevLi.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+        prevLi.innerHTML = `<a class="page-link" href="#" onclick="changePage(${currentPage - 1})">«</a>`;
+        pagination.appendChild(prevLi);
+
+        for (let i = 1; i <= totalPages; i++) {
+            const pageLi = document.createElement('li');
+            pageLi.className = `page-item ${i === currentPage ? 'active' : ''}`;
+            pageLi.innerHTML = `<a class="page-link" href="#" onclick="changePage(${i})">${i}</a>`;
+            pagination.appendChild(pageLi);
+        }
+
+        const nextLi = document.createElement('li');
+        nextLi.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
+        nextLi.innerHTML = `<a class="page-link" href="#" onclick="changePage(${currentPage + 1})">»</a>`;
+        pagination.appendChild(nextLi);
+    }
+
+    // Change page
+    function changePage(page) {
+        if (page < 1 || page > Math.ceil(sampleCustomers.length / itemsPerPage)) return;
+        currentPage = page;
+        renderCustomerTable(sampleCustomers, page);
+    }
+
+    // View customer
+    function viewCustomer(id) {
+        const customer = sampleCustomers.find(c => c.id === id);
+        if (!customer) return;
+
+        const modal = document.createElement('div');
+        modal.className = 'modal-overlay';
+        modal.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 1050; display: flex; justify-content: center; align-items: center;';
+
+        const modalContent = document.createElement('div');
+        modalContent.className = 'modal-content';
+        modalContent.style.cssText = 'background-color: white; padding: 25px; border-radius: 8px; width: 600px; max-width: 90%;';
+
+        modalContent.innerHTML = `
+            <div class="modal-header" style="border-bottom: 1px solid #dee2e6; margin-bottom: 20px; padding-bottom: 10px;">
+                <h3 class="modal-title" style="color: #6A5ACD;">Customer Details</h3>
+            </div>
+            <div class="modal-body">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">ID</label>
+                        <input type="text" class="form-control" id="customer-id" value="${customer.id}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" id="customer-name" value="${customer.name}" disabled>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Gender</label>
+                        <input type="text" class="form-control" id="customer-gender" value="${customer.gender}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone Number</label>
+                        <input type="text" class="form-control" id="customer-phone" value="${customer.phoneNumber}" disabled>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" id="customer-email" value="${customer.email}" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Date</label>
+                        <input type="date" class="form-control" id="customer-date" value="${customer.date}" disabled>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Address</label>
+                        <textarea class="form-control" id="customer-address" disabled>${customer.address}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Point</label>
+                        <input type="number" class="form-control" id="customer-point" value="${customer.point}" disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="display: flex; gap: 10px;">
+                <button type="button" class="btn btn-close-modal" style="background-color: #6c757d; color: white;">Close</button>
+            </div>
+        `;
+
+        const closeButton = modalContent.querySelector('.btn-close-modal');
+        closeButton.addEventListener('click', () => document.body.removeChild(modal));
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) document.body.removeChild(modal);
+        });
+
+        modal.appendChild(modalContent);
+        document.body.appendChild(modal);
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+        renderCustomerTable(sampleCustomers);
+    });
+</script>

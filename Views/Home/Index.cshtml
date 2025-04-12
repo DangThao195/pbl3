@@ -1,10 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!-- Section: Banner giới thiệu sản phẩm tươi sống với nút kêu gọi hành động (CTA) -->
 <div class="row p-lg-3">
-    <div class="col-6 " style="padding-left: 30px;">
+    <div class="col-6" style="padding-left: 30px;">
         <p style="font-size: 42px; font-weight: bold;">Make healthy life with <span style="color: var(--green-color);">fresh</span> grocery</p>
 
         <p class="pb-2" style="max-width: 90%; line-height: 2;">
@@ -17,18 +18,73 @@
         </p>
 
         <div class="d-flex gap-3">
-            <button class="btn rounded-pill flex-grow-1 py-2" style="background-color: var(--green-color); color: white; max-width: 33.33%;">
+            <a href="#product-container" class="btn rounded-pill flex-grow-1 py-2" style="background-color: var(--green-color); color: white; max-width: 33.33%;">
                 Order Now
-            </button>
+            </a>
             <button class="btn rounded-pill flex-grow-1 py-2" style="border: 1px solid; max-width: 33.33%;">
                 Explore More <i class="bi bi-arrow-right"></i>
             </button>
         </div>
     </div>
     <div class="col-6 d-flex justify-content-center align-items-center" style="height: 100%;">
-        <img src="~/img/hand&tomato.jpg" class="img-fluid" />
+        <div id="groceryCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="2000">
+                    <img src="~/img/hand&tomato.jpg" class="d-block w-100 img-fluid" alt="Fresh Grocery 1">
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="~/img/column2.jpg" class="d-block w-100 img-fluid" alt="Fresh Grocery 2">
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="~/img/MeatAd.jpg" class="d-block w-100 img-fluid" alt="Fresh Grocery 3">
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="~/img/CandyAd.jpg" class="d-block w-100 img-fluid" alt="Fresh Grocery 4">
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="~/img/MilkAd.jpg" class="d-block w-100 img-fluid" alt="Fresh Grocery 4">
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="~/img/BreadAd.jpg" class="d-block w-100 img-fluid" alt="Fresh Grocery 4">
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="~/img/EggAd.jpg" class="d-block w-100 img-fluid" alt="Fresh Grocery 4">
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="~/img/CakeAd.jpg" class="d-block w-100 img-fluid" alt="Fresh Grocery 1">
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="~/img/RiceAd.jpg" class="d-block w-100 img-fluid" alt="Fresh Grocery 2">
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="~/img/SugarAd.jpg" class="d-block w-100 img-fluid" alt="Fresh Grocery 3">
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="~/img/SpiceAd.jpg" class="d-block w-100 img-fluid" alt="Fresh Grocery 4">
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="~/img/IcecreamAd.jpg" class="d-block w-100 img-fluid" alt="Fresh Grocery 4">
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="~/img/TeaAd.jpg" class="d-block w-100 img-fluid" alt="Fresh Grocery 4">
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="~/img/CoffeeAd.jpg" class="d-block w-100 img-fluid" alt="Fresh Grocery 4">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#groceryCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#groceryCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
     </div>
 </div>
+
+
 
 <!-- Service Highlights: Free Shipping, Returns, Secure Payment, Offers -->
 <div class="row py-3 d-flex align-items-center justify-content-center" style="background-color: var(--brown-weak-color);">
@@ -131,48 +187,172 @@
 
     <!-- List Product -->
     <div id="product-container" class="d-flex flex-wrap justify-content-start col-9">
-        <!-- Các sản phẩm sẽ được thêm vào đây qua JavaScript -->
+        <!-- Products will be added dynamically via JavaScript -->
     </div>
 
+    <!-- Pagination Controls -->
+    <div class="col-9 d-flex justify-content-center mt-4">
+        <nav aria-label="Product pagination">
+            <ul class="pagination" id="pagination-controls">
+                <!-- Pagination buttons will be added dynamically -->
+            </ul>
+        </nav>
+    </div>
 </div>
+
+<style>
+    .carousel-inner {
+        border-radius: 10px;
+        overflow: hidden;
+        height: 500px;
+    }
+
+    .carousel-item img {
+        object-fit: cover;
+        height: 500px;
+        width: 100%;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 10%;
+        background: none;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        filter: brightness(0) invert(1);
+        width: 30px;
+        height: 30px;
+    }
+
+    .pagination .page-link {
+        color: #6D7B30;
+        border-radius: 5px;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+
+        .pagination .page-link:hover {
+            background-color: #E6DACE;
+            color: #314401;
+        }
+
+    .pagination .active .page-link {
+        background-color: #6D7B30;
+        color: white;
+        border-color: #6D7B30;
+    }
+
+    .pagination .disabled .page-link {
+        color: #ccc;
+        pointer-events: none;
+        cursor: default;
+    }
+</style>
 
 @section Scripts {
     <script>
-        const numProducts = 20;  // Tổng số sản phẩm
-        const cardsPerRow = 4;  // Số thẻ card trên 1 hàng
+        const productsPerPage = 20; // Max products per page
+        const cardsPerRow = 4; // Cards per row
+        let currentPage = 1;
+        const totalProducts = 50; // Simulate more products (adjust as needed)
 
-        // Lấy phần tử div chứa sản phẩm
+        // Get product container
         const productContainer = document.getElementById("product-container");
+        const paginationControls = document.getElementById("pagination-controls");
 
-        // Lấy chiều rộng của div chứa sản phẩm
-        const containerWidth = productContainer.offsetWidth; // Lấy chiều rộng của thẻ div
-
-        const cardWidth = 200; // Chiều rộng mỗi thẻ (đã định nghĩa trong inline style)
-        const totalCardWidth = cardWidth * cardsPerRow; // Tổng chiều rộng của 4 thẻ
-        const marginLeft = (containerWidth - totalCardWidth) / (cardsPerRow+1); // Tính toán margin
+        // Calculate margins
+        const containerWidth = productContainer.offsetWidth;
+        const cardWidth = 200; // Chiều rộng mỗi thẻ
+        const totalCardWidth = cardWidth * cardsPerRow;
+        const marginLeft = (containerWidth - totalCardWidth) / (cardsPerRow + 1);
         const marginBottom = marginLeft / 2;
 
-        for (let i = 0; i < numProducts; i++) {
-            const productHTML = `
-                <div class="card text-center" style="border-radius: 20px; max-width: 250px; height: 305px; margin-left: ${marginLeft}px; margin-bottom: ${marginBottom}px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                    <img src="../img/—Pngtree—red fresh tomato with green_8933861.png"
-                            style="background-color: #EDEDED; border-top-left-radius: 20px; border-top-right-radius: 20px;
-                            height: 200px; width: 100%; object-fit: cover;"
-                            class="card-img-top" alt="Sản phẩm">
-                    <div class="card-body p-0" style="display: flex; flex-direction: column; height: 100%;">
-                        <span class="text-warning" style="font-size: 16px; letter-spacing: 5px;">★★★★★</span>
-                        <h6 class="card-title" style="font-weight: bold; font-size: 14px;">Fresh Ruby Tomatoes</h6>
-                        <p class="d-flex justify-content-evenly" style="font-size: 14px;">
-                            <span class="fw-bold" style="color: #80B500;">150.000đ</span>
-                            <span class="old-price" style="color: #94A84E; text-decoration: line-through;">200.000đ</span>
-                        </p>
-                        <a href="/Product/Details" class="fw-bold" style="display: block; background-color: #E86D1F; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; color: white; font-size: 14px; margin-top: auto; text-align: center; padding: 5px 10px;">
-                            Details
-                        </a>
+        // Function to render products for the current page
+        function renderProducts(page) {
+            productContainer.innerHTML = ''; // Clear previous products
+            const start = (page - 1) * productsPerPage;
+            const end = Math.min(start + productsPerPage, totalProducts);
+
+            for (let i = start; i < end; i++) {
+                const productHTML = `
+                    <div class="card text-center" style="border-radius: 20px; max-width: 250px; height: 305px; margin-left: ${marginLeft}px; margin-bottom: ${marginBottom}px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                        <img src="../img/—Pngtree—red fresh tomato with green_8933861.png"
+                             style="background-color: #EDEDED; border-top-left-radius: 20px; border-top-right-radius: 20px; height: 200px; width: 100%; object-fit: cover;"
+                             class="card-img-top" alt="Sản phẩm">
+                        <div class="card-body p-0" style="display: flex; flex-direction: column; height: 100%;">
+                            <span class="text-warning" style="font-size: 16px; letter-spacing: 5px;">★★★★★</span>
+                            <h6 class="card-title" style="font-weight: bold; font-size: 14px;">Fresh Ruby Tomatoes</h6>
+                            <p class="d-flex justify-content-evenly" style="font-size: 14px;">
+                                <span class="fw-bold" style="color: #80B500;">150.000đ</span>
+                                <span class="old-price" style="color: #94A84E; text-decoration: line-through;">200.000đ</span>
+                            </p>
+                            <a href="/Product/Details" class="fw-bold" style="display: block; background-color: #E86D1F; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; color: white; font-size: 14px; margin-top: auto; text-align: center; padding: 5px 10px;">
+                                Details
+                            </a>
+                        </div>
                     </div>
-                </div>
-            `;
-            productContainer.innerHTML += productHTML;
+                `;
+                productContainer.innerHTML += productHTML;
+            }
         }
+
+        // Function to render pagination controls
+        function renderPagination() {
+            paginationControls.innerHTML = '';
+            const totalPages = Math.ceil(totalProducts / productsPerPage);
+
+            // Previous button
+            const prevItem = `
+                <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+                    <a class="page-link" data-page="${currentPage - 1}">Previous</a>
+                </li>
+            `;
+            paginationControls.innerHTML += prevItem;
+
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                const pageItem = `
+                    <li class="page-item ${i === currentPage ? 'active' : ''}">
+                        <a class="page-link" data-page="${i}">${i}</a>
+                    </li>
+                `;
+                paginationControls.innerHTML += pageItem;
+            }
+
+            // Next button
+            const nextItem = `
+                <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+                    <a class="page-link" data-page="${currentPage + 1}">Next</a>
+                </li>
+            `;
+            paginationControls.innerHTML += nextItem;
+        }
+
+        // Function to change page
+        function changePage(page, event) {
+            event.preventDefault(); // Prevent default link behavior
+            const totalPages = Math.ceil(totalProducts / productsPerPage);
+            if (page < 1 || page > totalPages) return;
+            currentPage = page;
+            renderProducts(currentPage);
+            renderPagination();
+            // Scroll to product container
+            window.scrollTo({ top: productContainer.offsetTop - 50, behavior: 'smooth' });
+        }
+
+        // Event listener for pagination clicks
+        paginationControls.addEventListener('click', function(event) {
+            const target = event.target.closest('.page-link');
+            if (target && !target.parentElement.classList.contains('disabled')) {
+                const page = parseInt(target.getAttribute('data-page'));
+                changePage(page, event);
+            }
+        });
+
+        // Initial render
+        renderProducts(currentPage);
+        renderPagination();
     </script>
 }

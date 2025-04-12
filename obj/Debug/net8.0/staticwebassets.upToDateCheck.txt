@@ -4,12 +4,16 @@ wwwroot\img\1-removebg-preview.png
 wwwroot\img\Apple Juice.png
 wwwroot\img\Baby Food.png
 wwwroot\img\bread.png
+wwwroot\img\BreadAd.jpg
 wwwroot\img\Breads.png
 wwwroot\img\Butter and Cream.png
+wwwroot\img\CakeAd.jpg
 wwwroot\img\candies.png
+wwwroot\img\CandyAd.jpg
 wwwroot\img\Canned Foods.png
 wwwroot\img\coconut.png
 wwwroot\img\Coffee.png
+wwwroot\img\CoffeeAd.jpg
 wwwroot\img\column1.jpg
 wwwroot\img\column10.jpg
 wwwroot\img\column2.jpg
@@ -20,33 +24,49 @@ wwwroot\img\column6.jpg
 wwwroot\img\column7.jpg
 wwwroot\img\column8.jpg
 wwwroot\img\column9.jpg
+wwwroot\img\CommunityImpact.jpg
 wwwroot\img\DangHuuLong.jpg
 wwwroot\img\Dry Nuts.png
+wwwroot\img\EggAd.jpg
 wwwroot\img\facebook.png
+wwwroot\img\family eating healthy.jpg
 wwwroot\img\Farm_MainPage.jpg
 wwwroot\img\Fish and Seafood.png
 wwwroot\img\Fish_MainPage.jpg
 wwwroot\img\free-shipping.png
 wwwroot\img\Fresh Meat.png
+wwwroot\img\FreshFood.jpg
 wwwroot\img\Frozen Foods.png
 wwwroot\img\Fruits.png
 wwwroot\img\google.png
 wwwroot\img\hand&tomato.jpg
+wwwroot\img\IcecreamAd.jpg
 wwwroot\img\instagram.png
 wwwroot\img\LogoShop.png
 wwwroot\img\meat.png
+wwwroot\img\MeatAd.jpg
 wwwroot\img\milk.png
+wwwroot\img\MilkAd.jpg
 wwwroot\img\money.png
 wwwroot\img\Oil and Vinegar.png
 wwwroot\img\ordernow.png
 wwwroot\img\Organic Grocery Offer.png
 wwwroot\img\Organic Grocery.png
+wwwroot\img\OrganicFarm.jpg
+wwwroot\img\OurValues.jpg
 wwwroot\img\paypalcard.png
 wwwroot\img\—Pngtree—red fresh tomato with green_8933861.png
+wwwroot\img\QualityAssurance.jpg
+wwwroot\img\RiceAd.jpg
 wwwroot\img\sale.png
 wwwroot\img\Snacks and Chips.png
+wwwroot\img\SpiceAd.jpg
 wwwroot\img\Spices and Herbs.png
+wwwroot\img\SugarAd.jpg
+wwwroot\img\SustainabilityEfforts.jpg
 wwwroot\img\Tea.png
+wwwroot\img\TeaAd.jpg
+wwwroot\img\Team.jpg
 wwwroot\img\twitter.png
 wwwroot\img\vegetable.png
 wwwroot\img\Vegetables.png

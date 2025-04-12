@@ -1,0 +1,199 @@
+﻿@{
+    ViewData["Title"] = "Admin Profile";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="text-center mb-4" style="color: #333333; font-weight: bold;">Admin Profile</h2>
+            <div class="card shadow-sm" style="border: none; background-color: #E6E6FA;">
+                <div class="card-body">
+                    <form id="profileForm" novalidate>
+                        <div class="row mb-3">
+                            <label for="name" class="col-md-3 col-form-label" style="color: #333333;">Name</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="name" name="name" value="John Doe" pattern="[A-Za-z\s]+" title="Name can only contain letters and spaces" disabled style="background-color: #ffffff; color: #555555;" required>
+                                <div class="invalid-feedback">Name can only contain letters and spaces.</div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="email" class="col-md-3 col-form-label" style="color: #333333;">Email</label>
+                            <div class="col-md-9">
+                                <input type="email" class="form-control" id="email" name="email" value="john.doe@example.com" disabled style="background-color: #ffffff; color: #555555;" required>
+                                <div class="invalid-feedback">Please enter a valid email address.</div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="gender" class="col-md-3 col-form-label" style="color: #333333;">Gender</label>
+                            <div class="col-md-9">
+                                <select class="form-select" id="gender" name="gender" disabled style="background-color: #ffffff; color: #555555;" required>
+                                    <option value="Male" selected>Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <div class="invalid-feedback">Please select a gender.</div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="phone" class="col-md-3 col-form-label" style="color: #333333;">Phone</label>
+                            <div class="col-md-9">
+                                <input type="tel" class="form-control" id="phone" name="phone" value="+1234567890" pattern="[0-9]{10}" title="Phone number must be exactly 10 digits" disabled style="background-color: #ffffff; color: #555555;" required>
+                                <div class="invalid-feedback">Phone number must be exactly 10 digits.</div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="dob" class="col-md-3 col-form-label" style="color: #333333;">Date of Birth</label>
+                            <div class="col-md-9">
+                                <input type="date" class="form-control" id="dob" name="dob" value="1990-01-15" max="@DateTime.Today.ToString("yyyy-MM-dd")" disabled style="background-color: #ffffff; color: #555555;" required>
+                                <div class="invalid-feedback">Please select a valid date of birth.</div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="username" class="col-md-3 col-form-label" style="color: #333333;">User Name</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="username" name="username" value="johndoe" pattern="[A-Za-z]+" title="User Name can only contain letters" disabled style="background-color: #ffffff; color: #555555;" required>
+                                <div class="invalid-feedback">User Name can only contain letters.</div>
+                            </div>
+                        </div>
+                        <div class="row mb-3 password-section" style="display: none;">
+                            <label for="newPassword" class="col-md-3 col-form-label" style="color: #333333;">New Password</label>
+                            <div class="col-md-9">
+                                <input type="password" class="form-control" id="newPassword" name="newPassword" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@@$!%*?&])[A-Za-z\d@@$!%*?&]{8,}$" title="Password must be at least 8 characters, including lowercase, uppercase, number, and special character" style="background-color: #ffffff; color: #555555;">
+                                <div class="invalid-feedback">Password must be at least 8 characters, including lowercase, uppercase, number, and special character.</div>
+                            </div>
+                        </div>
+                        <div class="row mb-3 password-section" style="display: none;">
+                            <label for="confirmPassword" class="col-md-3 col-form-label" style="color: #333333;">Confirm Password</label>
+                            <div class="col-md-9">
+                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" style="background-color: #ffffff; color: #555555;">
+                                <div class="invalid-feedback" id="confirmPasswordFeedback">Passwords do not match.</div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="button" id="editButton" class="btn btn-primary">Edit</button>
+                            <button type="submit" id="saveButton" class="btn btn-primary" style="display: none;">Save</button>
+                            <button type="button" id="cancelButton" class="btn btn-outline-primary" style="display: none; border-color: #6A5ACD; color: #6A5ACD;">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        transition: transform 0.3s ease;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    .btn-primary {
+        background-color: #6A5ACD;
+        border-color: #6A5ACD;
+        transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+        background-color: #5b4ab5;
+        border-color: #5b4ab5;
+    }
+    .btn-outline-primary:hover {
+        background-color: #D8BFD8;
+        color: #333333;
+        border-color: #D8BFD8;
+    }
+    .form-control:disabled, .form-select:disabled {
+        background-color: #f8f9fa !important;
+        opacity: 1;
+    }
+    .form-control:focus, .form-select:focus {
+        border-color: #6A5ACD;
+        box-shadow: 0 0 5px rgba(106, 90, 205, 0.3);
+    }
+    .invalid-feedback {
+        display: none;
+    }
+    .was-validated .form-control:invalid, .was-validated .form-select:invalid {
+        border-color: #dc3545;
+    }
+    .was-validated .form-control:invalid ~ .invalid-feedback,
+    .was-validated .form-select:invalid ~ .invalid-feedback {
+        display: block;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const editButton = document.getElementById('editButton');
+        const saveButton = document.getElementById('saveButton');
+        const cancelButton = document.getElementById('cancelButton');
+        const form = document.getElementById('profileForm');
+        const inputs = form.querySelectorAll('input');
+        const passwordSections = document.querySelectorAll('.password-section');
+        const newPasswordInput = document.getElementById('newPassword');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const confirmPasswordFeedback = document.getElementById('confirmPasswordFeedback');
+
+        editButton.addEventListener('click', function () {
+            // Enable all inputs
+            inputs.forEach(input => {
+                input.disabled = false;
+            });
+            document.getElementById('gender').disabled = false;
+            // Show password fields
+            passwordSections.forEach(section => {
+                section.style.display = 'flex';
+            });
+            // Toggle buttons
+            editButton.style.display = 'none';
+            saveButton.style.display = 'inline-block';
+            cancelButton.style.display = 'inline-block';
+        });
+
+        cancelButton.addEventListener('click', function () {
+            // Disable inputs
+            inputs.forEach(input => {
+                input.disabled = true;
+            });
+            document.getElementById('gender').disabled = true;
+            // Hide password fields
+            passwordSections.forEach(section => {
+                section.style.display = 'none';
+            });
+            // Clear password fields
+            newPasswordInput.value = '';
+            confirmPasswordInput.value = '';
+            // Reset form validation
+            form.classList.remove('was-validated');
+            // Toggle buttons
+            editButton.style.display = 'inline-block';
+            saveButton.style.display = 'none';
+            cancelButton.style.display = 'none';
+        });
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            let isValid = true;
+
+            // Check password match
+            if (newPasswordInput.value || confirmPasswordInput.value) {
+                if (newPasswordInput.value !== confirmPasswordInput.value) {
+                    confirmPasswordInput.setCustomValidity('Passwords do not match');
+                    confirmPasswordFeedback.textContent = 'Passwords do not match.';
+                    isValid = false;
+                } else {
+                    confirmPasswordInput.setCustomValidity('');
+                }
+            }
+
+            // Apply Bootstrap validation styles
+            form.classList.add('was-validated');
+
+            // Check form validity
+            if (form.checkValidity() && isValid) {
+                // Add actual form submission logic here (e.g., AJAX to server)
+            }
+        });
+    });
+</script>

@@ -98,7 +98,7 @@ namespace PBL3_HK4.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Index", "Home"); // Giao diện của Admin
+                    return RedirectToAction("Home", "Admin"); // Giao diện của Admin
                 }
             }
             catch (InvalidOperationException ex)

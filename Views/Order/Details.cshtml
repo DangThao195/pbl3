@@ -79,10 +79,6 @@
                 <div id="actionButtonsContainer">
                     <!-- Action Buttons -->
                     <div id="actionButtons" class="d-grid gap-3">
-                        <button id="confirmButton" class="btn py-2 w-100" style="font-weight: bold; color: white; background-color: #2A9D8F; border-radius: 10px; font-size: 18px;">
-                            CONFIRMED
-                        </button>
-
                         <button id="cancelButton" class="btn py-2 w-100" style="font-weight: bold; color: white; background-color: #E76F51; border-radius: 10px; font-size: 18px;">
                             CANCELED
                         </button>
@@ -117,7 +113,6 @@
         const orderStatusLabel = document.getElementById('orderStatusLabel');
         const orderStatusText = document.getElementById('orderStatusText');
         const actionButtons = document.getElementById('actionButtons');
-        const confirmButton = document.getElementById('confirmButton');
         const cancelButton = document.getElementById('cancelButton');
         const cancellationForm = document.getElementById('cancellationForm');
         const cancellationReason = document.getElementById('cancellationReason');
@@ -130,16 +125,6 @@
             if (cancellationReason.value.trim() !== '') {
                 cancellationError.classList.add('d-none');
             }
-        });
-
-        // Handle Confirm button click
-        confirmButton.addEventListener('click', function() {
-            // Change status text and background color
-            orderStatusText.textContent = 'CONFIRMED';
-            orderStatusLabel.style.backgroundColor = '#2A9D8F';
-
-            // Hide action buttons
-            actionButtons.classList.add('d-none');
         });
 
         // Handle Cancel button click

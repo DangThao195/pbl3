@@ -1,6 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Category Manage";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml"; 
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div id="category-content" class="content-section active">
@@ -49,9 +49,9 @@
         color: #6A5ACD;
     }
 
-    .page-link:hover {
-        color: #5a4abd;
-    }
+        .page-link:hover {
+            color: #5a4abd;
+        }
 
     .form-label {
         font-weight: 500;
@@ -64,16 +64,13 @@
     }
 
     @@keyframes fadeIn {
-        from
+        from {
+            opacity: 0;
+        }
 
-    {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-
+        to {
+            opacity: 1;
+        }
     }
 
     .modal-content {
@@ -81,18 +78,15 @@
     }
 
     @@keyframes slideDown {
-        from
+        from {
+            transform: translateY(-50px);
+            opacity: 0;
+        }
 
-    {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
     }
 
     /* Close button hover effect */
@@ -107,9 +101,9 @@
         transition: all 0.3s;
     }
 
-    .modal-footer .btn:hover {
-        opacity: 0.9;
-    }
+        .modal-footer .btn:hover {
+            opacity: 0.9;
+        }
 </style>
 
 <script>
@@ -259,39 +253,42 @@
             <div class="modal-header" style="border-bottom: 1px solid #dee2e6; margin-bottom: 20px; padding-bottom: 10px;">
                 <h3 class="modal-title" style="color: #6A5ACD; margin: 0;">Category Details</h3>
             </div>
-            <div class="modal-body">
-                <div class="form-group row mb-3" style="display: flex; align-items: center;">
-                    <label class="col-sm-3 col-form-label" style="font-weight: 500; color: #6A5ACD;">ID</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="category-id" value="${category.id}"
-                               disabled style="background-color: #f8f9fa; cursor: not-allowed;">
+            <form id="editCategoryForm" action="UpdateCategory" method="post">
+                <div class="modal-body">
+                    <div class="form-group row mb-3" style="display: flex; align-items: center;">
+                        <label class="col-sm-3 col-form-label" style="font-weight: 500; color: #6A5ACD;">ID</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="category-id" name="id" value="${category.id}"
+                                   readonly style="background-color: #f8f9fa; cursor: not-allowed;">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3" style="display: flex; align-items: center;">
+                        <label class="col-sm-3 col-form-label" style="font-weight: 500; color: #6A5ACD;">Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="category-name" name="name" value="${category.name}"
+                                   disabled style="background-color: #f8f9fa; cursor: not-allowed;">
+                        </div>
                     </div>
                 </div>
-                <div class="form-group row mb-3" style="display: flex; align-items: center;">
-                    <label class="col-sm-3 col-form-label" style="font-weight: 500; color: #6A5ACD;">Name</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="category-name" value="${category.name}"
-                               disabled style="background-color: #f8f9fa; cursor: not-allowed;">
-                    </div>
+                <div class="modal-footer" style="border-top: 1px solid #dee2e6; margin-top: 20px; padding-top: 15px; display: flex; justify-content: flex-end; gap: 10px;">
+                    <button type="button" class="btn btn-edit" style="background-color: #6A5ACD; color: white; padding: 8px 16px; border-radius: 4px; border: none;">
+                        <i class="fas fa-edit me-2"></i>Edit
+                    </button>
+                    <button type="submit" class="btn btn-save" style="background-color: #28a745; color: white; padding: 8px 16px; border-radius: 4px; border: none; display: none;">
+                        <i class="fas fa-save me-2"></i>Save
+                    </button>
+                    <button type="button" class="btn btn-cancel" style="background-color: #6c757d; color: white; padding: 8px 16px; border-radius: 4px; border: none; display: none;">
+                        Cancel
+                    </button>
+                    <button type="button" class="btn btn-close-modal" style="background-color: #6c757d; color: white; padding: 8px 16px; border-radius: 4px; border: none;">
+                        Close
+                    </button>
                 </div>
-            </div>
-            <div class="modal-footer" style="border-top: 1px solid #dee2e6; margin-top: 20px; padding-top: 15px; display: flex; justify-content: flex-end; gap: 10px;">
-                <button type="button" class="btn btn-edit" style="background-color: #6A5ACD; color: white; padding: 8px 16px; border-radius: 4px; border: none;">
-                    <i class="fas fa-edit me-2"></i>Edit
-                </button>
-                <button type="button" class="btn btn-save" style="background-color: #28a745; color: white; padding: 8px 16px; border-radius: 4px; border: none; display: none;">
-                    <i class="fas fa-save me-2"></i>Save
-                </button>
-                <button type="button" class="btn btn-cancel" style="background-color: #6c757d; color: white; padding: 8px 16px; border-radius: 4px; border: none; display: none;">
-                    Cancel
-                </button>
-                <button type="button" class="btn btn-close-modal" style="background-color: #6c757d; color: white; padding: 8px 16px; border-radius: 4px; border: none;">
-                    Close
-                </button>
-            </div>
+            </form>
         `;
 
         // Get DOM elements
+        const form = modalContent.querySelector('#editCategoryForm');
         const closeBtn = modalContent.querySelector('.btn-close-modal');
         const editBtn = modalContent.querySelector('.btn-edit');
         const saveBtn = modalContent.querySelector('.btn-save');
@@ -302,39 +299,6 @@
         // Close modal function
         const closeModal = () => {
             document.body.removeChild(modal);
-        };
-
-        // Show notification function
-        const showNotification = (message, type = 'success') => {
-            const notification = document.createElement('div');
-            notification.style.position = 'fixed';
-            notification.style.bottom = '20px';
-            notification.style.right = '20px';
-            notification.style.padding = '12px 24px';
-            notification.style.borderRadius = '4px';
-            notification.style.color = 'white';
-            notification.style.backgroundColor = type === 'success' ? '#28a745' : '#dc3545';
-            notification.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
-            notification.style.zIndex = '1100';
-            notification.style.transition = 'all 0.3s ease';
-            notification.style.display = 'flex';
-            notification.style.alignItems = 'center';
-            notification.style.gap = '10px';
-
-            const icon = document.createElement('i');
-            icon.className = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
-
-            notification.appendChild(icon);
-            notification.appendChild(document.createTextNode(message));
-            document.body.appendChild(notification);
-
-            // Auto-remove after 3 seconds
-            setTimeout(() => {
-                notification.style.opacity = '0';
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
         };
 
         // Enter edit mode
@@ -363,34 +327,9 @@
             closeBtn.style.display = 'block';
         };
 
-        // Save changes
-        const saveChanges = () => {
-            const newName = nameInput.value.trim();
-            if (!newName) {
-                showNotification('Category name cannot be empty!', 'error');
-                return;
-            }
-
-            // Update in sampleCategories array
-            const index = sampleCategories.findIndex(c => c.id === category.id);
-            if (index !== -1) {
-                sampleCategories[index].name = newName;
-
-                // Update the table view
-                renderCategoryTable(sampleCategories, currentPage);
-
-                // Show success notification
-                showNotification('Category updated successfully!');
-
-                // Exit edit mode
-                exitEditMode();
-            }
-        };
-
         // Event listeners
         closeBtn.addEventListener('click', closeModal);
         editBtn.addEventListener('click', enterEditMode);
-        saveBtn.addEventListener('click', saveChanges);
         cancelBtn.addEventListener('click', exitEditMode);
 
         // Close when clicking outside modal
@@ -409,8 +348,10 @@
         document.body.appendChild(modal);
     }
 
-    // Delete category function with custom confirmation modal
     function deleteCategory(id) {
+        const category = sampleCategories.find(c => c.id === id);
+        if (!category) return;
+
         // Create confirmation modal
         const confirmModal = document.createElement('div');
         confirmModal.className = 'modal-overlay';
@@ -432,6 +373,12 @@
                 </div>
                 <div class="modal-body">
                     <p>Are you sure you want to delete this category?</p>
+                    <p><strong>Name:</strong> ${category.name}</p>
+
+                    <!-- Thêm form để POST dữ liệu -->
+                    <form id="deleteCategoryForm" action="DeleteCategory" method="post">
+                        <input type="hidden" name="id" value="${category.id}">
+                    </form>
                 </div>
                 <div class="modal-footer" style="border-top: 1px solid #dee2e6; margin-top: 15px; padding-top: 10px; display: flex; justify-content: flex-end; gap: 10px;">
                     <button type="button" class="btn btn-cancel" style="background-color: #6c757d; color: white; padding: 6px 12px; border-radius: 4px; border: none;">Cancel</button>
@@ -441,6 +388,7 @@
         `;
 
         // Add event listeners
+        const deleteForm = confirmModal.querySelector('#deleteCategoryForm');
         const cancelBtn = confirmModal.querySelector('.btn-cancel');
         const confirmBtn = confirmModal.querySelector('.btn-confirm');
 
@@ -451,57 +399,28 @@
         cancelBtn.addEventListener('click', closeModal);
 
         confirmBtn.addEventListener('click', () => {
-            // Find index of category to delete
+            // Submit form để POST dữ liệu
+            deleteForm.submit();
+
+            // Xóa khỏi mảng local để cập nhật giao diện
             const index = sampleCategories.findIndex(c => c.id === id);
-
             if (index !== -1) {
-                // Remove from array
                 sampleCategories.splice(index, 1);
-
-                // Re-render table with current pagination
                 renderCategoryTable(sampleCategories, currentPage);
-
-                // Show success notification
-                showNotification('Category deleted successfully!', 'success');
-            } else {
-                showNotification('Category not found!', 'error');
             }
 
             closeModal();
         });
 
+        // Close when clicking outside modal
+        confirmModal.addEventListener('click', (e) => {
+            if (e.target === confirmModal) {
+                closeModal();
+            }
+        });
+
         // Add modal to DOM
         document.body.appendChild(confirmModal);
-    }
-
-    // Helper function to show notifications
-    function showNotification(message, type = 'success') {
-        const notification = document.createElement('div');
-        notification.style.position = 'fixed';
-        notification.style.bottom = '20px';
-        notification.style.right = '20px';
-        notification.style.padding = '10px 20px';
-        notification.style.borderRadius = '4px';
-        notification.style.color = 'white';
-        notification.style.zIndex = '1100';
-        notification.style.transition = 'all 0.3s ease';
-
-        if (type === 'success') {
-            notification.style.backgroundColor = '#28a745';
-        } else {
-            notification.style.backgroundColor = '#dc3545';
-        }
-
-        notification.textContent = message;
-        document.body.appendChild(notification);
-
-        // Auto-remove after 3 seconds
-        setTimeout(() => {
-            notification.style.opacity = '0';
-            setTimeout(() => {
-                document.body.removeChild(notification);
-            }, 300);
-        }, 3000);
     }
 
     // Initialize table when page loads
@@ -512,7 +431,6 @@
     // Add New Category button event listener
     document.getElementById('add-category-btn').addEventListener('click', addNewCategory);
 
-    // Add New Category function with Add button and notifications
     function addNewCategory() {
         // Create modal overlay
         const modal = document.createElement('div');
@@ -543,124 +461,50 @@
             <div class="modal-header" style="border-bottom: 1px solid #dee2e6; margin-bottom: 20px; padding-bottom: 10px;">
                 <h3 class="modal-title" style="color: #6A5ACD; margin: 0;">Add New Category</h3>
             </div>
-            <div class="modal-body">
-                <div class="form-group row mb-3" style="display: flex; align-items: center;">
-                    <label class="col-sm-3 col-form-label" style="font-weight: 500; color: #6A5ACD;">ID</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="new-category-id"
-                               value="(Auto-generated)" disabled
-                               style="background-color: #f8f9fa; cursor: not-allowed;">
+            <form id="addCategoryForm" action="CreateCategory" method="post">
+                <div class="modal-body">
+                    <div class="form-group row mb-3" style="display: flex; align-items: center;">
+                        <label class="col-sm-3 col-form-label" style="font-weight: 500; color: #6A5ACD;">ID</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="new-category-id"
+                                   value="(Auto-generated)" disabled
+                                   style="background-color: #f8f9fa; cursor: not-allowed;">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3" style="display: flex; align-items: center;">
+                        <label class="col-sm-3 col-form-label" style="font-weight: 500; color: #6A5ACD; display: flex; align-items: center;">
+                            Name <span style="color: #dc3545; margin-left: 5px;">*</span>
+                        </label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="new-category-name" name="name"
+                                   placeholder="Enter category name" required
+                                   style="background-color: white; cursor: text;">
+                        </div>
                     </div>
                 </div>
-                <div class="form-group row mb-3" style="display: flex; align-items: center;">
-                    <label class="col-sm-3 col-form-label" style="font-weight: 500; color: #6A5ACD; display: flex; align-items: center;">
-                        Name <span style="color: #dc3545; margin-left: 5px;">*</span>
-                    </label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="new-category-name"
-                               placeholder="Enter category name"
-                               style="background-color: white; cursor: text;">
-                    </div>
+                <div class="modal-footer" style="border-top: 1px solid #dee2e6; margin-top: 20px; padding-top: 15px; display: flex; justify-content: flex-end; gap: 10px;">
+                    <button type="submit" class="btn btn-add" style="background-color: #6A5ACD; color: white; padding: 8px 16px; border-radius: 4px; border: none;">
+                        <i class="fas fa-plus me-2"></i>Add
+                    </button>
+                    <button type="button" class="btn btn-cancel" style="background-color: #6c757d; color: white; padding: 8px 16px; border-radius: 4px; border: none;">
+                        Cancel
+                    </button>
                 </div>
-            </div>
-            <div class="modal-footer" style="border-top: 1px solid #dee2e6; margin-top: 20px; padding-top: 15px; display: flex; justify-content: flex-end; gap: 10px;">
-                <button type="button" class="btn btn-add" style="background-color: #6A5ACD; color: white; padding: 8px 16px; border-radius: 4px; border: none;">
-                    <i class="fas fa-plus me-2"></i>Add
-                </button>
-                <button type="button" class="btn btn-cancel" style="background-color: #6c757d; color: white; padding: 8px 16px; border-radius: 4px; border: none;">
-                    Cancel
-                </button>
-            </div>
+            </form>
         `;
 
         // Get DOM elements
-        const addBtn = modalContent.querySelector('.btn-add');
+        const form = modalContent.querySelector('#addCategoryForm');
         const cancelBtn = modalContent.querySelector('.btn-cancel');
         const nameInput = modalContent.querySelector('#new-category-name');
 
-        // Show notification function
-        const showNotification = (message, type = 'success') => {
-            const notification = document.createElement('div');
-            notification.style.position = 'fixed';
-            notification.style.bottom = '20px';
-            notification.style.right = '20px';
-            notification.style.padding = '12px 24px';
-            notification.style.borderRadius = '4px';
-            notification.style.color = 'white';
-            notification.style.backgroundColor = type === 'success' ? '#28a745' : '#dc3545';
-            notification.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
-            notification.style.zIndex = '1100';
-            notification.style.transition = 'all 0.3s ease';
-            notification.style.display = 'flex';
-            notification.style.alignItems = 'center';
-            notification.style.gap = '10px';
-
-            const icon = document.createElement('i');
-            icon.className = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
-
-            notification.appendChild(icon);
-            notification.appendChild(document.createTextNode(message));
-            document.body.appendChild(notification);
-
-            // Auto-remove after 3 seconds
-            setTimeout(() => {
-                notification.style.opacity = '0';
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
-        };
-
-        // Add new category
-        const addCategory = () => {
-            const categoryName = nameInput.value.trim();
-
-            if (!categoryName) {
-                showNotification('Category name is required!', 'error');
-                nameInput.focus();
-                return;
-            }
-
-            // Generate temporary ID (replace with GUID from backend later)
-            const newId = sampleCategories.length > 0
-                ? Math.max(...sampleCategories.map(c => c.id)) + 1
-                : 1;
-
-            // Create new category object
-            const newCategory = {
-                id: newId,
-                name: categoryName
-            };
-
-            // Add to array (replace with API call later)
-            sampleCategories.unshift(newCategory);
-
-            // Refresh table and reset to first page
-            currentPage = 1;
-            renderCategoryTable(sampleCategories, currentPage);
-
-            // Show success notification
-            showNotification('Category added successfully!');
-
-            // Close modal
-            document.body.removeChild(modal);
-        };
-
         // Event listeners
-        addBtn.addEventListener('click', addCategory);
         cancelBtn.addEventListener('click', () => document.body.removeChild(modal));
 
         // Close when clicking outside modal
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
                 document.body.removeChild(modal);
-            }
-        });
-
-        // Add Enter key support
-        nameInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                addCategory();
             }
         });
 

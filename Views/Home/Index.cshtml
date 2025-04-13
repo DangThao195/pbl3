@@ -252,107 +252,338 @@
 </style>
 
 @section Scripts {
+    <style>
+        /* Đảm bảo container chứa panel không làm ảnh hưởng bố cục */
+        .card {
+            position: relative;
+            overflow: visible; /* Cho phép panel trồi ra ngoài */
+        }
+
+        /* Panel trồi ra */
+        .hover-panel {
+            position: absolute;
+            top: 0;
+            left: 0; /* Neo vào cạnh trái */
+            width: 50px; /* Chiều rộng nhỏ gọn */
+            height: 100%; /* Cao bằng thẻ card */
+            background-color: #ffffff;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* Bóng ở bên phải */
+            transform: translateX(-100%); /* Ẩn hoàn toàn bên trái */
+            opacity: 0; /* Vô hình */
+            transition: transform 0.3s ease, opacity 0.3s ease; /* Hiệu ứng mượt */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px; /* Khoảng cách giữa các phần tử */
+            z-index: 0; /* Nằm sau khi ẩn */
+        }
+
+        /* Trồi ra và hiện khi hover */
+        .card:hover .hover-panel {
+            transform: translateX(calc(-100% - 10px)); /* Trồi ra bên trái, cách 10px */
+            opacity: 1; /* Hiện rõ */
+            z-index: 10; /* Lên trên khi hover */
+        }
+
+        /* Nút giỏ hàng */
+        .cart-btn {
+            background-color: #E86D1F;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s, transform 0.2s; /* Transition cho phóng to */
+            position: relative; /* Để định vị ảnh sản phẩm */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .cart-btn:hover {
+                background-color: #d65e1a;
+            }
+
+        /* Hiệu ứng phóng to nút giỏ hàng */
+        .cart-btn-animating {
+            transform: scale(1.5); /* Phóng to 50% */
+        }
+
+        /* Ảnh sản phẩm */
+        .product-icon {
+            position: absolute;
+            width: 20px; /* Kích thước nhỏ để vừa panel */
+            height: 20px;
+            opacity: 0; /* Ẩn mặc định */
+            transform: translateY(0); /* Ở vị trí ban đầu */
+            transition: opacity 0.3s ease; /* Transition cho opacity */
+            object-fit: cover; /* Đảm bảo ảnh không méo */
+        }
+
+        /* Hiệu ứng ảnh sản phẩm trồi lên rồi chui xuống */
+        .product-icon-active {
+            animation: productAnimation 0.6s ease-in-out; /* Animation 0.6s */
+        }
+
+        /* Keyframes cho ảnh sản phẩm */
+        @@keyframes productAnimation {
+            0%
+
+        {
+            opacity: 0;
+            transform: translateY(0);
+        }
+
+        25% {
+            opacity: 1;
+            transform: translateY(-20px); /* Trồi lên 20px */
+        }
+
+        50% {
+            opacity: 1;
+            transform: translateY(-20px);
+        }
+
+        75% {
+            opacity: 0;
+            transform: translateY(0); /* Chui xuống */
+        }
+
+        100% {
+            opacity: 0;
+            transform: translateY(0);
+        }
+
+        }
+
+        /* Thanh tăng giảm số lượng */
+        .quantity-control {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .quantity-btn {
+            background-color: #80B500;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+
+            .quantity-btn:hover {
+                background-color: #6a9300;
+            }
+
+        .quantity-input {
+            width: 35px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 2px;
+            font-size: 14px;
+        }
+
+            /* Vô hiệu hóa mũi tên mặc định của input number */
+            .quantity-input::-webkit-inner-spin-button,
+            .quantity-input::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+        .quantity-input {
+            -moz-appearance: textfield; /* Firefox */
+        }
+    </style>
+
     <script>
-        const productsPerPage = 20; // Max products per page
-        const cardsPerRow = 4; // Cards per row
-        let currentPage = 1;
-        const totalProducts = 50; // Simulate more products (adjust as needed)
+                const productsPerPage = 20; // Max products per page
+                const cardsPerRow = 4; // Cards per row
+                let currentPage = 1;
+                const totalProducts = 50; // Simulate more products
 
-        // Get product container
-        const productContainer = document.getElementById("product-container");
-        const paginationControls = document.getElementById("pagination-controls");
+                // Get product container
+                const productContainer = document.getElementById("product-container");
+                const paginationControls = document.getElementById("pagination-controls");
 
-        // Calculate margins
-        const containerWidth = productContainer.offsetWidth;
-        const cardWidth = 200; // Chiều rộng mỗi thẻ
-        const totalCardWidth = cardWidth * cardsPerRow;
-        const marginLeft = (containerWidth - totalCardWidth) / (cardsPerRow + 1);
-        const marginBottom = marginLeft / 2;
+                // Calculate margins
+                const containerWidth = productContainer.offsetWidth;
+                const cardWidth = 200; // Chiều rộng mỗi thẻ
+                const totalCardWidth = cardWidth * cardsPerRow;
+                const marginLeft = (containerWidth - totalCardWidth) / (cardsPerRow + 1);
+                const marginBottom = marginLeft / 2;
 
-        // Function to render products for the current page
-        function renderProducts(page) {
-            productContainer.innerHTML = ''; // Clear previous products
-            const start = (page - 1) * productsPerPage;
-            const end = Math.min(start + productsPerPage, totalProducts);
+                // Function to render products for the current page
+                function renderProducts(page) {
+                    productContainer.innerHTML = ''; // Clear previous products
+                    const start = (page - 1) * productsPerPage;
+                    const end = Math.min(start + productsPerPage, totalProducts);
 
-            for (let i = start; i < end; i++) {
-                const productHTML = `
-                    <div class="card text-center" style="border-radius: 20px; max-width: 250px; height: 305px; margin-left: ${marginLeft}px; margin-bottom: ${marginBottom}px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                        <img src="../img/—Pngtree—red fresh tomato with green_8933861.png"
-                             style="background-color: #EDEDED; border-top-left-radius: 20px; border-top-right-radius: 20px; height: 200px; width: 100%; object-fit: cover;"
-                             class="card-img-top" alt="Sản phẩm">
-                        <div class="card-body p-0" style="display: flex; flex-direction: column; height: 100%;">
-                            <span class="text-warning" style="font-size: 16px; letter-spacing: 5px;">★★★★★</span>
-                            <h6 class="card-title" style="font-weight: bold; font-size: 14px;">Fresh Ruby Tomatoes</h6>
-                            <p class="d-flex justify-content-evenly" style="font-size: 14px;">
-                                <span class="fw-bold" style="color: #80B500;">150.000đ</span>
-                                <span class="old-price" style="color: #94A84E; text-decoration: line-through;">200.000đ</span>
-                            </p>
-                            <a href="/Product/Details" class="fw-bold" style="display: block; background-color: #E86D1F; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; color: white; font-size: 14px; margin-top: auto; text-align: center; padding: 5px 10px;">
-                                Details
-                            </a>
-                        </div>
-                    </div>
-                `;
-                productContainer.innerHTML += productHTML;
-            }
-        }
+                    for (let i = start; i < end; i++) {
+                        const productId = i + 1; // Giả lập ID sản phẩm
+                        const productImage = "../img/—Pngtree—red fresh tomato with green_8933861.png"; // Ảnh sản phẩm
+                        const productHTML = `
+                            <div class="card text-center" style="border-radius: 20px; max-width: 250px; height: 305px; margin-left: ${marginLeft}px; margin-bottom: ${marginBottom}px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                                <img src="${productImage}"
+                                     style="background-color: #EDEDED; border-top-left-radius: 20px; border-top-right-radius: 20px; height: 200px; width: 100%; object-fit: cover;"
+                                     class="card-img-top" alt="Sản phẩm">
+                                <div class="card-body p-0" style="display: flex; flex-direction: column; height: 100%;">
+                                    <span class="text-warning" style="font-size: 16px; letter-spacing: 5px;">★★★★★</span>
+                                    <h6 class="card-title" style="font-weight: bold; font-size: 14px;">Fresh Ruby Tomatoes</h6>
+                                    <p class="d-flex justify-content-evenly" style="font-size: 14px;">
+                                        <span class="fw-bold" style="color: #80B500;">150.000đ</span>
+                                        <span class="old-price" style="color: #94A84E; text-decoration: line-through;">200.000đ</span>
+                                    </p>
+                                    <a href="/Product/Details" class="fw-bold" style="display: block; background-color: #E86D1F; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; color: white; font-size: 14px; margin-top: auto; text-align: center; padding: 5px 10px;">
+                                        Details
+                                    </a>
+                                </div>
+                                <!-- Panel trồi ra khi hover -->
+                                <div class="hover-panel">
+                                    <div class="quantity-control">
+                                        <button class="quantity-btn increase" data-product-id="${productId}">+</button>
+                                        <input type="number" class="quantity-input" value="1" min="1" data-product-id="${productId}">
+                                        <button class="quantity-btn decrease" data-product-id="${productId}">-</button>
+                                    </div>
+                                    <button class="cart-btn" title="Add to Cart" data-product-id="${productId}">
+                                        <i class="fas fa-shopping-cart"></i>
+                                        <img class="product-icon" src="${productImage}" alt="Sản phẩm">
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                        productContainer.innerHTML += productHTML;
+                    }
 
-        // Function to render pagination controls
-        function renderPagination() {
-            paginationControls.innerHTML = '';
-            const totalPages = Math.ceil(totalProducts / productsPerPage);
+                    // Thêm sự kiện cho các nút sau khi render
+                    addQuantityControls();
+                    addCartButtonEvents();
+                }
 
-            // Previous button
-            const prevItem = `
-                <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
-                    <a class="page-link" data-page="${currentPage - 1}">Previous</a>
-                </li>
-            `;
-            paginationControls.innerHTML += prevItem;
+                // Function to handle quantity controls
+                function addQuantityControls() {
+                    const decreaseButtons = document.querySelectorAll('.quantity-btn.decrease');
+                    const increaseButtons = document.querySelectorAll('.quantity-btn.increase');
+                    const quantityInputs = document.querySelectorAll('.quantity-input');
 
-            // Page numbers
-            for (let i = 1; i <= totalPages; i++) {
-                const pageItem = `
-                    <li class="page-item ${i === currentPage ? 'active' : ''}">
-                        <a class="page-link" data-page="${i}">${i}</a>
-                    </li>
-                `;
-                paginationControls.innerHTML += pageItem;
-            }
+                    decreaseButtons.forEach(button => {
+                        button.addEventListener('click', () => {
+                            const input = button.previousElementSibling;
+                            let value = parseInt(input.value);
+                            if (value > 1) {
+                                input.value = value - 1;
+                            }
+                        });
+                    });
 
-            // Next button
-            const nextItem = `
-                <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
-                    <a class="page-link" data-page="${currentPage + 1}">Next</a>
-                </li>
-            `;
-            paginationControls.innerHTML += nextItem;
-        }
+                    increaseButtons.forEach(button => {
+                        button.addEventListener('click', () => {
+                            const input = button.nextElementSibling;
+                            let value = parseInt(input.value);
+                            input.value = value + 1;
+                        });
+                    });
 
-        // Function to change page
-        function changePage(page, event) {
-            event.preventDefault(); // Prevent default link behavior
-            const totalPages = Math.ceil(totalProducts / productsPerPage);
-            if (page < 1 || page > totalPages) return;
-            currentPage = page;
-            renderProducts(currentPage);
-            renderPagination();
-            // Scroll to product container
-            window.scrollTo({ top: productContainer.offsetTop - 50, behavior: 'smooth' });
-        }
+                    quantityInputs.forEach(input => {
+                        input.addEventListener('input', () => {
+                            let value = parseInt(input.value);
+                            if (isNaN(value) || value < 1) {
+                                input.value = 1;
+                            }
+                        });
+                    });
+                }
 
-        // Event listener for pagination clicks
-        paginationControls.addEventListener('click', function(event) {
-            const target = event.target.closest('.page-link');
-            if (target && !target.parentElement.classList.contains('disabled')) {
-                const page = parseInt(target.getAttribute('data-page'));
-                changePage(page, event);
-            }
-        });
+                // Function to handle cart button
+                function addCartButtonEvents() {
+                    const cartButtons = document.querySelectorAll('.cart-btn');
+                    cartButtons.forEach(button => {
+                        button.addEventListener('click', () => {
+                            // Thêm lớp để phóng to nút
+                            button.classList.add('cart-btn-animating');
+                            // Thêm lớp để kích hoạt hiệu ứng ảnh sản phẩm
+                            const productIcon = button.querySelector('.product-icon');
+                            productIcon.classList.add('product-icon-active');
+                            // Xóa các lớp sau 0.6s
+                            setTimeout(() => {
+                                button.classList.remove('cart-btn-animating');
+                                productIcon.classList.remove('product-icon-active');
+                            }, 600);
+                            // Logic hiện tại
+                            const productId = button.getAttribute('data-product-id');
+                            const quantityInput = button.previousElementSibling.querySelector('.quantity-input');
+                            const quantity = parseInt(quantityInput.value);
+                            // alert(`Added ${quantity} product(s) with ID ${productId} to cart!`);
+                            // TODO: Thay bằng logic thêm vào giỏ hàng
+                        });
+                    });
+                }
 
-        // Initial render
-        renderProducts(currentPage);
-        renderPagination();
+                // Function to render pagination controls
+                function renderPagination() {
+                    paginationControls.innerHTML = '';
+                    const totalPages = Math.ceil(totalProducts / productsPerPage);
+
+                    // Previous button
+                    const prevItem = `
+                        <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+                            <a class="page-link" data-page="${currentPage - 1}">Previous</a>
+                        </li>
+                    `;
+                    paginationControls.innerHTML += prevItem;
+
+                    // Page numbers
+                    for (let i = 1; i <= totalPages; i++) {
+                        const pageItem = `
+                            <li class="page-item ${i === currentPage ? 'active' : ''}">
+                                <a class="page-link" data-page="${i}">${i}</a>
+                            </li>
+                        `;
+                        paginationControls.innerHTML += pageItem;
+                    }
+
+                    // Next button
+                    const nextItem = `
+                        <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+                            <a class="page-link" data-page="${currentPage + 1}">Next</a>
+                        </li>
+                    `;
+                    paginationControls.innerHTML += nextItem;
+                }
+
+                // Function to change page
+                function changePage(page, event) {
+                    event.preventDefault(); // Prevent default link behavior
+                    const totalPages = Math.ceil(totalProducts / productsPerPage);
+                    if (page < 1 || page > totalPages) return;
+                    currentPage = page;
+                    renderProducts(currentPage);
+                    renderPagination();
+                    // Scroll to product container
+                    window.scrollTo({ top: productContainer.offsetTop - 50, behavior: 'smooth' });
+                }
+
+                // Event listener for pagination clicks
+                paginationControls.addEventListener('click', function(event) {
+                    const target = event.target.closest('.page-link');
+                    if (target && !target.parentElement.classList.contains('disabled')) {
+                        const page = parseInt(target.getAttribute('data-page'));
+                        changePage(page, event);
+                    }
+                });
+
+                // Initial render
+                renderProducts(currentPage);
+                renderPagination();
     </script>
 }

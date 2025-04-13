@@ -66,16 +66,13 @@
     }
 
     @@keyframes fadeIn {
-        from
+        from {
+            opacity: 0;
+        }
 
-    {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-
+        to {
+            opacity: 1;
+        }
     }
 
     .modal-content {
@@ -83,18 +80,15 @@
     }
 
     @@keyframes slideDown {
-        from
+        from {
+            transform: translateY(-50px);
+            opacity: 0;
+        }
 
-    {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
     }
 
     .close-btn:hover {
@@ -278,21 +272,6 @@
         ).join('');
     }
 
-    // Show notification
-    function showNotification(message, type = 'success') {
-        const notification = document.createElement('div');
-        notification.style.cssText = `position: fixed; bottom: 20px; right: 20px; padding: 12px 24px; border-radius: 4px; color: white; background-color: ${type === 'success' ? '#28a745' : '#dc3545'}; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1100; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px;`;
-        const icon = document.createElement('i');
-        icon.className = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
-        notification.appendChild(icon);
-        notification.appendChild(document.createTextNode(message));
-        document.body.appendChild(notification);
-        setTimeout(() => {
-            notification.style.opacity = '0';
-            setTimeout(() => document.body.removeChild(notification), 300);
-        }, 3000);
-    }
-
     // View/Edit product
     function viewProduct(id) {
         const product = sampleProducts.find(p => p.id === id);
@@ -310,72 +289,76 @@
             <div class="modal-header" style="border-bottom: 1px solid #dee2e6; margin-bottom: 20px; padding-bottom: 10px;">
                 <h3 class="modal-title" style="color: #6A5ACD;">Product Details</h3>
             </div>
-            <div class="modal-body">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">ID</label>
-                        <input type="text" class="form-control" id="product-id" value="${product.id}" disabled>
+            <form id="editProductForm" action="UpdateProduct" method="post">
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">ID</label>
+                            <input type="text" class="form-control" id="product-id" name="id" value="${product.id}" readonly style="background-color: #f8f9fa; cursor: not-allowed;">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Name</label>
+                            <input type="text" class="form-control" id="product-name" name="productName" value="${product.name}" disabled>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">Name</label>
-                        <input type="text" class="form-control" id="product-name" value="${product.name}" disabled>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Price</label>
+                            <input type="number" class="form-control" id="product-price" name="price" value="${product.price}" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Stock</label>
+                            <input type="number" class="form-control" id="product-stock" name="stockQuantity" value="${product.stock}" disabled>
+                        </div>
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">Price</label>
-                        <input type="number" class="form-control" id="product-price" value="${product.price}" disabled>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Category</label>
+                            <select class="form-control" id="product-category" name="catalogID" disabled>
+                                ${getCategoryOptions(product.categoryId)}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">MFG Date</label>
+                            <input type="date" class="form-control" id="product-mfg" name="mfgDate" value="${product.mfgDate}" disabled>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">Stock</label>
-                        <input type="number" class="form-control" id="product-stock" value="${product.stock}" disabled>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">EXP Date</label>
+                            <input type="date" class="form-control" id="product-exp" name="expDate" value="${product.expDate}" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Average Rating</label>
+                            <input type="number" class="form-control" id="product-star" value="${product.averageStar}" disabled readonly>
+                        </div>
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">Category</label>
-                        <select class="form-control" id="product-category" disabled>
-                            ${getCategoryOptions(product.categoryId)}
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">MFG Date</label>
-                        <input type="date" class="form-control" id="product-mfg" value="${product.mfgDate}" disabled>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">EXP Date</label>
-                        <input type="date" class="form-control" id="product-exp" value="${product.expDate}" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Average Star</label>
-                        <input type="number" class="form-control" id="product-star" value="${product.averageStar}" disabled>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">Description</label>
-                        <textarea class="form-control" id="product-description" disabled>${product.description}</textarea>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Image</label>
-                        <input type="file" class="form-control" id="product-image" accept="image/*" disabled style="display: none;">
-                        <div class="image-container">
-                            <img src="${product.imageUrl}" id="product-image-preview">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" id="product-description" name="productDescription" disabled>${product.description}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Image</label>
+                            <input type="file" class="form-control" id="product-image" accept="image/*" disabled style="display: none;">
+                            <div class="image-container">
+                                <img src="${product.imageUrl}" id="product-image-preview">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer" style="display: flex; gap: 10px;">
-                <button type="button" class="btn btn-edit" style="background-color: #6A5ACD; color: white;">Edit</button>
-                <button type="button" class="btn btn-save" style="background-color: #28a745; color: white; display: none;">Save</button>
-                <button type="button" class="btn btn-cancel" style="background-color: #6c757d; color: white; display: none;">Cancel</button>
-                <button type="button" class="btn btn-close-modal" style="background-color: #6c757d; color: white;">Close</button>
-            </div>
+                <div class="modal-footer" style="display: flex; gap: 10px;">
+                    <button type="button" class="btn btn-edit" style="background-color: #6A5ACD; color: white;">Edit</button>
+                    <button type="submit" class="btn btn-save" style="background-color: #28a745; color: white; display: none;">Save</button>
+                    <button type="button" class="btn btn-cancel" style="background-color: #6c757d; color: white; display: none;">Cancel</button>
+                    <button type="button" class="btn btn-close-modal" style="background-color: #6c757d; color: white;">Close</button>
+                </div>
+            </form>
         `;
 
+        const form = modalContent.querySelector('#editProductForm');
         const inputs = {
+            id: modalContent.querySelector('#product-id'),
             name: modalContent.querySelector('#product-name'),
             description: modalContent.querySelector('#product-description'),
             price: modalContent.querySelector('#product-price'),
@@ -397,7 +380,9 @@
 
         const enterEditMode = () => {
             Object.values(inputs).forEach(input => {
-                if (input.tagName !== 'IMG') input.disabled = false;
+                if (input.tagName !== 'IMG' && input.id !== 'product-id' && input.id !== 'product-star') {
+                    input.disabled = false;
+                }
                 if (input.id === 'product-image') input.style.display = 'block';
             });
             buttons.edit.style.display = 'none';
@@ -419,38 +404,10 @@
             inputs.mfg.value = product.mfgDate;
             inputs.exp.value = product.expDate;
             inputs.imagePreview.src = product.imageUrl;
-            inputs.star.value = product.averageStar;
             buttons.edit.style.display = 'block';
             buttons.save.style.display = 'none';
             buttons.cancel.style.display = 'none';
             buttons.close.style.display = 'block';
-        };
-
-        const saveChanges = () => {
-            if (!inputs.name.value.trim()) {
-                showNotification('Product name is required!', 'error');
-                return;
-            }
-            if (inputs.price.value <= 0) {
-                showNotification('Price must be greater than 0!', 'error');
-                return;
-            }
-            const index = sampleProducts.findIndex(p => p.id === product.id);
-            sampleProducts[index] = {
-                ...product,
-                name: inputs.name.value.trim(),
-                description: inputs.description.value.trim(),
-                price: parseFloat(inputs.price.value),
-                stock: parseInt(inputs.stock.value),
-                categoryId: parseInt(inputs.category.value),
-                mfgDate: inputs.mfg.value,
-                expDate: inputs.exp.value,
-                imageUrl: inputs.imagePreview.src,
-                averageStar: parseFloat(inputs.star.value)
-            };
-            renderProductTable(sampleProducts, currentPage);
-            showNotification('Product updated successfully!');
-            exitEditMode();
         };
 
         inputs.image.addEventListener('change', (e) => {
@@ -464,8 +421,16 @@
 
         buttons.close.addEventListener('click', () => document.body.removeChild(modal));
         buttons.edit.addEventListener('click', enterEditMode);
-        buttons.save.addEventListener('click', saveChanges);
         buttons.cancel.addEventListener('click', exitEditMode);
+
+        // Form submit handler
+        form.addEventListener('submit', function(event) {
+            if (!inputs.name.value.trim() || inputs.price.value <= 0) {
+                event.preventDefault();
+                return false;
+            }
+        });
+
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
                 if (!inputs.name.disabled) exitEditMode();
@@ -479,6 +444,9 @@
 
     // Delete product
     function deleteProduct(id) {
+        const product = sampleProducts.find(p => p.id === id);
+        if (!product) return;
+
         const confirmModal = document.createElement('div');
         confirmModal.className = 'modal-overlay';
         confirmModal.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 1050; display: flex; justify-content: center; align-items: center;';
@@ -489,6 +457,11 @@
                 </div>
                 <div class="modal-body">
                     <p>Are you sure you want to delete this product?</p>
+                    <p><strong>Name:</strong> ${product.name}</p>
+
+                    <form id="deleteProductForm" action="DeleteProduct" method="post">
+                        <input type="hidden" name="id" value="${product.id}">
+                    </form>
                 </div>
                 <div class="modal-footer" style="display: flex; gap: 10px;">
                     <button type="button" class="btn btn-cancel" style="background-color: #6c757d; color: white;">Cancel</button>
@@ -497,17 +470,22 @@
             </div>
         `;
 
+        const deleteForm = confirmModal.querySelector('#deleteProductForm');
         const cancelBtn = confirmModal.querySelector('.btn-cancel');
         const confirmBtn = confirmModal.querySelector('.btn-confirm');
 
         cancelBtn.addEventListener('click', () => document.body.removeChild(confirmModal));
         confirmBtn.addEventListener('click', () => {
+            // Submit form
+            deleteForm.submit();
+
+            // Update UI locally
             const index = sampleProducts.findIndex(p => p.id === id);
             if (index !== -1) {
                 sampleProducts.splice(index, 1);
                 renderProductTable(sampleProducts, currentPage);
-                showNotification('Product deleted successfully!', 'success');
             }
+
             document.body.removeChild(confirmModal);
         });
 
@@ -528,60 +506,63 @@
             <div class="modal-header">
                 <h3 class="modal-title" style="color: #6A5ACD;">Add New Product</h3>
             </div>
-            <div class="modal-body">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">Name</label>
-                        <input type="text" class="form-control" id="new-product-name" placeholder="Enter product name">
+            <form id="addProductForm" action="CreateProduct" method="post">
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Name <span style="color: red;">*</span></label>
+                            <input type="text" class="form-control" id="new-product-name" name="productName" placeholder="Enter product name" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Price <span style="color: red;">*</span></label>
+                            <input type="number" class="form-control" id="new-product-price" name="price" placeholder="Enter price" min="0.01" step="0.01" required>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">Price</label>
-                        <input type="number" class="form-control" id="new-product-price" placeholder="Enter price" min="0">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Stock <span style="color: red;">*</span></label>
+                            <input type="number" class="form-control" id="new-product-stock" name="stockQuantity" placeholder="Enter stock" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Category <span style="color: red;">*</span></label>
+                            <select class="form-control" id="new-product-category" name="catalogID" required>
+                                <option value="">Select category</option>
+                                ${getCategoryOptions()}
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">Stock</label>
-                        <input type="number" class="form-control" id="new-product-stock" placeholder="Enter stock" min="0">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">MFG Date <span style="color: red;">*</span></label>
+                            <input type="date" class="form-control" id="new-product-mfg" name="mfgDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">EXP Date <span style="color: red;">*</span></label>
+                            <input type="date" class="form-control" id="new-product-exp" name="expDate" required>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">Category</label>
-                        <select class="form-control" id="new-product-category">
-                            <option value="">Select category</option>
-                            ${getCategoryOptions()}
-                        </select>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">MFG Date</label>
-                        <input type="date" class="form-control" id="new-product-mfg">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">EXP Date</label>
-                        <input type="date" class="form-control" id="new-product-exp">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label">Description</label>
-                        <textarea class="form-control" id="new-product-description" placeholder="Enter description"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Image</label>
-                        <input type="file" class="form-control" id="new-product-image" accept="image/*">
-                        <div class="image-container">
-                            <img src="" id="new-product-image-preview" style="display: none;">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" id="new-product-description" name="productDescription" placeholder="Enter description"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Image</label>
+                            <input type="file" class="form-control" id="new-product-image" accept="image/*">
+                            <div class="image-container">
+                                <img src="" id="new-product-image-preview" style="display: none;">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer" style="display: flex; gap: 10px;">
-                <button type="button" class="btn btn-add" style="background-color: #6A5ACD; color: white;">Add</button>
-                <button type="button" class="btn btn-cancel" style="background-color: #6c757d; color: white;">Cancel</button>
-            </div>
+                <div class="modal-footer" style="display: flex; gap: 10px;">
+                    <button type="submit" class="btn btn-add" style="background-color: #6A5ACD; color: white;">Add</button>
+                    <button type="button" class="btn btn-cancel" style="background-color: #6c757d; color: white;">Cancel</button>
+                </div>
+            </form>
         `;
 
+        const form = modalContent.querySelector('#addProductForm');
         const inputs = {
             name: modalContent.querySelector('#new-product-name'),
             description: modalContent.querySelector('#new-product-description'),
@@ -606,39 +587,12 @@
             }
         });
 
-        modalContent.querySelector('.btn-add').addEventListener('click', () => {
-            if (!inputs.name.value.trim()) {
-                showNotification('Product name is required!', 'error');
-                return;
+        // Form validation on submit
+        form.addEventListener('submit', function(event) {
+            if (!inputs.name.value.trim() || !inputs.price.value || !inputs.category.value) {
+                event.preventDefault();
+                return false;
             }
-            if (!inputs.price.value || inputs.price.value <= 0) {
-                showNotification('Valid price is required!', 'error');
-                return;
-            }
-            if (!inputs.category.value) {
-                showNotification('Category is required!', 'error');
-                return;
-            }
-
-            const newId = sampleProducts.length > 0 ? Math.max(...sampleProducts.map(p => p.id)) + 1 : 1;
-            const newProduct = {
-                id: newId,
-                name: inputs.name.value.trim(),
-                description: inputs.description.value.trim(),
-                price: parseFloat(inputs.price.value),
-                stock: parseInt(inputs.stock.value) || 0,
-                categoryId: parseInt(inputs.category.value),
-                mfgDate: inputs.mfg.value,
-                expDate: inputs.exp.value,
-                imageUrl: inputs.imagePreview.src || 'https://via.placeholder.com/150',
-                averageStar: 0 // Default value for new product
-            };
-
-            sampleProducts.unshift(newProduct);
-            currentPage = 1;
-            renderProductTable(sampleProducts, currentPage);
-            showNotification('Product added successfully!', 'success');
-            document.body.removeChild(modal);
         });
 
         modalContent.querySelector('.btn-cancel').addEventListener('click', () => document.body.removeChild(modal));

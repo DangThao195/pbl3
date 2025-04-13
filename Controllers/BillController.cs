@@ -52,7 +52,7 @@ namespace PBL3_HK4.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        [HttpPost)]
+        [HttpPost]
         public async Task<IActionResult> DeleteBillAsync(Guid id)
         {
             if (!ModelState.IsValid)

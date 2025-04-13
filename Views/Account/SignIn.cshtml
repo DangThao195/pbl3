@@ -32,77 +32,151 @@
                 cursor: not-allowed;
                 opacity: 0.65;
             }
+
+        /* Responsive styles */
+        .signin-container {
+            padding: 2rem;
+        }
+
+        .signin-title {
+            font-size: 64px;
+            font-weight: bold;
+            letter-spacing: 10px;
+        }
+
+        .right-panel {
+            background-image: url('~/img/organic-grocery-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+        }
+
+        /* Tablet styles */
+        @@media (max-width: 991.98px) {
+            .signin-title
+
+        {
+            font-size: 48px;
+            letter-spacing: 6px;
+        }
+
+        .right-panel {
+            min-height: 50vh;
+        }
+
+        }
+
+        /* Mobile styles */
+        @@media (max-width: 767.98px) {
+            .signin-title
+
+        {
+            font-size: 36px;
+            letter-spacing: 4px;
+        }
+
+        .signin-container {
+            padding: 1rem;
+        }
+
+        .right-panel {
+            display: none;
+        }
+
+        }
+
+        /* Extra small devices */
+        @@media (max-width: 575.98px) {
+            .signin-title
+
+        {
+            font-size: 30px;
+            letter-spacing: 2px;
+        }
+
+        }
     </style>
 </head>
 
 <body>
-    <div class="row">
-        <div class="col-1"></div>
-        <div class="col-4 d-flex flex-column justify-content-center align-items-center min-vh-100 py-5">
-            <div class="w-100">
-                <p class="text-center mb-4" style="font-size: 64px; font-weight: bold; letter-spacing: 10px;">
-                    SIGN IN
-                </p>
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            <!-- Sign In Form Section -->
+            <div class="col-lg-5 col-md-7 col-sm-12">
+                <div class="signin-container d-flex flex-column justify-content-center align-items-center min-vh-100 py-5">
+                    <div class="w-100 px-md-4">
+                        <p class="text-center mb-4 signin-title">
+                            SIGN IN
+                        </p>
 
-                <form asp-action="SignIn" method="post" id="loginForm">
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingInput" name="Username" placeholder="User Name" required>
-                        <label for="floatingInput"><i class="bi bi-person-fill"></i> User Name</label>
-                    </div>
+                        <form asp-action="SignIn" method="post" id="loginForm">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" name="Username" placeholder="User Name" required>
+                                <label for="floatingInput"><i class="bi bi-person-fill"></i> User Name</label>
+                            </div>
 
-                    <div class="form-floating mb-3 position-relative">
-                        <input type="password" class="form-control" id="floatingPassword" name="PassWord" placeholder="Password" required>
-                        <label for="floatingPassword"><i class="bi bi-lock-fill"></i> Password</label>
-                        <i class="bi bi-eye-fill position-absolute end-0 top-50 translate-middle-y me-3" id="togglePassword" style="cursor: pointer;"></i>
-                    </div>
+                            <div class="form-floating mb-3 position-relative">
+                                <input type="password" class="form-control" id="floatingPassword" name="PassWord" placeholder="Password" required>
+                                <label for="floatingPassword"><i class="bi bi-lock-fill"></i> Password</label>
+                                <i class="bi bi-eye-fill position-absolute end-0 top-50 translate-middle-y me-3" id="togglePassword" style="cursor: pointer;"></i>
+                            </div>
 
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="rememberMe" name="RememberMe">
-                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rememberMe" name="RememberMe">
+                                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                                </div>
+                                <a href="#" class="text-decoration-none">Forgot password?</a>
+                            </div>
+
+                            <button type="submit" id="signInBtn" class="btn btn-signin w-100 mb-3 py-2 disabled">
+                                SIGN IN
+                            </button>
+                        </form>
+
+                        <div class="d-flex align-items-center my-3">
+                            <hr class="flex-grow-1">
+                            <span class="mx-3 text-muted">Or sign in with</span>
+                            <hr class="flex-grow-1">
                         </div>
-                        <a href="#" class="text-decoration-none">Forgot password?</a>
+
+                        <!-- Các phần xác thực bên thứ 3 -->
+                        <div class="d-flex justify-content-center gap-3 mb-3">
+                            <button class="btn btn-outline-secondary rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <i class="bi bi-google"></i>
+                            </button>
+                            <button class="btn btn-outline-secondary rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <i class="bi bi-facebook"></i>
+                            </button>
+                            <button class="btn btn-outline-secondary rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <i class="bi bi-instagram"></i>
+                            </button>
+                            <button class="btn btn-outline-secondary rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <i class="bi bi-threads"></i>
+                            </button>
+                        </div>
+
+                        <div class="text-center">
+                            <a asp-controller="Account" asp-action="Main" class="text-decoration-none me-1"><i class="bi bi-arrow-bar-left"></i></a>
+                            Don't have an account?
+                            <a asp-controller="Account" asp-action="SignUp" class="text-primary text-decoration-underline">Sign up now</a>
+                        </div>
                     </div>
-
-                    <button type="submit" id="signInBtn" class="btn btn-signin w-100 mb-3 py-2 disabled">
-                        SIGN IN
-                    </button>
-                </form>
-
-                <div class="d-flex align-items-center my-3">
-                    <hr class="flex-grow-1">
-                    <span class="mx-3 text-muted">Or sign in with</span>
-                    <hr class="flex-grow-1">
-                </div>
-
-                <!-- Các phần xác thực bên thứ 3 giữ nguyên -->
-                <div class="d-flex justify-content-center gap-3 mb-3">
-                    <button class="btn btn-outline-secondary rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
-                        <i class="bi bi-google"></i>
-                    </button>
-                    <button class="btn btn-outline-secondary rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
-                        <i class="bi bi-facebook"></i>
-                    </button>
-                    <button class="btn btn-outline-secondary rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
-                        <i class="bi bi-instagram"></i>
-                    </button>
-                    <button class="btn btn-outline-secondary rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
-                        <i class="bi bi-threads"></i>
-                    </button>
-                    <!-- Các nút khác giữ nguyên -->
-                </div>
-
-                <div class="text-center">
-                    <a asp-controller="Account" asp-action="Main"><i class="bi bi-arrow-bar-left"></i></a>
-                    Don't have an account? 
-                    <a asp-controller="Account" asp-action="SignUp" class="text-primary text-decoration-underline">Sign up now</a>
                 </div>
             </div>
+
+            <!-- Right side image panel - hidden on mobile -->
+            <div class="col-lg-7 col-md-5 d-none d-md-block right-panel">
+                <!-- Background image is applied via CSS -->
+            </div>
         </div>
-        <div class="col-1"></div>
-        <div class="col-6">
-            <!-- Phần hình ảnh hoặc nội dung khác -->
-        </div>
+    </div>
+
+    <!-- Back to Home button for mobile -->
+    <div class="position-fixed top-0 start-0 m-3 d-md-none">
+        <a href="/" class="btn btn-light rounded-circle shadow-sm">
+            <i class="bi bi-house-fill"></i>
+        </a>
     </div>
 
     <!-- Scripts -->

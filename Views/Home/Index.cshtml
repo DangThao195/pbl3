@@ -586,4 +586,422 @@
                 renderProducts(currentPage);
                 renderPagination();
     </script>
+
+    <style>
+        /* Responsive styles */
+        @@media (max-width: 991.98px) {
+            /* Banner section */
+            .row .col-6
+
+        {
+            flex: 0 0 100%;
+            max-width: 100%;
+            margin-bottom: 20px;
+        }
+
+        /* Banner text */
+        .row .col-6 p[style*="font-size: 42px"] {
+            font-size: 36px !important;
+            text-align: center;
+        }
+
+        .row .col-6 p.pb-2 {
+            max-width: 100% !important;
+            text-align: center;
+        }
+
+        /* Banner buttons - tablet */
+        .row .col-6 .d-flex.gap-3 {
+            justify-content: center;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+            .row .col-6 .d-flex.gap-3 .btn {
+                max-width: 45% !important; /* Tăng chiều rộng nút */
+                padding: 10px 15px !important; /* Tăng padding */
+                font-size: 16px !important; /* Tăng cỡ chữ */
+                font-weight: bold;
+            }
+
+        /* Service highlights */
+        .row .col-3 {
+            flex: 0 0 50%;
+            max-width: 50%;
+            margin-bottom: 15px;
+        }
+
+            /* Service title and subtitle */
+            .row .col-3 p[style*="font-size: 20px"] {
+                font-size: 18px !important;
+            }
+
+            .row .col-3 p[style*="font-size: 10px"] {
+                font-size: 9px !important;
+            }
+
+        /* Category circles */
+        .d-flex.justify-content-evenly {
+            flex-wrap: wrap !important;
+        }
+
+            .d-flex.justify-content-evenly > div {
+                flex: 0 0 33.33%;
+                margin-bottom: 20px;
+            }
+
+                .d-flex.justify-content-evenly > div div[style*="border-radius: 50%"] {
+                    width: 120px !important;
+                    height: 120px !important;
+                    border-width: 8px !important;
+                }
+
+        /* Categories and products */
+        .row .col-3[style*="padding-left: 30px"] {
+            flex: 0 0 100%;
+            max-width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .row #product-container {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+
+        /* Pagination */
+        .row .col-9.d-flex.justify-content-center {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+
+        /* Carousel */
+        .carousel-inner {
+            height: 400px !important;
+        }
+
+        .carousel-item img {
+            height: 400px !important;
+        }
+
+        }
+
+        @@media (max-width: 767.98px) {
+            /* Banner text */
+            .row .col-6 p[style*="font-size: 42px"]
+
+        {
+            font-size: 28px !important;
+        }
+
+        .row .col-6 p.pb-2 {
+            font-size: 14px !important;
+            line-height: 1.6 !important;
+        }
+
+        /* Banner buttons - mobile */
+        .row .col-6 .d-flex.gap-3 {
+            max-width: 400px;
+        }
+
+        .row .col-6 .d-flex.gap-3 .btn {
+            font-size: 14px !important;
+            padding: 8px 12px !important;
+        }
+
+        /* Service icons */
+        .row .col-3 img[style*="width: 50px"] {
+            width: 40px !important;
+            height: 40px !important;
+        }
+
+        /* Service text */
+        .row .col-3 p[style*="font-size: 20px"] {
+            font-size: 16px !important;
+        }
+
+        /* Category circles */
+        .d-flex.justify-content-evenly > div {
+            flex: 0 0 50%;
+        }
+
+        .d-flex.justify-content-evenly > div div[style*="border-radius: 50%"] {
+            width: 100px !important;
+            height: 100px !important;
+            border-width: 6px !important;
+        }
+
+        .d-flex.justify-content-evenly > div p[style*="font-weight: bold"] {
+            font-size: 12px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100px;
+            margin: 0 auto !important;
+        }
+
+        /* Make product cards responsive */
+        .card {
+            margin-left: 10px !important;
+            margin-right: 10px !important;
+        }
+
+        /* Carousel */
+        .carousel-inner {
+            height: 300px !important;
+        }
+
+        .carousel-item img {
+            height: 300px !important;
+        }
+
+        }
+
+        @@media (max-width: 575.98px) {
+            /* Banner text */
+            .row .col-6 p[style*="font-size: 42px"]
+
+        {
+            font-size: 24px !important;
+        }
+
+        /* Banner buttons - small mobile */
+        .row .col-6 .d-flex.gap-3 {
+            max-width: 300px;
+            gap: 10px !important;
+        }
+
+        .row .col-6 .d-flex.gap-3 .btn {
+            max-width: 48% !important;
+            font-size: 12px !important;
+            padding: 8px 10px !important;
+            white-space: nowrap;
+        }
+
+        /* Ẩn icon mũi tên trên điện thoại nhỏ */
+        .row .col-6 .d-flex.gap-3 .btn i {
+            display: none;
+        }
+
+        /* Category circles */
+        .d-flex.justify-content-evenly > div div[style*="border-radius: 50%"] {
+            width: 80px !important;
+            height: 80px !important;
+            border-width: 4px !important;
+        }
+
+        .d-flex.justify-content-evenly > div p[style*="font-weight: bold"] {
+            font-size: 10px;
+            max-width: 80px;
+        }
+
+        /* Carousel */
+        .carousel-inner {
+            height: 200px !important;
+        }
+
+        .carousel-item img {
+            height: 200px !important;
+        }
+
+        }
+
+        /* Product grid system for responsive display */
+        @@media (max-width: 991.98px) {
+            /* Override the fixed positioning */
+            #product-container
+
+        {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            justify-content: center !important;
+        }
+
+        #product-container .card {
+            max-width: 220px !important;
+            margin: 10px !important;
+        }
+
+        }
+
+        @@media (max-width: 767.98px) {
+            #product-container .card
+
+        {
+            max-width: 200px !important;
+        }
+
+        #product-container .card .card-img-top {
+            height: 180px !important;
+        }
+
+        #product-container .card .card-title {
+            font-size: 12px !important;
+        }
+
+        #product-container .card p {
+            font-size: 12px !important;
+        }
+
+        #product-container .card .text-warning {
+            font-size: 14px !important;
+            letter-spacing: 3px !important;
+        }
+
+        }
+
+        @@media (max-width: 575.98px) {
+            #product-container .card
+
+        {
+            max-width: 160px !important;
+            height: 280px !important;
+        }
+
+        #product-container .card .card-img-top {
+            height: 150px !important;
+        }
+
+        #product-container .card .text-warning {
+            font-size: 12px !important;
+            letter-spacing: 2px !important;
+        }
+
+        }
+
+        /* Accordion for categories on mobile */
+        @@media (max-width: 991.98px) {
+            #category-list
+
+        {
+            margin-bottom: 20px;
+        }
+
+        #category-list .list-group-item.category-header {
+            cursor: pointer;
+        }
+
+        /* Pagination adjusted */
+        .pagination .page-link {
+            padding: 0.4rem 0.75rem;
+        }
+
+        /* Simplified pagination for mobile */
+        @@media (max-width: 575.98px) {
+            .pagination li:not(.active):not(:first-child):not(:last-child):not(:nth-child(2)):not(:nth-last-child(2))
+
+        {
+            display: none;
+        }
+
+        }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Make categories collapsible on mobile
+            const categoryHeader = document.querySelector('.list-group-item.category-header');
+            const categoryItems = document.querySelectorAll('.list-group-item:not(.category-header)');
+
+            if (categoryHeader && window.innerWidth <= 991.98) {
+                categoryHeader.addEventListener('click', function() {
+                    categoryItems.forEach(item => {
+                        if (item.style.display === 'none' || item.style.display === '') {
+                            item.style.display = 'flex';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+
+                // Initially hide on mobile
+                if (window.innerWidth <= 767.98) {
+                    categoryItems.forEach(item => {
+                        item.style.display = 'none';
+                    });
+                }
+            }
+
+            // Adjust rendering products function for responsive
+            const originalRenderProducts = window.renderProducts;
+            if (typeof originalRenderProducts === 'function') {
+                window.renderProducts = function(page) {
+                    const productContainer = document.getElementById("product-container");
+                    if (!productContainer) return;
+
+                    productContainer.innerHTML = '';
+                    const start = (page - 1) * productsPerPage;
+                    const end = Math.min(start + productsPerPage, totalProducts);
+
+                    // For mobile: use Bootstrap grid instead of fixed margins
+                    if (window.innerWidth <= 991.98) {
+                        const row = document.createElement('div');
+                        row.className = 'row w-100 mx-0';
+                        productContainer.appendChild(row);
+
+                        for (let i = start; i < end; i++) {
+                            const productId = i + 1;
+                            const productImage = "../img/—Pngtree—red fresh tomato with green_8933861.png";
+
+                            const col = document.createElement('div');
+                            col.className = 'col-lg-3 col-md-4 col-sm-6 col-6 mb-3 px-2 d-flex justify-content-center';
+
+                            const productHTML = `
+                                <div class="card text-center" style="border-radius: 20px; height: 305px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                                    <img src="${productImage}"
+                                         style="background-color: #EDEDED; border-top-left-radius: 20px; border-top-right-radius: 20px; height: 200px; width: 100%; object-fit: cover;"
+                                         class="card-img-top" alt="Sản phẩm">
+                                    <div class="card-body p-0" style="display: flex; flex-direction: column; height: 100%;">
+                                        <span class="text-warning" style="font-size: 16px; letter-spacing: 5px;">★★★★★</span>
+                                        <h6 class="card-title" style="font-weight: bold; font-size: 14px;">Fresh Ruby Tomatoes</h6>
+                                        <p class="d-flex justify-content-evenly" style="font-size: 14px;">
+                                            <span class="fw-bold" style="color: #80B500;">150.000đ</span>
+                                            <span class="old-price" style="color: #94A84E; text-decoration: line-through;">200.000đ</span>
+                                        </p>
+                                        <a href="/Product/Details" class="fw-bold" style="display: block; background-color: #E86D1F; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; color: white; font-size: 14px; margin-top: auto; text-align: center; padding: 5px 10px;">
+                                            Details
+                                        </a>
+                                    </div>
+                                    <!-- Panel trồi ra khi hover -->
+                                    <div class="hover-panel">
+                                        <div class="quantity-control">
+                                            <button class="quantity-btn increase" data-product-id="${productId}">+</button>
+                                            <input type="number" class="quantity-input" value="1" min="1" data-product-id="${productId}">
+                                            <button class="quantity-btn decrease" data-product-id="${productId}">-</button>
+                                        </div>
+                                        <button class="cart-btn" title="Add to Cart" data-product-id="${productId}">
+                                            <i class="fas fa-shopping-cart"></i>
+                                            <img class="product-icon" src="${productImage}" alt="Sản phẩm">
+                                        </button>
+                                    </div>
+                                </div>
+                            `;
+
+                            col.innerHTML = productHTML;
+                            row.appendChild(col);
+                        }
+                    } else {
+                        // Use original rendering for desktop
+                        originalRenderProducts(page);
+                    }
+
+                    // Add events after rendering
+                    addQuantityControls();
+                    addCartButtonEvents();
+                };
+            }
+
+            // Re-render on window resize
+            window.addEventListener('resize', function() {
+                if (typeof renderProducts === 'function' && typeof currentPage !== 'undefined') {
+                    renderProducts(currentPage);
+                }
+                if (typeof renderPagination === 'function') {
+                    renderPagination();
+                }
+            });
+        });
+    </script>
+
 }

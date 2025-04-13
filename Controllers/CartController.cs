@@ -72,5 +72,13 @@ namespace PBL3_HK4.Controllers
             return cart.Items;
         }
 
+        public async Task<IActionResult> DeleteCartItemAsync(Guid itemid)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var cart = await _shoppingCartService.GetShoppingCartByCustomerIdAsync(new Guid(userId));
+            await _cartItemService.DeleteCartItemAsync(itemid);
+            return View(); //Fix
+        }
     }
 }

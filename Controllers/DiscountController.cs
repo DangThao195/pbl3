@@ -36,7 +36,7 @@ namespace PBL3_HK4.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        [Route("/Discount")]
+        [HttpPost]
         public async Task<IActionResult> AddDiscounttAsync(Discount discount)
         {
             if (!ModelState.IsValid)
@@ -55,7 +55,7 @@ namespace PBL3_HK4.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        [Route("/Discount")]
+        [HttpPost]
         public async Task<IActionResult> UpdateDiscountAsync(Discount discount)
         {
             if (!ModelState.IsValid)
@@ -74,14 +74,22 @@ namespace PBL3_HK4.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        [Route("/Discount/{id}")]
+        [HttpPost]
         public async Task<IActionResult> DeleteDiscountAsync(Guid id)
         {
             if (!ModelState.IsValid)
                 return View(); //Fix
-            await _discountService.DeleteDiscountAsync(id);
+            try
+            {
+                await _discountService.DeleteDiscountAsync(id);
 
-            return RedirectToAction("Index", "Home"); //Fix
+                return RedirectToAction("Index", "Home"); //Fix
+            }
+            catch (InvalidOperationException ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return View(); //Fix
+            }
         }
     }
 }

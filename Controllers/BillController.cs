@@ -33,7 +33,7 @@ namespace PBL3_HK4.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        [Route("/Bill")]
+        [HttpPost]
         public async Task<IActionResult> UpdateBillAsync(Bill bill)
         {
             if (!ModelState.IsValid)
@@ -52,7 +52,7 @@ namespace PBL3_HK4.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        [Route("/Bill/{id}")]
+        [HttpPost)]
         public async Task<IActionResult> DeleteBillAsync(Guid id)
         {
             if (!ModelState.IsValid)
@@ -72,7 +72,7 @@ namespace PBL3_HK4.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        [Route("/Revenue")]
+        [HttpPost]
         public async Task<IActionResult> RevenueByMonthAsync(int month, int year)
         {
             if (!ModelState.IsValid) return View(); //Fix

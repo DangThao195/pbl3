@@ -42,7 +42,7 @@ namespace PBL3_HK4.Controllers
         }
 
         [Authorize(Roles ="Admin")]
-        [Route("/Product")]
+        [HttpPost]
         public async Task<IActionResult> AddProductAsync(Product product)
         {
             if (!ModelState.IsValid)
@@ -61,7 +61,7 @@ namespace PBL3_HK4.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        [Route("/Product")]
+        [HttpPost]
         public async Task<IActionResult> UpdateProductAsync(Product product)
         {
             if (!ModelState.IsValid)
@@ -80,7 +80,7 @@ namespace PBL3_HK4.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        [Route("/Product/{id}")]
+        [HttpPost]
         public async Task<IActionResult> DeleteProductAsync(Guid id)
         {
             if (!ModelState.IsValid)

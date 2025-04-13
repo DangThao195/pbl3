@@ -13,10 +13,10 @@ namespace PBL3_HK4.Entity
         [Key]
         public Guid ItemID { get; set; }
         [ForeignKey("Product")]
-        public Guid? ProductID { get; set; }
+        public Guid ProductID { get; set; }
         public virtual Product? Product { get; set; }
         [ForeignKey("ShoppingCart")]
-        public Guid? CartID { get; set; }
+        public Guid CartID { get; set; }
         public virtual ShoppingCart? ShoppingCart { get; set; }
         [Range(1, int.MaxValue, ErrorMessage = "Quantity must be at least 1.")]
         public int Quantity { get; set; } = 1;

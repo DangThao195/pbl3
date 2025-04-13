@@ -9,16 +9,16 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using PBL3_HK4.Service;
 using Microsoft.AspNetCore.Authorization;
-
+using System.Reflection.Metadata.Ecma335;
 namespace PBL3_HK4.Controllers
 {
-    public class CategoryController : Controller
+    public class ReviewController : Controller
     {
-        private readonly ICatalogService _catalogService;
+        private readonly IReviewService _reviewService;
 
-        public CategoryController(ICatalogService catalogService)
+        public ReviewController(IReviewService reviewService)
         {
-            _catalogService = catalogService;
+            _reviewService = reviewService;
         }
 
         public IActionResult Index()
@@ -31,20 +31,15 @@ namespace PBL3_HK4.Controllers
             return View();
         }
 
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Customer")]
         [HttpPost]
-        public async Task<IActionResult> AddCatalogAsync(Catalog catalog)
+        public async Task<IActionResult> UpdateReviewAsync(Review review)
         {
             if (!ModelState.IsValid)
                 return View(); //Fix
             try
             {
-                await _catalogService.AddCatalogAsync(catalog);
+                await _reviewService.UpdateReviewAsync(review);
 
                 return RedirectToAction("Index", "Home"); //Fix
             }
@@ -55,15 +50,14 @@ namespace PBL3_HK4.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Customer")]
         [HttpPost]
-        public async Task<IActionResult> UpdateCatalogAsync(Catalog catalog)
+        public async Task<IActionResult> AddReviewAsync(Review review)
         {
-            if (!ModelState.IsValid)
-                return View(); //Fix
+            if (!ModelState.IsValid) return View();
             try
             {
-                await _catalogService.UpdateCatalogAsync(catalog);
+                await _reviewService.AddReviewAsync(review);
 
                 return RedirectToAction("Index", "Home"); //Fix
             }
@@ -73,17 +67,5 @@ namespace PBL3_HK4.Controllers
                 return View(); //Fix
             }
         }
-
-        [Authorize(Roles = "Admin")]
-        [HttpPost]
-        public async Task<IActionResult> DeleteCatalogAsync(Guid id)
-        {
-            if (!ModelState.IsValid)
-                return View(); //Fix
-            await _catalogService.DeleteCatalogAsync(id);
-
-            return RedirectToAction("Index", "Home"); //Fix
-        }
-
     }
 }

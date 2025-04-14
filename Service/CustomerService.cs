@@ -61,5 +61,15 @@ namespace PBL3_HK4.Service
             }
             return customer;
         }
+
+        public async Task<IEnumerable<Customer>> GetAllCustomerAsync()
+        {
+            var customers = await _context.Users.OfType<Customer>().ToListAsync();
+            if (customers.Count == 0)
+            {
+                throw new InvalidOperationException("No customer account created");
+            }
+            return customers;
+        }
     }
 }

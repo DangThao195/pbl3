@@ -10,14 +10,16 @@ namespace PBL3_HK4.Controllers
 {
     public class AdminController : Controller
     {
+        private readonly ICustomerService _customerService;
         private readonly IProductService _productService;
         private readonly IDiscountService _discountService;
         private readonly ICatalogService _catalogService;
         private readonly IAdminService _adminService;
 
 
-        public AdminController(IProductService productService, IDiscountService discountService, ICatalogService catalogService, IAdminService adminService)
+        public AdminController(ICustomerService customerService, IProductService productService, IDiscountService discountService, ICatalogService catalogService, IAdminService adminService)
         {
+            _customerService = customerService;
             _productService = productService;
             _discountService = discountService;
             _catalogService = catalogService;
@@ -190,9 +192,11 @@ namespace PBL3_HK4.Controllers
             return RedirectToAction("Product");
         }
 
-        public IActionResult Customer()
+        [Route("/Admin/Customer")]
+        public async Task<IActionResult> Customer()
         {
-            return View();
+            var listCustomer = await _customerService.GetAllCustomerAsync();
+            return View("Customer", listCustomer);
         }
 
         public IActionResult Order()

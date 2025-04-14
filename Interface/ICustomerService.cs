@@ -14,5 +14,6 @@ namespace PBL3_HK4.Interface
         public Task UpdateCustomerAsync(Customer customer);
         public Task<Customer> GetCustomerByIdAsync(Guid customerId);
         public Task<Customer> GetCustomerByUserNameAsync(string name);
+        public Task<IEnumerable<Customer>> GetAllCustomerAsync();
     }
 }

@@ -30,6 +30,17 @@ namespace PBL3_HK4.Service
             await _context.SaveChangesAsync();
         }
 
+        //public async Task UpdateCatalogAsync(Catalog catalog)
+        //{
+        //    var currentCatalog = await _context.Catalogs.FirstOrDefaultAsync(c => c.CatalogID == catalog.CatalogID);
+        //    if (currentCatalog == null)
+        //    {
+        //        throw new KeyNotFoundException($"Catalog with ID {catalog.CatalogID} not found.");
+        //    }
+        //    _context.Catalogs.Update(catalog);
+        //    await _context.SaveChangesAsync();
+        //}
+
         public async Task UpdateCatalogAsync(Catalog catalog)
         {
             var currentCatalog = await _context.Catalogs.FirstOrDefaultAsync(c => c.CatalogID == catalog.CatalogID);
@@ -37,7 +48,7 @@ namespace PBL3_HK4.Service
             {
                 throw new KeyNotFoundException($"Catalog with ID {catalog.CatalogID} not found.");
             }
-            _context.Catalogs.Update(catalog);
+            currentCatalog.CatalogName = catalog.CatalogName;
             await _context.SaveChangesAsync();
         }
 
@@ -75,16 +86,16 @@ namespace PBL3_HK4.Service
         public async Task<IEnumerable<Catalog>> GetAllCatalogsAsync()
         {
             var listCatalog = await _context.Catalogs.ToListAsync();
-            if (listCatalog == null || listCatalog.Count == 0)
+            if (listCatalog == null)
             {
                 throw new KeyNotFoundException("No catalog found");
             }
             return listCatalog;
         }
 
-        Task<IEnumerable<Catalog>> ICatalogService.GetAllCatalogsAsync()
-        {
-            throw new NotImplementedException();
-        }
+        //Task<IEnumerable<Catalog>> ICatalogService.GetAllCatalogsAsync()
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

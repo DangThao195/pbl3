@@ -1,6 +1,10 @@
-﻿@{
+﻿@using PBL3_HK4.Entity
+@model object
+
+@{
     ViewData["Title"] = "Admin Profile";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Admin admin = Model as Admin;
 }
 
 <div class="container mt-5">
@@ -13,14 +17,14 @@
                         <div class="row mb-3">
                             <label for="name" class="col-md-3 col-form-label" style="color: #333333;">Name</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" id="name" name="name" value="John Doe" pattern="[A-Za-z\s]+" title="Name can only contain letters and spaces" disabled style="background-color: #ffffff; color: #555555;" required>
+                                <input type="text" class="form-control" id="name" name="name" value="@(admin?.Name ?? "")" pattern="[A-Za-z\s]+" title="Name can only contain letters and spaces" disabled style="background-color: #ffffff; color: #555555;" required>
                                 <div class="invalid-feedback">Name can only contain letters and spaces.</div>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="email" class="col-md-3 col-form-label" style="color: #333333;">Email</label>
                             <div class="col-md-9">
-                                <input type="email" class="form-control" id="email" name="email" value="john.doe@example.com" disabled style="background-color: #ffffff; color: #555555;" required>
+                                <input type="email" class="form-control" id="email" name="email" value="@(admin?.Email ?? "")" disabled style="background-color: #ffffff; color: #555555;" required>
                                 <div class="invalid-feedback">Please enter a valid email address.</div>
                             </div>
                         </div>
@@ -28,9 +32,9 @@
                             <label for="gender" class="col-md-3 col-form-label" style="color: #333333;">Gender</label>
                             <div class="col-md-9">
                                 <select class="form-select" id="gender" name="gender" disabled style="background-color: #ffffff; color: #555555;" required>
-                                    <option value="Male" selected>Male</option>
-                                    <option value="Female">Female</option>
-                                    <option value="Other">Other</option>
+                                    <option value="Male" @@(admin?.Sex == "Male" ? "selected" : "")>Male</option>
+                                    <option value="Female" @@(admin?.Sex == "Female" ? "selected" : "")>Female</option>
+                                    <option value="Other" @@(admin?.Sex == "Other" ? "selected" : "")>Other</option>
                                 </select>
                                 <div class="invalid-feedback">Please select a gender.</div>
                             </div>
@@ -38,21 +42,21 @@
                         <div class="row mb-3">
                             <label for="phone" class="col-md-3 col-form-label" style="color: #333333;">Phone</label>
                             <div class="col-md-9">
-                                <input type="tel" class="form-control" id="phone" name="phone" value="+1234567890" pattern="[0-9]{10}" title="Phone number must be exactly 10 digits" disabled style="background-color: #ffffff; color: #555555;" required>
+                                <input type="tel" class="form-control" id="phone" name="phone" value="@(admin?.Phone ?? "")" pattern="[0-9]{10}" title="Phone number must be exactly 10 digits" disabled style="background-color: #ffffff; color: #555555;" required>
                                 <div class="invalid-feedback">Phone number must be exactly 10 digits.</div>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="dob" class="col-md-3 col-form-label" style="color: #333333;">Date of Birth</label>
                             <div class="col-md-9">
-                                <input type="date" class="form-control" id="dob" name="dob" value="1990-01-15" max="@DateTime.Today.ToString("yyyy-MM-dd")" disabled style="background-color: #ffffff; color: #555555;" required>
+                                <input type="date" class="form-control" id="dob" name="dob" value="@(admin != null ? admin.DateOfBirth.ToString("yyyy-MM-dd") : DateTime.Now.ToString("yyyy-MM-dd"))" max="@DateTime.Today.ToString("yyyy-MM-dd")" disabled style="background-color: #ffffff; color: #555555;" required>
                                 <div class="invalid-feedback">Please select a valid date of birth.</div>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="username" class="col-md-3 col-form-label" style="color: #333333;">User Name</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" id="username" name="username" value="johndoe" pattern="[A-Za-z]+" title="User Name can only contain letters" disabled style="background-color: #ffffff; color: #555555;" required>
+                                <input type="text" class="form-control" id="username" name="username" value="@(admin?.UserName ?? "")" pattern="[A-Za-z]+" title="User Name can only contain letters" disabled style="background-color: #ffffff; color: #555555;" required>
                                 <div class="invalid-feedback">User Name can only contain letters.</div>
                             </div>
                         </div>
@@ -193,6 +197,42 @@
             // Check form validity
             if (form.checkValidity() && isValid) {
                 // Add actual form submission logic here (e.g., AJAX to server)
+                
+                // Tạo dữ liệu từ form
+                const formData = new FormData();
+                formData.append('UserID', '@(admin?.UserID)');
+                formData.append('Name', document.getElementById('name').value);
+                formData.append('Email', document.getElementById('email').value);
+                formData.append('Sex', document.getElementById('gender').value);
+                formData.append('Phone', document.getElementById('phone').value);
+                formData.append('DateOfBirth', document.getElementById('dob').value);
+                formData.append('UserName', document.getElementById('username').value);
+                
+                if (newPasswordInput.value) {
+                    formData.append('NewPassWord', newPasswordInput.value);
+                }
+                
+                // Gửi dữ liệu đến server (có thể dùng AJAX hoặc fetch)
+                // fetch('/Admin/UpdateProfile', {
+                //     method: 'POST',
+                //     body: formData
+                // })
+                // .then(response => response.json())
+                // .then(data => {
+                //     if (data.success) {
+                //         // Hiển thị thông báo thành công
+                //         alert('Cập nhật thông tin thành công');
+                //         // Disable lại form
+                //         cancelButton.click();
+                //     } else {
+                //         // Hiển thị thông báo lỗi
+                //         alert('Lỗi: ' + data.message);
+                //     }
+                // })
+                // .catch(error => {
+                //     console.error('Lỗi:', error);
+                //     alert('Đã xảy ra lỗi khi cập nhật thông tin');
+                // });
             }
         });
     });

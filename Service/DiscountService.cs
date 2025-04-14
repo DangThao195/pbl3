@@ -23,7 +23,7 @@ namespace PBL3_HK4.Service
         public async Task<IEnumerable<Discount>> GetAllDiscountsAsync()
         {
             var listDiscount = await _context.Discounts.ToListAsync();
-            if (listDiscount == null || listDiscount.Count == 0)
+            if (listDiscount == null)
             {
                 throw new KeyNotFoundException("No discounts found.");
             }
@@ -61,14 +61,33 @@ namespace PBL3_HK4.Service
             await _context.SaveChangesAsync();
         }
 
+        //public async Task UpdateDiscountAsync(Discount discount)
+        //{
+        //   var existingDiscount = await _context.Discounts.FirstOrDefaultAsync(d => d.DiscountID == discount.DiscountID);
+        //    if (existingDiscount == null)
+        //    {
+        //        throw new KeyNotFoundException($"Discount with ID {discount.DiscountID} not found.");
+        //    }
+        //    _context.Discounts.Update(discount);
+        //    await _context.SaveChangesAsync();
+        //}
+
         public async Task UpdateDiscountAsync(Discount discount)
         {
-           var existingDiscount = await _context.Discounts.FirstOrDefaultAsync(d => d.DiscountID == discount.DiscountID);
+            var existingDiscount = await _context.Discounts.FirstOrDefaultAsync(d => d.DiscountID == discount.DiscountID);
             if (existingDiscount == null)
             {
                 throw new KeyNotFoundException($"Discount with ID {discount.DiscountID} not found.");
             }
-            _context.Discounts.Update(discount);
+
+            existingDiscount.Name = discount.Name;
+            existingDiscount.Describe = discount.Describe;
+            existingDiscount.DiscountRate = discount.DiscountRate;
+            existingDiscount.ApplicableProduct = discount.ApplicableProduct;
+            existingDiscount.Requirement = discount.Requirement;
+            existingDiscount.StartDate = discount.StartDate;
+            existingDiscount.EndDate = discount.EndDate;
+
             await _context.SaveChangesAsync();
         }
 

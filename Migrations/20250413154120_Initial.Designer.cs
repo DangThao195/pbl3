@@ -12,7 +12,7 @@ using PBL3_HK4.Entity;
 namespace PBL3_HK4.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250409011856_Initial")]
+    [Migration("20250413154120_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -34,6 +34,9 @@ namespace PBL3_HK4.Migrations
                     b.Property<string>("Address")
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
+
+                    b.Property<bool>("Confirm")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
@@ -95,7 +98,7 @@ namespace PBL3_HK4.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<Guid?>("ProductID")
+                    b.Property<Guid>("ProductID")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Quantity")
@@ -346,7 +349,9 @@ namespace PBL3_HK4.Migrations
 
                     b.HasOne("PBL3_HK4.Entity.Product", "Product")
                         .WithMany()
-                        .HasForeignKey("ProductID");
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Product");
 

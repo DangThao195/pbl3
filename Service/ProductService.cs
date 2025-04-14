@@ -23,7 +23,7 @@ namespace PBL3_HK4.Service
         public  async Task<IEnumerable<Product>> GetAllProductsAsync()
         {
             var listProduct = await _context.Products.ToListAsync();
-            if (listProduct == null || listProduct.Count == 0) 
+            if (listProduct == null) 
             {
                 throw new KeyNotFoundException("No products found.");
             }
@@ -71,6 +71,17 @@ namespace PBL3_HK4.Service
             await _context.SaveChangesAsync();
         }
 
+        //public async Task UpdateProductAsync(Product product)
+        //{
+        //    var existingProduct = await _context.Products.FirstOrDefaultAsync(p => p.ProductID == product.ProductID);
+        //    if (existingProduct == null)
+        //    {
+        //        throw new KeyNotFoundException($"Product with ID:{product.ProductID} not found");
+        //    }
+        //    _context.Products.Update(product);
+        //    await _context.SaveChangesAsync();
+        //}
+
         public async Task UpdateProductAsync(Product product)
         {
             var existingProduct = await _context.Products.FirstOrDefaultAsync(p => p.ProductID == product.ProductID);
@@ -78,7 +89,14 @@ namespace PBL3_HK4.Service
             {
                 throw new KeyNotFoundException($"Product with ID:{product.ProductID} not found");
             }
-            _context.Products.Update(product);
+
+            existingProduct.ProductName = product.ProductName;
+            existingProduct.ProductDescription = product.ProductDescription;
+            existingProduct.Price = product.Price;
+            existingProduct.StockQuantity = product.StockQuantity;
+            existingProduct.CatalogID = product.CatalogID;
+            existingProduct.MFGDate = product.MFGDate;
+            existingProduct.EXPDate = product.EXPDate;
             await _context.SaveChangesAsync();
         }
 

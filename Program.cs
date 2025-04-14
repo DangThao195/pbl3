@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using System.Text.Json;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using PBL3_HK4.Entity;
 using PBL3_HK4.Interface;
@@ -90,4 +91,51 @@ app.MapControllerRoute(
 //    name: "admin",
 //    pattern: "admin/{controller=Dashboard}/{action=Index}/{id?}");
 
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var dbContext = services.GetRequiredService<ApplicationDbContext>();
+    var passwordHasher = services.GetRequiredService<IPasswordHasher>();
+
+    // Nếu chưa có user nào thì seed
+    if (!dbContext.Users.Any())
+    {
+        var jsonPath = Path.Combine(Directory.GetCurrentDirectory(), "InputDatabase", "users.json");
+
+        if (File.Exists(jsonPath))
+        {
+            var json = File.ReadAllText(jsonPath);
+            var users = JsonSerializer.Deserialize<List<Admin>>(json, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            });
+
+            foreach (var user in users)
+            {
+                user.PassWord = passwordHasher.HashPassword(user.PassWord);
+            }
+
+            dbContext.Users.AddRange(users);
+            dbContext.SaveChanges();
+        }
+    }
+}
+// Check có tự tự update ko
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<ApplicationDbContext>();
+        context.Database.Migrate(); // Áp dụng migrations
+
+        // Nếu bạn cũng muốn seed data
+        // DbInitializer.Initialize(context);
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred while migrating the database.");
+    }
+}
 app.Run();

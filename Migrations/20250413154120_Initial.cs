@@ -95,7 +95,8 @@ namespace PBL3_HK4.Migrations
                     UserID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
-                    TotalPrice = table.Column<double>(type: "float", nullable: false)
+                    TotalPrice = table.Column<double>(type: "float", nullable: false),
+                    Confirm = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -186,7 +187,7 @@ namespace PBL3_HK4.Migrations
                 columns: table => new
                 {
                     ItemID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ProductID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    ProductID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CartID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false)
@@ -198,7 +199,8 @@ namespace PBL3_HK4.Migrations
                         name: "FK_CartItems_Products_ProductID",
                         column: x => x.ProductID,
                         principalTable: "Products",
-                        principalColumn: "ProductID");
+                        principalColumn: "ProductID",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_CartItems_ShoppingCarts_CartID",
                         column: x => x.CartID,

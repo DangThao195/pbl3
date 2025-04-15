@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="utf-8" />
@@ -45,140 +48,133 @@
 
         /* Tablet view (768px - 991px) */
         @@media (max-width: 991px) {
-            .desktop-header
-
-        {
-            display: none;
-        }
-
-        .tablet-header {
-            display: block;
-        }
-
-        .mobile-header {
-            display: none;
-        }
-
-        .tablet-nav {
-            background-color: #f8f9fa;
-            border-radius: 5px;
-            padding: 10px;
-            margin: 10px 0;
-        }
-
-            .tablet-nav a {
-                color: #314401;
-                text-decoration: none;
-                font-weight: bold;
-                padding: 8px 15px;
-                display: inline-block;
+            .desktop-header {
+                display: none;
             }
 
-        .tablet-search-bar {
-            margin: 10px 0;
-        }
+            .tablet-header {
+                display: block;
+            }
 
-        .tablet-brand {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #314401;
-            display: block;
-            text-align: center;
-            margin: 10px 0;
-        }
+            .mobile-header {
+                display: none;
+            }
 
+            .tablet-nav {
+                background-color: #f8f9fa;
+                border-radius: 5px;
+                padding: 10px;
+                margin: 10px 0;
+            }
+
+                .tablet-nav a {
+                    color: #314401;
+                    text-decoration: none;
+                    font-weight: bold;
+                    padding: 8px 15px;
+                    display: inline-block;
+                }
+
+            .tablet-search-bar {
+                margin: 10px 0;
+            }
+
+            .tablet-brand {
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: #314401;
+                display: block;
+                text-align: center;
+                margin: 10px 0;
+            }
         }
 
         /* Mobile view (up to 767px) */
         @@media (max-width: 767px) {
-            .desktop-header, .tablet-header
-
-        {
-            display: none;
-        }
-
-        .mobile-header {
-            display: block;
-        }
-
-        .mobile-brand {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #314401;
-            text-align: center;
-            padding: 10px 0;
-        }
-
-        .mobile-nav-container {
-            padding: 0;
-        }
-
-        .offcanvas-header {
-            background-color: #D9C2A8;
-        }
-
-        .mobile-nav-link {
-            display: block;
-            padding: 12px 15px;
-            border-bottom: 1px solid #e9ecef;
-            color: #314401;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-            .mobile-nav-link:hover {
-                background-color: rgba(109, 123, 48, 0.1);
+            .desktop-header, .tablet-header {
+                display: none;
             }
 
-        .mobile-icons {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 15px;
-            background-color: #f8f9fa;
-        }
+            .mobile-header {
+                display: block;
+            }
 
-            .mobile-icons a {
-                color: #314401;
+            .mobile-brand {
                 font-size: 1.2rem;
-                position: relative;
+                font-weight: bold;
+                color: #314401;
+                text-align: center;
+                padding: 10px 0;
             }
 
-        .mobile-cart-badge {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            font-size: 10px;
-        }
+            .mobile-nav-container {
+                padding: 0;
+            }
 
+            .offcanvas-header {
+                background-color: #D9C2A8;
+            }
+
+            .mobile-nav-link {
+                display: block;
+                padding: 12px 15px;
+                border-bottom: 1px solid #e9ecef;
+                color: #314401;
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+                .mobile-nav-link:hover {
+                    background-color: rgba(109, 123, 48, 0.1);
+                }
+
+            .mobile-icons {
+                display: flex;
+                justify-content: space-between;
+                padding: 10px 15px;
+                background-color: #f8f9fa;
+            }
+
+                .mobile-icons a {
+                    color: #314401;
+                    font-size: 1.2rem;
+                    position: relative;
+                }
+
+            .mobile-cart-badge {
+                position: absolute;
+                top: -8px;
+                right: -8px;
+                font-size: 10px;
+            }
         }
 
         /* Footer responsiveness */
         @@media (max-width: 991px) {
-            footer .col-3
-
-        {
-            width: 50%;
-            flex: 0 0 50%;
-            max-width: 50%;
-            margin-bottom: 20px;
-        }
-
+            footer .col-3 {
+                width: 50%;
+                flex: 0 0 50%;
+                max-width: 50%;
+                margin-bottom: 20px;
+            }
         }
 
         @@media (max-width: 767px) {
-            footer .col-3
-
-        {
-            width: 100%;
-            flex: 0 0 100%;
-            max-width: 100%;
-            margin-bottom: 20px;
-        }
-
+            footer .col-3 {
+                width: 100%;
+                flex: 0 0 100%;
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
         }
     </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
+    @{
+        // Lấy số lượng sản phẩm trong giỏ hàng từ session
+        var cartItemCount = HttpContextAccessor.HttpContext.Session.GetInt32("CartItemCount") ?? 0;
+    }
+
     <!-- Desktop Header (original layout) -->
     <header class="desktop-header">
         <div class="row">
@@ -202,7 +198,7 @@
                     <a asp-controller="Order" asp-action="Index"><i class="fa-solid fa-box"></i> Order</a>
                     <a asp-controller="Home" asp-action="ShoppingCart" id="cart-icon" style="position: relative;">
                         <i class="bi bi-cart"></i> Cart
-                        <span id="cart-count" class="badge rounded-pill bg-danger" style="position: absolute; top: -5px; right: -5px; font-size: 10px;">0</span>
+                        <span id="cart-count" class="badge rounded-pill bg-danger" style="position: absolute; top: -5px; right: -5px; font-size: 10px;">@cartItemCount</span>
                     </a>
                     <a asp-controller="Home" asp-action="Support"> <i class="bi bi-headset"></i> Support</a>
                 </div>
@@ -274,7 +270,7 @@
                 </a>
                 <a asp-controller="Home" asp-action="ShoppingCart" style="position: relative;">
                     <i class="bi bi-cart"></i> Cart
-                    <span id="tablet-cart-count" class="badge rounded-pill bg-danger" style="position: absolute; top: -5px; right: -5px; font-size: 10px;">0</span>
+                    <span id="tablet-cart-count" class="badge rounded-pill bg-danger" style="position: absolute; top: -5px; right: -5px; font-size: 10px;">@cartItemCount</span>
                 </a>
                 <a asp-controller="Home" asp-action="Support">
                     <i class="bi bi-headset"></i> Support
@@ -318,7 +314,7 @@
             <div>
                 <a asp-controller="Home" asp-action="ShoppingCart" class="mx-2" style="position: relative;">
                     <i class="bi bi-cart"></i>
-                    <span id="mobile-cart-count" class="badge rounded-pill bg-danger mobile-cart-badge">0</span>
+                    <span id="mobile-cart-count" class="badge rounded-pill bg-danger mobile-cart-badge">@cartItemCount</span>
                 </a>
                 <a asp-controller="Profile" asp-action="Index" class="mx-2">
                     <i class="bi bi-person-circle"></i>
@@ -434,29 +430,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.tiny.cloud/1/fnqjnwdxvb57lyzscn93eqgyze1znicr3jsf44c5p9p7y86w/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
-
-    <!-- JavaScript for synchronizing cart counts -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Function to update all cart counts
-            function updateAllCartCounts(count) {
-                document.getElementById('cart-count').textContent = count;
-                document.getElementById('tablet-cart-count').textContent = count;
-                document.getElementById('mobile-cart-count').textContent = count;
-            }
-
-            // Initialize with a value (could be from localStorage)
-            const initialCount = localStorage.getItem('cartCount') || 0;
-            updateAllCartCounts(initialCount);
-
-            // Example: Listen for cart updates
-            window.addEventListener('storage', function(e) {
-                if (e.key === 'cartCount') {
-                    updateAllCartCounts(e.newValue);
-                }
-            });
-        });
-    </script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

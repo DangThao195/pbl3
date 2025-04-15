@@ -66,10 +66,7 @@ namespace PBL3_HK4.Service
         public async Task<IEnumerable<CartItem>> GetCartItemsByShoppingCartIdAsync(Guid shoppingcartId)
         {
             var listCartItem = await _context.CartItems.Where(c => c.CartID == shoppingcartId).ToListAsync();
-            if (listCartItem == null || listCartItem.Count == 0)
-            {
-                throw new KeyNotFoundException($"No cart item found for shopping cart ID {shoppingcartId}");
-            }
+
             return listCartItem;
         }
 

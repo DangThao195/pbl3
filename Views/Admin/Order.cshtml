@@ -5,7 +5,7 @@
 
 <div id="order-content" class="content-section active">
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <h1>Order Management</h1>
+        <h1 class="fs-2 fs-md-1 mb-0">Order Management</h1>
     </div>
 
     <!-- Bảng dữ liệu -->
@@ -15,8 +15,8 @@
                 <tr>
                     <th>ID</th>
                     <th>Customer Name</th>
-                    <th>Phone Number</th>
-                    <th>Email</th>
+                    <th class="d-none d-md-table-cell">Phone Number</th>
+                    <th class="d-none d-md-table-cell">Email</th>
                     <th>Status</th>
                     <th>Total</th>
                     <th>Actions</th>
@@ -30,7 +30,7 @@
 
     <!-- Pagination -->
     <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
+        <ul class="pagination justify-content-center flex-wrap">
             <!-- Phân trang sẽ được thêm bằng JavaScript -->
         </ul>
     </nav>
@@ -147,6 +147,107 @@
         border: 1px solid #dee2e6;
         border-radius: 10px;
     }
+
+    /* Responsive styles */
+    @@media (max-width: 991.98px) {
+        #order-table th, #order-table td
+
+    {
+        padding: 0.5rem;
+    }
+
+    .order-container {
+        margin: 0.5rem;
+        max-width: calc(100% - 1rem);
+    }
+
+    .btn-close-modal {
+        font-size: 14px;
+        padding: 6px 15px;
+    }
+
+    }
+
+    @@media (max-width: 767.98px) {
+        h1
+
+    {
+        font-size: 1.75rem;
+    }
+
+    .order-summary-header {
+        padding: 0.75rem !important;
+    }
+
+        .order-summary-header h3 {
+            font-size: 1.25rem;
+        }
+
+    .btn-close-modal {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+    .order-status {
+        font-size: 10px;
+        padding: 6px;
+    }
+
+    .total-row {
+        font-size: 18px;
+    }
+
+    .btn-confirm, .btn-cancel, .btn-confirm-cancel, .btn-keep {
+        font-size: 14px;
+    }
+
+    /* Pagination for mobile */
+    .pagination .page-link {
+        padding: 0.375rem 0.5rem;
+    }
+
+    .pagination .page-item:not(.active):not(:first-child):not(:last-child) {
+        display: none;
+    }
+
+    .pagination .page-item.active {
+        display: block;
+    }
+
+    }
+
+    @@media (max-width: 575.98px) {
+        .container
+
+    {
+        padding: 0;
+    }
+
+    .full-screen-overlay {
+        padding: 0;
+    }
+
+    .order-container {
+        border-radius: 0;
+        margin: 0;
+        max-width: 100%;
+        border-left: none;
+        border-right: none;
+    }
+
+    .row {
+        margin: 0 !important;
+    }
+
+    .col-md-6 {
+        padding: 0.75rem !important;
+    }
+
+    .form-floating {
+        margin-bottom: 0.75rem !important;
+    }
+
+    }
 </style>
 
 <script>
@@ -224,7 +325,26 @@
 
     // Pagination variables
     let currentPage = 1;
-    const itemsPerPage = 10;
+    let itemsPerPage = 10;
+
+    // Adjust items per page based on screen size
+    function adjustItemsPerPage() {
+        if (window.innerWidth <= 576) {
+            itemsPerPage = 5;
+        } else if (window.innerWidth <= 992) {
+            itemsPerPage = 8;
+        } else {
+            itemsPerPage = 10;
+        }
+        renderOrderTable(orders, currentPage);
+    }
+
+    // Format date for display
+    function formatDate(dateString) {
+        if (!dateString) return 'N/A';
+        const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+        return new Date(dateString).toLocaleDateString('vi-VN', options);
+    }
 
     // Render table data
     function renderOrderTable(data, page = 1) {
@@ -237,21 +357,54 @@
         const endIndex = Math.min(startIndex + itemsPerPage, data.length);
         const paginatedData = data.slice(startIndex, endIndex);
 
+        // Check if current page is valid after items per page change
+        if (page > totalPages && totalPages > 0) {
+            currentPage = totalPages;
+            renderOrderTable(data, totalPages);
+            return;
+        }
+
         paginatedData.forEach(order => {
             const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${order.id}</td>
-                <td>${order.customerName}</td>
-                <td>${order.phoneNumber}</td>
-                <td>${order.email}</td>
-                <td>${order.status}</td>
-                <td>$${parseFloat(order.total).toFixed(2)}</td>
-                <td>
-                    <button class="btn btn-sm btn-link text-dark" onclick="viewOrder(${order.id})">
-                        <i class="fas fa-eye"></i>
-                    </button>
-                </td>
-            `;
+
+            // Check if mobile view
+            const isMobile = window.innerWidth <= 767.98;
+            if (isMobile) {
+                row.innerHTML = `
+                    <td>${order.id}</td>
+                    <td>
+                        ${order.customerName}
+                        <div class="small text-muted d-md-none">
+                            ${order.phoneNumber}
+                        </div>
+                    </td>
+                    <td>
+                        <span class="badge ${getBadgeClass(order.status)}">${order.status}</span>
+                    </td>
+                    <td>$${parseFloat(order.total).toFixed(2)}</td>
+                    <td>
+                        <button class="btn btn-sm btn-link text-dark" onclick="viewOrder(${order.id})">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </td>
+                `;
+            } else {
+                row.innerHTML = `
+                    <td>${order.id}</td>
+                    <td>${order.customerName}</td>
+                    <td class="d-none d-md-table-cell">${order.phoneNumber}</td>
+                    <td class="d-none d-md-table-cell">${order.email}</td>
+                    <td>
+                        <span class="badge ${getBadgeClass(order.status)}">${order.status}</span>
+                    </td>
+                    <td>$${parseFloat(order.total).toFixed(2)}</td>
+                    <td>
+                        <button class="btn btn-sm btn-link text-dark" onclick="viewOrder(${order.id})">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </td>
+                `;
+            }
             tbody.appendChild(row);
         });
 
@@ -263,6 +416,16 @@
         }
     }
 
+    // Get appropriate badge class for status
+    function getBadgeClass(status) {
+        switch(status) {
+            case 'Processing': return 'bg-warning text-dark';
+            case 'Confirmed': return 'bg-success';
+            case 'Canceled': return 'bg-danger';
+            default: return 'bg-secondary';
+        }
+    }
+
     // Render pagination
     function renderPagination(totalPages, currentPage) {
         const pagination = document.querySelector('.pagination');
@@ -270,19 +433,67 @@
 
         const prevLi = document.createElement('li');
         prevLi.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
-        prevLi.innerHTML = `<a class="page-link" href="#" onclick="changePage(${currentPage - 1})">«</a>`;
+        prevLi.innerHTML = `<a class="page-link" href="#" onclick="event.preventDefault(); changePage(${currentPage - 1})">«</a>`;
         pagination.appendChild(prevLi);
 
-        for (let i = 1; i <= totalPages; i++) {
+        // Determine visible pages based on screen size
+        let maxVisiblePages = 5; // Desktop default
+        const isMobile = window.innerWidth <= 767.98;
+        const isTablet = window.innerWidth <= 991.98 && window.innerWidth > 767.98;
+
+        if (isMobile) {
+            maxVisiblePages = 1;
+        } else if (isTablet) {
+            maxVisiblePages = 3;
+        }
+
+        const startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+        const endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+
+        // First page (if not in range)
+        if (startPage > 1) {
+            const firstPageLi = document.createElement('li');
+            firstPageLi.className = 'page-item';
+            firstPageLi.innerHTML = `<a class="page-link" href="#" onclick="event.preventDefault(); changePage(1)">1</a>`;
+            pagination.appendChild(firstPageLi);
+
+            // Ellipsis if needed
+            if (startPage > 2) {
+                const ellipsisLi = document.createElement('li');
+                ellipsisLi.className = 'page-item disabled d-none d-md-block';
+                ellipsisLi.innerHTML = `<span class="page-link">...</span>`;
+                pagination.appendChild(ellipsisLi);
+            }
+        }
+
+        // Page numbers
+        for (let i = startPage; i <= endPage; i++) {
             const pageLi = document.createElement('li');
             pageLi.className = `page-item ${i === currentPage ? 'active' : ''}`;
-            pageLi.innerHTML = `<a class="page-link" href="#" onclick="changePage(${i})">${i}</a>`;
+            pageLi.innerHTML = `<a class="page-link" href="#" onclick="event.preventDefault(); changePage(${i})">${i}</a>`;
             pagination.appendChild(pageLi);
         }
 
+        // Last page (if not in range)
+        if (endPage < totalPages) {
+            // Ellipsis if needed
+            if (endPage < totalPages - 1) {
+                const ellipsisLi = document.createElement('li');
+                ellipsisLi.className = 'page-item disabled d-none d-md-block';
+                ellipsisLi.innerHTML = `<span class="page-link">...</span>`;
+                pagination.appendChild(ellipsisLi);
+            }
+
+            const lastPageLi = document.createElement('li');
+            lastPageLi.className = 'page-item';
+            lastPageLi.innerHTML = `<a class="page-link" href="#" onclick="event.preventDefault(); changePage(${totalPages})">${totalPages}</a>`;
+            pagination.appendChild(lastPageLi);
+        }
+
+        // Next button
         const nextLi = document.createElement('li');
         nextLi.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
-        nextLi.innerHTML = `<a class="page-link" href="#" onclick="changePage(${currentPage + 1})">»</a>`;
+        nextLi.innerHTML = `<a class="page-link" href="#" onclick="event.preventDefault(); changePage(${currentPage + 1})">»</a>`;
         pagination.appendChild(nextLi);
     }
 
@@ -312,6 +523,9 @@
     function viewOrder(id) {
         const order = orders.find(o => o.id === id);
         if (!order) return;
+
+        // Check if mobile view
+        const isMobile = window.innerWidth <= 767.98;
 
         const overlay = document.createElement('div');
         overlay.className = 'full-screen-overlay';
@@ -349,15 +563,15 @@
                         <label for="floatingOrderSummaryAddress">Address</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingOrderDate" value="${order.orderDate}" disabled>
+                        <input type="text" class="form-control" id="floatingOrderDate" value="${formatDate(order.orderDate)}" disabled>
                         <label for="floatingOrderDate">Order Date</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingShippingDate" value="${order.shippingDate || 'N/A'}" disabled>
+                        <input type="text" class="form-control" id="floatingShippingDate" value="${formatDate(order.shippingDate)}" disabled>
                         <label for="floatingShippingDate">Shipping Date</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingPaymentDate" value="${order.paymentDate || 'N/A'}" disabled>
+                        <input type="text" class="form-control" id="floatingPaymentDate" value="${formatDate(order.paymentDate)}" disabled>
                         <label for="floatingPaymentDate">Payment Date</label>
                     </div>
                     <div class="form-floating mb-3">
@@ -400,7 +614,7 @@
                                 <textarea id="cancellationReason" class="form-control" rows="3" style="resize: none;"></textarea>
                                 <div id="cancellationError" class="text-danger mt-2 d-none">Please provide a reason for cancellation.</div>
                             </div>
-                            <div class="d-grid gap-2 d-md-flex">
+                            <div class="d-grid gap-2 ${isMobile ? '' : 'd-md-flex'}">
                                 <button id="confirmCancellationBtn" class="btn btn-confirm-cancel py-2 flex-grow-1">Confirm cancellation</button>
                                 <button id="keepOrderBtn" class="btn btn-keep py-2 flex-grow-1">Keep Order</button>
                             </div>
@@ -485,6 +699,12 @@
 
     // Initialize
     document.addEventListener('DOMContentLoaded', () => {
+        adjustItemsPerPage();
         renderOrderTable(orders);
+
+        // Listen for window resize
+        window.addEventListener('resize', function() {
+            adjustItemsPerPage();
+        });
     });
 </script>

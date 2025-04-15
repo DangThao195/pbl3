@@ -29,9 +29,9 @@
         transition: all 0.3s ease;
     }
 
-    .cart-item:hover {
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
+        .cart-item:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
 
     .item-image {
         max-width: 80px;
@@ -68,19 +68,19 @@
         transition: all 0.2s;
     }
 
-    .btn-quantity:hover {
-        background-color: #f5f5f5;
-    }
+        .btn-quantity:hover {
+            background-color: #f5f5f5;
+        }
 
-    .btn-quantity.minus {
-        border-top-left-radius: 8px;
-        border-bottom-left-radius: 8px;
-    }
+        .btn-quantity.minus {
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
 
-    .btn-quantity.plus {
-        border-top-right-radius: 8px;
-        border-bottom-right-radius: 8px;
-    }
+        .btn-quantity.plus {
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
 
     .quantity-value {
         border-top: 1px solid #ddd;
@@ -100,9 +100,9 @@
         transition: all 0.2s;
     }
 
-    .btn-remove:hover {
-        color: #c82333;
-    }
+        .btn-remove:hover {
+            color: #c82333;
+        }
 
     .total-section {
         padding: 10px 0;
@@ -137,27 +137,126 @@
         color: white;
     }
 
-    .btn-checkout:hover {
-        background-color: #729f00;
-        color: white;
-    }
+        .btn-checkout:hover {
+            background-color: #729f00;
+            color: white;
+        }
 
     .btn-continue {
         background-color: #E86D1F;
         color: white;
     }
 
-    .btn-continue:hover {
-        background-color: #d15e15;
-        color: white;
+        .btn-continue:hover {
+            background-color: #d15e15;
+            color: white;
+        }
+
+    /* Responsive styles for tablet */
+    @@media (max-width: 991px) {
+        .col-md-6.d-flex
+
+    {
+        margin-bottom: 10px;
+    }
+
+    .cart-header {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .item-name {
+        margin-top: 5px;
+        font-size: 14px;
+    }
+
+    .item-price {
+        margin-top: 5px;
+        font-size: 14px;
+    }
+
+    .total-text, .total-amount {
+        font-size: 24px;
+    }
+
+    }
+
+    /* Responsive styles for mobile */
+    @@media (max-width: 767px) {
+        .cart-item
+
+    {
+        padding: 10px;
+    }
+
+    .cart-header {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .item-image {
+        max-width: 60px;
+    }
+
+    .item-name {
+        font-size: 14px;
+        margin-top: 0;
+    }
+
+    .item-price {
+        margin-top: 0;
+        font-size: 14px;
+    }
+
+    .btn-quantity {
+        width: 30px;
+        height: 30px;
+    }
+
+    .quantity-value {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+
+    .total-text, .total-amount {
+        font-size: 20px;
+    }
+
+    .btn-action {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+
+    /* Stack items vertically on mobile */
+    .mobile-stack {
+        margin-bottom: 8px;
+    }
+
+    .mobile-flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .mobile-center {
+        display: flex;
+        justify-content: center;
+    }
+
+    .mobile-right {
+        display: flex;
+        justify-content: flex-end;
+    }
+
     }
 </style>
 
 <div class="row mt-5">
-    <div class="col-3">
+    <div class="col-lg-3 col-md-2 col-sm-1 d-none d-sm-block">
         <!-- Left sidebar space -->
     </div>
-    <div class="col-6">
+    <div class="col-lg-6 col-md-8 col-sm-10 col-12">
         <div class="cart-header">
             You have <span class="item-count">5</span> items in your cart
         </div>
@@ -166,14 +265,15 @@
         {
             <div class="cart-item">
                 <div class="row align-items-center">
-                    <div class="col-md-6 d-flex">
+                    <!-- Desktop and tablet view -->
+                    <div class="col-md-6 d-flex d-none d-md-flex">
                         <img src="~/img/—Pngtree—red fresh tomato with green_8933861.png" class="item-image" alt="Tomato" />
                         <div class="item-name">Fresh Ruby Tomatoes</div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 d-none d-md-block">
                         <div class="item-price"><span class="CostItem" style="font-size: 20px;">2.00</span>$ / 1 Kg</div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 d-none d-md-block">
                         <div class="quantity-controls">
                             <div class="btn-quantity minus" onclick="decreaseQuantity(this)">
                                 <i class="bi bi-dash"></i>
@@ -184,9 +284,34 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-1 text-end">
+                    <div class="col-md-1 text-end d-none d-md-block">
                         <div class="btn-remove" onclick="removeItem(this)">
                             <i class="bi bi-trash"></i>
+                        </div>
+                    </div>
+
+                    <!-- Mobile view -->
+                    <div class="col-12 d-md-none">
+                        <div class="mobile-stack mobile-flex">
+                            <div class="d-flex align-items-center">
+                                <img src="~/img/—Pngtree—red fresh tomato with green_8933861.png" class="item-image" alt="Tomato" />
+                                <div class="item-name">Fresh Ruby Tomatoes</div>
+                            </div>
+                            <div class="btn-remove" onclick="removeItem(this)">
+                                <i class="bi bi-trash"></i>
+                            </div>
+                        </div>
+                        <div class="mobile-stack mobile-flex">
+                            <div class="item-price"><span class="CostItem" style="font-size: 16px;">2.00</span>$ / 1 Kg</div>
+                            <div class="quantity-controls">
+                                <div class="btn-quantity minus" onclick="decreaseQuantity(this)">
+                                    <i class="bi bi-dash"></i>
+                                </div>
+                                <div class="quantity-value Count">1</div>
+                                <div class="btn-quantity plus" onclick="increaseQuantity(this)">
+                                    <i class="bi bi-plus"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -197,7 +322,7 @@
 
         <div class="total-section">
             <div class="row">
-                <div class="col-md-8 offset-md-2">
+                <div class="col-md-8 offset-md-2 col-12">
                     <div class="d-flex justify-content-between mb-4">
                         <span class="total-text">Total</span>
                         <span class="total-amount"><span id="TotalCost">10.00</span>$</span>
@@ -214,7 +339,7 @@
             </div>
         </div>
     </div>
-    <div class="col-3">
+    <div class="col-lg-3 col-md-2 col-sm-1 d-none d-sm-block">
         <!-- Right sidebar space -->
     </div>
 </div>
@@ -227,18 +352,50 @@
 
     // Increase quantity
     function increaseQuantity(button) {
-        const quantityDiv = button.previousElementSibling;
+        // Handle both desktop and mobile layouts
+        let quantityDiv;
+        if (button.previousElementSibling && button.previousElementSibling.classList.contains('quantity-value')) {
+            quantityDiv = button.previousElementSibling;
+        } else {
+            // Look for the closest quantity-value
+            quantityDiv = button.closest('.quantity-controls').querySelector('.quantity-value');
+        }
+
         let quantity = parseInt(quantityDiv.textContent);
         quantityDiv.textContent = quantity + 1;
+
+        // Update both desktop and mobile quantity displays if they exist
+        const cartItem = button.closest('.cart-item');
+        const allQuantityValues = cartItem.querySelectorAll('.Count');
+        allQuantityValues.forEach(value => {
+            value.textContent = quantity + 1;
+        });
+
         calculateTotal();
     }
 
     // Decrease quantity
     function decreaseQuantity(button) {
-        const quantityDiv = button.nextElementSibling;
+        // Handle both desktop and mobile layouts
+        let quantityDiv;
+        if (button.nextElementSibling && button.nextElementSibling.classList.contains('quantity-value')) {
+            quantityDiv = button.nextElementSibling;
+        } else {
+            // Look for the closest quantity-value
+            quantityDiv = button.closest('.quantity-controls').querySelector('.quantity-value');
+        }
+
         let quantity = parseInt(quantityDiv.textContent);
         if (quantity > 1) {
             quantityDiv.textContent = quantity - 1;
+
+            // Update both desktop and mobile quantity displays if they exist
+            const cartItem = button.closest('.cart-item');
+            const allQuantityValues = cartItem.querySelectorAll('.Count');
+            allQuantityValues.forEach(value => {
+                value.textContent = quantity - 1;
+            });
+
             calculateTotal();
         }
     }

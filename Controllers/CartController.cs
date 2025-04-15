@@ -23,47 +23,94 @@ namespace PBL3_HK4.Controllers
         [HttpPost]
         public async Task<IActionResult> AddToCart(Guid productId, int quantity)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            var cart = await _shoppingCartService.GetShoppingCartByCustomerIdAsync(new Guid(userId));
-            if (cart == null)
+            try
             {
-                var newCart = new ShoppingCart
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var cart = await _shoppingCartService.GetShoppingCartByCustomerIdAsync(new Guid(userId));
+
+                if (cart == null)
                 {
-                    UserID = new Guid(userId),
-                    CartID = Guid.NewGuid()
+                    var newCart = new ShoppingCart
+                    {
+                        UserID = new Guid(userId),
+                        CartID = Guid.NewGuid()
+                    };
+                    await _shoppingCartService.AddShoppingCartAsync(newCart);
+                    cart = newCart;
+                }
 
-                };
-                await _shoppingCartService.AddShoppingCartAsync(newCart);
-                cart = newCart;
-            }
-            var existingItems = await _cartItemService.GetCartItemsByShoppingCartIdAsync(cart.CartID);
-            var existingItem = existingItems.FirstOrDefault(i => i.ProductID == productId);
+                // Lưu CartID vào session
+                HttpContext.Session.SetString("CartID", cart.CartID.ToString());
 
-            if (existingItem != null)
-            {
-                existingItem.Quantity += quantity;
-                await _cartItemService.UpdateCartItemAsync(existingItem);
-            }
-            else
-            {
-                var product = await _productService.GetProductByIdAsync(productId);
-                var newItem = new CartItem
+                // Thử lấy các mục trong giỏ hàng, nếu có lỗi thì khởi tạo danh sách rỗng
+                IEnumerable<CartItem> existingItems;
+                try
                 {
-                    ItemID = Guid.NewGuid(),
-                    CartID = cart.CartID,
-                    ProductID = productId,
-                    Quantity = quantity,
-                    Price = product.Price
-                };
-                await _cartItemService.AddCartItemAsync(newItem);
-            }
+                    existingItems = await _cartItemService.GetCartItemsByShoppingCartIdAsync(cart.CartID);
+                }
+                catch (KeyNotFoundException)
+                {
+                    // Nếu không có mục nào, khởi tạo danh sách rỗng
+                    existingItems = new List<CartItem>();
+                }
 
-            return Json(new
+                // Tìm mục đã tồn tại (nếu có)
+                var existingItem = existingItems.FirstOrDefault(i => i.ProductID == productId);
+
+                if (existingItem != null)
+                {
+                    existingItem.Quantity += quantity;
+                    await _cartItemService.UpdateCartItemAsync(existingItem);
+                }
+                else
+                {
+                    var product = await _productService.GetProductByIdAsync(productId);
+                    var newItem = new CartItem
+                    {
+                        ItemID = Guid.NewGuid(),
+                        CartID = cart.CartID,
+                        ProductID = productId,
+                        Quantity = quantity,
+                        Price = product.Price
+                    };
+                    await _cartItemService.AddCartItemAsync(newItem);
+                }
+
+                // Cập nhật số lượng LOẠI sản phẩm (không phải tổng số lượng)
+                int itemCount;
+
+                try
+                {
+                    // Lấy danh sách mới sau khi thêm/cập nhật
+                    var updatedItems = await _cartItemService.GetCartItemsByShoppingCartIdAsync(cart.CartID);
+
+                    // Đếm số lượng loại sản phẩm trong giỏ hàng
+                    itemCount = updatedItems.Count();
+                }
+                catch (KeyNotFoundException)
+                {
+                    // Nếu vẫn không có mục nào (rất hiếm gặp), giả định là 1 sản phẩm
+                    itemCount = 1;
+                }
+
+                // Cập nhật session với số lượng loại sản phẩm
+                HttpContext.Session.SetInt32("CartItemCount", itemCount);
+
+                return Json(new
+                {
+                    success = true,
+                    message = "Đã thêm vào giỏ hàng thành công",
+                    cartItemCount = itemCount
+                });
+            }
+            catch (Exception ex)
             {
-                success = true,
-                message = "Item is added to shopping cart successfully"
-            });
+                return Json(new
+                {
+                    success = false,
+                    message = "Lỗi: " + ex.Message
+                });
+            }
         }
         public async Task<IEnumerable<CartItem>> GetCartItems()
         {

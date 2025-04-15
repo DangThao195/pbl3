@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<PBL3_HK4.Entity.Product>
+@{
     ViewData["Title"] = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -187,11 +188,18 @@
 
     <!-- List Product -->
     <div id="product-container" class="d-flex flex-wrap justify-content-start col-9">
-        <!-- Products will be added dynamically via JavaScript -->
+        @if (Model != null && Model.Any())
+        {
+            <!-- Trường hợp không có sản phẩm sẽ hiển thị thông báo -->
+        }
+        else
+        {
+            <div class="alert alert-info col-12">No products available.</div>
+        }
     </div>
 
     <!-- Pagination Controls -->
-    <div class="col-9 d-flex justify-content-center mt-4">
+    <div class="col-9 offset-3 d-flex justify-content-center mt-4">
         <nav aria-label="Product pagination">
             <ul class="pagination" id="pagination-controls">
                 <!-- Pagination buttons will be added dynamically -->
@@ -233,10 +241,10 @@
         cursor: pointer;
     }
 
-        .pagination .page-link:hover {
-            background-color: #E6DACE;
-            color: #314401;
-        }
+    .pagination .page-link:hover {
+        background-color: #E6DACE;
+        color: #314401;
+    }
 
     .pagination .active .page-link {
         background-color: #6D7B30;
@@ -248,6 +256,12 @@
         color: #ccc;
         pointer-events: none;
         cursor: default;
+    }
+
+    .category-icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
     }
 </style>
 
@@ -302,9 +316,9 @@
             justify-content: center;
         }
 
-            .cart-btn:hover {
-                background-color: #d65e1a;
-            }
+        .cart-btn:hover {
+            background-color: #d65e1a;
+        }
 
         /* Hiệu ứng phóng to nút giỏ hàng */
         .cart-btn-animating {
@@ -329,33 +343,30 @@
 
         /* Keyframes cho ảnh sản phẩm */
         @@keyframes productAnimation {
-            0%
+            0% {
+                opacity: 0;
+                transform: translateY(0);
+            }
 
-        {
-            opacity: 0;
-            transform: translateY(0);
-        }
+            25% {
+                opacity: 1;
+                transform: translateY(-20px); /* Trồi lên 20px */
+            }
 
-        25% {
-            opacity: 1;
-            transform: translateY(-20px); /* Trồi lên 20px */
-        }
+            50% {
+                opacity: 1;
+                transform: translateY(-20px);
+            }
 
-        50% {
-            opacity: 1;
-            transform: translateY(-20px);
-        }
+            75% {
+                opacity: 0;
+                transform: translateY(0); /* Chui xuống */
+            }
 
-        75% {
-            opacity: 0;
-            transform: translateY(0); /* Chui xuống */
-        }
-
-        100% {
-            opacity: 0;
-            transform: translateY(0);
-        }
-
+            100% {
+                opacity: 0;
+                transform: translateY(0);
+            }
         }
 
         /* Thanh tăng giảm số lượng */
@@ -381,9 +392,9 @@
             transition: background-color 0.2s;
         }
 
-            .quantity-btn:hover {
-                background-color: #6a9300;
-            }
+        .quantity-btn:hover {
+            background-color: #6a9300;
+        }
 
         .quantity-input {
             width: 35px;
@@ -394,12 +405,12 @@
             font-size: 14px;
         }
 
-            /* Vô hiệu hóa mũi tên mặc định của input number */
-            .quantity-input::-webkit-inner-spin-button,
-            .quantity-input::-webkit-outer-spin-button {
-                -webkit-appearance: none;
-                margin: 0;
-            }
+        /* Vô hiệu hóa mũi tên mặc định của input number */
+        .quantity-input::-webkit-inner-spin-button,
+        .quantity-input::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
 
         .quantity-input {
             -moz-appearance: textfield; /* Firefox */
@@ -407,499 +418,267 @@
     </style>
 
     <script>
-                const productsPerPage = 20; // Max products per page
-                const cardsPerRow = 4; // Cards per row
-                let currentPage = 1;
-                const totalProducts = 50; // Simulate more products
+        document.addEventListener('DOMContentLoaded', function () {
+            const productsPerPage = 20; // Max products per page
+            const cardsPerRow = 4; // Cards per row
+            let currentPage = 1;
 
-                // Get product container
-                const productContainer = document.getElementById("product-container");
-                const paginationControls = document.getElementById("pagination-controls");
+            // Get product container
+            const productContainer = document.getElementById("product-container");
+            const paginationControls = document.getElementById("pagination-controls");
 
-                // Calculate margins
-                const containerWidth = productContainer.offsetWidth;
-                const cardWidth = 200; // Chiều rộng mỗi thẻ
-                const totalCardWidth = cardWidth * cardsPerRow;
-                const marginLeft = (containerWidth - totalCardWidth) / (cardsPerRow + 1);
-                const marginBottom = marginLeft / 2;
+            // Thêm dữ liệu sản phẩm thực từ model
+            const products = [
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var product in Model)
+                    {
+                        <text>
+                                        {
+                                            id: "@product.ProductID",
+                                            name: "@product.ProductName",
+                                            description: "@(product.ProductDescription?.Replace("\n", "\\n").Replace("\"", "\\\""))",
+                                            price: @product.Price,
+                                            stock: @product.StockQuantity,
+                                            categoryId: "@product.CatalogID",
+                                            mfgDate: "@product.MFGDate.ToString("yyyy-MM-dd")",
+                                            expDate: "@product.EXPDate.ToString("yyyy-MM-dd")",
+                                            imageUrl: "../img/—Pngtree—red fresh tomato with green_8933861.png",
+                                            averageStar: @product.AverageRating
+                                        },
+                        </text>
+                    }
+                }
+            ];
 
-                // Function to render products for the current page
-                function renderProducts(page) {
-                    productContainer.innerHTML = ''; // Clear previous products
-                    const start = (page - 1) * productsPerPage;
-                    const end = Math.min(start + productsPerPage, totalProducts);
+            // Calculate margins
+            const containerWidth = productContainer.offsetWidth;
+            const cardWidth = 200; // Chiều rộng mỗi thẻ
+            const totalCardWidth = cardWidth * cardsPerRow;
+            const marginLeft = (containerWidth - totalCardWidth) / (cardsPerRow + 1);
+            const marginBottom = marginLeft / 2;
 
-                    for (let i = start; i < end; i++) {
-                        const productId = i + 1; // Giả lập ID sản phẩm
-                        const productImage = "../img/—Pngtree—red fresh tomato with green_8933861.png"; // Ảnh sản phẩm
-                        const productHTML = `
-                            <div class="card text-center" style="border-radius: 20px; max-width: 250px; height: 305px; margin-left: ${marginLeft}px; margin-bottom: ${marginBottom}px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                                <img src="${productImage}"
-                                     style="background-color: #EDEDED; border-top-left-radius: 20px; border-top-right-radius: 20px; height: 200px; width: 100%; object-fit: cover;"
-                                     class="card-img-top" alt="Sản phẩm">
-                                <div class="card-body p-0" style="display: flex; flex-direction: column; height: 100%;">
-                                    <span class="text-warning" style="font-size: 16px; letter-spacing: 5px;">★★★★★</span>
-                                    <h6 class="card-title" style="font-weight: bold; font-size: 14px;">Fresh Ruby Tomatoes</h6>
-                                    <p class="d-flex justify-content-evenly" style="font-size: 14px;">
-                                        <span class="fw-bold" style="color: #80B500;">150.000đ</span>
-                                        <span class="old-price" style="color: #94A84E; text-decoration: line-through;">200.000đ</span>
-                                    </p>
-                                    <a href="/Product/Details" class="fw-bold" style="display: block; background-color: #E86D1F; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; color: white; font-size: 14px; margin-top: auto; text-align: center; padding: 5px 10px;">
-                                        Details
-                                    </a>
-                                </div>
-                                <!-- Panel trồi ra khi hover -->
-                                <div class="hover-panel">
-                                    <div class="quantity-control">
-                                        <button class="quantity-btn increase" data-product-id="${productId}">+</button>
-                                        <input type="number" class="quantity-input" value="1" min="1" data-product-id="${productId}">
-                                        <button class="quantity-btn decrease" data-product-id="${productId}">-</button>
-                                    </div>
-                                    <button class="cart-btn" title="Add to Cart" data-product-id="${productId}">
-                                        <i class="fas fa-shopping-cart"></i>
-                                        <img class="product-icon" src="${productImage}" alt="Sản phẩm">
-                                    </button>
-                                </div>
+            // Hiển thị sản phẩm với margin tính toán
+            function displayProducts(page) {
+                productContainer.innerHTML = '';
+                const start = (page - 1) * productsPerPage;
+                const end = Math.min(start + productsPerPage, products.length);
+                const paginatedProducts = products.slice(start, end);
+
+                paginatedProducts.forEach(product => {
+                    // Tạo HTML hiển thị đánh giá sao
+                    let starsHtml = '';
+                    for (let i = 0; i < 5; i++) {
+                        if (i < Math.floor(product.averageStar)) {
+                            starsHtml += '<span style="color: #FFD700;">★</span>'; // Ngôi sao đầy
+                        } else if (i < Math.ceil(product.averageStar) && i >= Math.floor(product.averageStar)) {
+                            starsHtml += '<span style="color: #FFD700;">★</span>'; // Ngôi sao nửa - hiển thị đầy
+                        } else {
+                            starsHtml += '<span style="color: #C0C0C0;">★</span>'; // Ngôi sao rỗng
+                        }
+                    }
+
+                const productHTML = `
+                    <div class="card text-center" style="border-radius: 20px; max-width: 250px; height: 305px; margin-left: ${marginLeft}px; margin-bottom: ${marginBottom}px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                        <img src="${product.imageUrl}"
+                             style="background-color: #EDEDED; border-top-left-radius: 20px; border-top-right-radius: 20px; height: 200px; width: 100%; object-fit: cover;"
+                             class="card-img-top" alt="${product.name}">
+                        <div class="card-body p-0" style="display: flex; flex-direction: column; height: 100%;">
+                            <span class="text-warning" style="font-size: 16px; letter-spacing: 5px;">
+                                ${starsHtml}
+                            </span>
+                            <h6 class="card-title" style="font-weight: bold; font-size: 14px;">${product.name}</h6>
+                            <p class="d-flex justify-content-center" style="font-size: 14px;">
+                                <span class="fw-bold" style="color: #80B500;">${(product.price).toLocaleString('vi-VN')}đ</span>
+                            </p>
+                            <form action="/Product/Details" method="post" style="margin-top: auto;">
+                                <input type="hidden" name="id" value="${product.id}">
+                                <button type="submit" class="fw-bold w-100" style="background-color: #E86D1F; border: none; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; color: white; font-size: 14px; padding: 5px 10px;">
+                                    Details
+                                </button>
+                            </form>
+                        </div>
+                        <!-- Panel trồi ra khi hover -->
+                        <div class="hover-panel">
+                            <div class="quantity-control">
+                                <button class="quantity-btn increase" data-product-id="${product.id}">+</button>
+                                <input type="number" class="quantity-input" value="1" min="1" data-product-id="${product.id}">
+                                <button class="quantity-btn decrease" data-product-id="${product.id}">-</button>
                             </div>
-                        `;
-                        productContainer.innerHTML += productHTML;
-                    }
-
-                    // Thêm sự kiện cho các nút sau khi render
-                    addQuantityControls();
-                    addCartButtonEvents();
-                }
-
-                // Function to handle quantity controls
-                function addQuantityControls() {
-                    const decreaseButtons = document.querySelectorAll('.quantity-btn.decrease');
-                    const increaseButtons = document.querySelectorAll('.quantity-btn.increase');
-                    const quantityInputs = document.querySelectorAll('.quantity-input');
-
-                    decreaseButtons.forEach(button => {
-                        button.addEventListener('click', () => {
-                            const input = button.previousElementSibling;
-                            let value = parseInt(input.value);
-                            if (value > 1) {
-                                input.value = value - 1;
-                            }
-                        });
-                    });
-
-                    increaseButtons.forEach(button => {
-                        button.addEventListener('click', () => {
-                            const input = button.nextElementSibling;
-                            let value = parseInt(input.value);
-                            input.value = value + 1;
-                        });
-                    });
-
-                    quantityInputs.forEach(input => {
-                        input.addEventListener('input', () => {
-                            let value = parseInt(input.value);
-                            if (isNaN(value) || value < 1) {
-                                input.value = 1;
-                            }
-                        });
-                    });
-                }
-
-                // Function to handle cart button
-                function addCartButtonEvents() {
-                    const cartButtons = document.querySelectorAll('.cart-btn');
-                    cartButtons.forEach(button => {
-                        button.addEventListener('click', () => {
-                            // Thêm lớp để phóng to nút
-                            button.classList.add('cart-btn-animating');
-                            // Thêm lớp để kích hoạt hiệu ứng ảnh sản phẩm
-                            const productIcon = button.querySelector('.product-icon');
-                            productIcon.classList.add('product-icon-active');
-                            // Xóa các lớp sau 0.6s
-                            setTimeout(() => {
-                                button.classList.remove('cart-btn-animating');
-                                productIcon.classList.remove('product-icon-active');
-                            }, 600);
-                            // Logic hiện tại
-                            const productId = button.getAttribute('data-product-id');
-                            const quantityInput = button.previousElementSibling.querySelector('.quantity-input');
-                            const quantity = parseInt(quantityInput.value);
-                            // alert(`Added ${quantity} product(s) with ID ${productId} to cart!`);
-                            // TODO: Thay bằng logic thêm vào giỏ hàng
-                        });
-                    });
-                }
-
-                // Function to render pagination controls
-                function renderPagination() {
-                    paginationControls.innerHTML = '';
-                    const totalPages = Math.ceil(totalProducts / productsPerPage);
-
-                    // Previous button
-                    const prevItem = `
-                        <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
-                            <a class="page-link" data-page="${currentPage - 1}">Previous</a>
-                        </li>
-                    `;
-                    paginationControls.innerHTML += prevItem;
-
-                    // Page numbers
-                    for (let i = 1; i <= totalPages; i++) {
-                        const pageItem = `
-                            <li class="page-item ${i === currentPage ? 'active' : ''}">
-                                <a class="page-link" data-page="${i}">${i}</a>
-                            </li>
-                        `;
-                        paginationControls.innerHTML += pageItem;
-                    }
-
-                    // Next button
-                    const nextItem = `
-                        <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
-                            <a class="page-link" data-page="${currentPage + 1}">Next</a>
-                        </li>
-                    `;
-                    paginationControls.innerHTML += nextItem;
-                }
-
-                // Function to change page
-                function changePage(page, event) {
-                    event.preventDefault(); // Prevent default link behavior
-                    const totalPages = Math.ceil(totalProducts / productsPerPage);
-                    if (page < 1 || page > totalPages) return;
-                    currentPage = page;
-                    renderProducts(currentPage);
-                    renderPagination();
-                    // Scroll to product container
-                    window.scrollTo({ top: productContainer.offsetTop - 50, behavior: 'smooth' });
-                }
-
-                // Event listener for pagination clicks
-                paginationControls.addEventListener('click', function(event) {
-                    const target = event.target.closest('.page-link');
-                    if (target && !target.parentElement.classList.contains('disabled')) {
-                        const page = parseInt(target.getAttribute('data-page'));
-                        changePage(page, event);
-                    }
+                            <button class="cart-btn" title="Add to Cart" data-product-id="${product.id}">
+                                <i class="fas fa-shopping-cart"></i>
+                                <img class="product-icon" src="${product.imageUrl}" alt="${product.name}">
+                            </button>
+                        </div>
+                    </div>
+                `;
+                    productContainer.innerHTML += productHTML;
                 });
 
-                // Initial render
-                renderProducts(currentPage);
-                renderPagination();
-    </script>
+                // Thêm sự kiện cho các nút sau khi render
+                addQuantityControls();
+                addCartButtonEvents();
 
-    <style>
-        /* Responsive styles */
-        @@media (max-width: 991.98px) {
-            /* Banner section */
-            .row .col-6
-
-        {
-            flex: 0 0 100%;
-            max-width: 100%;
-            margin-bottom: 20px;
-        }
-
-        /* Banner text */
-        .row .col-6 p[style*="font-size: 42px"] {
-            font-size: 36px !important;
-            text-align: center;
-        }
-
-        .row .col-6 p.pb-2 {
-            max-width: 100% !important;
-            text-align: center;
-        }
-
-        /* Banner buttons - tablet */
-        .row .col-6 .d-flex.gap-3 {
-            justify-content: center;
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-            .row .col-6 .d-flex.gap-3 .btn {
-                max-width: 45% !important; /* Tăng chiều rộng nút */
-                padding: 10px 15px !important; /* Tăng padding */
-                font-size: 16px !important; /* Tăng cỡ chữ */
-                font-weight: bold;
+                // Hiển thị thông báo nếu không có sản phẩm nào
+                if (products.length === 0) {
+                    productContainer.innerHTML = '<div class="alert alert-info col-12">No products available.</div>';
+                }
             }
 
-        /* Service highlights */
-        .row .col-3 {
-            flex: 0 0 50%;
-            max-width: 50%;
-            margin-bottom: 15px;
-        }
+            // Function to handle quantity controls
+            function addQuantityControls() {
+                const decreaseButtons = document.querySelectorAll('.quantity-btn.decrease');
+                const increaseButtons = document.querySelectorAll('.quantity-btn.increase');
+                const quantityInputs = document.querySelectorAll('.quantity-input');
 
-            /* Service title and subtitle */
-            .row .col-3 p[style*="font-size: 20px"] {
-                font-size: 18px !important;
+                decreaseButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const input = button.parentElement.querySelector('.quantity-input');
+                        let value = parseInt(input.value);
+                        if (value > 1) {
+                            input.value = value - 1;
+                        }
+                    });
+                });
+
+                increaseButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const input = button.parentElement.querySelector('.quantity-input');
+                        let value = parseInt(input.value);
+                        input.value = value + 1;
+                    });
+                });
+
+                quantityInputs.forEach(input => {
+                    input.addEventListener('input', () => {
+                        let value = parseInt(input.value);
+                        if (isNaN(value) || value < 1) {
+                            input.value = 1;
+                        }
+                    });
+                });
             }
 
-            .row .col-3 p[style*="font-size: 10px"] {
-                font-size: 9px !important;
+            // Function to handle cart button animations
+            function addCartButtonEvents() {
+                const cartButtons = document.querySelectorAll('.cart-btn');
+                cartButtons.forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        // Giữ nguyên hiệu ứng
+                        button.classList.add('cart-btn-animating');
+                        const productIcon = button.querySelector('.product-icon');
+                        productIcon.classList.add('product-icon-active');
+                        setTimeout(() => {
+                            button.classList.remove('cart-btn-animating');
+                            productIcon.classList.remove('product-icon-active');
+                        }, 600);
+
+                        // Lấy thông tin sản phẩm
+                        const productId = button.getAttribute('data-product-id');
+                        const quantityInput = button.parentElement.querySelector('.quantity-input');
+                        const quantity = parseInt(quantityInput.value);
+
+                        // Gửi request với query parameters
+                        fetch(`/Cart/AddToCart?productId=${productId}&quantity=${quantity}`, {
+                            method: 'POST'
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                // Cập nhật số lượng trên icon giỏ hàng
+                                document.getElementById('cart-count').textContent = data.cartItemCount;
+                                document.getElementById('tablet-cart-count').textContent = data.cartItemCount;
+                                document.getElementById('mobile-cart-count').textContent = data.cartItemCount;
+
+                                // Hiển thị thông báo thành công (nếu có)
+                                alert('Đã thêm vào giỏ hàng!');
+                            } else {
+                                alert(data.message || 'Không thể thêm vào giỏ hàng');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert('Đã xảy ra lỗi khi thêm vào giỏ hàng');
+                        });
+                    });
+                });
             }
 
-        /* Category circles */
-        .d-flex.justify-content-evenly {
-            flex-wrap: wrap !important;
-        }
+            // Render pagination
+            function renderPagination() {
+                paginationControls.innerHTML = '';
+                const totalPages = Math.ceil(products.length / productsPerPage);
 
-            .d-flex.justify-content-evenly > div {
-                flex: 0 0 33.33%;
-                margin-bottom: 20px;
-            }
+                if (totalPages <= 1) return; // Không cần phân trang nếu chỉ có 1 trang
 
-                .d-flex.justify-content-evenly > div div[style*="border-radius: 50%"] {
-                    width: 120px !important;
-                    height: 120px !important;
-                    border-width: 8px !important;
+                // Previous button
+                const prevItem = `
+                    <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+                        <a class="page-link" href="#" data-page="${currentPage - 1}">Previous</a>
+                    </li>
+                `;
+                paginationControls.innerHTML += prevItem;
+
+                // Page numbers
+                for (let i = 1; i <= totalPages; i++) {
+                    const pageItem = `
+                        <li class="page-item ${i === currentPage ? 'active' : ''}">
+                            <a class="page-link" href="#" data-page="${i}">${i}</a>
+                        </li>
+                    `;
+                    paginationControls.innerHTML += pageItem;
                 }
 
-        /* Categories and products */
-        .row .col-3[style*="padding-left: 30px"] {
-            flex: 0 0 100%;
-            max-width: 100%;
-            margin-bottom: 20px;
-        }
+                // Next button
+                const nextItem = `
+                    <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+                        <a class="page-link" href="#" data-page="${currentPage + 1}">Next</a>
+                    </li>
+                `;
+                paginationControls.innerHTML += nextItem;
 
-        .row #product-container {
-            flex: 0 0 100%;
-            max-width: 100%;
-        }
+                // Thêm sự kiện cho các nút phân trang
+                document.querySelectorAll('.page-link').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        if (this.parentElement.classList.contains('disabled')) return;
 
-        /* Pagination */
-        .row .col-9.d-flex.justify-content-center {
-            flex: 0 0 100%;
-            max-width: 100%;
-        }
+                        const page = parseInt(this.getAttribute('data-page'));
+                        currentPage = page;
+                        displayProducts(page);
+                        renderPagination();
 
-        /* Carousel */
-        .carousel-inner {
-            height: 400px !important;
-        }
+                        // Scroll to product container
+                        window.scrollTo({ top: productContainer.offsetTop - 50, behavior: 'smooth' });
+                    });
+                });
+            }
 
-        .carousel-item img {
-            height: 400px !important;
-        }
+            // Hiển thị sản phẩm và phân trang khi trang được tải
+            displayProducts(1);
+            renderPagination();
 
-        }
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                // Recalculate margins
+                const containerWidth = productContainer.offsetWidth;
+                const cardWidth = 200;
+                const totalCardWidth = cardWidth * cardsPerRow;
+                const newMarginLeft = (containerWidth - totalCardWidth) / (cardsPerRow + 1);
+                const newMarginBottom = newMarginLeft / 2;
 
-        @@media (max-width: 767.98px) {
-            /* Banner text */
-            .row .col-6 p[style*="font-size: 42px"]
+                // Update margins
+                document.querySelectorAll('.card').forEach(card => {
+                    if (window.innerWidth > 991.98) {
+                        card.style.marginLeft = `${newMarginLeft}px`;
+                        card.style.marginBottom = `${newMarginBottom}px`;
+                    } else {
+                        card.style.margin = '10px';
+                    }
+                });
+            });
 
-        {
-            font-size: 28px !important;
-        }
-
-        .row .col-6 p.pb-2 {
-            font-size: 14px !important;
-            line-height: 1.6 !important;
-        }
-
-        /* Banner buttons - mobile */
-        .row .col-6 .d-flex.gap-3 {
-            max-width: 400px;
-        }
-
-        .row .col-6 .d-flex.gap-3 .btn {
-            font-size: 14px !important;
-            padding: 8px 12px !important;
-        }
-
-        /* Service icons */
-        .row .col-3 img[style*="width: 50px"] {
-            width: 40px !important;
-            height: 40px !important;
-        }
-
-        /* Service text */
-        .row .col-3 p[style*="font-size: 20px"] {
-            font-size: 16px !important;
-        }
-
-        /* Category circles */
-        .d-flex.justify-content-evenly > div {
-            flex: 0 0 50%;
-        }
-
-        .d-flex.justify-content-evenly > div div[style*="border-radius: 50%"] {
-            width: 100px !important;
-            height: 100px !important;
-            border-width: 6px !important;
-        }
-
-        .d-flex.justify-content-evenly > div p[style*="font-weight: bold"] {
-            font-size: 12px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 100px;
-            margin: 0 auto !important;
-        }
-
-        /* Make product cards responsive */
-        .card {
-            margin-left: 10px !important;
-            margin-right: 10px !important;
-        }
-
-        /* Carousel */
-        .carousel-inner {
-            height: 300px !important;
-        }
-
-        .carousel-item img {
-            height: 300px !important;
-        }
-
-        }
-
-        @@media (max-width: 575.98px) {
-            /* Banner text */
-            .row .col-6 p[style*="font-size: 42px"]
-
-        {
-            font-size: 24px !important;
-        }
-
-        /* Banner buttons - small mobile */
-        .row .col-6 .d-flex.gap-3 {
-            max-width: 300px;
-            gap: 10px !important;
-        }
-
-        .row .col-6 .d-flex.gap-3 .btn {
-            max-width: 48% !important;
-            font-size: 12px !important;
-            padding: 8px 10px !important;
-            white-space: nowrap;
-        }
-
-        /* Ẩn icon mũi tên trên điện thoại nhỏ */
-        .row .col-6 .d-flex.gap-3 .btn i {
-            display: none;
-        }
-
-        /* Category circles */
-        .d-flex.justify-content-evenly > div div[style*="border-radius: 50%"] {
-            width: 80px !important;
-            height: 80px !important;
-            border-width: 4px !important;
-        }
-
-        .d-flex.justify-content-evenly > div p[style*="font-weight: bold"] {
-            font-size: 10px;
-            max-width: 80px;
-        }
-
-        /* Carousel */
-        .carousel-inner {
-            height: 200px !important;
-        }
-
-        .carousel-item img {
-            height: 200px !important;
-        }
-
-        }
-
-        /* Product grid system for responsive display */
-        @@media (max-width: 991.98px) {
-            /* Override the fixed positioning */
-            #product-container
-
-        {
-            display: flex !important;
-            flex-wrap: wrap !important;
-            justify-content: center !important;
-        }
-
-        #product-container .card {
-            max-width: 220px !important;
-            margin: 10px !important;
-        }
-
-        }
-
-        @@media (max-width: 767.98px) {
-            #product-container .card
-
-        {
-            max-width: 200px !important;
-        }
-
-        #product-container .card .card-img-top {
-            height: 180px !important;
-        }
-
-        #product-container .card .card-title {
-            font-size: 12px !important;
-        }
-
-        #product-container .card p {
-            font-size: 12px !important;
-        }
-
-        #product-container .card .text-warning {
-            font-size: 14px !important;
-            letter-spacing: 3px !important;
-        }
-
-        }
-
-        @@media (max-width: 575.98px) {
-            #product-container .card
-
-        {
-            max-width: 160px !important;
-            height: 280px !important;
-        }
-
-        #product-container .card .card-img-top {
-            height: 150px !important;
-        }
-
-        #product-container .card .text-warning {
-            font-size: 12px !important;
-            letter-spacing: 2px !important;
-        }
-
-        }
-
-        /* Accordion for categories on mobile */
-        @@media (max-width: 991.98px) {
-            #category-list
-
-        {
-            margin-bottom: 20px;
-        }
-
-        #category-list .list-group-item.category-header {
-            cursor: pointer;
-        }
-
-        /* Pagination adjusted */
-        .pagination .page-link {
-            padding: 0.4rem 0.75rem;
-        }
-
-        /* Simplified pagination for mobile */
-        @@media (max-width: 575.98px) {
-            .pagination li:not(.active):not(:first-child):not(:last-child):not(:nth-child(2)):not(:nth-last-child(2))
-
-        {
-            display: none;
-        }
-
-        }
-        }
-    </style>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
             // Make categories collapsible on mobile
             const categoryHeader = document.querySelector('.list-group-item.category-header');
             const categoryItems = document.querySelectorAll('.list-group-item:not(.category-header)');
@@ -922,86 +701,274 @@
                     });
                 }
             }
-
-            // Adjust rendering products function for responsive
-            const originalRenderProducts = window.renderProducts;
-            if (typeof originalRenderProducts === 'function') {
-                window.renderProducts = function(page) {
-                    const productContainer = document.getElementById("product-container");
-                    if (!productContainer) return;
-
-                    productContainer.innerHTML = '';
-                    const start = (page - 1) * productsPerPage;
-                    const end = Math.min(start + productsPerPage, totalProducts);
-
-                    // For mobile: use Bootstrap grid instead of fixed margins
-                    if (window.innerWidth <= 991.98) {
-                        const row = document.createElement('div');
-                        row.className = 'row w-100 mx-0';
-                        productContainer.appendChild(row);
-
-                        for (let i = start; i < end; i++) {
-                            const productId = i + 1;
-                            const productImage = "../img/—Pngtree—red fresh tomato with green_8933861.png";
-
-                            const col = document.createElement('div');
-                            col.className = 'col-lg-3 col-md-4 col-sm-6 col-6 mb-3 px-2 d-flex justify-content-center';
-
-                            const productHTML = `
-                                <div class="card text-center" style="border-radius: 20px; height: 305px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                                    <img src="${productImage}"
-                                         style="background-color: #EDEDED; border-top-left-radius: 20px; border-top-right-radius: 20px; height: 200px; width: 100%; object-fit: cover;"
-                                         class="card-img-top" alt="Sản phẩm">
-                                    <div class="card-body p-0" style="display: flex; flex-direction: column; height: 100%;">
-                                        <span class="text-warning" style="font-size: 16px; letter-spacing: 5px;">★★★★★</span>
-                                        <h6 class="card-title" style="font-weight: bold; font-size: 14px;">Fresh Ruby Tomatoes</h6>
-                                        <p class="d-flex justify-content-evenly" style="font-size: 14px;">
-                                            <span class="fw-bold" style="color: #80B500;">150.000đ</span>
-                                            <span class="old-price" style="color: #94A84E; text-decoration: line-through;">200.000đ</span>
-                                        </p>
-                                        <a href="/Product/Details" class="fw-bold" style="display: block; background-color: #E86D1F; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; color: white; font-size: 14px; margin-top: auto; text-align: center; padding: 5px 10px;">
-                                            Details
-                                        </a>
-                                    </div>
-                                    <!-- Panel trồi ra khi hover -->
-                                    <div class="hover-panel">
-                                        <div class="quantity-control">
-                                            <button class="quantity-btn increase" data-product-id="${productId}">+</button>
-                                            <input type="number" class="quantity-input" value="1" min="1" data-product-id="${productId}">
-                                            <button class="quantity-btn decrease" data-product-id="${productId}">-</button>
-                                        </div>
-                                        <button class="cart-btn" title="Add to Cart" data-product-id="${productId}">
-                                            <i class="fas fa-shopping-cart"></i>
-                                            <img class="product-icon" src="${productImage}" alt="Sản phẩm">
-                                        </button>
-                                    </div>
-                                </div>
-                            `;
-
-                            col.innerHTML = productHTML;
-                            row.appendChild(col);
-                        }
-                    } else {
-                        // Use original rendering for desktop
-                        originalRenderProducts(page);
-                    }
-
-                    // Add events after rendering
-                    addQuantityControls();
-                    addCartButtonEvents();
-                };
-            }
-
-            // Re-render on window resize
-            window.addEventListener('resize', function() {
-                if (typeof renderProducts === 'function' && typeof currentPage !== 'undefined') {
-                    renderProducts(currentPage);
-                }
-                if (typeof renderPagination === 'function') {
-                    renderPagination();
-                }
-            });
         });
     </script>
 
+    <style>
+        /* Responsive styles */
+        @@media (max-width: 991.98px) {
+            /* Banner section */
+            .row .col-6 {
+                flex: 0 0 100%;
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+            /* Banner text */
+            .row .col-6 p[style*="font-size: 42px"] {
+                font-size: 36px !important;
+                text-align: center;
+            }
+
+            .row .col-6 p.pb-2 {
+                max-width: 100% !important;
+                text-align: center;
+            }
+            /* Banner buttons - tablet */
+            .row .col-6 .d-flex.gap-3 {
+                justify-content: center;
+                width: 100%;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .row .col-6 .d-flex.gap-3 .btn {
+                max-width: 45% !important; /* Tăng chiều rộng nút */
+                padding: 10px 15px !important; /* Tăng padding */
+                font-size: 16px !important; /* Tăng cỡ chữ */
+                font-weight: bold;
+            }
+            /* Service highlights */
+            .row .col-3 {
+                flex: 0 0 50%;
+                max-width: 50%;
+                margin-bottom: 15px;
+            }
+            /* Service title and subtitle */
+            .row .col-3 p[style*="font-size: 20px"] {
+                font-size: 18px !important;
+            }
+
+            .row .col-3 p[style*="font-size: 10px"] {
+                font-size: 9px !important;
+            }
+            /* Category circles */
+            .d-flex.justify-content-evenly {
+                flex-wrap: wrap !important;
+            }
+
+            .d-flex.justify-content-evenly > div {
+                flex: 0 0 33.33%;
+                margin-bottom: 20px;
+            }
+
+            .d-flex.justify-content-evenly > div div[style*="border-radius: 50%"] {
+                width: 120px !important;
+                height: 120px !important;
+                border-width: 8px !important;
+            }
+            /* Categories and products */
+            .row .col-3[style*="padding-left: 30px"] {
+                flex: 0 0 100%;
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .row #product-container {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            /* Pagination */
+            .row .col-9.d-flex.justify-content-center {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            /* Carousel */
+            .carousel-inner {
+                height: 400px !important;
+            }
+
+            .carousel-item img {
+                height: 400px !important;
+            }
+        }
+
+        @@media (max-width: 767.98px) {
+            /* Banner text */
+            .row .col-6 p[style*="font-size: 42px"] {
+                font-size: 28px !important;
+            }
+
+            .row .col-6 p.pb-2 {
+                font-size: 14px !important;
+                line-height: 1.6 !important;
+            }
+            /* Banner buttons - mobile */
+            .row .col-6 .d-flex.gap-3 {
+                max-width: 400px;
+            }
+
+            .row .col-6 .d-flex.gap-3 .btn {
+                font-size: 14px !important;
+                padding: 8px 12px !important;
+            }
+            /* Service icons */
+            .row .col-3 img[style*="width: 50px"] {
+                width: 40px !important;
+                height: 40px !important;
+            }
+            /* Service text */
+            .row .col-3 p[style*="font-size: 20px"] {
+                font-size: 16px !important;
+            }
+            /* Category circles */
+            .d-flex.justify-content-evenly > div {
+                flex: 0 0 50%;
+            }
+
+            .d-flex.justify-content-evenly > div div[style*="border-radius: 50%"] {
+                width: 100px !important;
+                height: 100px !important;
+                border-width: 6px !important;
+            }
+
+            .d-flex.justify-content-evenly > div p[style*="font-weight: bold"] {
+                font-size: 12px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 100px;
+                margin: 0 auto !important;
+            }
+            /* Make product cards responsive */
+            .card {
+                margin-left: 10px !important;
+                margin-right: 10px !important;
+            }
+            /* Carousel */
+            .carousel-inner {
+                height: 300px !important;
+            }
+
+            .carousel-item img {
+                height: 300px !important;
+            }
+        }
+
+        @@media (max-width: 575.98px) {
+            /* Banner text */
+            .row .col-6 p[style*="font-size: 42px"] {
+                font-size: 24px !important;
+            }
+            /* Banner buttons - small mobile */
+            .row .col-6 .d-flex.gap-3 {
+                max-width: 300px;
+                gap: 10px !important;
+            }
+
+            .row .col-6 .d-flex.gap-3 .btn {
+                max-width: 48% !important;
+                font-size: 12px !important;
+                padding: 8px 10px !important;
+                white-space: nowrap;
+            }
+            /* Ẩn icon mũi tên trên điện thoại nhỏ */
+            .row .col-6 .d-flex.gap-3 .btn i {
+                display: none;
+            }
+            /* Category circles */
+            .d-flex.justify-content-evenly > div div[style*="border-radius: 50%"] {
+                width: 80px !important;
+                height: 80px !important;
+                border-width: 4px !important;
+            }
+
+            .d-flex.justify-content-evenly > div p[style*="font-weight: bold"] {
+                font-size: 10px;
+                max-width: 80px;
+            }
+            /* Carousel */
+            .carousel-inner {
+                height: 200px !important;
+            }
+
+            .carousel-item img {
+                height: 200px !important;
+            }
+        }
+
+        /* Product grid system for responsive display */
+        @@media (max-width: 991.98px) {
+            /* Override the fixed positioning */
+            #product-container {
+                display: flex !important;
+                flex-wrap: wrap !important;
+                justify-content: center !important;
+            }
+
+            #product-container .card {
+                max-width: 220px !important;
+                margin: 10px !important;
+            }
+        }
+
+        @@media (max-width: 767.98px) {
+            #product-container .card {
+                max-width: 200px !important;
+            }
+
+            #product-container .card .card-img-top {
+                height: 180px !important;
+            }
+
+            #product-container .card .card-title {
+                font-size: 12px !important;
+            }
+
+            #product-container .card p {
+                font-size: 12px !important;
+            }
+
+            #product-container .card .text-warning {
+                font-size: 14px !important;
+                letter-spacing: 3px !important;
+            }
+        }
+
+        @@media (max-width: 575.98px) {
+            #product-container .card {
+                max-width: 160px !important;
+                height: 280px !important;
+            }
+
+            #product-container .card .card-img-top {
+                height: 150px !important;
+            }
+
+            #product-container .card .text-warning {
+                font-size: 12px !important;
+                letter-spacing: 2px !important;
+            }
+        }
+
+        /* Accordion for categories on mobile */
+        @@media (max-width: 991.98px) {
+            #category-list {
+                margin-bottom: 20px;
+            }
+
+            #category-list .list-group-item.category-header {
+                cursor: pointer;
+            }
+            /* Pagination adjusted */
+            .pagination .page-link {
+                padding: 0.4rem 0.75rem;
+            }
+            /* Simplified pagination for mobile */
+            @@media (max-width: 575.98px) {
+                .pagination li:not(.active):not(:first-child):not(:last-child):not(:nth-child(2)):not(:nth-last-child(2)) {
+                    display: none;
+                }
+            }
+        }
+    </style>
 }

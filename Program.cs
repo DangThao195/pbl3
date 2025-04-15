@@ -28,14 +28,14 @@ builder.Services.AddScoped<IShoppingCartService, ShoppingCartService>();
 
 builder.Services.AddHttpContextAccessor();
 
-//// Thêm session (nếu cần)
-//builder.Services.AddDistributedMemoryCache();
-//builder.Services.AddSession(options =>
-//{
-//    options.IdleTimeout = TimeSpan.FromMinutes(30);
-//    options.Cookie.HttpOnly = true;
-//    options.Cookie.IsEssential = true;
-//});
+// Thêm session
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -62,35 +62,25 @@ else
     app.UseHsts();
 }
 
-
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-app.MapControllers();
-//// Sử dụng session (nếu đã thêm)
-//app.UseSession();
 
-//// Thêm middleware xác thực và phân quyền
-//app.UseAuthentication();
-//app.UseAuthorization();
+// Sử dụng session
+app.UseSession();
+
+// Thêm middleware xác thực và phân quyền
 app.UseAuthentication();
 app.UseAuthorization();
-//// Cấu hình endpoint routing
+
+app.MapControllers();
+
+// Cấu hình endpoint routing
 app.MapControllerRoute(
    name: "default",
    pattern: "{controller=Account}/{action=SignIn}/{id?}");
 
-//// Thêm các route khác nếu cần
-//app.MapControllerRoute(
-//    name: "products",
-//    pattern: "products/{catalogId?}",
-//    defaults: new { controller = "Product", action = "Index" });
-
-//app.MapControllerRoute(
-//    name: "admin",
-//    pattern: "admin/{controller=Dashboard}/{action=Index}/{id?}");
-
+// Các đoạn code seed và migration vẫn giữ nguyên
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;

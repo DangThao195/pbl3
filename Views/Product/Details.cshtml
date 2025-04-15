@@ -1,13 +1,14 @@
-﻿@{
+﻿@using PBL3_HK4.Entity
+@{
     ViewData["Title"] = "Product Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
     // Bạn có thể thêm các biến hoặc logic C# ở đây
     var productName = "Fresh Ruby Tomatoes";
-    var productId = "XXXXXXXXXXX";
     var price = 2.00m;
     var oldPrice = 2.99m;
-    var rating = 5.0;
-    var reviewCount = 1000;
+    ProductDetailsViewModel productDetailsViewModel = Model as ProductDetailsViewModel;
+    Product product = productDetailsViewModel.Product;
+    IEnumerable<Product> listProduct = productDetailsViewModel.ListProduct;
 }
 
 <div class="row py-4">
@@ -22,21 +23,20 @@
             </div>
             <div class="col-6 d-flex flex-column justify-content-between" style="padding-bottom: 10px;">
                 <div>
-                    <span class="text-warning" style="font-size: 30px; letter-spacing: 10px;">★★★★★</span>
-                    <span style="font-size: 20px;">@rating</span>
-                    <span style="font-size: 20px;">(@reviewCount reviews)</span>
+                    <span class="star-rating" style="letter-spacing: 10px;" data-rating="@product.AverageRating"></span>
+                    <span style="font-size: 20px;">@product.AverageRating</span>
                 </div>
                 <div>
-                    <p style="color: #314401; font-size: 40px; font-weight: bold;">@productName</p>
-                    <p style="font-size: 24px;">ID: @productId</p>
+                    <p style="color: #314401; font-size: 40px; font-weight: bold;">@product.ProductName</p>
+                    <p style="font-size: 20px;">ID: @product.ProductID</p>
                     <div>
-                        <span style="font-size: 48px; color: #94A84E;">@price.ToString("0.00")$ / 1Kg</span>
-                        <span style="font-size: 36px; color: rgba(148, 168, 78, 0.5); text-decoration: line-through;">@oldPrice.ToString("0.00")$ / 1Kg</span>
+                        <span style="font-size: 48px; color: #94A84E;">@product.Price ₫</span>
+                        @* <span style="font-size: 36px; color: rgba(148, 168, 78, 0.5); text-decoration: line-through;">@oldPrice.ToString("0.00")$ / 1Kg</span> *@
                     </div>
                 </div>
                 <div>
                     <hr style="border: 1px solid #333; opacity: 0.5; margin: 10px 0;">
-                    <p style="font-size: 24px;">Categories: Vegetables, Fruits </p>
+                    <p style="font-size: 24px;">Categories: @product.Catalog.CatalogName</p>
                     <hr style="border: 1px solid #333; opacity: 0.5; margin: 10px 0;">
                 </div>
                 <div class="d-flex justify-content-evenly" style="border-radius:20px; border: 2px solid; width: 30%; font-size: 24px">
@@ -82,13 +82,9 @@
         <!-- Nội dung của từng tab -->
         <div class="row mt-3">
             <div id="description-content" class="d-block">
-                <p style="font-weight: bold; font-size: 30px; color: #314401;">@productName</p>
+                <p style="font-weight: bold; font-size: 30px; color: #314401;">@product.ProductName</p>
                 <p style="line-height: 30px; font-size: 16px;">
-                    Fresh Ruby Tomatoes are not only distinguished by their vibrant red color but also by their naturally sweet, juicy, and rich flavor. Grown in the cool climate and nutrient-rich soil of Đà Lạt, these tomatoes develop a perfect balance of acidity and sweetness, delivering a distinctive and delicious taste.
-                    <br />
-                    At GreenHarvest Co., we are committed to sustainable organic farming methods, ensuring that no pesticides or chemical fertilizers are used. This guarantees the purity and nutritional integrity of every Fresh Ruby Tomato. Each tomato is carefully handpicked at peak ripeness to preserve its exceptional freshness, making it an ideal ingredient for a variety of dishes, from salads and sauces to grilled and gourmet recipes.
-                    <br />
-                    Packed with vitamin C, antioxidants, and essential minerals, Fresh Ruby Tomatoes not only enhance the taste of your meals but also support a healthy immune system, promote radiant skin, and contribute to overall well-being. Add Fresh Ruby Tomatoes to your daily diet and savor the natural goodness of premium-quality, farm-fresh produce!
+                    @product.ProductDescription
                 </p>
             </div>
             <div id="reviews-content" class="d-none row d-flex align-items-center">
@@ -104,27 +100,30 @@
                 <p style="font-weight: bold">Related products</p>
             </li>
             <!--Sản phẩm được đề xuất sẽ thêm vào đây-->
-            @for (int i = 0; i < 10; i++)
+            @foreach (Product productPropose in listProduct)
             {
                 <li>
                     <hr style="border: 1px solid #333; opacity: 0.5; margin: 10px 0;">
                 </li>
-                <li style="padding-left: 20px;">
-                    <a href="DetailsProduct">
-                        <div class="row">
-                            <img class="col-3" src="~/img/—Pngtree—red fresh tomato with green_8933861.png" />
-                            <div class="col-9 d-flex flex-column justify-content-between">
-                                <span class="text-warning" style="font-size: 16px; letter-spacing: 5px;">★★★★★</span>
-                                <div>
-                                    <span style="font-size: 16px;">@productName</span>
-                                </div>
-                                <div>
-                                    <span style="font-size: 24px; color: #94A84E;">@price.ToString("0.00")$</span>
-                                    <span style="font-size: 16px; color: rgba(148, 168, 78, 0.5); text-decoration: line-through;">@oldPrice.ToString("0.00")$</span>
+                <li style="padding-left: 20px; display: flex; flex-direction: column;">
+                    <form action="@Url.Action("Details", "Product")" method="post" style="margin-top: auto; flex-grow: 1; display: flex; flex-direction: column;">
+                        <input type="hidden" name="id" value="@productPropose.ProductID">
+                        <button type="submit" style="border: none; background: none; padding: 0; width: 100%; text-align: left; flex-grow: 1;">
+                            <div class="row">
+                                <img class="col-3" src="@Url.Content("~/img/—Pngtree—red fresh tomato with green_8933861.png")" />
+                                <div class="col-9 d-flex flex-column justify-content-between">
+                                    <span class="star-rating" style="font-size: 10px;" data-rating="@productPropose.AverageRating"></span>
+                                    <div>
+                                        <span style="font-size: 16px;">@productPropose.ProductName</span>
+                                    </div>
+                                    <div>
+                                        <span style="font-size: 20px; color: #94A84E;">@productPropose.Price ₫</span>
+                                        @* <span style="font-size: 16px; color: rgba(148, 168, 78, 0.5); text-decoration: line-through;">@oldPrice.ToString("0.00")$</span> *@
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
+                        </button>
+                    </form>
                 </li>
             }
         </ul>
@@ -134,6 +133,20 @@
     <div class="col-1">
     </div>
 </div>
+
+<style>
+    .star-rating span {
+        display: inline-block;
+    }
+
+    .product-fly {
+        position: fixed;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        pointer-events: none;
+    }
+</style>
 
 @section Scripts {
     <script>
@@ -257,6 +270,7 @@
                 const cartIcon = document.getElementById('cart-icon');
                 const cartCount = document.getElementById('cart-count');
                 const quantity = parseInt(document.getElementById('value').textContent);
+                const productId = '@product.ProductID'; // Lấy ID sản phẩm từ model
 
                 const productRect = productImg.getBoundingClientRect();
                 const cartRect = cartIcon.getBoundingClientRect();
@@ -288,15 +302,64 @@
                     flyingImg.style.opacity = '0';
                 });
 
-                flyingImg.addEventListener('transitionend', () => {
-                    flyingImg.remove();
-                    cartCount.textContent = parseInt(cartCount.textContent) + quantity;
-                    document.getElementById('value').textContent = '1';
+                // Gửi request đến server để thêm vào giỏ hàng
+                fetch(`/Cart/AddToCart?productId=${productId}&quantity=${quantity}`, {
+                    method: 'POST'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Hoàn tất hiệu ứng bay và cập nhật số lượng trong giỏ hàng
+                        flyingImg.addEventListener('transitionend', () => {
+                            flyingImg.remove();
 
-                    cartIcon.style.transform = 'scale(1.2)';
-                    setTimeout(() => cartIcon.style.transform = '', 300);
-                }, { once: true });
+                            // Cập nhật số lượng hiển thị ở tất cả các badge giỏ hàng
+                            document.getElementById('cart-count').textContent = data.cartItemCount;
+                            if (document.getElementById('tablet-cart-count')) {
+                                document.getElementById('tablet-cart-count').textContent = data.cartItemCount;
+                            }
+                            if (document.getElementById('mobile-cart-count')) {
+                                document.getElementById('mobile-cart-count').textContent = data.cartItemCount;
+                            }
+
+                            document.getElementById('value').textContent = '1';
+
+                            cartIcon.style.transform = 'scale(1.2)';
+                            setTimeout(() => cartIcon.style.transform = '', 300);
+                        }, { once: true });
+                    } else {
+                        // Xử lý trường hợp thêm không thành công
+                        flyingImg.remove();
+                        alert(data.message || 'Không thể thêm vào giỏ hàng');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    flyingImg.remove();
+                    alert('Đã xảy ra lỗi khi thêm vào giỏ hàng');
+                });
             });
+        });
+    </script>
+    <script>
+        document.querySelectorAll('.star-rating').forEach(span => {
+            let starsHtml = '';
+            const rating = Math.max(0, Math.min(5, parseFloat(span.getAttribute('data-rating') || 0)));
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating - fullStars >= 0.5;
+            const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+
+            for (let i = 0; i < fullStars; i++) {
+                starsHtml += '<span style="color: #FFD700; font-size: 30px;">★</span>';
+            }
+            if (hasHalfStar) {
+                starsHtml += '<span style="color: #FFD700; font-size: 30px;">☆</span>'; // Nửa sao
+            }
+            for (let i = 0; i < emptyStars; i++) {
+                starsHtml += '<span style="color: #C0C0C0; font-size: 30px;">☆</span>';
+            }
+
+            span.innerHTML = starsHtml;
         });
     </script>
 }

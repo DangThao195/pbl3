@@ -7,10 +7,10 @@
 }
 
 <div id="discount-content" class="content-section active">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h1>Discount Management</h1>
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-3 gap-2">
+        <h1 class="fs-2 fs-md-1 mb-2 mb-md-0">Discount Management</h1>
         <button style="background-color: #2E8B57; color: white;" class="btn" id="add-discount-btn">
-            <i class="fas fa-plus"></i> Add New Discount
+            <i class="fas fa-plus"></i> <span class="d-none d-sm-inline">Add New Discount</span>
         </button>
     </div>
 
@@ -22,8 +22,8 @@
                     <th>ID</th>
                     <th>Name</th>
                     <th>Rate (%)</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
+                    <th class="d-none d-md-table-cell">Start Date</th>
+                    <th class="d-none d-md-table-cell">End Date</th>
                     <th width="20%">Actions</th>
                 </tr>
             </thead>
@@ -35,7 +35,7 @@
 
     <!-- Pagination -->
     <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
+        <ul class="pagination justify-content-center flex-wrap">
             <!-- Phân trang sẽ được thêm bằng JavaScript -->
         </ul>
     </nav>
@@ -69,13 +69,16 @@
     }
 
     @@keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
+        from
 
-        to {
-            opacity: 1;
-        }
+    {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
     }
 
     .modal-content {
@@ -83,15 +86,18 @@
     }
 
     @@keyframes slideDown {
-        from {
-            transform: translateY(-50px);
-            opacity: 0;
-        }
+        from
 
-        to {
-            transform: translateY(0);
-            opacity: 1;
-        }
+    {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
     }
 
     .modal-footer .btn {
@@ -126,10 +132,95 @@
         .form-group textarea {
             width: 100%;
         }
+
+    /* Responsive styles - Only for tablet and mobile */
+    @@media (max-width: 991.98px) {
+        #discount-table th, #discount-table td
+
+    {
+        padding: 0.5rem;
+    }
+
+    .form-row {
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .form-group {
+        min-width: 200px;
+    }
+
+    }
+
+    @@media (max-width: 767.98px) {
+        h1
+
+    {
+        font-size: 1.75rem;
+    }
+
+    #discount-table th:first-child,
+    #discount-table td:first-child {
+        width: 15% !important;
+    }
+
+    .modal-content {
+        width: 95% !important;
+        padding: 15px !important;
+        max-height: 90vh !important;
+        overflow-y: auto !important;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .form-group {
+        min-width: 100%;
+    }
+
+    /* Pagination for mobile */
+    .pagination .page-link {
+        padding: 0.375rem 0.5rem;
+    }
+
+    .pagination .page-item:not(.active):not(:first-child):not(:last-child) {
+        display: none;
+    }
+
+    .pagination .page-item.active {
+        display: block;
+    }
+
+    }
+
+    @@media (max-width: 575.98px) {
+        .modal-content
+
+    {
+        padding: 10px !important;
+    }
+
+    .modal-header h3 {
+        font-size: 1.5rem;
+    }
+
+    .modal-footer {
+        flex-direction: column;
+        width: 100%;
+    }
+
+        .modal-footer .btn {
+            width: 100%;
+            margin-bottom: 5px;
+        }
+
+    }
 </style>
 
 <script>
-        // Chuyển dữ liệu từ Model thành JavaScript
+    // Chuyển dữ liệu từ Model thành JavaScript
     const discounts = [
     @foreach (var item in listDiscount)
     {
@@ -148,7 +239,25 @@
 
     // Pagination variables
     let currentPage = 1;
-    const itemsPerPage = 10;
+    let itemsPerPage = 10;
+
+    // Adjust items per page based on screen size
+    function adjustItemsPerPage() {
+        if (window.innerWidth <= 576) {
+            itemsPerPage = 5;
+        } else if (window.innerWidth <= 992) {
+            itemsPerPage = 8;
+        } else {
+            itemsPerPage = 10;
+        }
+        renderDiscountTable(discounts, currentPage);
+    }
+
+    // Format date for display
+    function formatDate(dateString) {
+        const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+        return new Date(dateString).toLocaleDateString('vi-VN', options);
+    }
 
     // Render table data
     function renderDiscountTable(data, page = 1) {
@@ -161,23 +270,54 @@
         const endIndex = Math.min(startIndex + itemsPerPage, data.length);
         const paginatedData = data.slice(startIndex, endIndex);
 
+        // Check if current page is valid after items per page change
+        if (page > totalPages && totalPages > 0) {
+            currentPage = totalPages;
+            renderDiscountTable(data, totalPages);
+            return;
+        }
+
         paginatedData.forEach(discount => {
             const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${discount.id}</td>
-                <td>${discount.name}</td>
-                <td>${discount.rate}%</td>
-                <td>${discount.startDate}</td>
-                <td>${discount.endDate}</td>
-                <td>
-                    <button class="btn btn-sm btn-link text-dark me-2" onclick="viewDiscount('${discount.id}')">
-                        <i class="fas fa-eye"></i>
-                    </button>
-                    <button class="btn btn-sm btn-link text-danger" onclick="deleteDiscount('${discount.id}')">
-                        <i class="fas fa-trash-alt"></i>
-                    </button>
-                </td>
-            `;
+
+            // Check if mobile view
+            const isMobile = window.innerWidth <= 767.98;
+            if (isMobile) {
+                row.innerHTML = `
+                    <td>${discount.id}</td>
+                    <td>
+                        ${discount.name}
+                        <small class="d-block d-md-none text-muted">
+                            ${formatDate(discount.startDate)} - ${formatDate(discount.endDate)}
+                        </small>
+                    </td>
+                    <td>${discount.rate}%</td>
+                    <td>
+                        <button class="btn btn-sm btn-link text-dark me-2" onclick="viewDiscount('${discount.id}')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <button class="btn btn-sm btn-link text-danger" onclick="deleteDiscount('${discount.id}')">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </td>
+                `;
+            } else {
+                row.innerHTML = `
+                    <td>${discount.id}</td>
+                    <td>${discount.name}</td>
+                    <td>${discount.rate}%</td>
+                    <td class="d-none d-md-table-cell">${discount.startDate}</td>
+                    <td class="d-none d-md-table-cell">${discount.endDate}</td>
+                    <td>
+                        <button class="btn btn-sm btn-link text-dark me-2" onclick="viewDiscount('${discount.id}')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <button class="btn btn-sm btn-link text-danger" onclick="deleteDiscount('${discount.id}')">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </td>
+                `;
+            }
             tbody.appendChild(row);
         });
 
@@ -196,19 +336,67 @@
 
         const prevLi = document.createElement('li');
         prevLi.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
-        prevLi.innerHTML = `<a class="page-link" href="#" onclick="changePage(${currentPage - 1})">«</a>`;
+        prevLi.innerHTML = `<a class="page-link" href="#" onclick="event.preventDefault(); changePage(${currentPage - 1})">«</a>`;
         pagination.appendChild(prevLi);
 
-        for (let i = 1; i <= totalPages; i++) {
+        // Determine visible pages based on screen size
+        let maxVisiblePages = 5; // Desktop default
+        const isMobile = window.innerWidth <= 767.98;
+        const isTablet = window.innerWidth <= 991.98 && window.innerWidth > 767.98;
+
+        if (isMobile) {
+            maxVisiblePages = 1;
+        } else if (isTablet) {
+            maxVisiblePages = 3;
+        }
+
+        const startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+        const endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+
+        // First page (if not in range)
+        if (startPage > 1) {
+            const firstPageLi = document.createElement('li');
+            firstPageLi.className = 'page-item';
+            firstPageLi.innerHTML = `<a class="page-link" href="#" onclick="event.preventDefault(); changePage(1)">1</a>`;
+            pagination.appendChild(firstPageLi);
+
+            // Ellipsis if needed
+            if (startPage > 2) {
+                const ellipsisLi = document.createElement('li');
+                ellipsisLi.className = 'page-item disabled d-none d-md-block';
+                ellipsisLi.innerHTML = `<span class="page-link">...</span>`;
+                pagination.appendChild(ellipsisLi);
+            }
+        }
+
+        // Page numbers
+        for (let i = startPage; i <= endPage; i++) {
             const pageLi = document.createElement('li');
             pageLi.className = `page-item ${i === currentPage ? 'active' : ''}`;
-            pageLi.innerHTML = `<a class="page-link" href="#" onclick="changePage(${i})">${i}</a>`;
+            pageLi.innerHTML = `<a class="page-link" href="#" onclick="event.preventDefault(); changePage(${i})">${i}</a>`;
             pagination.appendChild(pageLi);
         }
 
+        // Last page (if not in range)
+        if (endPage < totalPages) {
+            // Ellipsis if needed
+            if (endPage < totalPages - 1) {
+                const ellipsisLi = document.createElement('li');
+                ellipsisLi.className = 'page-item disabled d-none d-md-block';
+                ellipsisLi.innerHTML = `<span class="page-link">...</span>`;
+                pagination.appendChild(ellipsisLi);
+            }
+
+            const lastPageLi = document.createElement('li');
+            lastPageLi.className = 'page-item';
+            lastPageLi.innerHTML = `<a class="page-link" href="#" onclick="event.preventDefault(); changePage(${totalPages})">${totalPages}</a>`;
+            pagination.appendChild(lastPageLi);
+        }
+
+        // Next button
         const nextLi = document.createElement('li');
         nextLi.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
-        nextLi.innerHTML = `<a class="page-link" href="#" onclick="changePage(${currentPage + 1})">»</a>`;
+        nextLi.innerHTML = `<a class="page-link" href="#" onclick="event.preventDefault(); changePage(${currentPage + 1})">»</a>`;
         pagination.appendChild(nextLi);
     }
 
@@ -224,17 +412,25 @@
         const discount = discounts.find(d => d.id === id);
         if (!discount) return;
 
+        // Check if mobile device
+        const isMobile = window.innerWidth <= 767.98;
+
         const modal = document.createElement('div');
         modal.className = 'modal-overlay';
         modal.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 1050; display: flex; justify-content: center; align-items: center;';
 
         const modalContent = document.createElement('div');
         modalContent.className = 'modal-content';
-        modalContent.style.cssText = 'background-color: white; padding: 25px; border-radius: 8px; width: 600px; max-width: 90%;';
+
+        if (isMobile) {
+            modalContent.style.cssText = 'background-color: white; padding: 15px; border-radius: 8px; width: 95%; max-width: 95%; max-height: 90vh; overflow-y: auto;';
+        } else {
+            modalContent.style.cssText = 'background-color: white; padding: 25px; border-radius: 8px; width: 600px; max-width: 90%;';
+        }
 
         modalContent.innerHTML = `
             <div class="modal-header" style="border-bottom: 1px solid #dee2e6; margin-bottom: 20px; padding-bottom: 10px;">
-                <h3 class="modal-title" style="color: #2E8B57;">Discount Details</h3>
+                <h3 class="modal-title" style="color: #2E8B57; ${isMobile ? 'font-size: 1.5rem;' : ''}">Discount Details</h3>
             </div>
             <form id="editDiscountForm" action="UpdateDiscount" method="post">
                 <div class="modal-body">
@@ -279,11 +475,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer" style="display: flex; gap: 10px;">
-                    <button type="button" class="btn btn-edit" style="background-color: #2E8B57; color: white;">Edit</button>
-                    <button type="submit" class="btn btn-save" style="background-color: #28a745; color: white; display: none;">Save</button>
-                    <button type="button" class="btn btn-cancel" style="background-color: #6c757d; color: white; display: none;">Cancel</button>
-                    <button type="button" class="btn btn-close-modal" style="background-color: #6c757d; color: white;">Close</button>
+                <div class="modal-footer" style="display: flex; gap: 10px; ${isMobile ? 'flex-direction: column; width: 100%;' : ''}">
+                    <button type="button" class="btn btn-edit" style="background-color: #2E8B57; color: white; ${isMobile ? 'width: 100%;' : ''}">
+                        <i class="fas fa-edit me-2"></i>Edit
+                    </button>
+                    <button type="submit" class="btn btn-save" style="background-color: #28a745; color: white; display: none; ${isMobile ? 'width: 100%;' : ''}">
+                        <i class="fas fa-save me-2"></i>Save
+                    </button>
+                    <button type="button" class="btn btn-cancel" style="background-color: #6c757d; color: white; display: none; ${isMobile ? 'width: 100%;' : ''}">
+                        Cancel
+                    </button>
+                    <button type="button" class="btn btn-close-modal" style="background-color: #6c757d; color: white; ${isMobile ? 'width: 100%;' : ''}">
+                        Close
+                    </button>
                 </div>
             </form>
         `;
@@ -361,28 +565,54 @@
         const discount = discounts.find(d => d.id === id);
         if (!discount) return;
 
+        // Check if mobile device
+        const isMobile = window.innerWidth <= 767.98;
+
         const confirmModal = document.createElement('div');
         confirmModal.className = 'modal-overlay';
         confirmModal.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 1050; display: flex; justify-content: center; align-items: center;';
-        confirmModal.innerHTML = `
-            <div class="modal-content" style="background-color: white; padding: 25px; border-radius: 8px; width: 400px; max-width:90%;">
-                <div class="modal-header">
-                    <h3 class="modal-title" style="color: #2E8B57;">Confirm Deletion</h3>
-                </div>
-                <div class="modal-body">
-                    <p>Are you sure you want to delete this discount?</p>
-                    <p><strong>Name:</strong> ${discount.name || ''}</p>
 
-                    <form id="deleteDiscountForm" action="DeleteDiscount" method="post">
-                        <input type="hidden" name="id" value="${discount.id}">
-                    </form>
+        if (isMobile) {
+            confirmModal.innerHTML = `
+                <div class="modal-content" style="background-color: white; padding: 15px; border-radius: 8px; width: 95%; max-width: 95%;">
+                    <div class="modal-header" style="border-bottom: 1px solid #dee2e6; margin-bottom: 15px; padding-bottom: 10px;">
+                        <h3 class="modal-title" style="color: #2E8B57; font-size: 1.5rem;">Confirm Deletion</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete this discount?</p>
+                        <p><strong>Name:</strong> ${discount.name || ''}</p>
+
+                        <form id="deleteDiscountForm" action="DeleteDiscount" method="post">
+                            <input type="hidden" name="id" value="${discount.id}">
+                        </form>
+                    </div>
+                    <div class="modal-footer" style="border-top: 1px solid #dee2e6; margin-top: 15px; padding-top: 10px; display: flex; flex-direction: column; width: 100%; gap: 5px;">
+                        <button type="button" class="btn btn-cancel" style="background-color: #6c757d; color: white; width: 100%;">Cancel</button>
+                        <button type="button" class="btn btn-confirm" style="background-color: #dc3545; color: white; width: 100%;">Delete</button>
+                    </div>
                 </div>
-                <div class="modal-footer" style="display: flex; gap: 10px;">
-                    <button type="button" class="btn btn-cancel" style="background-color: #6c757d; color: white;">Cancel</button>
-                    <button type="button" class="btn btn-confirm" style="background-color: #dc3545; color: white;">Delete</button>
+            `;
+        } else {
+            confirmModal.innerHTML = `
+                <div class="modal-content" style="background-color: white; padding: 25px; border-radius: 8px; width: 400px; max-width:90%;">
+                    <div class="modal-header">
+                        <h3 class="modal-title" style="color: #2E8B57;">Confirm Deletion</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete this discount?</p>
+                        <p><strong>Name:</strong> ${discount.name || ''}</p>
+
+                        <form id="deleteDiscountForm" action="DeleteDiscount" method="post">
+                            <input type="hidden" name="id" value="${discount.id}">
+                        </form>
+                    </div>
+                    <div class="modal-footer" style="display: flex; gap: 10px;">
+                        <button type="button" class="btn btn-cancel" style="background-color: #6c757d; color: white;">Cancel</button>
+                        <button type="button" class="btn btn-confirm" style="background-color: #dc3545; color: white;">Delete</button>
+                    </div>
                 </div>
-            </div>
-        `;
+            `;
+        }
 
         const deleteForm = confirmModal.querySelector('#deleteDiscountForm');
         const cancelBtn = confirmModal.querySelector('.btn-cancel');
@@ -402,22 +632,34 @@
             document.body.removeChild(confirmModal);
         });
 
+        confirmModal.addEventListener('click', (e) => {
+            if (e.target === confirmModal) document.body.removeChild(confirmModal);
+        });
+
         document.body.appendChild(confirmModal);
     }
 
     // Add new discount
     function addNewDiscount() {
+        // Check if mobile device
+        const isMobile = window.innerWidth <= 767.98;
+
         const modal = document.createElement('div');
         modal.className = 'modal-overlay';
         modal.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 1050; display: flex; justify-content: center; align-items: center;';
 
         const modalContent = document.createElement('div');
         modalContent.className = 'modal-content';
-        modalContent.style.cssText = 'background-color: white; padding: 25px; border-radius: 8px; width: 600px; max-width: 90%;';
+
+        if (isMobile) {
+            modalContent.style.cssText = 'background-color: white; padding: 15px; border-radius: 8px; width: 95%; max-width: 95%; max-height: 90vh; overflow-y: auto;';
+        } else {
+            modalContent.style.cssText = 'background-color: white; padding: 25px; border-radius: 8px; width: 600px; max-width: 90%;';
+        }
 
         modalContent.innerHTML = `
             <div class="modal-header">
-                <h3 class="modal-title" style="color: #2E8B57;">Add New Discount</h3>
+                <h3 class="modal-title" style="color: #2E8B57; ${isMobile ? 'font-size: 1.5rem;' : ''}">Add New Discount</h3>
             </div>
             <form id="addDiscountForm" action="CreateDiscount" method="post">
                 <div class="modal-body">
@@ -460,9 +702,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer" style="display: flex; gap: 10px;">
-                    <button type="submit" class="btn btn-add" style="background-color: #2E8B57; color: white;">Add</button>
-                    <button type="button" class="btn btn-cancel" style="background-color: #6c757d; color: white;">Cancel</button>
+                <div class="modal-footer" style="display: flex; gap: 10px; ${isMobile ? 'flex-direction: column; width: 100%;' : ''}">
+                    <button type="submit" class="btn btn-add" style="background-color: #2E8B57; color: white; ${isMobile ? 'width: 100%;' : ''}">
+                        <i class="fas fa-plus me-2"></i>Add
+                    </button>
+                    <button type="button" class="btn btn-cancel" style="background-color: #6c757d; color: white; ${isMobile ? 'width: 100%;' : ''}">
+                        Cancel
+                    </button>
                 </div>
             </form>
         `;
@@ -478,7 +724,14 @@
 
     // Initialize
     document.addEventListener('DOMContentLoaded', () => {
+        adjustItemsPerPage();
         renderDiscountTable(discounts);
         document.getElementById('add-discount-btn').addEventListener('click', addNewDiscount);
+
+        // Listen for window resize
+        window.addEventListener('resize', function() {
+            adjustItemsPerPage();
+            renderDiscountTable(discounts, currentPage);
+        });
     });
 </script>

@@ -3,35 +3,297 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="row my-5">
-    <div class="col-1"></div>
-    <div class="col-10">
-        <div class="row d-flex align-items-center">
-            <div class="col-3"></div>
-            <div class="col-1"></div>
-            <div class="col-4 text-center" style="color: #314401; font-weight: bold; font-size: 34px; letter-spacing: 1px;">
-                Order List
+<style>
+    /* Common styles */
+    .order-container {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .order-title {
+        color: #314401;
+        font-weight: bold;
+        font-size: 34px;
+        letter-spacing: 1px;
+    }
+
+    .search-filter-container {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: flex-end;
+    }
+
+    .search-container {
+        position: relative;
+        width: 200px;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 10px 20px 10px 45px;
+        border: 1px solid #ccc;
+        border-radius: 30px;
+        outline: none;
+        font-size: 14px;
+    }
+
+    .search-button {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: transparent;
+        border: none;
+        color: #888;
+        cursor: pointer;
+    }
+
+    .filter-button {
+        border-radius: 30px;
+        padding: 10px 20px;
+    }
+
+    .order-table-container {
+        border-radius: 15px;
+        overflow: hidden;
+        border: 2px solid #C1A78E;
+        margin-top: 1.5rem;
+    }
+
+    .order-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .table-header {
+        background-color: #B08968;
+        color: #F8E1C4;
+    }
+
+        .table-header th {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #C1A78E;
+        }
+
+    .order-row {
+        background-color: #EDE0D4;
+        border: 1px solid #C1A78E;
+    }
+
+        .order-row td {
+            padding: 12px;
+            border: 1px solid #C1A78E;
+        }
+
+    .status-cell {
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .total-cell {
+        text-align: right;
+    }
+
+    .actions-cell {
+        text-align: center;
+    }
+
+    .view-button {
+        background-color: #5A7D5A;
+        color: white;
+        border-radius: 10px;
+        display: inline-block;
+        width: 100px;
+        padding: 6px 0;
+        text-decoration: none;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .pagination-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    .page-link {
+        border-radius: 10px;
+        background-color: #F5F0EA;
+        border: 1px solid #D7C7B5;
+        color: #6D4C41;
+    }
+
+    .page-item.active .page-link {
+        background-color: #B08968;
+        border: 1px solid #B08968;
+        color: #F8E1C4;
+    }
+
+    /* Responsive styles */
+    @@media (max-width: 991px) {
+        .order-title
+
+    {
+        font-size: 28px;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .search-filter-container {
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+
+    /* Adjust table layout for tablets */
+    .order-table-scrollable {
+        overflow-x: auto;
+    }
+
+    .order-table {
+        min-width: 700px;
+    }
+
+    }
+
+    @@media (max-width: 767px) {
+        .order-title
+
+    {
+        font-size: 24px;
+    }
+
+    .search-container {
+        width: 150px;
+    }
+
+    .search-input {
+        padding: 8px 15px 8px 35px;
+        font-size: 12px;
+    }
+
+    .filter-button {
+        padding: 8px 15px;
+    }
+
+    /* Further adjust table for mobile */
+    .order-table {
+        min-width: 500px;
+    }
+
+    .view-button {
+        width: 80px;
+        font-size: 12px;
+        padding: 4px 0;
+    }
+
+    }
+
+    /* Card view for very small screens */
+    @@media (max-width: 575px) {
+        .order-cards
+
+    {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .order-card {
+        background-color: #EDE0D4;
+        border: 1px solid #C1A78E;
+        border-radius: 10px;
+        padding: 1rem;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .order-card-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #C1A78E;
+    }
+
+    .order-card-body {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .order-card-row {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .order-card-label {
+        font-weight: bold;
+        color: #6D4C41;
+    }
+
+    .order-card-status {
+        font-weight: bold;
+        text-align: right;
+    }
+
+    .order-card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+        padding-top: 0.5rem;
+        border-top: 1px solid #C1A78E;
+    }
+
+    .order-card-total {
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    /* Hide table on very small screens and show cards instead */
+    .order-table-container {
+        display: none;
+    }
+
+    .order-cards-container {
+        display: block;
+    }
+
+    }
+
+    /* Hide cards by default (for larger screens) */
+    .order-cards-container {
+        display: none;
+    }
+</style>
+
+<div class="row order-container">
+    <div class="col-lg-1 col-md-1 col-sm-0"></div>
+    <div class="col-lg-10 col-md-10 col-sm-12">
+        <!-- Header Section -->
+        <div class="row">
+            <div class="col-lg-3 d-none d-lg-block"></div>
+            <div class="col-lg-1 d-none d-lg-block"></div>
+            <div class="col-lg-4 col-md-12 text-center">
+                <h1 class="order-title">Order List</h1>
             </div>
-            <div class="col-1"></div>
-            <div class="col-3">
-                <div class="d-flex justify-content-end gap-2">
-                    <div class="search-container" style="position: relative; width: 200px;">
-                        <input type="text" id="searchInput" placeholder="Search..."
-                               style="width: 100%; padding: 10px 20px 10px 45px; border: 1px solid #ccc; border-radius: 30px; outline: none; font-size: 14px;">
-                        <button type="button" onclick="searchOrders()"
-                                style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); background: transparent; border: none; color: #888; cursor: pointer;">
+            <div class="col-lg-1 d-none d-lg-block"></div>
+            <div class="col-lg-3 col-md-12">
+                <div class="search-filter-container">
+                    <div class="search-container">
+                        <input type="text" id="searchInput" placeholder="Search..." class="search-input">
+                        <button type="button" onclick="searchOrders()" class="search-button">
                             <i class="bi bi-search"></i>
                         </button>
                     </div>
                     <div class="dropdown">
-                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filterDropdown"
-                                data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 30px; padding: 10px 20px;">
+                        <button class="btn btn-outline-secondary dropdown-toggle filter-button" type="button" id="filterDropdown"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-funnel"></i>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="filterDropdown">
                             <li><h6 class="dropdown-header">Status</h6></li>
                             <li><a class="dropdown-item" href="#" onclick="filterOrders('Processing')">Processing</a></li>
-                            <li><a class="dropdown-item" href="#" onclick=" thường xuyên xuất hiện trong các giao dịch của bạn.</a></li>
                             <li><a class="dropdown-item" href="#" onclick="filterOrders('Confirmed')">Confirmed</a></li>
                             <li><a class="dropdown-item" href="#" onclick="filterOrders('Canceled')">Canceled</a></li>
                             <li><hr class="dropdown-divider"></li>
@@ -44,29 +306,38 @@
                 </div>
             </div>
         </div>
-        <div class="mt-4" style="border-radius: 15px; overflow: hidden; border: 2px solid #C1A78E;">
-            <table style="width: 100%; border-collapse: collapse;">
+
+        <!-- Table version (for desktop/tablet) -->
+        <div class="order-table-container order-table-scrollable">
+            <table class="order-table">
                 <thead>
-                    <tr style="background-color: #B08968; color: #F8E1C4;">
-                        <th style="padding: 12px; text-align: left; border: 1px solid #C1A78E; width: 10%;">ID</th>
-                        <th style="padding: 12px; text-align: left; border: 1px solid #C1A78E; width: 15%;">Name</th>
-                        <th style="padding: 12px; text-align: left; border: 1px solid #C1A78E; width: 15%;">Phone Number</th>
-                        <th style="padding: 12px; text-align: left; border: 1px solid #C1A78E; width: 20%;">Email</th>
-                        <th style="padding: 12px; text-align: center; border: 1px solid #C1A78E; width: 15%;">Status</th>
-                        <th style="padding: 12px; text-align: right; border: 1px solid #C1A78E; width: 15%;">Total</th>
-                        <th style="padding: 12px; text-align: center; border: 1px solid #C1A78E; width: 10%;">Actions</th>
+                    <tr class="table-header">
+                        <th style="width: 10%;">ID</th>
+                        <th style="width: 15%;">Name</th>
+                        <th style="width: 15%;">Phone Number</th>
+                        <th style="width: 20%;">Email</th>
+                        <th style="width: 15%; text-align: center;">Status</th>
+                        <th style="width: 15%; text-align: right;">Total</th>
+                        <th style="width: 10%; text-align: center;">Actions</th>
                     </tr>
                 </thead>
                 <tbody id="orderTableBody"></tbody>
             </table>
         </div>
-        <div class="d-flex justify-content-center mt-3">
+
+        <!-- Card version (for mobile) -->
+        <div class="order-cards-container">
+            <div id="orderCards" class="order-cards"></div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-container">
             <nav aria-label="Page navigation">
                 <ul class="pagination" id="pagination" style="gap: 5px;"></ul>
             </nav>
         </div>
     </div>
-    <div class="col-1"></div>
+    <div class="col-lg-1 col-md-1 col-sm-0"></div>
 </div>
 
 @section Scripts {
@@ -84,6 +355,7 @@
         let orders = [];
         const ordersPerPage = 5;
         let currentPage = 1;
+        let currentFilteredOrders = [];
 
         function generateOrderId(index) {
             return `ORD${(index + 1).toString().padStart(3, "0")}`;
@@ -108,22 +380,52 @@
 
         function createOrderRow(order) {
             return `
-                <tr style="background-color: #EDE0D4; border: 1px solid #C1A78E;">
-                    <td style="padding: 12px; border: 1px solid #C1A78E;">${order.id}</td>
-                    <td style="padding: 12px; border: 1px solid #C1A78E;">${order.name}</td>
-                    <td style="padding: 12px; border: 1px solid #C1A78E;">${order.phone}</td>
-                    <td style="padding: 12px; border: 1px solid #C1A78E;">${order.email}</td>
-                    <td style="padding: 12px; text-align: center; border: 1px solid #C1A78E; font-weight: bold; color: ${order.statusColor};">
+                <tr class="order-row">
+                    <td>${order.id}</td>
+                    <td>${order.name}</td>
+                    <td>${order.phone}</td>
+                    <td>${order.email}</td>
+                    <td class="status-cell" style="color: ${order.statusColor};">
                         ${order.status}
                     </td>
-                    <td style="padding: 12px; text-align: right; border: 1px solid #C1A78E;">${order.total}$</td>
-                    <td style="padding: 12px; border: 1px solid #C1A78E; text-align: center;">
-                        <a href="/Order/Details"
-                           style="background-color: #5A7D5A; color: white; border-radius: 10px; display: inline-block; width: 100px; padding: 6px 0; text-decoration: none; text-align: center; font-size: 14px;">
+                    <td class="total-cell">${order.total}$</td>
+                    <td class="actions-cell">
+                        <a href="/Order/Details" class="view-button">
                             <i class="bi bi-eye-fill"></i> View
                         </a>
                     </td>
                 </tr>
+            `;
+        }
+
+        function createOrderCard(order) {
+            return `
+                <div class="order-card">
+                    <div class="order-card-header">
+                        <span class="order-id">${order.id}</span>
+                        <span class="order-card-status" style="color: ${order.statusColor};">${order.status}</span>
+                    </div>
+                    <div class="order-card-body">
+                        <div class="order-card-row">
+                            <span class="order-card-label">Name:</span>
+                            <span>${order.name}</span>
+                        </div>
+                        <div class="order-card-row">
+                            <span class="order-card-label">Phone:</span>
+                            <span>${order.phone}</span>
+                        </div>
+                        <div class="order-card-row">
+                            <span class="order-card-label">Email:</span>
+                            <span>${order.email}</span>
+                        </div>
+                    </div>
+                    <div class="order-card-footer">
+                        <span class="order-card-total">${order.total}$</span>
+                        <a href="/Order/Details" class="view-button">
+                            <i class="bi bi-eye-fill"></i> View
+                        </a>
+                    </div>
+                </div>
             `;
         }
 
@@ -132,44 +434,114 @@
             for (let i = 0; i < 10; i++) {
                 orders.push(createOrder(i));
             }
+            currentFilteredOrders = [...orders];
             renderOrders();
+            checkScreenSize();
         }
 
-        function renderOrders(filteredOrders = orders) {
+        function renderOrders(filteredOrders = currentFilteredOrders) {
+            currentFilteredOrders = filteredOrders;
+
+            // Table version
             const tbody = document.getElementById("orderTableBody");
             tbody.innerHTML = "";
+
+            // Card version
+            const cardsContainer = document.getElementById("orderCards");
+            cardsContainer.innerHTML = "";
+
             const start = (currentPage - 1) * ordersPerPage;
             const end = start + ordersPerPage;
             const pageOrders = filteredOrders.slice(start, end);
+
             pageOrders.forEach(order => {
                 tbody.innerHTML += createOrderRow(order);
+                cardsContainer.innerHTML += createOrderCard(order);
             });
+
             updatePagination(filteredOrders.length);
         }
 
         function updatePagination(totalOrders) {
             const pagination = document.getElementById("pagination");
             const totalPages = Math.ceil(totalOrders / ordersPerPage);
+
+            if (totalPages === 0) {
+                pagination.innerHTML = `<li class="page-item disabled"><span class="page-link">No results found</span></li>`;
+                return;
+            }
+
             pagination.innerHTML = `
                 <li class="page-item ${currentPage === 1 ? "disabled" : ""}">
-                    <a class="page-link" href="#" aria-label="Previous" onclick="changePage(${currentPage - 1})"
-                       style="border-radius: 10px; background-color: #F5F0EA; border: 1px solid #D7C7B5; color: #6D4C41;">
+                    <a class="page-link" href="#" aria-label="Previous" onclick="changePage(${currentPage - 1})">
                         <span aria-hidden="true">«</span>
                     </a>
                 </li>
             `;
-            for (let i = 1; i <= totalPages; i++) {
+
+            // Limit number of pagination buttons for mobile
+            let startPage = 1;
+            let endPage = totalPages;
+            const maxVisiblePages = window.innerWidth < 576 ? 3 : 5;
+
+            if (totalPages > maxVisiblePages) {
+                const halfVisible = Math.floor(maxVisiblePages / 2);
+                startPage = Math.max(1, currentPage - halfVisible);
+                endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+
+                // Adjust if we're near the end
+                if (endPage === totalPages) {
+                    startPage = Math.max(1, endPage - maxVisiblePages + 1);
+                }
+            }
+
+            // Add first page button if not included
+            if (startPage > 1) {
+                pagination.innerHTML += `
+                    <li class="page-item">
+                        <a class="page-link" href="#" onclick="changePage(1)">1</a>
+                    </li>
+                `;
+
+                // Add ellipsis if there's a gap
+                if (startPage > 2) {
+                    pagination.innerHTML += `
+                        <li class="page-item disabled">
+                            <span class="page-link">...</span>
+                        </li>
+                    `;
+                }
+            }
+
+            for (let i = startPage; i <= endPage; i++) {
                 pagination.innerHTML += `
                     <li class="page-item ${i === currentPage ? "active" : ""}">
-                        <a class="page-link" href="#" onclick="changePage(${i})"
-                           style="border-radius: 10px; ${i === currentPage ? "background-color: #B08968; border: 1px solid #B08968; color: #F8E1C4;" : "background-color: #F5F0EA; border: 1px solid #D7C7B5; color: #6D4C41;"}">${i}</a>
+                        <a class="page-link" href="#" onclick="changePage(${i})">${i}</a>
                     </li>
                 `;
             }
+
+            // Add last page button if not included
+            if (endPage < totalPages) {
+                // Add ellipsis if there's a gap
+                if (endPage < totalPages - 1) {
+                    pagination.innerHTML += `
+                        <li class="page-item disabled">
+                            <span class="page-link">...</span>
+                        </li>
+                    `;
+                }
+
+                pagination.innerHTML += `
+                    <li class="page-item">
+                        <a class="page-link" href="#" onclick="changePage(${totalPages})">${totalPages}</a>
+                    </li>
+                `;
+            }
+
             pagination.innerHTML += `
                 <li class="page-item ${currentPage === totalPages ? "disabled" : ""}">
-                    <a class="page-link" href="#" aria-label="Next" onclick="changePage(${currentPage + 1})"
-                       style="border-radius: 10px; background-color: #F5F0EA; border: 1px solid #D7C7B5; color: #6D4C41;">
+                    <a class="page-link" href="#" aria-label="Next" onclick="changePage(${currentPage + 1})">
                         <span aria-hidden="true">»</span>
                     </a>
                 </li>
@@ -177,7 +549,7 @@
         }
 
         window.changePage = function(page) {
-            const totalPages = Math.ceil(orders.length / ordersPerPage);
+            const totalPages = Math.ceil(currentFilteredOrders.length / ordersPerPage);
             if (page < 1 || page > totalPages) return;
             currentPage = page;
             renderOrders();
@@ -210,6 +582,25 @@
             renderOrders(filteredOrders);
         };
 
+        function checkScreenSize() {
+            const orderTableContainer = document.querySelector('.order-table-container');
+            const orderCardsContainer = document.querySelector('.order-cards-container');
+
+            if (window.innerWidth <= 575) {
+                // Mobile view - show cards, hide table
+                orderTableContainer.style.display = 'none';
+                orderCardsContainer.style.display = 'block';
+            } else {
+                // Larger screens - show table, hide cards
+                orderTableContainer.style.display = 'block';
+                orderCardsContainer.style.display = 'none';
+            }
+        }
+
+        // Initial setup
         initOrders();
+
+        // Listen for window resize
+        window.addEventListener('resize', checkScreenSize);
     </script>
 }

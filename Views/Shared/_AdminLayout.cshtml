@@ -113,9 +113,107 @@
             .content-section.active {
                 display: block;
             }
+
+        /* Mobile navbar styles */
+        .mobile-nav-toggle {
+            display: none;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 2002;
+            background-color: #2E8B57;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+        }
+
+        /* Responsive styles */
+        @@media (max-width: 992px) {
+            body
+
+        {
+            padding-left: 0;
+        }
+
+        body.collapsed {
+            padding-left: 0;
+        }
+
+        .vertical-navbar {
+            transform: translateX(-100%);
+            width: 250px;
+        }
+
+            .vertical-navbar.show {
+                transform: translateX(0);
+            }
+
+            .vertical-navbar.collapsed {
+                transform: translateX(-100%);
+                width: 60px;
+            }
+
+                .vertical-navbar.collapsed.show {
+                    transform: translateX(0);
+                }
+
+        .mobile-nav-toggle {
+            display: block;
+        }
+
+        /* Add overlay when menu is open on mobile */
+        .nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1999;
+        }
+
+            .nav-overlay.active {
+                display: block;
+            }
+
+        }
+
+        /* Adjust main content padding on smaller screens */
+        @@media (max-width: 768px) {
+            .container-fluid
+
+        {
+            padding: 1rem;
+        }
+
+        }
+
+        /* Extra small devices */
+        @@media (max-width: 576px) {
+            .vertical-navbar
+
+        {
+            width: 280px;
+        }
+
+        .container-fluid {
+            padding: 0.5rem;
+        }
+
+        }
     </style>
 </head>
 <body>
+    <!-- Mobile Navigation Toggle Button -->
+    <button class="mobile-nav-toggle">
+        <i class="bi bi-list"></i>
+    </button>
+
+    <!-- Overlay for mobile nav -->
+    <div class="nav-overlay"></div>
+
     <!-- Vertical Navbar -->
     <nav class="vertical-navbar">
         <div class="navbar-brand">
@@ -206,6 +304,8 @@
             const toggleBtn = document.querySelector('.toggle-btn');
             const body = document.body;
             const icon = toggleBtn.querySelector('i');
+            const mobileToggle = document.querySelector('.mobile-nav-toggle');
+            const overlay = document.querySelector('.nav-overlay');
 
             // Load navbar state from localStorage
             const isCollapsed = localStorage.getItem('navbarCollapsed') === 'true';
@@ -221,6 +321,7 @@
                 icon.classList.add('bi-chevron-left');
             }
 
+            // Toggle sidebar collapse state
             toggleBtn.addEventListener('click', function () {
                 navbar.classList.toggle('collapsed');
                 body.classList.toggle('collapsed');
@@ -234,6 +335,37 @@
                     icon.classList.remove('bi-chevron-right');
                     icon.classList.add('bi-chevron-left');
                     localStorage.setItem('navbarCollapsed', 'false');
+                }
+            });
+
+            // Mobile menu toggle
+            mobileToggle.addEventListener('click', function() {
+                navbar.classList.toggle('show');
+                overlay.classList.toggle('active');
+            });
+
+            // Close menu when clicking overlay
+            overlay.addEventListener('click', function() {
+                navbar.classList.remove('show');
+                overlay.classList.remove('active');
+            });
+
+            // Close menu when clicking a nav link on mobile
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 992) {
+                        navbar.classList.remove('show');
+                        overlay.classList.remove('active');
+                    }
+                });
+            });
+
+            // Responsive behavior - check on window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 992) {
+                    navbar.classList.remove('show');
+                    overlay.classList.remove('active');
                 }
             });
 

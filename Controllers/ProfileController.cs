@@ -42,17 +42,11 @@ namespace PBL3_HK4.Controllers
         }
 
         [HttpPost]
-        public async Task UpdateProfile(User user)
+        public async Task<IActionResult> UpdateProfile(Customer customer)
         {
-            var role = User.FindFirstValue(ClaimTypes.Role);
-            if (role == "Customer")
-            {
-                await _customerService.UpdateCustomerAsync((Customer)user);
-            }
-            else
-            {
-                await _adminService.UpdateAdminAsync((Admin)user);
-            }
+
+            await _customerService.UpdateCustomerAsync(customer);
+            return View("Index");
         }
     }
 }

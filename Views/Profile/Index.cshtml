@@ -24,19 +24,54 @@
         font-size: 18px;
     }
 
+    /* Kiểu dáng chung cho tất cả các nút */
+    .btn {
+        border-radius: 20px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+    /* Kiểu dáng cho các nút thông tin và đăng xuất */
     .info-btn {
         background-color: #007BFF;
         color: white;
-        border-radius: 20px;
-        font-weight: bold;
-        font-size: 12px;
+        font-size: 14px;
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 5px 0;
     }
 
+        .info-btn:hover {
+            background-color: #0056b3;
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+            color: white;
+        }
+
     .logout-btn {
+        background-color: #dc3545;
         color: white;
-        border-radius: 20px;
-        font-weight: bold;
-        font-size: 12px;
+        font-size: 14px;
+        width: 100%;
+        padding: 5px 0;
+    }
+
+        .logout-btn:hover {
+            background-color: #bb2d3b;
+            box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+            color: white;
+        }
+
+    .user-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
     }
 
     .account-container {
@@ -62,16 +97,17 @@
         padding: 8px 16px;
         background-color: #FFCC99;
         color: white;
-        border-radius: 20px;
         letter-spacing: 2px;
-        font-weight: bold;
         width: 100%;
     }
 
+        .edit-btn:hover {
+            background-color: #FFB366;
+            color: white;
+        }
+
     .action-btn {
-        border-radius: 20px;
         padding: 8px 0;
-        font-weight: bold;
     }
 
     .ok-btn {
@@ -79,10 +115,20 @@
         color: white;
     }
 
+        .ok-btn:hover {
+            background-color: #6B9900;
+            color: white;
+        }
+
     .cancel-btn {
         background-color: #dc3545;
         color: white;
     }
+
+        .cancel-btn:hover {
+            background-color: #bb2d3b;
+            color: white;
+        }
 
     .coupon-title {
         color: #6D4C41;
@@ -134,7 +180,16 @@
         text-align: center;
         text-decoration: none;
         font-weight: bold;
+        transition: all 0.3s ease;
     }
+
+        .coupon-use-btn:hover {
+            background-color: #496749;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(90, 125, 90, 0.3);
+            text-decoration: none;
+        }
 
     .password-container {
         position: relative;
@@ -150,85 +205,80 @@
 
     /* Responsive styles */
     @@media (max-width: 991px) {
-        .profile-layout
+        .profile-layout {
+            display: flex;
+            flex-direction: column;
+        }
 
-    {
-        display: flex;
-        flex-direction: column;
-    }
+        .user-info-section {
+            order: 1;
+            margin-bottom: 20px;
+        }
 
-    .user-info-section {
-        order: 1;
-        margin-bottom: 20px;
-    }
+        .account-info-section {
+            order: 2;
+            margin-bottom: 20px;
+        }
 
-    .account-info-section {
-        order: 2;
-        margin-bottom: 20px;
-    }
+        .coupon-section {
+            order: 3;
+        }
 
-    .coupon-section {
-        order: 3;
-    }
+        .coupon-list {
+            display: flex;
+            overflow-x: auto;
+            margin: 0 -15px;
+            padding: 0 15px;
+            flex-wrap: nowrap;
+        }
 
-    .coupon-list {
-        display: flex;
-        overflow-x: auto;
-        margin: 0 -15px;
-        padding: 0 15px;
-        flex-wrap: nowrap;
-    }
+        .coupon-card {
+            min-width: 240px;
+            margin-right: 15px;
+        }
 
-    .coupon-card {
-        min-width: 240px;
-        margin-right: 15px;
-    }
-
-    .coupon-container {
-        max-height: none;
-        overflow-y: visible;
-    }
-
+        .coupon-container {
+            max-height: none;
+            overflow-y: visible;
+        }
     }
 
     @@media (max-width: 767px) {
-        .user-image-container
-
-    {
-        width: 100px;
-        margin: 0 auto 15px auto;
-    }
-
-    .user-info {
-        text-align: center;
-    }
-
-    .user-actions {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-bottom: 15px;
-    }
-
-    .info-btn, .logout-btn {
-        width: 45%;
-        padding: 8px 0;
-    }
-
-    .form-grid {
-        display: block !important;
-    }
-
-        .form-grid > div {
-            margin-bottom: 10px;
+        .user-image-container {
+            width: 100px;
+            margin: 0 auto 15px auto;
         }
 
-    .form-label {
-        font-weight: bold;
-        margin-bottom: 5px;
-        display: block;
-    }
+        .user-info {
+            text-align: center;
+        }
 
+        .user-actions {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .info-btn, .logout-btn {
+            width: 80%;
+            padding: 10px 0;
+        }
+
+        .form-grid {
+            display: block !important;
+        }
+
+            .form-grid > div {
+                margin-bottom: 10px;
+            }
+
+        .form-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
     }
 </style>
 
@@ -252,117 +302,125 @@
                         <a class="btn info-btn">
                             <i class="bi bi-info-circle"></i> How to earn points?
                         </a>
-                        <a class="btn btn-danger logout-btn" asp-controller="Account" asp-action="SignIn">
+                        <a class="btn logout-btn" asp-controller="Account" asp-action="SignIn">
                             <i class="bi bi-box-arrow-right"></i> Log out
                         </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Account information form -->
-            <div class="account-container p-3" id="accountInfoContainer">
-                <p class="text-center account-title mb-4">Account Information</p>
+            <!-- Account information form - Bọc trong form tag -->
+            <form id="profileForm" method="post" asp-controller="Profile" asp-action="UpdateProfile">
+                <!-- Thêm hidden field để lưu ID của customer -->
+                <input type="hidden" name="UserID" value="@Model.UserID" />
+                
+                <div class="account-container p-3" id="accountInfoContainer">
+                    <p class="text-center account-title mb-4">Account Information</p>
 
-                <div id="formFieldsContainer" class="form-grid" style="display: grid; grid-template-columns: 100px 1fr; gap: 10px; align-items: center; font-size: 14px; margin-bottom: 10px;">
-                    <!-- User Name -->
-                    <div class="form-label">
-                        <label>User Name:</label>
-                    </div>
-                    <div>
-                        <input value="@Model.UserName" id="username" name="username" type="text" class="w-100 form-field" readonly>
-                    </div>
+                    <div id="formFieldsContainer" class="form-grid" style="display: grid; grid-template-columns: 100px 1fr; gap: 10px; align-items: center; font-size: 14px; margin-bottom: 10px;">
+                        <!-- User Name -->
+                        <div class="form-label">
+                            <label>User Name:</label>
+                        </div>
+                        <div>
+                            <input value="@Model.UserName" id="username" name="UserName" type="text" class="w-100 form-field" readonly>
+                        </div>
 
-                    <!-- New Password (hidden initially) -->
-                    <div id="newPasswordLabel" class="form-label" style="display: none;">
-                        <label>New Password:</label>
-                    </div>
-                    <div id="newPasswordField" style="display: none;">
-                        <div class="position-relative">
-                            <input type="password" class="w-100 form-field" id="newPassword" name="newPassword">
-                            <i class="bi bi-eye-slash password-toggle" data-target="newPassword"></i>
+                        <!-- New Password (hidden initially) -->
+                        <div id="newPasswordLabel" class="form-label" style="display: none;">
+                            <label>New Password:</label>
                         </div>
-                        <div id="passwordRequirements" class="mt-1" style="font-size: 11px; color: #dc3545; display: none;">
-                            Password must be at least 8 characters and include uppercase, lowercase, numbers and special characters
-                        </div>
-                        <div id="passwordStrength" class="mt-1" style="display: none;">
-                            <div class="progress" style="height: 5px;">
-                                <div id="passwordStrengthBar" class="progress-bar" style="width: 0%;"></div>
+                        <div id="newPasswordField" style="display: none;">
+                            <div class="position-relative">
+                                <input type="password" class="w-100 form-field" id="newPassword" name="NewPassword">
+                                <i class="bi bi-eye-slash password-toggle" data-target="newPassword"></i>
                             </div>
-                            <span id="passwordStrengthText" style="font-size: 11px;"></span>
+                            <div id="passwordRequirements" class="mt-1" style="font-size: 11px; color: #dc3545; display: none;">
+                                Password must be at least 8 characters and include uppercase, lowercase, numbers and special characters
+                            </div>
+                            <div id="passwordStrength" class="mt-1" style="display: none;">
+                                <div class="progress" style="height: 5px;">
+                                    <div id="passwordStrengthBar" class="progress-bar" style="width: 0%;"></div>
+                                </div>
+                                <span id="passwordStrengthText" style="font-size: 11px;"></span>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Confirm Password (hidden initially) -->
-                    <div id="confirmPasswordLabel" class="form-label" style="display: none;">
-                        <label>Confirm Password:</label>
-                    </div>
-                    <div id="confirmPasswordField" style="display: none;">
-                        <div class="position-relative">
-                            <input type="password" class="w-100 form-field" id="confirmPassword" name="confirmPassword" disabled>
-                            <i class="bi bi-eye-slash password-toggle" data-target="confirmPassword"></i>
+                        <!-- Confirm Password (hidden initially) -->
+                        <div id="confirmPasswordLabel" class="form-label" style="display: none;">
+                            <label>Confirm Password:</label>
                         </div>
-                        <div id="passwordMatch" class="mt-1" style="font-size: 11px; display: none;"></div>
+                        <div id="confirmPasswordField" style="display: none;">
+                            <div class="position-relative">
+                                <input type="password" class="w-100 form-field" id="confirmPassword" name="ConfirmPassword" disabled>
+                                <i class="bi bi-eye-slash password-toggle" data-target="confirmPassword"></i>
+                            </div>
+                            <div id="passwordMatch" class="mt-1" style="font-size: 11px; display: none;"></div>
+                        </div>
+
+                        <!-- Name -->
+                        <div class="form-label">
+                            <label>Name:</label>
+                        </div>
+                        <div>
+                            <input value="@Model.Name" id="name" name="Name" type="text" class="w-100 form-field" readonly>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-label">
+                            <label>Email:</label>
+                        </div>
+                        <div>
+                            <input value="@Model.Email" id="email" name="Email" type="email" class="w-100 form-field" readonly>
+                        </div>
+
+                        <!-- Gender -->
+                        <div class="form-label">
+                            <label>Gender:</label>
+                        </div>
+                        <div>
+                            <select id="sex" name="Sex" class="w-100 form-field" style="background-color: #f5f5f5;" disabled>
+                                <option value="Male" @@(Model.Sex=="Male" ? "selected" : "")>Male</option>
+                                <option value="Female" @@(Model.Sex=="Female" ? "selected" : "")>Female</option>
+                                <option value="Other" @@(Model.Sex=="Other" ? "selected" : "")>Other</option>
+                            </select>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="form-label">
+                            <label>Phone:</label>
+                        </div>
+                        <div>
+                            <input value="@Model.Phone" id="phone" name="Phone" type="tel" class="w-100 form-field" readonly>
+                        </div>
+
+                        <!-- Date -->
+                        <div class="form-label">
+                            <label>Date of Birth:</label>
+                        </div>
+                        <div>
+                            <input value="@Model.DateOfBirth.ToString("yyyy-MM-dd")" id="dateOfBirth" name="DateOfBirth" type="date" class="w-100 form-field" style="background-color: #f5f5f5;" readonly>
+                        </div>
+
+                        <!-- Address -->
+                        <div class="form-label">
+                            <label>Address:</label>
+                        </div>
+                        <div>
+                            <textarea id="address" name="Address" class="w-100 form-field" style="min-height: 60px; background-color: #f5f5f5;" readonly>@Model.Address</textarea>
+                        </div>
+                        
+                        <!-- EarnedPoint (hidden) -->
+                        <input type="hidden" name="EarnedPoint" value="@Model.EarnedPoint" />
                     </div>
 
-                    <!-- Name -->
-                    <div class="form-label">
-                        <label>Name:</label>
-                    </div>
-                    <div>
-                        <input value="@Model.Name" id="name" name="name" type="text" class="w-100 form-field" readonly>
-                    </div>
-
-                    <!-- Email -->
-                    <div class="form-label">
-                        <label>Email:</label>
-                    </div>
-                    <div>
-                        <input value="@Model.Email" id="email" name="email" type="email" class="w-100 form-field" readonly>
-                    </div>
-
-                    <!-- Gender -->
-                    <div class="form-label">
-                        <label>Gender:</label>
-                    </div>
-                    <div>
-                        <select id="sex" name="sex" class="w-100 form-field" style="background-color: #f5f5f5;" disabled>
-                            <option value="Male" @@(Model.Sex= ="Male" ? "selected" : "" )>Male</option>
-                            <option value="Female" @@(Model.Sex= ="Female" ? "selected" : "" )>Female</option>
-                            <option value="Other" @@(Model.Sex= ="Other" ? "selected" : "" )>Other</option>
-                        </select>
-                    </div>
-
-                    <!-- Phone -->
-                    <div class="form-label">
-                        <label>Phone:</label>
-                    </div>
-                    <div>
-                        <input value="@Model.Phone" id="phone" name="Phone" type="tel" class="w-100 form-field" readonly>
-                    </div>
-
-                    <!-- Date -->
-                    <div class="form-label">
-                        <label>Date of Birth:</label>
-                    </div>
-                    <div>
-                        <input value="@Model.DateOfBirth.ToString("yyyy-MM-dd")" id="dateOfBirth" name="dateOfBirth" type="date" class="w-100 form-field" style="background-color: #f5f5f5;" readonly>
-                    </div>
-
-                    <!-- Address -->
-                    <div class="form-label">
-                        <label>Address:</label>
-                    </div>
-                    <div>
-                        <textarea id="address" name="address" class="w-100 form-field" style="min-height: 60px; background-color: #f5f5f5;" readonly>@Model.Address</textarea>
+                    <div id="editButtonContainer">
+                        <button type="button" id="editButton" class="btn edit-btn">
+                            <i class="bi bi-pencil-square"></i> EDIT YOUR INFORMATION
+                        </button>
                     </div>
                 </div>
-
-                <div id="editButtonContainer">
-                    <button id="editButton" class="btn edit-btn">
-                        <i class="bi bi-pencil-square"></i> EDIT YOUR INFORMATION
-                    </button>
-                </div>
-            </div>
+            </form>
         </div>
 
         <!-- Empty space column - shown on large screens only -->
@@ -401,6 +459,7 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        const profileForm = document.getElementById('profileForm');
         const editButtonContainer = document.getElementById('editButtonContainer');
         const formFields = document.querySelectorAll('.form-field');
 
@@ -565,10 +624,10 @@
             // Replace EDIT button with OK and CANCEL buttons
             editButtonContainer.innerHTML = `
                 <div class="d-flex" style="gap: 10px;">
-                    <button id="okButton" class="btn flex-grow-1 action-btn ok-btn">
+                    <button type="button" id="okButton" class="btn flex-grow-1 action-btn ok-btn">
                         OK
                     </button>
-                    <button id="cancelButton" class="btn flex-grow-1 action-btn cancel-btn">
+                    <button type="button" id="cancelButton" class="btn flex-grow-1 action-btn cancel-btn">
                         CANCEL
                     </button>
                 </div>
@@ -576,25 +635,26 @@
 
             // Handle OK button
             document.getElementById('okButton').addEventListener('click', function() {
-                // Validate password if entered
-                if (newPasswordInput.value) {
-                    if (!passwordValid) {
-                        alert('Please ensure your password meets all requirements.');
-                        return;
-                    }
-
-                    if (!passwordsMatch) {
-                        alert('Please ensure your passwords match.');
-                        return;
-                    }
+                // Kiểm tra nếu không nhập mật khẩu mới thì không cho submit
+                if (!newPasswordInput.value) {
+                    alert('Please enter a new password.');
+                    return;
                 }
 
-                disableEditing();
-                hidePasswordFields();
-                showEditButton();
+                // Kiểm tra mật khẩu mới có hợp lệ hay không
+                if (!passwordValid) {
+                    alert('Please ensure your password meets all requirements.');
+                    return;
+                }
 
-                // Here you would typically send the updated data to the server
-                // Example: submitFormData();
+                // Kiểm tra mật khẩu xác nhận có khớp hay không
+                if (!passwordsMatch) {
+                    alert('Please ensure your passwords match.');
+                    return;
+                }
+
+                // Submit form
+                profileForm.submit();
             });
 
             // Handle CANCEL button
@@ -639,7 +699,7 @@
 
         function showEditButton() {
             editButtonContainer.innerHTML = `
-                <button id="editButton" class="btn edit-btn">
+                <button type="button" id="editButton" class="btn edit-btn">
                     <i class="bi bi-pencil-square"></i> EDIT YOUR INFORMATION
                 </button>
             `;

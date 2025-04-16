@@ -1,11 +1,18 @@
-﻿@model IEnumerable<PBL3_HK4.Entity.Product>
+﻿@using PBL3_HK4.Entity
+@using PBL3_HK4.Models
+
 @{
     ViewData["Title"] = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    HomeViewModel homeViewModel = Model as HomeViewModel;
+    IEnumerable<Catalog> catalogs = homeViewModel.Catalogs;
+    IEnumerable<Product> products = homeViewModel.Products;
 }
 
 <!-- Section: Banner giới thiệu sản phẩm tươi sống với nút kêu gọi hành động (CTA) -->
+<!-- Banner section remains the same -->
 <div class="row p-lg-3">
+    <!-- Banner content here - unchanged -->
     <div class="col-6" style="padding-left: 30px;">
         <p style="font-size: 42px; font-weight: bold;">Make healthy life with <span style="color: var(--green-color);">fresh</span> grocery</p>
 
@@ -84,8 +91,6 @@
         </div>
     </div>
 </div>
-
-
 
 <!-- Service Highlights: Free Shipping, Returns, Secure Payment, Offers -->
 <div class="row py-3 d-flex align-items-center justify-content-center" style="background-color: var(--brown-weak-color);">
@@ -176,11 +181,13 @@
             <li class="list-group-item category-header" style="background-color: #E6DACE; font-weight: bold; font-size: 18px;">
                 <i class="bi bi-list"></i> CATEGORIES
             </li>
-            @foreach (var category in new[] { "Vegetables", "Fresh Meat", "Fish and Seafood", "Butter and Cream", "Oil and Vinegar", "Breads", "Apple Juice", "Dry Nuts", "Frozen Foods", "Canned Foods", "Spices and Herbs", "Snacks and Chips", "Baby Food", "Coffee", "Tea", "Fruits" })
+            <li class="list-group-item d-flex align-items-center category-item" data-catalog-id="all">
+                <p class="m-0">All Products</p>
+            </li>
+            @foreach (var category in catalogs)
             {
-                <li class="list-group-item d-flex align-items-center">
-                    <img src="@Url.Content("~/img/" + category + ".png")" class="category-icon" />
-                    <p class="m-0">@category</p>
+                <li class="list-group-item d-flex align-items-center category-item" data-catalog-id="@category.CatalogID">
+                    <p class="m-0">@category.CatalogName</p>
                 </li>
             }
         </ul>
@@ -188,14 +195,39 @@
 
     <!-- List Product -->
     <div id="product-container" class="d-flex flex-wrap justify-content-start col-9">
-        @if (Model != null && Model.Any())
-        {
-            <!-- Trường hợp không có sản phẩm sẽ hiển thị thông báo -->
-        }
-        else
-        {
-            <div class="alert alert-info col-12">No products available.</div>
-        }
+        <!-- Search Box -->
+        <div class="col-12 mb-3">
+            <div class="input-group d-flex justify-content-start align-items-center" style="width: 100%;">
+                <input type="text" id="product-search" class="form-control custom-search-input" placeholder="Search products..."
+                       style="background-color: white; border: 1px solid #6D7B30; color: #333;">
+                <button class="btn custom-search-btn" type="button" id="search-btn"
+                        style="background-color: white; border: 1px solid #6D7B30; color: #333;">
+                    <i class="bi bi-search"></i>
+                </button>
+                <button class="btn custom-reset-btn ms-2" type="button" id="reset-search-btn"
+                        style="background-color: #E6DACE; border: 1px solid #6D7B30; color: #333;">
+                    <i class="bi bi-x-circle"></i> Reset
+                </button>
+            </div>
+            <div id="search-results-label" class="mt-2" style="display: none; font-weight: bold; color: #6D7B30;">
+                Search results for '<span id="search-term"></span>'
+            </div>
+            <div id="category-results-label" class="mt-2" style="display: none; font-weight: bold; color: #6D7B30;">
+                Category: <span id="category-name"></span>
+            </div>
+        </div>
+
+        <!-- Products container - this will be filled dynamically by JavaScript -->
+        <div id="products-display-area" class="d-flex flex-wrap w-100 justify-content-start">
+            <!-- Initial empty state message - will be replaced when products load -->
+            @if (homeViewModel == null || homeViewModel.Products == null || !homeViewModel.Products.Any())
+            {
+                <div class="not-found-container">
+                    <div class="not-found-x">×</div>
+                    <p class="not-found-text">No products available</p>
+                </div>
+            }
+        </div>
     </div>
 
     <!-- Pagination Controls -->
@@ -209,6 +241,11 @@
 </div>
 
 <style>
+    .custom-reset-btn:hover {
+        background-color: #d9c5b2 !important;
+        color: #333 !important;
+    }
+
     .carousel-inner {
         border-radius: 10px;
         overflow: hidden;
@@ -241,10 +278,10 @@
         cursor: pointer;
     }
 
-    .pagination .page-link:hover {
-        background-color: #E6DACE;
-        color: #314401;
-    }
+        .pagination .page-link:hover {
+            background-color: #E6DACE;
+            color: #314401;
+        }
 
     .pagination .active .page-link {
         background-color: #6D7B30;
@@ -262,6 +299,96 @@
         width: 24px;
         height: 24px;
         margin-right: 10px;
+    }
+
+    /* Custom Search Styles */
+    .custom-search-input:focus {
+        box-shadow: 0 0 0 0.25rem rgba(109, 123, 48, 0.25);
+        border-color: #6D7B30;
+    }
+
+    .custom-search-btn:hover {
+        background-color: #6D7B30 !important;
+        color: white !important;
+    }
+
+    /* Make category items clickable */
+    .category-item {
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+        .category-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .category-item.active {
+            background-color: #E6DACE;
+            font-weight: bold;
+        }
+
+    /* New Not Found Styles */
+    .not-found-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 0;
+    }
+
+    .not-found-x {
+        font-size: 80px;
+        color: #e63946;
+        font-weight: bold;
+        line-height: 1;
+        position: relative;
+        animation: pulse 2s infinite;
+        margin-bottom: 10px;
+    }
+
+    .not-found-text {
+        font-size: 24px;
+        color: #555;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    @@keyframes pulse {
+        0%
+
+    {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    }
+
+    @@keyframes shake {
+        0%, 100%
+
+    {
+        transform: translateX(0);
+    }
+
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+
     }
 </style>
 
@@ -316,9 +443,9 @@
             justify-content: center;
         }
 
-        .cart-btn:hover {
-            background-color: #d65e1a;
-        }
+            .cart-btn:hover {
+                background-color: #d65e1a;
+            }
 
         /* Hiệu ứng phóng to nút giỏ hàng */
         .cart-btn-animating {
@@ -392,9 +519,9 @@
             transition: background-color 0.2s;
         }
 
-        .quantity-btn:hover {
-            background-color: #6a9300;
-        }
+            .quantity-btn:hover {
+                background-color: #6a9300;
+            }
 
         .quantity-input {
             width: 35px;
@@ -405,12 +532,12 @@
             font-size: 14px;
         }
 
-        /* Vô hiệu hóa mũi tên mặc định của input number */
-        .quantity-input::-webkit-inner-spin-button,
-        .quantity-input::-webkit-outer-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
+            /* Vô hiệu hóa mũi tên mặc định của input number */
+            .quantity-input::-webkit-inner-spin-button,
+            .quantity-input::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
 
         .quantity-input {
             -moz-appearance: textfield; /* Firefox */
@@ -422,33 +549,53 @@
             const productsPerPage = 20; // Max products per page
             const cardsPerRow = 4; // Cards per row
             let currentPage = 1;
+            let currentCategory = 'all'; // Default to show all products
 
             // Get product container
             const productContainer = document.getElementById("product-container");
             const paginationControls = document.getElementById("pagination-controls");
+            const searchResultsLabel = document.getElementById('search-results-label');
+            const categoryResultsLabel = document.getElementById('category-results-label');
+            const categoryNameSpan = document.getElementById('category-name');
+
+            // Store catalogs data in JavaScript
+            const catalogs = [
+        @if (homeViewModel != null && homeViewModel.Catalogs != null && homeViewModel.Catalogs.Any())
+        {
+            foreach (var catalog in homeViewModel.Catalogs)
+            {
+                <text>
+                                {
+                                    id: "@catalog.CatalogID",
+                                    name: "@catalog.CatalogName"
+                                },
+                </text>
+            }
+        }
+            ];
 
             // Thêm dữ liệu sản phẩm thực từ model
             const products = [
-                @if (Model != null && Model.Any())
-                {
-                    foreach (var product in Model)
-                    {
-                        <text>
-                                        {
-                                            id: "@product.ProductID",
-                                            name: "@product.ProductName",
-                                            description: "@(product.ProductDescription?.Replace("\n", "\\n").Replace("\"", "\\\""))",
-                                            price: @product.Price,
-                                            stock: @product.StockQuantity,
-                                            categoryId: "@product.CatalogID",
-                                            mfgDate: "@product.MFGDate.ToString("yyyy-MM-dd")",
-                                            expDate: "@product.EXPDate.ToString("yyyy-MM-dd")",
-                                            imageUrl: "../img/—Pngtree—red fresh tomato with green_8933861.png",
-                                            averageStar: @product.AverageRating
-                                        },
-                        </text>
-                    }
-                }
+        @if (homeViewModel != null && homeViewModel.Products != null && homeViewModel.Products.Any())
+        {
+            foreach (var product in homeViewModel.Products)
+            {
+                <text>
+                                {
+                                    id: "@product.ProductID",
+                                    name: "@product.ProductName",
+                                    description: "@(product.ProductDescription?.Replace("\n", "\\n").Replace("\"", "\\\""))",
+                                    price: @product.Price,
+                                    stock: @product.StockQuantity,
+                                    categoryId: "@product.CatalogID",
+                                    mfgDate: "@product.MFGDate.ToString("yyyy-MM-dd")",
+                                    expDate: "@product.EXPDate.ToString("yyyy-MM-dd")",
+                                    imageUrl: "../img/—Pngtree—red fresh tomato with green_8933861.png",
+                                    averageStar: @product.AverageRating
+                                },
+                </text>
+            }
+        }
             ];
 
             // Calculate margins
@@ -458,28 +605,102 @@
             const marginLeft = (containerWidth - totalCardWidth) / (cardsPerRow + 1);
             const marginBottom = marginLeft / 2;
 
-            // Hiển thị sản phẩm với margin tính toán
-            function displayProducts(page) {
-                productContainer.innerHTML = '';
-                const start = (page - 1) * productsPerPage;
-                const end = Math.min(start + productsPerPage, products.length);
-                const paginatedProducts = products.slice(start, end);
+            // Function to create not found element
+            function createNotFoundElement(message) {
+                const container = document.createElement('div');
+                container.className = 'not-found-container';
 
-                paginatedProducts.forEach(product => {
-                    // Tạo HTML hiển thị đánh giá sao
+                const xElement = document.createElement('div');
+                xElement.className = 'not-found-x';
+                xElement.innerHTML = '×';
+
+                const textElement = document.createElement('p');
+                textElement.className = 'not-found-text';
+                textElement.textContent = message;
+
+                container.appendChild(xElement);
+                container.appendChild(textElement);
+
+                // Add shake animation on hover
+                xElement.addEventListener('mouseenter', () => {
+                    xElement.style.animation = 'shake 0.5s ease-in-out';
+                });
+
+                xElement.addEventListener('mouseleave', () => {
+                    xElement.style.animation = 'pulse 2s infinite';
+                });
+
+                return container;
+            }
+
+            // Filter products by category ID
+            function filterProductsByCategory(categoryId) {
+                // Reset active state of all category items
+                document.querySelectorAll('.category-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Set active state to clicked category
+                document.querySelector(`.category-item[data-catalog-id="${categoryId}"]`).classList.add('active');
+
+                // Update current category
+                currentCategory = categoryId;
+
+                // Hide search results label
+                searchResultsLabel.style.display = 'none';
+
+                // Show category results label with the category name
+                if (categoryId === 'all') {
+                    categoryResultsLabel.style.display = 'none';
+                    displayProducts(1);
+                    renderPagination();
+                } else {
+                    // Find the catalog name for display
+                    const catalog = catalogs.find(cat => cat.id === categoryId);
+                    if (catalog) {
+                        categoryNameSpan.textContent = catalog.name;
+                        categoryResultsLabel.style.display = 'block';
+
+                        // Filter products by the selected category
+                        const filteredProducts = products.filter(product => product.categoryId === categoryId);
+                        displayFilteredProducts(filteredProducts, `No products found in ${catalog.name} category`);
+                    }
+                }
+            }
+
+            // Display filtered products without pagination
+            function displayFilteredProducts(filteredProducts, notFoundMessage) {
+                const productsDisplayArea = document.getElementById('products-display-area');
+                productsDisplayArea.innerHTML = '';
+
+                if (filteredProducts.length === 0) {
+                    // Display custom "not found" element
+                    productsDisplayArea.appendChild(createNotFoundElement(notFoundMessage || 'No products found'));
+
+                    // Hide pagination
+                    paginationControls.innerHTML = '';
+                    return;
+                }
+
+                // Create product cards for filtered products
+                filteredProducts.forEach(product => {
+                    // Create stars HTML
                     let starsHtml = '';
                     for (let i = 0; i < 5; i++) {
                         if (i < Math.floor(product.averageStar)) {
-                            starsHtml += '<span style="color: #FFD700;">★</span>'; // Ngôi sao đầy
+                            starsHtml += '<span style="color: #FFD700;">★</span>'; // Full star
                         } else if (i < Math.ceil(product.averageStar) && i >= Math.floor(product.averageStar)) {
-                            starsHtml += '<span style="color: #FFD700;">★</span>'; // Ngôi sao nửa - hiển thị đầy
+                            starsHtml += '<span style="color: #FFD700;">★</span>'; // Half star - display as full
                         } else {
-                            starsHtml += '<span style="color: #C0C0C0;">★</span>'; // Ngôi sao rỗng
+                            starsHtml += '<span style="color: #C0C0C0;">★</span>'; // Empty star
                         }
                     }
 
-                const productHTML = `
-                    <div class="card text-center" style="border-radius: 20px; max-width: 250px; height: 305px; margin-left: ${marginLeft}px; margin-bottom: ${marginBottom}px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    const productCard = document.createElement('div');
+                    productCard.className = 'card text-center';
+                    productCard.style = `border-radius: 20px; max-width: 250px; height: 305px; margin-left: ${marginLeft}px; margin-bottom: ${marginBottom}px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);`;
+
+                    productCard.innerHTML = `
                         <img src="${product.imageUrl}"
                              style="background-color: #EDEDED; border-top-left-radius: 20px; border-top-right-radius: 20px; height: 200px; width: 100%; object-fit: cover;"
                              class="card-img-top" alt="${product.name}">
@@ -510,19 +731,199 @@
                                 <img class="product-icon" src="${product.imageUrl}" alt="${product.name}">
                             </button>
                         </div>
-                    </div>
-                `;
-                    productContainer.innerHTML += productHTML;
+                    `;
+
+                    productsDisplayArea.appendChild(productCard);
+                });
+
+                // Hide pagination for filtered products
+                paginationControls.innerHTML = '';
+
+                // Add event handlers
+                addQuantityControls();
+                addCartButtonEvents();
+            }
+
+            // Hiển thị sản phẩm với margin tính toán
+            function displayProducts(page) {
+                // Get the products display area
+                const productsDisplayArea = document.getElementById('products-display-area');
+
+                // Clear previous products
+                productsDisplayArea.innerHTML = '';
+
+                const start = (page - 1) * productsPerPage;
+                const end = Math.min(start + productsPerPage, products.length);
+                const paginatedProducts = products.slice(start, end);
+
+                if (paginatedProducts.length === 0) {
+                    // Display custom "not found" element for empty products
+                    productsDisplayArea.appendChild(createNotFoundElement('No products available'));
+                    return;
+                }
+
+                // Create product cards and add them to the display area
+                paginatedProducts.forEach(product => {
+                    // Tạo HTML hiển thị đánh giá sao
+                    let starsHtml = '';
+                    for (let i = 0; i < 5; i++) {
+                        if (i < Math.floor(product.averageStar)) {
+                            starsHtml += '<span style="color: #FFD700;">★</span>'; // Ngôi sao đầy
+                        } else if (i < Math.ceil(product.averageStar) && i >= Math.floor(product.averageStar)) {
+                            starsHtml += '<span style="color: #FFD700;">★</span>'; // Ngôi sao nửa - hiển thị đầy
+                        } else {
+                            starsHtml += '<span style="color: #C0C0C0;">★</span>'; // Ngôi sao rỗng
+                        }
+                    }
+
+                    const productCard = document.createElement('div');
+                    productCard.className = 'card text-center';
+                    productCard.style = `border-radius: 20px; max-width: 250px; height: 305px; margin-left: ${marginLeft}px; margin-bottom: ${marginBottom}px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);`;
+
+                    productCard.innerHTML = `
+                        <img src="${product.imageUrl}"
+                             style="background-color: #EDEDED; border-top-left-radius: 20px; border-top-right-radius: 20px; height: 200px; width: 100%; object-fit: cover;"
+                             class="card-img-top" alt="${product.name}">
+                        <div class="card-body p-0" style="display: flex; flex-direction: column; height: 100%;">
+                            <span class="text-warning" style="font-size: 16px; letter-spacing: 5px;">
+                                ${starsHtml}
+                            </span>
+                            <h6 class="card-title" style="font-weight: bold; font-size: 14px;">${product.name}</h6>
+                            <p class="d-flex justify-content-center" style="font-size: 14px;">
+                                <span class="fw-bold" style="color: #80B500;">${(product.price).toLocaleString('vi-VN')}đ</span>
+                            </p>
+                            <form action="/Product/Details" method="post" style="margin-top: auto;">
+                                <input type="hidden" name="id" value="${product.id}">
+                                <button type="submit" class="fw-bold w-100" style="background-color: #E86D1F; border: none; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; color: white; font-size: 14px; padding: 5px 10px;">
+                                    Details
+                                </button>
+                            </form>
+                        </div>
+                        <!-- Panel trồi ra khi hover -->
+                        <div class="hover-panel">
+                            <div class="quantity-control">
+                                <button class="quantity-btn increase" data-product-id="${product.id}">+</button>
+                                <input type="number" class="quantity-input" value="1" min="1" data-product-id="${product.id}">
+                                <button class="quantity-btn decrease" data-product-id="${product.id}">-</button>
+                            </div>
+                            <button class="cart-btn" title="Add to Cart" data-product-id="${product.id}">
+                                <i class="fas fa-shopping-cart"></i>
+                                <img class="product-icon" src="${product.imageUrl}" alt="${product.name}">
+                            </button>
+                        </div>
+                    `;
+
+                    productsDisplayArea.appendChild(productCard);
                 });
 
                 // Thêm sự kiện cho các nút sau khi render
                 addQuantityControls();
                 addCartButtonEvents();
+            }
 
-                // Hiển thị thông báo nếu không có sản phẩm nào
-                if (products.length === 0) {
-                    productContainer.innerHTML = '<div class="alert alert-info col-12">No products available.</div>';
+            // Product search functionality
+            function setupSearchFunctionality() {
+                const searchInput = document.getElementById('product-search');
+                const searchButton = document.getElementById('search-btn');
+                const resetSearchBtn = document.getElementById('reset-search-btn');
+                const searchTermSpan = document.getElementById('search-term');
+                const productsDisplayArea = document.getElementById('products-display-area');
+
+                // Function to perform search
+                function performSearch() {
+                    const searchTerm = searchInput.value.trim();
+
+                    if (searchTerm === '') {
+                        // If search box is empty, display all products
+                        resetSearch();
+                        return;
+                    }
+
+                    // Reset active state of all category items
+                    document.querySelectorAll('.category-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+
+                    // Set "All Products" as active
+                    document.querySelector('.category-item[data-catalog-id="all"]').classList.add('active');
+
+                    // Hide category results label
+                    categoryResultsLabel.style.display = 'none';
+
+                    // Filter products based on search term (using original products array)
+                    const filteredProducts = products.filter(product =>
+                        product.name.toLowerCase().includes(searchTerm.toLowerCase())
+                    );
+
+                    // Clear the products display area
+                    productsDisplayArea.innerHTML = '';
+
+                    // Display search results label
+                    searchResultsLabel.style.display = 'block';
+                    searchTermSpan.textContent = searchTerm;
+
+                    // Display filtered products
+                    if (filteredProducts.length === 0) {
+                        // Display custom "not found" element for search
+                        productsDisplayArea.appendChild(createNotFoundElement(`No results found for '${searchTerm}'`));
+
+                        // Hide pagination during search results
+                        paginationControls.innerHTML = '';
+                    } else {
+                        // Display filtered products using the existing function
+                        displayFilteredProducts(filteredProducts);
+                    }
                 }
+
+                // Function to reset search and show all products
+                function resetSearch() {
+                    searchInput.value = '';
+                    searchResultsLabel.style.display = 'none';
+                    categoryResultsLabel.style.display = 'none';
+
+                    // Reset active category
+                    document.querySelectorAll('.category-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    document.querySelector('.category-item[data-catalog-id="all"]').classList.add('active');
+
+                    currentPage = 1; // Reset to first page
+                    currentCategory = 'all'; // Reset to all products
+                    displayProducts(currentPage);
+                    renderPagination();
+                }
+
+                // Search button click event
+                searchButton.addEventListener('click', performSearch);
+
+                // Reset button click event
+                resetSearchBtn.addEventListener('click', resetSearch);
+
+                // Search on Enter key press
+                searchInput.addEventListener('keyup', function(event) {
+                    if (event.key === 'Enter') {
+                        performSearch();
+                    }
+                });
+            }
+
+            // Set up category filter functionality
+            function setupCategoryFilterFunctionality() {
+                const categoryItems = document.querySelectorAll('.category-item');
+
+                categoryItems.forEach(item => {
+                    item.addEventListener('click', function() {
+                        const categoryId = this.getAttribute('data-catalog-id');
+                        filterProductsByCategory(categoryId);
+
+                        // Reset search box and hide search results label
+                        document.getElementById('product-search').value = '';
+                        searchResultsLabel.style.display = 'none';
+                    });
+                });
+
+                // Set "All Products" as active by default
+                document.querySelector('.category-item[data-catalog-id="all"]').classList.add('active');
             }
 
             // Function to handle quantity controls
@@ -655,9 +1056,11 @@
                 });
             }
 
-            // Hiển thị sản phẩm và phân trang khi trang được tải
+            // Initialize the page
             displayProducts(1);
             renderPagination();
+            setupSearchFunctionality();
+            setupCategoryFilterFunctionality();
 
             // Handle window resize
             window.addEventListener('resize', function() {
@@ -713,59 +1116,59 @@
                 max-width: 100%;
                 margin-bottom: 20px;
             }
-            /* Banner text */
-            .row .col-6 p[style*="font-size: 42px"] {
-                font-size: 36px !important;
-                text-align: center;
-            }
+                /* Banner text */
+                .row .col-6 p[style*="font-size: 42px"] {
+                    font-size: 36px !important;
+                    text-align: center;
+                }
 
-            .row .col-6 p.pb-2 {
-                max-width: 100% !important;
-                text-align: center;
-            }
-            /* Banner buttons - tablet */
-            .row .col-6 .d-flex.gap-3 {
-                justify-content: center;
-                width: 100%;
-                max-width: 500px;
-                margin: 0 auto;
-            }
+                .row .col-6 p.pb-2 {
+                    max-width: 100% !important;
+                    text-align: center;
+                }
+                /* Banner buttons - tablet */
+                .row .col-6 .d-flex.gap-3 {
+                    justify-content: center;
+                    width: 100%;
+                    max-width: 500px;
+                    margin: 0 auto;
+                }
 
-            .row .col-6 .d-flex.gap-3 .btn {
-                max-width: 45% !important; /* Tăng chiều rộng nút */
-                padding: 10px 15px !important; /* Tăng padding */
-                font-size: 16px !important; /* Tăng cỡ chữ */
-                font-weight: bold;
-            }
+                    .row .col-6 .d-flex.gap-3 .btn {
+                        max-width: 45% !important; /* Tăng chiều rộng nút */
+                        padding: 10px 15px !important; /* Tăng padding */
+                        font-size: 16px !important; /* Tăng cỡ chữ */
+                        font-weight: bold;
+                    }
             /* Service highlights */
             .row .col-3 {
                 flex: 0 0 50%;
                 max-width: 50%;
                 margin-bottom: 15px;
             }
-            /* Service title and subtitle */
-            .row .col-3 p[style*="font-size: 20px"] {
-                font-size: 18px !important;
-            }
+                /* Service title and subtitle */
+                .row .col-3 p[style*="font-size: 20px"] {
+                    font-size: 18px !important;
+                }
 
-            .row .col-3 p[style*="font-size: 10px"] {
-                font-size: 9px !important;
-            }
+                .row .col-3 p[style*="font-size: 10px"] {
+                    font-size: 9px !important;
+                }
             /* Category circles */
             .d-flex.justify-content-evenly {
                 flex-wrap: wrap !important;
             }
 
-            .d-flex.justify-content-evenly > div {
-                flex: 0 0 33.33%;
-                margin-bottom: 20px;
-            }
+                .d-flex.justify-content-evenly > div {
+                    flex: 0 0 33.33%;
+                    margin-bottom: 20px;
+                }
 
-            .d-flex.justify-content-evenly > div div[style*="border-radius: 50%"] {
-                width: 120px !important;
-                height: 120px !important;
-                border-width: 8px !important;
-            }
+                    .d-flex.justify-content-evenly > div div[style*="border-radius: 50%"] {
+                        width: 120px !important;
+                        height: 120px !important;
+                        border-width: 8px !important;
+                    }
             /* Categories and products */
             .row .col-3[style*="padding-left: 30px"] {
                 flex: 0 0 100%;
@@ -790,6 +1193,10 @@
             .carousel-item img {
                 height: 400px !important;
             }
+            /* Search Box Responsive */
+            .custom-search-input {
+                max-width: 100% !important;
+            }
         }
 
         @@media (max-width: 767.98px) {
@@ -807,10 +1214,10 @@
                 max-width: 400px;
             }
 
-            .row .col-6 .d-flex.gap-3 .btn {
-                font-size: 14px !important;
-                padding: 8px 12px !important;
-            }
+                .row .col-6 .d-flex.gap-3 .btn {
+                    font-size: 14px !important;
+                    padding: 8px 12px !important;
+                }
             /* Service icons */
             .row .col-3 img[style*="width: 50px"] {
                 width: 40px !important;
@@ -825,20 +1232,20 @@
                 flex: 0 0 50%;
             }
 
-            .d-flex.justify-content-evenly > div div[style*="border-radius: 50%"] {
-                width: 100px !important;
-                height: 100px !important;
-                border-width: 6px !important;
-            }
+                .d-flex.justify-content-evenly > div div[style*="border-radius: 50%"] {
+                    width: 100px !important;
+                    height: 100px !important;
+                    border-width: 6px !important;
+                }
 
-            .d-flex.justify-content-evenly > div p[style*="font-weight: bold"] {
-                font-size: 12px;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                max-width: 100px;
-                margin: 0 auto !important;
-            }
+                .d-flex.justify-content-evenly > div p[style*="font-weight: bold"] {
+                    font-size: 12px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    max-width: 100px;
+                    margin: 0 auto !important;
+                }
             /* Make product cards responsive */
             .card {
                 margin-left: 10px !important;
@@ -865,16 +1272,16 @@
                 gap: 10px !important;
             }
 
-            .row .col-6 .d-flex.gap-3 .btn {
-                max-width: 48% !important;
-                font-size: 12px !important;
-                padding: 8px 10px !important;
-                white-space: nowrap;
-            }
-            /* Ẩn icon mũi tên trên điện thoại nhỏ */
-            .row .col-6 .d-flex.gap-3 .btn i {
-                display: none;
-            }
+                .row .col-6 .d-flex.gap-3 .btn {
+                    max-width: 48% !important;
+                    font-size: 12px !important;
+                    padding: 8px 10px !important;
+                    white-space: nowrap;
+                }
+                    /* Ẩn icon mũi tên trên điện thoại nhỏ */
+                    .row .col-6 .d-flex.gap-3 .btn i {
+                        display: none;
+                    }
             /* Category circles */
             .d-flex.justify-content-evenly > div div[style*="border-radius: 50%"] {
                 width: 80px !important;
@@ -894,6 +1301,14 @@
             .carousel-item img {
                 height: 200px !important;
             }
+            /* Not found smaller on mobile */
+            .not-found-x {
+                font-size: 60px;
+            }
+
+            .not-found-text {
+                font-size: 18px;
+            }
         }
 
         /* Product grid system for responsive display */
@@ -905,10 +1320,10 @@
                 justify-content: center !important;
             }
 
-            #product-container .card {
-                max-width: 220px !important;
-                margin: 10px !important;
-            }
+                #product-container .card {
+                    max-width: 220px !important;
+                    margin: 10px !important;
+                }
         }
 
         @@media (max-width: 767.98px) {
@@ -916,22 +1331,22 @@
                 max-width: 200px !important;
             }
 
-            #product-container .card .card-img-top {
-                height: 180px !important;
-            }
+                #product-container .card .card-img-top {
+                    height: 180px !important;
+                }
 
-            #product-container .card .card-title {
-                font-size: 12px !important;
-            }
+                #product-container .card .card-title {
+                    font-size: 12px !important;
+                }
 
-            #product-container .card p {
-                font-size: 12px !important;
-            }
+                #product-container .card p {
+                    font-size: 12px !important;
+                }
 
-            #product-container .card .text-warning {
-                font-size: 14px !important;
-                letter-spacing: 3px !important;
-            }
+                #product-container .card .text-warning {
+                    font-size: 14px !important;
+                    letter-spacing: 3px !important;
+                }
         }
 
         @@media (max-width: 575.98px) {
@@ -940,14 +1355,14 @@
                 height: 280px !important;
             }
 
-            #product-container .card .card-img-top {
-                height: 150px !important;
-            }
+                #product-container .card .card-img-top {
+                    height: 150px !important;
+                }
 
-            #product-container .card .text-warning {
-                font-size: 12px !important;
-                letter-spacing: 2px !important;
-            }
+                #product-container .card .text-warning {
+                    font-size: 12px !important;
+                    letter-spacing: 2px !important;
+                }
         }
 
         /* Accordion for categories on mobile */
@@ -956,9 +1371,9 @@
                 margin-bottom: 20px;
             }
 
-            #category-list .list-group-item.category-header {
-                cursor: pointer;
-            }
+                #category-list .list-group-item.category-header {
+                    cursor: pointer;
+                }
             /* Pagination adjusted */
             .pagination .page-link {
                 padding: 0.4rem 0.75rem;

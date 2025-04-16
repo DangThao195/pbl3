@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using PBL3_HK4.Entity;
 using System;
 using System.Collections.Generic;
@@ -16,5 +17,7 @@ namespace PBL3_HK4.Interface
         public Task<ShoppingCart> GetShoppingCartByIdAsync(Guid shoppingcartId);
         public Task<ShoppingCart> GetShoppingCartByCustomerIdAsync(Guid customerId);
         public Task<IEnumerable<ShoppingCart>> GetAllShoppingCartsAsync();
+        public Task<List<CartItem>> GetCartItemsByCartIDAsync(Guid cartID);
+        
     }
 }

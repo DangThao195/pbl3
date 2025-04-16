@@ -1,7 +1,15 @@
-﻿@{
+﻿@using PBL3_HK4.Entity
+@{
     ViewData["Title"] = "Shopping Cart";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ShoppingCartViewModel shoppingCartViewModel = Model as ShoppingCartViewModel;
+    ShoppingCart shoppingCart = shoppingCartViewModel.ShoppingCart;
+    IEnumerable<Product> products = shoppingCartViewModel.Products;
+    ICollection<CartItem> cartItems = shoppingCart.Items ?? new List<CartItem>();
 }
+
+<!-- Thêm token CSRF ở đầu file -->
+@Html.AntiForgeryToken()
 
 <style>
     .cart-container {
@@ -98,6 +106,9 @@
         cursor: pointer;
         font-size: 20px;
         transition: all 0.2s;
+        background: none;
+        border: none;
+        padding: 0;
     }
 
         .btn-remove:hover {
@@ -154,103 +165,103 @@
 
     /* Responsive styles for tablet */
     @@media (max-width: 991px) {
-        .col-md-6.d-flex
+        .col-md-6.d-flex {
+            margin-bottom: 10px;
+        }
 
-    {
-        margin-bottom: 10px;
-    }
+        .cart-header {
+            font-size: 24px;
+            text-align: center;
+        }
 
-    .cart-header {
-        font-size: 24px;
-        text-align: center;
-    }
+        .item-name {
+            margin-top: 5px;
+            font-size: 14px;
+        }
 
-    .item-name {
-        margin-top: 5px;
-        font-size: 14px;
-    }
+        .item-price {
+            margin-top: 5px;
+            font-size: 14px;
+        }
 
-    .item-price {
-        margin-top: 5px;
-        font-size: 14px;
-    }
-
-    .total-text, .total-amount {
-        font-size: 24px;
-    }
-
+        .total-text, .total-amount {
+            font-size: 24px;
+        }
     }
 
     /* Responsive styles for mobile */
     @@media (max-width: 767px) {
-        .cart-item
+        .cart-item {
+            padding: 10px;
+        }
 
-    {
-        padding: 10px;
-    }
+        .cart-header {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
 
-    .cart-header {
-        font-size: 20px;
-        margin-bottom: 15px;
-    }
+        .item-image {
+            max-width: 60px;
+        }
 
-    .item-image {
-        max-width: 60px;
-    }
+        .item-name {
+            font-size: 14px;
+            margin-top: 0;
+        }
 
-    .item-name {
-        font-size: 14px;
-        margin-top: 0;
-    }
+        .item-price {
+            margin-top: 0;
+            font-size: 14px;
+        }
 
-    .item-price {
-        margin-top: 0;
-        font-size: 14px;
-    }
+        .btn-quantity {
+            width: 30px;
+            height: 30px;
+        }
 
-    .btn-quantity {
-        width: 30px;
-        height: 30px;
-    }
+        .quantity-value {
+            width: 30px;
+            height: 30px;
+            font-size: 14px;
+        }
 
-    .quantity-value {
-        width: 30px;
-        height: 30px;
-        font-size: 14px;
-    }
+        .total-text, .total-amount {
+            font-size: 20px;
+        }
 
-    .total-text, .total-amount {
-        font-size: 20px;
-    }
+        .btn-action {
+            padding: 10px 15px;
+            font-size: 14px;
+        }
+        /* Stack items vertically on mobile */
+        .mobile-stack {
+            margin-bottom: 8px;
+        }
 
-    .btn-action {
-        padding: 10px 15px;
-        font-size: 14px;
-    }
+        .mobile-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    /* Stack items vertically on mobile */
-    .mobile-stack {
-        margin-bottom: 8px;
-    }
+        .mobile-center {
+            display: flex;
+            justify-content: center;
+        }
 
-    .mobile-flex {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .mobile-center {
-        display: flex;
-        justify-content: center;
-    }
-
-    .mobile-right {
-        display: flex;
-        justify-content: flex-end;
-    }
-
+        .mobile-right {
+            display: flex;
+            justify-content: flex-end;
+        }
     }
 </style>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
 
 <div class="row mt-5">
     <div class="col-lg-3 col-md-2 col-sm-1 d-none d-sm-block">
@@ -258,86 +269,98 @@
     </div>
     <div class="col-lg-6 col-md-8 col-sm-10 col-12">
         <div class="cart-header">
-            You have <span class="item-count">5</span> items in your cart
+            You have <span class="item-count">@cartItems.Count</span> items in your cart
         </div>
 
-        @for (int i = 0; i < 5; i++)
+        @if (cartItems.Count == 0)
         {
-            <div class="cart-item">
-                <div class="row align-items-center">
-                    <!-- Desktop and tablet view -->
-                    <div class="col-md-6 d-flex d-none d-md-flex">
-                        <img src="~/img/—Pngtree—red fresh tomato with green_8933861.png" class="item-image" alt="Tomato" />
-                        <div class="item-name">Fresh Ruby Tomatoes</div>
-                    </div>
-                    <div class="col-md-2 d-none d-md-block">
-                        <div class="item-price"><span class="CostItem" style="font-size: 20px;">2.00</span>$ / 1 Kg</div>
-                    </div>
-                    <div class="col-md-3 d-none d-md-block">
-                        <div class="quantity-controls">
-                            <div class="btn-quantity minus" onclick="decreaseQuantity(this)">
-                                <i class="bi bi-dash"></i>
-                            </div>
-                            <div class="quantity-value Count">1</div>
-                            <div class="btn-quantity plus" onclick="increaseQuantity(this)">
-                                <i class="bi bi-plus"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 text-end d-none d-md-block">
-                        <div class="btn-remove" onclick="removeItem(this)">
-                            <i class="bi bi-trash"></i>
-                        </div>
-                    </div>
+            <div class="text-center my-5">
+                <h4>Your cart is empty</h4>
+                <a asp-controller="Home" asp-action="Index" class="btn-action btn-continue mt-3 d-inline-block">Continue Shopping</a>
+            </div>
+        }
+        else
+        {
+            @foreach (CartItem cartItem in cartItems)
+            {
+                var product = shoppingCartViewModel.GetProductByCartId(cartItem.ProductID);
 
-                    <!-- Mobile view -->
-                    <div class="col-12 d-md-none">
-                        <div class="mobile-stack mobile-flex">
-                            <div class="d-flex align-items-center">
-                                <img src="~/img/—Pngtree—red fresh tomato with green_8933861.png" class="item-image" alt="Tomato" />
-                                <div class="item-name">Fresh Ruby Tomatoes</div>
+                <div class="cart-item">
+                    <div class="row align-items-center">
+                        <!-- Desktop and tablet view -->
+                        <div class="col-md-6 d-flex d-none d-md-flex">
+                            <img src="~/img/—Pngtree—red fresh tomato with green_8933861.png" class="item-image" alt="Tomato" />
+                            <div class="item-name">@product.ProductName</div>
+                        </div>
+                        <div class="col-md-2 d-none d-md-block">
+                            <div class="item-price"><span class="CostItem" style="font-size: 20px;">@cartItem.Price</span></div>
+                        </div>
+                        <div class="col-md-3 d-none d-md-block">
+                            <div class="quantity-controls">
+                                <div class="btn-quantity minus" onclick="updateQuantity('@cartItem.ItemID', false, this)">
+                                    <i class="bi bi-dash"></i>
+                                </div>
+                                <div class="quantity-value Count">@cartItem.Quantity</div>
+                                <div class="btn-quantity plus" onclick="updateQuantity('@cartItem.ItemID', true, this)">
+                                    <i class="bi bi-plus"></i>
+                                </div>
                             </div>
-                            <div class="btn-remove" onclick="removeItem(this)">
+                        </div>
+                        <div class="col-md-1 text-end d-none d-md-block">
+                            <div class="btn-remove" onclick="removeItem('@cartItem.ItemID', this)">
                                 <i class="bi bi-trash"></i>
                             </div>
                         </div>
-                        <div class="mobile-stack mobile-flex">
-                            <div class="item-price"><span class="CostItem" style="font-size: 16px;">2.00</span>$ / 1 Kg</div>
-                            <div class="quantity-controls">
-                                <div class="btn-quantity minus" onclick="decreaseQuantity(this)">
-                                    <i class="bi bi-dash"></i>
+
+                        <!-- Mobile view -->
+                        <div class="col-12 d-md-none">
+                            <div class="mobile-stack mobile-flex">
+                                <div class="d-flex align-items-center">
+                                    <img src="~/img/—Pngtree—red fresh tomato with green_8933861.png" class="item-image" alt="Tomato" />
+                                    <div class="item-name">@product.ProductName</div>
                                 </div>
-                                <div class="quantity-value Count">1</div>
-                                <div class="btn-quantity plus" onclick="increaseQuantity(this)">
-                                    <i class="bi bi-plus"></i>
+                                <div class="btn-remove" onclick="removeItem('@cartItem.ItemID', this)">
+                                    <i class="bi bi-trash"></i>
                                 </div>
+                            </div>
+                            <div class="mobile-stack mobile-flex">
+                                <div class="item-price"><span class="CostItem" style="font-size: 16px;">@cartItem.Price</span>$</div>
+                                <div class="quantity-controls">
+                                    <div class="btn-quantity minus" onclick="updateQuantity('@cartItem.ItemID', false, this)">
+                                        <i class="bi bi-dash"></i>
+                                    </div>
+                                    <div class="quantity-value Count">@cartItem.Quantity</div>
+                                    <div class="btn-quantity plus" onclick="updateQuantity('@cartItem.ItemID', true, this)">
+                                        <i class="bi bi-plus"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <hr class="mt-4 mb-4" style="border-top: 1px solid #ddd; opacity: 0.7;" />
+
+            <div class="total-section">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2 col-12">
+                        <div class="d-flex justify-content-between mb-4">
+                            <span class="total-text">Total</span>
+                            <span class="total-amount"><span id="TotalCost">@shoppingCart.TotalAmount </span>₫</span>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <a asp-controller="Home" asp-action="OrderSummary" class="btn-action btn-checkout">Summary</a>
+                            </div>
+                            <div class="col-6">
+                                <a asp-controller="Home" asp-action="Index" class="btn-action btn-continue">Continue Shopping</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         }
-
-        <hr class="mt-4 mb-4" style="border-top: 1px solid #ddd; opacity: 0.7;" />
-
-        <div class="total-section">
-            <div class="row">
-                <div class="col-md-8 offset-md-2 col-12">
-                    <div class="d-flex justify-content-between mb-4">
-                        <span class="total-text">Total</span>
-                        <span class="total-amount"><span id="TotalCost">10.00</span>$</span>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <a asp-controller="Home" asp-action="OrderSummary" class="btn-action btn-checkout">Summary</a>
-                        </div>
-                        <div class="col-6">
-                            <a asp-controller="Home" asp-action="Index" class="btn-action btn-continue">Continue Shopping</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     <div class="col-lg-3 col-md-2 col-sm-1 d-none d-sm-block">
         <!-- Right sidebar space -->
@@ -345,70 +368,128 @@
 </div>
 
 <script>
-    // Calculate total cost when the page loads
+    // Calculate total when page loads
     document.addEventListener('DOMContentLoaded', function() {
         calculateTotal();
     });
 
-    // Increase quantity
-    function increaseQuantity(button) {
-        // Handle both desktop and mobile layouts
-        let quantityDiv;
-        if (button.previousElementSibling && button.previousElementSibling.classList.contains('quantity-value')) {
-            quantityDiv = button.previousElementSibling;
-        } else {
-            // Look for the closest quantity-value
-            quantityDiv = button.closest('.quantity-controls').querySelector('.quantity-value');
+    // Hàm cập nhật số lượng sản phẩm
+    function updateQuantity(cartItemId, increase, button) {
+        // Lấy phần tử hiển thị số lượng
+        const quantityElement = button.parentElement.querySelector('.quantity-value');
+        let currentQuantity = parseInt(quantityElement.textContent);
+
+        // Nếu giảm thì kiểm tra xem số lượng có > 1 không
+        if (!increase && currentQuantity <= 1) {
+            return; // Không giảm nếu số lượng đã là 1
         }
 
-        let quantity = parseInt(quantityDiv.textContent);
-        quantityDiv.textContent = quantity + 1;
+        // Lấy token CSRF
+        const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
 
-        // Update both desktop and mobile quantity displays if they exist
-        const cartItem = button.closest('.cart-item');
-        const allQuantityValues = cartItem.querySelectorAll('.Count');
-        allQuantityValues.forEach(value => {
-            value.textContent = quantity + 1;
+        // Gọi API để cập nhật số lượng trong database
+        fetch('/Cart/UpdateQuantityCartItem', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'RequestVerificationToken': token
+            },
+            body: `cartitemid=${cartItemId}&increase=${increase}`
+        })
+        .then(response => {
+            if (response.ok) {
+                // Cập nhật giao diện
+                if (increase) {
+                    currentQuantity += 1;
+                } else {
+                    currentQuantity -= 1;
+                }
+
+                // Cập nhật tất cả các phần tử hiển thị số lượng của sản phẩm này
+                const cartItem = button.closest('.cart-item');
+                const allQuantityValues = cartItem.querySelectorAll('.Count');
+                allQuantityValues.forEach(value => {
+                    value.textContent = currentQuantity;
+                });
+
+                // Tính lại tổng tiền
+                calculateTotal();
+            } else {
+                console.error('Failed to update quantity');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
-
-        calculateTotal();
     }
 
-    // Decrease quantity
-    function decreaseQuantity(button) {
-        // Handle both desktop and mobile layouts
-        let quantityDiv;
-        if (button.nextElementSibling && button.nextElementSibling.classList.contains('quantity-value')) {
-            quantityDiv = button.nextElementSibling;
-        } else {
-            // Look for the closest quantity-value
-            quantityDiv = button.closest('.quantity-controls').querySelector('.quantity-value');
-        }
+        function removeItem(cartItemId, button) {
+        if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')) {
+            // Lấy token CSRF
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
 
-        let quantity = parseInt(quantityDiv.textContent);
-        if (quantity > 1) {
-            quantityDiv.textContent = quantity - 1;
+            // Gọi API để xóa sản phẩm
+            fetch('/Cart/DeleteCartItem', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'RequestVerificationToken': token
+                },
+                body: `cartitemid=${cartItemId}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Xóa sản phẩm khỏi giao diện
+                    const cartItem = button.closest('.cart-item');
+                    cartItem.style.opacity = '0';
+                    setTimeout(() => {
+                        cartItem.remove();
 
-            // Update both desktop and mobile quantity displays if they exist
-            const cartItem = button.closest('.cart-item');
-            const allQuantityValues = cartItem.querySelectorAll('.Count');
-            allQuantityValues.forEach(value => {
-                value.textContent = quantity - 1;
+                        // Cập nhật số lượng sản phẩm trong trang giỏ hàng
+                        document.querySelector('.item-count').textContent = data.cartItemCount;
+
+                        // Cập nhật biểu tượng giỏ hàng trên thanh điều hướng (desktop, tablet, mobile)
+                        updateCartCountBadges(data.cartItemCount);
+
+                        // Tính lại tổng tiền
+                        calculateTotal();
+
+                        // Nếu giỏ hàng trống, hiển thị thông báo
+                        if (data.cartItemCount === 0) {
+                            location.reload(); // Reload trang nếu giỏ hàng trống
+                        }
+                    }, 300);
+                } else {
+                    alert('Không thể xóa sản phẩm, vui lòng thử lại sau.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Đã xảy ra lỗi khi xóa sản phẩm.');
             });
-
-            calculateTotal();
         }
     }
 
-    // Remove item from cart
-    function removeItem(button) {
-        const cartItem = button.closest('.cart-item');
-        cartItem.style.opacity = '0';
-        setTimeout(() => {
-            cartItem.remove();
-            updateItemCount();
-            calculateTotal();
-        }, 300);
+    // Hàm cập nhật số lượng giỏ hàng trên tất cả các thiết bị
+    function updateCartCountBadges(count) {
+        // Cập nhật biểu tượng giỏ hàng trên desktop
+        const desktopCartCount = document.getElementById('cart-count');
+        if (desktopCartCount) {
+            desktopCartCount.textContent = count;
+        }
+
+        // Cập nhật biểu tượng giỏ hàng trên tablet
+        const tabletCartCount = document.getElementById('tablet-cart-count');
+        if (tabletCartCount) {
+            tabletCartCount.textContent = count;
+        }
+
+        // Cập nhật biểu tượng giỏ hàng trên mobile
+        const mobileCartCount = document.getElementById('mobile-cart-count');
+        if (mobileCartCount) {
+            mobileCartCount.textContent = count;
+        }
     }
 
     // Update item count in header

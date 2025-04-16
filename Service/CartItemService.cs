@@ -84,5 +84,25 @@ namespace PBL3_HK4.Service
         {
             throw new NotImplementedException();
         }
+
+        public async Task UpdateQuantityCartItemAsync(Guid cartitemid, bool increase)
+        {
+            var currentCartItem = await _context.CartItems.FirstOrDefaultAsync(c => c.ItemID == cartitemid);
+            if (currentCartItem == null)
+            {
+                throw new KeyNotFoundException($"Cart item with ID {cartitemid} not found.");
+            }
+            var producid = currentCartItem.ProductID;
+            var product = await _context.Products.FirstOrDefaultAsync(p => p.ProductID == producid);
+            if (increase == true && product.StockQuantity > currentCartItem.Quantity)
+            {
+                currentCartItem.Quantity += 1;
+            }
+            if(increase == false && currentCartItem.Quantity > 0)
+            {
+                currentCartItem.Quantity -= 1;
+            }
+            await _context.SaveChangesAsync();
+        }
     }
 }

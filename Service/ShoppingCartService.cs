@@ -87,5 +87,11 @@ namespace PBL3_HK4.Service
         {
             throw new NotImplementedException();
         }
+
+        public async Task<List<CartItem>> GetCartItemsByCartIDAsync(Guid cartID)
+        {
+            var cartItems = await _context.CartItems.Where(ci=>ci.CartID == cartID).ToListAsync();
+            return cartItems;
+        }
     }
 }

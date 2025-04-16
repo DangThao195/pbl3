@@ -112,12 +112,57 @@ namespace PBL3_HK4.Controllers
                 });
             }
         }
-        public async Task<IEnumerable<CartItem>> GetCartItems()
+        //public async Task<IEnumerable<CartItem>> GetCartItems()
+        //{
+        //    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        //    var cart = await _shoppingCartService.GetShoppingCartByCustomerIdAsync(new Guid(userId));
+        //    return cart.Items;
+        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteCartItem(Guid cartitemid)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var cart = await _shoppingCartService.GetShoppingCartByCustomerIdAsync(new Guid(userId));
-            return cart.Items;
+            try
+            {
+                var userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                await _cartItemService.DeleteCartItemAsync(cartitemid);
+
+                // Cập nhật session sau khi xóa sản phẩm
+                var cart = await _shoppingCartService.GetShoppingCartByCustomerIdAsync(new Guid(userid));
+                int itemCount = 0;
+
+                try
+                {
+                    // Lấy danh sách mới sau khi xóa
+                    var updatedItems = await _cartItemService.GetCartItemsByShoppingCartIdAsync(cart.CartID);
+
+                    // Đếm số lượng loại sản phẩm trong giỏ hàng
+                    itemCount = updatedItems.Count();
+                }
+                catch (KeyNotFoundException)
+                {
+                    // Nếu không có mục nào, đặt count = 0
+                    itemCount = 0;
+                }
+
+                // Cập nhật session với số lượng loại sản phẩm mới
+                HttpContext.Session.SetInt32("CartItemCount", itemCount);
+
+                return Ok(new { success = true, cartItemCount = itemCount }); // Trả về số lượng mới
+            }
+            catch (Exception ex)
+            {
+                // Log lỗi nếu có
+                return BadRequest(new { success = false, message = ex.Message }); // Trả về 400 Bad Request khi có lỗi
+            }
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task UpdateQuantityCartItem(Guid cartitemid, bool increase)
+        {
+            await _cartItemService.UpdateQuantityCartItemAsync(cartitemid, increase);
+            // Không return RedirectToAction
+        }
     }
 }

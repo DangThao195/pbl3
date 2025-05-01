@@ -36,5 +36,8 @@ namespace PBL3_HK4.Entity
 
         [NotMapped]
         public string? NewPassWord { get; set; }
+
+        public string? VerificationCode { get; set; }
+        public DateTime? VerificationCodeExpiry { get; set; }
     }
 }

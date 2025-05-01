@@ -78,5 +78,28 @@ namespace PBL3_HK4.Service
             }
             return customers;
         }
+
+        public async Task<User> GetUserByEmailAsync(string email)
+        {
+            var user = await _context.Users.Where(u => u.Email == email).FirstOrDefaultAsync();
+            return user;
+        }
+
+        public async Task UpdateUserAsync(User user)
+        {
+            var existingCustomer = await _context.Users.FindAsync(user.UserID);
+            if (existingCustomer != null)
+            {
+                existingCustomer.Name = user.Name;
+                existingCustomer.Email = user.Email;
+                existingCustomer.Phone = user.Phone;
+                existingCustomer.DateOfBirth = user.DateOfBirth;
+                existingCustomer.Sex = user.Sex;
+
+                if (user.PassWord != null) existingCustomer.PassWord = user.PassWord;
+            }
+
+            await _context.SaveChangesAsync();
+        }
     }
 }

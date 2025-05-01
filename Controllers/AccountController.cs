@@ -20,14 +20,16 @@ namespace PBL3_HK4.Controllers
         private readonly IAccountService _accountService;
         private readonly IShoppingCartService _shoppingCartService;
         private readonly ICartItemService _cartItemService;
+        private readonly IPasswordHasher _passwordHasher;
 
-        public AccountController(ICartItemService cartItemService, ICustomerService customerService, IAdminService adminService, IAccountService accountService, IShoppingCartService shoppingCartService)
+        public AccountController(ICartItemService cartItemService, ICustomerService customerService, IAdminService adminService, IAccountService accountService, IShoppingCartService shoppingCartService, IPasswordHasher passwordHasher)
         {
             _cartItemService = cartItemService;
             _customerService = customerService;
             _accountService = accountService;
             _adminService = adminService;
             _shoppingCartService = shoppingCartService;
+            _passwordHasher = passwordHasher;
         }
 
         public IActionResult Main()
@@ -78,7 +80,8 @@ namespace PBL3_HK4.Controllers
                 {
                     new Claim(ClaimTypes.Name, userLogin.UserName),
                     new Claim(ClaimTypes.NameIdentifier, userLogin.UserID.ToString()),
-                    new Claim(ClaimTypes.Role, userLogin.Role)
+                    new Claim(ClaimTypes.Role, userLogin.Role),
+                    new Claim(ClaimTypes.Email, userLogin.Email)
                 };
                 var role = User.FindFirstValue(ClaimTypes.Role);
                 var claimsIdentity = new ClaimsIdentity(
@@ -163,5 +166,39 @@ namespace PBL3_HK4.Controllers
                 return View();
             }
         }
+
+        public async Task<IActionResult> SendCode()
+        {
+            var email = User.FindFirstValue(ClaimTypes.Email);
+            var DefiCode = await _accountService.GenerateVerificationCode();
+            await _accountService.SendPasswordResetEmailAsync(email, DefiCode);
+            return View("ForgotPassword");
+        }
+
+        public async Task<IActionResult> ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword(string code, string newPassword)
+        {
+            var email = User.FindFirstValue(ClaimTypes.Email);
+            var user = await _customerService.GetUserByEmailAsync(email);
+            Guid.TryParse(User.FindFirstValue(ClaimTypes.NameIdentifier), out Guid id);
+
+            if (code == user.VerificationCode && DateTime.UtcNow < user.VerificationCodeExpiry)
+            {
+                User newuser = new User()
+                {
+                    UserID = id,
+                    PassWord = _passwordHasher.HashPassword(newPassword)
+                };
+                await _customerService.UpdateUserAsync(newuser);
+                return View("SignIn");
+            }
+            return View();
+        }
+
     }
 }
